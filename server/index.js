@@ -9,7 +9,7 @@ app.use(cors({
   origin:["https://w3automation-frontend.vercel.app"],
   methods:['POST','GET'],
   credentials: true
-}))
+}));
 
 //database connection
 mongoose
