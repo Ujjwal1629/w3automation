@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+.register {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #282a35;
+  height: 100vh;
+}
+.register-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 50px;
+  color: #fff;
+}
+.register-details {
+  font-size: 1.3rem;
+  font-family: sans-serif;
+}
+.registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 80px 50px;
+  border-radius: 10px;
+}
+.sign-up-head {
+  font-size: 2rem;
+  font-family: sans-serif;
+  color: #000;
+}
+.google {
+  font-size: 1.1rem;
+  font-family: sans-serif;
+  border: 0.5px solid black;
+  padding: 10px 15px;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.google:hover {
+  background-color: #d3d3d3;
+}
+.sign-up-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.sign-up-name input {
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  border: 0;
+  outline: 0;
+}
+.sign-up-name span {
+  font-size: 1.1rem;
+  color: black;
+}
+
+.sign-up-mail input {
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  border: 0;
+  outline: 0;
+}
+.sign-up-mail span {
+  font-size: 1.1rem;
+  color: black;
+}
+
+.sign-up-password input {
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  border: 0;
+  outline: 0;
+}
+.sign-up-password span {
+  font-size: 1.1rem;
+  color: black;
+}
+.sign-up-links {
+  margin: 10px 0px;
+  text-align: center;
+}
+.forgot {
+  color: black;
+  font-family: sans-serif;
+  font-size: 12px;
+  color: blue;
+  cursor: pointer;
+}
+.signup {
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  border: 0.5px solid #5ab5ff;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #5ab5ff;
+  color: #fff;
+  margin: 10px 0px;
+  cursor: pointer;
+}
+.signup:hover {
+  background-color: #2b9fff;
+}
