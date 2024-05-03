@@ -14,7 +14,7 @@ import { Toaster } from "react-hot-toast"; //using react hot toast to fetch cond
 import Dashboard from "./Components/Dashboard";
 import Header from "./Components/Header";
 
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "https://w3automation-5q3f.vercel.app";
 axios.defaults.withCredentials = true;
 
 function App() {
