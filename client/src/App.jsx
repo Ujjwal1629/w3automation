@@ -1,10 +1,5 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import Register from "./Components/Register";
@@ -13,8 +8,9 @@ import axios from "axios";
 import { Toaster } from "react-hot-toast"; //using react hot toast to fetch conditions and display, stated inside authController
 import Dashboard from "./Components/Dashboard";
 import Header from "./Components/Header";
+import Selenium from "./Pages/Selenium";
 
-axios.defaults.baseURL = "https://w3automation-5q3f.vercel.app";
+axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -26,6 +22,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/Selenium" element={<Selenium />} />
       </Routes>
     </div>
   );

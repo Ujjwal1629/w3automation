@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
 .home {
   display: flex;
   align-items: center;
@@ -14,16 +16,22 @@
 .home-head h1 {
   font-size: 3rem;
   font-family: sans-serif;
+  margin-bottom: 0px;
 }
 .home-head span {
   font-size: 3rem;
   font-family: sans-serif;
   color: #006633;
 }
-.home-head p {
-  font-size: 2rem;
+.home-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home-container p {
+  font-size: 3rem;
   font-family: sans-serif;
-  color: #006633;
+  color: #000;
 }
 .home-search {
   display: flex;

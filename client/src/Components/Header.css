@@ -9,6 +9,7 @@
 .header ul {
   display: flex;
   gap: 60px;
+  margin: 5px 0px;
 }
 .header li {
   list-style: none;

@@ -11,7 +11,14 @@ export default function Navbar() {
   const navigate = useNavigate();
   return (
     <nav className="navbar">
-      <img src={logo} alt="" className="logo" />
+      <img
+        src={logo}
+        alt=""
+        className="logo"
+        onClick={() => {
+          navigate("/");
+        }}
+      />
       <ul>
         <Link>
           <li>Home</li>

@@ -1,12 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="header">
         <ul>
-          <li>
+          <li className="ga-active"
+            onClick={() => {
+              navigate("/Selenium");
+            }}
+          >
             Selenium <i class="arrow down"></i>
           </li>
           <li>
