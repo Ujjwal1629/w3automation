@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: sticky;
 }
 .container-links h1 {
   font-family: "Roboto", sans-serif;
@@ -73,16 +74,17 @@
   display: flex;
   align-items: center;
   padding: 10px 20px;
+  flex-direction: column;
 }
-#JS-Home {
+.IntroJava {
   width: 100%;
 }
-#JS-Home h1 {
+.IntroJava h1 {
   font-size: 2rem;
   font-family: sans-serif;
   color: #000;
 }
-#JS-Home p {
+.IntroJava p {
   font-size: 1.3rem;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
