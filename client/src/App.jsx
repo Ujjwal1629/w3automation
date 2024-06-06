@@ -9,6 +9,7 @@ import { Toaster } from "react-hot-toast"; //using react hot toast to fetch cond
 import Dashboard from "./Components/Dashboard";
 import Header from "./Components/Header";
 import Selenium from "./Pages/Selenium";
+import API from "./Pages/API";
 
 axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
@@ -23,6 +24,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Selenium" element={<Selenium />} />
+        <Route path="/API" element={<API />} />
       </Routes>
     </div>
   );
