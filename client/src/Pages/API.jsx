@@ -4,6 +4,10 @@ import Navbar from "../Components/Navbar";
 import Header from "../Components/Header";
 
 export default function API() {
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
   return (
     <div className="API">
       <Navbar />

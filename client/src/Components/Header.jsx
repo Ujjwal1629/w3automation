@@ -13,31 +13,23 @@ export default function Header() {
               navigate("/Selenium");
             }}
           >
-            Selenium <i class="arrow down"></i>
+            SELENIUM WITH JAVA <i class="arrow down"></i>            
+          </li>
+          <li className="ga-active"
+            onClick={() => {
+              navigate("/API");
+            }}>
+            API <i class="arrow down">
+            </i>
           </li>
           <li>
-            Jmeter <i class="arrow down"></i>
+            PLAYWRIGHT <i class="arrow down"></i>
           </li>
           <li>
-            Jira <i class="arrow down"></i>
+            CYPRESS <i class="arrow down"></i>
           </li>
           <li>
-            DevOps <i class="arrow down"></i>
-          </li>
-          <li>
-            API <i class="arrow down"></i>
-          </li>
-          <li>
-            Tools <i class="arrow down"></i>
-          </li>
-          <li>
-            Git <i class="arrow down"></i>
-          </li>
-          <li>
-            Jenkins <i class="arrow down"></i>
-          </li>
-          <li>
-            Training <i class="arrow down"></i>
+            JMETER <i class="arrow down"></i>
           </li>
         </ul>
       </div>
