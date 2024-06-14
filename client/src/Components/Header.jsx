@@ -22,13 +22,19 @@ export default function Header() {
             API <i class="arrow down">
             </i>
           </li>
-          <li>
+          <li  onClick={() => {
+              navigate("/Playwright");
+            }}>
             PLAYWRIGHT <i class="arrow down"></i>
           </li>
-          <li>
+          <li  onClick={() => {
+              navigate("/Cypress");
+            }}>
             CYPRESS <i class="arrow down"></i>
           </li>
-          <li>
+          <li  onClick={() => {
+              navigate("/Jmeter");
+            }}>
             JMETER <i class="arrow down"></i>
           </li>
         </ul>

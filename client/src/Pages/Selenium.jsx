@@ -16,7 +16,7 @@ export default function Selenium() {
         <div className="container-left">
           <div className="container-links">
             <h1>Selenium With Java</h1>
-            <a className="links" href="#Intro-Selenium-Java" onClick={(e) => scrollToSection(e, 'Intro-Selenium-Java')}>
+            <a className="links" href="#Selenium-Java-Intro" onClick={(e) => scrollToSection(e, 'Selenium-Java-Intro')}>
               Selenium With Java Course Introduction
             </a>
             <a className="links" href="#preRequisite-Selenium-Java" onClick={(e) => scrollToSection(e, 'preRequisite-Selenium-Java')}>
@@ -25,7 +25,7 @@ export default function Selenium() {
             <a className="links" href="#Intro-Java" onClick={(e) => scrollToSection(e, 'Intro-Java')}>
               Introduction To Java
             </a>
-            <a className="links" href="#Class-Object" onClick={(e) => scrollToSection(e, 'Class-Object')}>
+            <a className="links" href="#Classes And Objects Class-Object" onClick={(e) => scrollToSection(e, 'Classes And Objects Class-Object')}>
               Classes And Objects
             </a>
             <a className="links" href="#Java-Programming-Features" onClick={(e) => scrollToSection(e, 'Java-Programming-Features')}>
