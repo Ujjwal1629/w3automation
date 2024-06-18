@@ -2,6 +2,7 @@ import React from "react";
 import "./Selenium.css";
 import Navbar from "../Components/Navbar";
 import Header from "../Components/Header";
+import image from "../assets/night.png" // always store images in assets folder then import it like this and name accordingly like image, myImage, car, bike etc
 
 export default function Selenium() {
   const scrollToSection = (e, id) => {
@@ -87,8 +88,9 @@ export default function Selenium() {
             <button className="next">Next</button>
           </div>
           <div className="main-page">
-            <div id="Selenium-Java-Intro" class = "Selenium-Java-Intro">
+            <div id="Selenium-Java-Intro" class = "IntroJava">
               <h1>Introduction To Selenium With Java Course</h1>
+              <img src={image} alt="" /> 
               <p>
                This course is designed in a manner to cater the students and the working professionals to learn and upskill
                 their knowledge towards creating a test automation framework which will include following segments or pieces.
@@ -164,7 +166,7 @@ export default function Selenium() {
               in case of QTP.
               </p>
             </div>
-            <div id="preRequisite-Selenium-Java" class = "Selenium-Java-Intro">
+            <div id="preRequisite-Selenium-Java" class = "IntroJava">
               <h1>Pre Requisites For Selenium and Java</h1>
               <p>
                Install Java  
@@ -191,7 +193,7 @@ export default function Selenium() {
               <br></br>
               <b>Below are the steps to follow to install Java on windows machine.</b>
               <ol>
-                <li>First of all go to "System Properties" (Can be found on Control Panel -> System and Security -> System -> Advanced System Settings) </li>
+                <li>First of all go to "System Properties" (Can be found on Control Panel &gt; System and Security &gt; System &gt; Advanced System Settings) </li>
                 <li>Click on the "Environment variables" button under the "Advanced" tab. </li>                
                 <li>Then, select the "Path" variable in System variables and click on the "Edit" button </li>                    
                 <li>Click on the "New" button and add the path where Java is installed, followed by \bin. By default, Java is installed in C:\Program Files\Java\jdk-11.0.1 (If nothing else was specified when you installed it). In that case, You will have to add a new path with: C:\Program Files\Java\jdk-11.0.1\bin
@@ -211,7 +213,7 @@ export default function Selenium() {
               <br></br>
               <b>Below are the steps to follow to setup maven on windows machine.</b>
               <ol>
-                <li>First go to "System Properties" (Can be found on Control Panel -> System and Security -> System -> Advanced System Settings). </li>
+                <li>First go to "System Properties" (Can be found on Control Panel &gt; System and Security &gt; System &gt; Advanced System Settings). </li>
                 <li>Click on the "Environment variables" button under the "Advanced" tab. </li>                
                 <li>Then, select the "Path" variable in System variables and click on the "Edit" button. </li>                    
                 <li>Click on the "New" button and add the path where maven is installed, followed by \bin.  In that case, You will have to add a new path with: ------\jdk-11.0.1\bin(update the path)
