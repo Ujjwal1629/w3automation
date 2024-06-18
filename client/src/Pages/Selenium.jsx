@@ -87,7 +87,7 @@ export default function Selenium() {
             <button className="next">Next</button>
           </div>
           <div className="main-page">
-            <div id="Selenium-Java-Intro" class = "IntroJava">
+            <div id="Selenium-Java-Intro" class = "Selenium-Java-Intro">
               <h1>Introduction To Selenium With Java Course</h1>
               <p>
                This course is designed in a manner to cater the students and the working professionals to learn and upskill
@@ -161,26 +161,70 @@ export default function Selenium() {
               <br></br>
               There is a saying that 100% cannot be automated, means we can use only those functionalities which are provided by the automation tool. If in case 
               you identify any new functionality to test some item in your application and that is not available, you can ask for add on from the company mercury 
-              in case of QTP 
-
-
-
+              in case of QTP.
               </p>
             </div>
-            <div id="Classes And Objects Class-Object" class = "IntroJava">
-              <h1>Classes And Objects</h1>
+            <div id="preRequisite-Selenium-Java" class = "Selenium-Java-Intro">
+              <h1>Pre Requisites For Selenium and Java</h1>
               <p>
-               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus iure sequi vitae dicta quis ad, quibusdam
-                corrupti sapiente omnis ducimus impedit facilis voluptas? Illo rerum, est possimus maxime cupiditate unde 
-                quam minus doloremque aut consequuntur optio deserunt, ipsam recusandae praesentium vitae commodi molestias
-                facilis labore quaerat officia! Rem, est nostrum.
+               Install Java  
+               You might find Java already installed into your system.
+
+               To check if you have a java installed on a windows PC, search in the start bar for Java or type the following 
+               in Command Prompt (cmd.exe):
+               <br></br>
+              ADD A PICTURE OF CMD LOOKING FOR JAVA VERSION ALSO ADD TEXT AND PICTURE TO FIND JAVA VERSION IN MAC.
+              <br></br>
+              If Java is already installed in your machine. You will find something like this below based on the version installed into your system.
+
+              <br></br>
+              ADD A PICTURE TO SHOW JAVA VERSION DETAILS IN CMD FOR BOTH MAC AND WINDOWS.
+
+              If you do not find java in your system. Please visit to website <a href="https://www.oracle.com/in/java/technologies/javase/jdk11-archive-downloads.html" target="_blank">oracle.com</a>
+              <br></br>
+              <b>Note: </b>A text editor is provided while learning core java concepts. You can have good hands on while going through
+              each topics. Other way to do it to use any available Integrated Development Enviroment, like Eclipse, IntelliJ or Netbeans,
+              Eclipse is most preferable one while opting for Selenium with Java course.
+              <br></br>
+              <br></br>
+              <b>How to Setup Java on Windows:</b>
+              <br></br>
+              <b>Below are the steps to follow to install Java on windows machine.</b>
+              <ol>
+                <li>First of all go to "System Properties" (Can be found on Control Panel -> System and Security -> System -> Advanced System Settings) </li>
+                <li>Click on the "Environment variables" button under the "Advanced" tab. </li>                
+                <li>Then, select the "Path" variable in System variables and click on the "Edit" button </li>                    
+                <li>Click on the "New" button and add the path where Java is installed, followed by \bin. By default, Java is installed in C:\Program Files\Java\jdk-11.0.1 (If nothing else was specified when you installed it). In that case, You will have to add a new path with: C:\Program Files\Java\jdk-11.0.1\bin
+                Then, click "OK", and save the settings</li>    
+                <li>At last, open Command Prompt (cmd.exe) and type java -version to see if Java is running on your machine</li>
+              </ol>           
+
+                PUT SOME SCREENSHOTS IN ABOVE STEPS 
+                <br></br>
+                <br></br>
+                <b>Install Maven</b>
+                <br></br>
+                Go to the maven website to download zip file which can help setting up maven in your machine. Here is the link to download zip file <a href="https://maven.apache.org/download.cgi" target="_blank">maven download</a>.
+                <br></br>Go to Files section of the webpage and click on zip file link displayed below. 
+              <b>Show a screenshot of the maven website location where to download</b>
+              <b>How to Setup Maven on Windows:</b>
+              <br></br>
+              <b>Below are the steps to follow to setup maven on windows machine.</b>
+              <ol>
+                <li>First go to "System Properties" (Can be found on Control Panel -> System and Security -> System -> Advanced System Settings). </li>
+                <li>Click on the "Environment variables" button under the "Advanced" tab. </li>                
+                <li>Then, select the "Path" variable in System variables and click on the "Edit" button. </li>                    
+                <li>Click on the "New" button and add the path where maven is installed, followed by \bin.  In that case, You will have to add a new path with: ------\jdk-11.0.1\bin(update the path)
+                Then, click "OK", and save the settings</li>    
+                <li>At last, open Command Prompt (cmd.exe) and type <b>mvn -version</b> to see if maven is setup on your machine successfully.</li>
+              </ol>      
               </p>
             </div>
             <div id="Introduction To Java" class = "IntroJava">
               <h1>Introduction To Java</h1>
               <p>
                 What is Java?
-                Java is a very popular pro
+                Java is a very popular pro 
                 JavaScript is the world's most popular programming language.
                 JavaScript is the programming language of the Web. JavaScript is
                 easy to learn. This tutorial will teach you JavaScript from
