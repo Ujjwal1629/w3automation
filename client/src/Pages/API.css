@@ -54,7 +54,7 @@
   border: 0.5px solid #04aa6d;
   background-color: #04aa6d;
   color: #fff;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
 }
 .container-head .prev:hover {
@@ -66,7 +66,7 @@
   border: 0.5px solid #04aa6d;
   background-color: #04aa6d;
   color: #fff;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
 }
 .container-head .next:hover {

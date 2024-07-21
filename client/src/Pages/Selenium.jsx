@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Selenium.css";
 import Navbar from "../Components/Navbar";
 import Header from "../Components/Header";
-import image from "../assets/night.png" // always store images in assets folder then import it like this and name accordingly like image, myImage, car, bike etc
+import image from "../assets/java1.png";
+import image2 from "../assets/java2.png";
+import image3 from "../assets/java3.png";
+import image4 from "../assets/java4.png"; // always store images in assets folder then import it like this and name accordingly like image, myImage, car, bike etc
+import Java from "../Sections/Sections-Selenium/Java";
+import Variables from "../Sections/Sections-Selenium/Variables";
 
 export default function Selenium() {
+  const [step, setStep] = useState(0);
+
   const scrollToSection = (e, id) => {
     e.preventDefault();
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-  }
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleNextClick = () => {
+    setStep((prevStep) => (prevStep < 2 ? prevStep + 1 : prevStep));
+  };
+
+  const handlePrevClick = () => {
+    setStep((prevStep) => (prevStep > 0 ? prevStep - 1 : prevStep));
+  };
+
   return (
     <div>
       <Navbar />
@@ -17,255 +33,307 @@ export default function Selenium() {
         <div className="container-left">
           <div className="container-links">
             <h1>Selenium With Java</h1>
-            <a className="links" href="#Selenium-Java-Intro" onClick={(e) => scrollToSection(e, 'Selenium-Java-Intro')}>
-              Selenium With Java Course Introduction
+            <a
+              className="links"
+              href="#Selenium-Java-Intro"
+              onClick={(e) => scrollToSection(e, "Selenium-Java-Intro")}
+            >
+              What is Selenium?
             </a>
-            <a className="links" href="#preRequisite-Selenium-Java" onClick={(e) => scrollToSection(e, 'preRequisite-Selenium-Java')}>
+            <a
+              className="links"
+              href="#preRequisite-Selenium-Java"
+              onClick={(e) => scrollToSection(e, "preRequisite-Selenium-Java")}
+            >
               Pre-Requisites For Selenium With Java
             </a>
-            <a className="links" href="#Intro-Java" onClick={(e) => scrollToSection(e, 'Intro-Java')}>
+            <a
+              className="links"
+              href="#Intro-Java"
+              onClick={(e) => scrollToSection(e, "Intro-Java")}
+            >
               Introduction To Java
             </a>
-            <a className="links" href="#Classes And Objects Class-Object" onClick={(e) => scrollToSection(e, 'Classes And Objects Class-Object')}>
+            <a
+              className="links"
+              href="#Classes And Objects Class-Object"
+              onClick={(e) =>
+                scrollToSection(e, "Classes And Objects Class-Object")
+              }
+            >
               Classes And Objects
             </a>
-            <a className="links" href="#Java-Programming-Features" onClick={(e) => scrollToSection(e, 'Java-Programming-Features')}>
+            <a
+              className="links"
+              href="#Java-Programming-Features"
+              onClick={(e) => scrollToSection(e, "Java-Programming-Features")}
+            >
               Basic Java Programming and Features
             </a>
-            <a className="links" href="#java-methods" onClick={(e) => scrollToSection(e, 'java-methods')}>
+            <a
+              className="links"
+              href="#java-methods"
+              onClick={(e) => scrollToSection(e, "java-methods")}
+            >
               Methods Introduction
             </a>
-            <a className="links" href="#methods-types" onClick={(e) => scrollToSection(e, 'methods-types')}>
+            <a
+              className="links"
+              href="#methods-types"
+              onClick={(e) => scrollToSection(e, "methods-types")}
+            >
               Types Of Methods
             </a>
-            <a className="links" href="#methods-static-nonStatic" onClick={(e) => scrollToSection(e, 'methods-static-nonStatic')}>
+            <a
+              className="links"
+              href="#methods-static-nonStatic"
+              onClick={(e) => scrollToSection(e, "methods-static-nonStatic")}
+            >
               Methods - Static and Non Static
             </a>
-            <a className="links" href="#if-else-statement" onClick={(e) => scrollToSection(e, 'if-else-statement')}>
+            <a
+              className="links"
+              href="#if-else-statement"
+              onClick={(e) => scrollToSection(e, "if-else-statement")}
+            >
               If and Else Statement
             </a>
-            <a className="links" href="#for-loop" onClick={(e) => scrollToSection(e, 'for-loop')}>
+            <a
+              className="links"
+              href="#for-loop"
+              onClick={(e) => scrollToSection(e, "for-loop")}
+            >
               For Loop
             </a>
-            <a className="links" href="#nested-for-loop" onClick={(e) => scrollToSection(e, 'nested-for-loop')}>
+            <a
+              className="links"
+              href="#nested-for-loop"
+              onClick={(e) => scrollToSection(e, "nested-for-loop")}
+            >
               Nested For Loop
-            </a>
-            <a className="links" href="">
-              Break and Continue Statement
-            </a>
-            <a className="links" href="">
-              While and Do While Loop
-            </a>
-            <a className="links" href="">
-              Arrays 2D and 3D
-            </a>
-            <a className="links" href="">
-              OOPs Concepts
-            </a>
-            <a className="links" href="">
-              Exception Handling
-            </a>
-            <a className="links" href="">
-              Java Collections
-            </a>
-            <a className="links" href="">
-              Introduction To Selenium WebDriver
-            </a>
-            <a className="links" href="">
-              Finding WebElement By Locators
-            </a>
-            <a className="links" href="">
-              Handling Dropdowns
-            </a>
-            <a className="links" href="">
-              Handling 
             </a>
           </div>
         </div>
         <div className="main-container">
           <div className="container-head">
-            <button className="prev">Prev</button>
-            <button className="next">Next</button>
+            <button className="prev" onClick={handlePrevClick}>
+              Prev
+            </button>
+            <button className="next" onClick={handleNextClick}>
+              Next
+            </button>
           </div>
           <div className="main-page">
-            <div id="Selenium-Java-Intro" class = "IntroJava">
-              <h1>Introduction To Selenium With Java Course</h1>
-              <img src={image} alt="" /> 
-              <p>
-               This course is designed in a manner to cater the students and the working professionals to learn and upskill
-                their knowledge towards creating a test automation framework which will include following segments or pieces.
-                <ol>
-                <li>Core Java</li>
-                <li>Keyword Driven Framework</li>
-                <li>Data Driven Framework</li>
-                <li>TestNG Framework</li>
-                <li>Page Object Model Approach</li>
+            {step === 0 && (
+              <div id="Selenium-Java-Intro" className="IntroJava">
+                <h1>What is Selenium?</h1>
+                <p>
+                  Selenium is a free (open source) automated testing framework
+                  used to validate web applications across different browsers.
+                  It offers a plethora of tools that are specially designed to
+                  cater to the automated testing of web applications. One of the
+                  best things about Selenium is that it supports a variety of
+                  programming languages like Java, C#, Python, Ruby, etc. So,
+                  developers can write their test scripts in any one of these
+                  languages.
+                </p>
+                <br />
+                <h1>Why Choose Selenium with Java?</h1>
+                <p>
+                  Java is regarded as the most widely used and powerful
+                  programming language around the world due to its robustness,
+                  ease of use and it creates versatility. <br />
+                  <span style={{ fontWeight: "bold" }}>
+                    Advantages of using Java Selenium -{" "}
+                  </span>
+                  <br />
+                  Platform independence - Java code can execute on any device if
+                  that device supports the Java Virtual Machine (JVM). Extensive
+                  Documentation: Java comes with detailed documentation and a
+                  vast community that offers adequate resources to get support.
+                  Integration with Testing Frameworks Java seamlessly integrates
+                  standard testing frameworks (like JUnit and TestNG), that
+                  improve automation of test cases.
+                </p>
+                <h1>Setting Up the Environment</h1>
+                <p>
+                  First, we must prepare a development environment for testing
+                  Selenium tests.
+                </p>
+                <ul className="list-items">Installing Java</ul>
+                <li className="list-item">
+                  Downloading the newest JDK (Java Development Kit) from the{" "}
+                  <a href="https://www.oracle.com/in/java/technologies/downloads/">
+                    Oracle website
+                  </a>
+                </li>
+                <li className="list-item">
+                  Install as per the instructions for your OS.
+                </li>
+                <li className="list-item">
+                  Set the environment variable JAVA_HOME to the JDK installation
+                  directory.
+                </li>
+                <li className="list-item">
+                  To confirm that Java has installed open command prompt and
+                  type java -version.
+                </li>
+                <ul className="list-items">Setting Up Eclipse IDE</ul>
+                <li className="list-item">
+                  To begin, download and install the Eclipse IDE for Java
+                  Developers from{" "}
+                  <a href="https://www.eclipse.org/downloads/packages/release/kepler/sr1/eclipse-ide-java-developers">
+                    here
+                  </a>
+                  .
+                </li>
+                <li className="list-item">
+                  Open Eclipse 2. Create a new workspace.
+                </li>
+                <ul className="list-items">Adding Selenium Libraries</ul>
+                <li className="list-item">
+                  Good! The latest Selenium WebDriver Java client can be
+                  downloaded here from the official website of{" "}
+                  <a href="">Selenium</a>.
+                </li>
+                <li className="list-item">
+                  Unzip the downloaded ZIP file and you will get some JAR files
+                  as part of this to include in your project using Eclipse.
+                </li>
+                <li className="list-item">
+                  Right-click on your project &gt; Build Path &gt; Configure
+                  Build Path.
+                </li>
+                <li className="list-item">
+                  Click on Add External JARs and select the Selenium JAR files.
+                </li>
+                <h1>Your First Selenium Test</h1>
+                <h4>The basic structure of a Selenium Test</h4>
+                <p>
+                  Generally, the steps that a typical Selenium test in Java
+                  makes are to
+                </p>
+                <ol className="list-items">
+                  <li className="list-item">Set up the WebDriver.</li>
+                  <li className="list-item">Navigate to the target.</li>
+                  <li className="list-item">Do actions on web elements.</li>
+                  <li className="list-item">Validate the results.</li>
+                  <li className="list-item">Close the browser.</li>
                 </ol>
-              Above topics will be taken one by one in depth and after completing this course one can easily become master 
-              in test automation testing with a most important trait into your skillset bucket i.e Selenium with Java. After 
-              completing this course working professionals with profile as functional/manual testing engineer can explain test 
-              automation as his/her part of daily testing.Talking about students, this course will help kick start their career 
-              with highly paid professionals in software testing domain. 
-              <br></br>
-              <br></br>
-              There is no pre-requisite skill required for this course no manual testing or development background. 
-              So Lets design the complete test automation framework from scratch.
-
-              <h3> What is Selenium?</h3>
-              Selenium is an open source tool/ framework/ library/ set of apis for automation testing of Web Applications only.
-              <br></br>
-              <br></br>
-              <b>Various Tools for Testing  </b>
-              <ol>
-                <li>For web based applications testing - Selenium, Cypress, PlayWright, Tosca etc. </li>
-                <li>For desktop based applications testing - UFT/QTP(Mercury / HP) (VB Script - Windows only).</li>
-                <li>For database testing - SQLMap, DbFit, Mockup Data, SQL Test etc.</li>
-                <li>For mobile applications testing - Appium</li>
-                <li>For Webservices API(REST / SOAP) - Postman, SoapUI, REST Assured.</li>
+                <h4>Example: Automating a Google Search</h4>
+                <img
+                  style={{
+                    width: "600px",
+                    borderRadius: "15px",
+                    boxShadow: "0 0 20px",
+                  }}
+                  src={image}
+                  alt=""
+                />
+                <h1>Selenium WebDriver Basics</h1>
+                <h4>Locating Web Elements</h4>
+                <p>
+                  The Selenium locators are the various approaches that search
+                  or identify any element in a webpage.
+                </p>
+                <ol className="list-items">
+                  <li className="list-item">By.id</li>
+                  <li className="list-item">By.name</li>
+                  <li className="list-item">By.className</li>
+                  <li className="list-item">By.tagName</li>
+                  <li className="list-item">By.linkText</li>
+                  <li className="list-item">By.partialLinkText</li>
+                  <li className="list-item">By.xpath</li>
+                  <li className="list-item">By.cssSelector</li>
                 </ol>
-              <b>Features Of Selenium</b>
-              <ol>
-                <li>Multiple Language Support - Java, C#, Ruby, Python, JavaScript. </li>
-                <li>Multiple Platform Support / Operating System - Windows, Linux, Mac OS, Solaris, Android. </li>                
-                <li>Multiple Browser Support - Chrome, Firefox, Edge, Internet Explorer, Safari, Opera </li>
-                </ol>
-
-              When we talk about language support it means Selenium has a set of language specific client drivers.
-              It does not mean that if in case website is developed in a certain language for exampl.e in C# one has 
-              to choose same set of language binding of selenium. Whichever language one is confortable with can choose 
-              among the available language bindings available like Java, C#, Ruby, Python and Javascript.
-              <br></br>
-              <br></br>
-              <b>History Of Selenium</b>
-              <br></br>
-              <br></br>
-              Who created Selenium? It was created by a company called ThoughtWorks and the person who developed this is Jason Huggins.
-              He started the project in 2006. In order to automate, daily manual testing routine task. He created a small library, that library
-              went to such an extend they thought of giving it a name and they came up with a name called as Selenium. Why they named it as 
-              Selenium? What is the reason behind this name. At the time around 2006 Mercury company tools were very popular.
-              Prior to QTP it was WinRunner for desktop application testing as that time there were more desktop applications.
-              In order to automate those applications the user need to purchase the license. If we talk about mercury in general terms, what is 
-              mercury. There is a saying if someone intakes mercury one can die because of it. Someone intakes mercury, he/she has to give 
-              antidote to it. That antidote is named as selenium. Selenium kills mercury so they have given such name to end the market of QTP mercury.
-              To such an extend they are successful as well. Not just the cost effective reason but also there are alot of other reasons.
-
-
-              Why Selenium is so popular. why companies are not looking at other paid tools like QTP,Mercury,RFT. Why they are investing more in selenium. 
-              Not in terms of cost but in terms of resources. We have already discussed alot of reason like what all things it supports vs what all things 
-              QTP supports.
-              <br></br>
-              <br></br>
-              All the discussion done around the scope of performing test automation can be done in a single project which include Selenium, Java and other 
-              APIs which countributes to the different requirements of a project. You can automate web based, mobile based, webservices testing,
-              Database testing, Desktop application testing. All these application can be easily handled in one single project/one single framework. 
-              That is how robust Selenium is. You have alot of integration done with selenium which you cannot do with QTP.
-              <br></br>
-              <br></br>
-              There is a saying that 100% cannot be automated, means we can use only those functionalities which are provided by the automation tool. If in case 
-              you identify any new functionality to test some item in your application and that is not available, you can ask for add on from the company mercury 
-              in case of QTP.
-              </p>
-            </div>
-            <div id="preRequisite-Selenium-Java" class = "IntroJava">
-              <h1>Pre Requisites For Selenium and Java</h1>
-              <p>
-               Install Java  
-               You might find Java already installed into your system.
-
-               To check if you have a java installed on a windows PC, search in the start bar for Java or type the following 
-               in Command Prompt (cmd.exe):
-               <br></br>
-              ADD A PICTURE OF CMD LOOKING FOR JAVA VERSION ALSO ADD TEXT AND PICTURE TO FIND JAVA VERSION IN MAC.
-              <br></br>
-              If Java is already installed in your machine. You will find something like this below based on the version installed into your system.
-
-              <br></br>
-              ADD A PICTURE TO SHOW JAVA VERSION DETAILS IN CMD FOR BOTH MAC AND WINDOWS.
-
-              If you do not find java in your system. Please visit to website <a href="https://www.oracle.com/in/java/technologies/javase/jdk11-archive-downloads.html" target="_blank">oracle.com</a>
-              <br></br>
-              <b>Note: </b>A text editor is provided while learning core java concepts. You can have good hands on while going through
-              each topics. Other way to do it to use any available Integrated Development Enviroment, like Eclipse, IntelliJ or Netbeans,
-              Eclipse is most preferable one while opting for Selenium with Java course.
-              <br></br>
-              <br></br>
-              <b>How to Setup Java on Windows:</b>
-              <br></br>
-              <b>Below are the steps to follow to install Java on windows machine.</b>
-              <ol>
-                <li>First of all go to "System Properties" (Can be found on Control Panel &gt; System and Security &gt; System &gt; Advanced System Settings) </li>
-                <li>Click on the "Environment variables" button under the "Advanced" tab. </li>                
-                <li>Then, select the "Path" variable in System variables and click on the "Edit" button </li>                    
-                <li>Click on the "New" button and add the path where Java is installed, followed by \bin. By default, Java is installed in C:\Program Files\Java\jdk-11.0.1 (If nothing else was specified when you installed it). In that case, You will have to add a new path with: C:\Program Files\Java\jdk-11.0.1\bin
-                Then, click "OK", and save the settings</li>    
-                <li>At last, open Command Prompt (cmd.exe) and type java -version to see if Java is running on your machine</li>
-              </ol>           
-
-                PUT SOME SCREENSHOTS IN ABOVE STEPS 
-                <br></br>
-                <br></br>
-                <b>Install Maven</b>
-                <br></br>
-                Go to the maven website to download zip file which can help setting up maven in your machine. Here is the link to download zip file <a href="https://maven.apache.org/download.cgi" target="_blank">maven download</a>.
-                <br></br>Go to Files section of the webpage and click on zip file link displayed below. 
-              <b>Show a screenshot of the maven website location where to download</b>
-              <b>How to Setup Maven on Windows:</b>
-              <br></br>
-              <b>Below are the steps to follow to setup maven on windows machine.</b>
-              <ol>
-                <li>First go to "System Properties" (Can be found on Control Panel &gt; System and Security &gt; System &gt; Advanced System Settings). </li>
-                <li>Click on the "Environment variables" button under the "Advanced" tab. </li>                
-                <li>Then, select the "Path" variable in System variables and click on the "Edit" button. </li>                    
-                <li>Click on the "New" button and add the path where maven is installed, followed by \bin.  In that case, You will have to add a new path with: ------\jdk-11.0.1\bin(update the path)
-                Then, click "OK", and save the settings</li>    
-                <li>At last, open Command Prompt (cmd.exe) and type <b>mvn -version</b> to see if maven is setup on your machine successfully.</li>
-              </ol>      
-              </p>
-            </div>
-            <div id="Introduction To Java" class = "IntroJava">
-              <h1>Introduction To Java</h1>
-              <p>
-                What is Java?
-                Java is a very popular pro 
-                JavaScript is the world's most popular programming language.
-                JavaScript is the programming language of the Web. JavaScript is
-                easy to learn. This tutorial will teach you JavaScript from
-                basic to advanced.
-              </p>
-            </div>
-            <div id="Introduction To Java" class = "IntroJava">
-              <h1>Introduction To Java</h1>
-              <p>
-                What is Java?
-                Java is a very popular pro
-                JavaScript is the world's most popular programming language.
-                JavaScript is the programming language of the Web. JavaScript is
-                easy to learn. This tutorial will teach you JavaScript from
-                basic to advanced.
-              </p>
-            </div>
-            <div id="Introduction To Java" class = "IntroJava">
-              <h1>Introduction To Java</h1>
-              <p>
-                What is Java?
-                Java is a very popular pro
-                JavaScript is the world's most popular programming language.
-                JavaScript is the programming language of the Web. JavaScript is
-                easy to learn. This tutorial will teach you JavaScript from
-                basic to advanced.
-              </p>
-            </div>
-            <div id="Types Of Methods java-method" class = "IntroJava">
-              <h1>Types Of Methods</h1>
-              <p>
-                What is Method?
-                Java is a very popular pro
-                JavaScript is the world's most popular programming language.
-                JavaScript is the programming language of the Web. JavaScript is
-                easy to learn. This tutorial will teach you JavaScript from
-                basic to advanced.
-              </p>
-            </div>
+                <ul className="list-items">
+                  Performing Actions on Web Elements.
+                </ul>
+                <li className="list-item">
+                  sendKeys(): To type text in an input field.
+                </li>
+                <li className="list-item">
+                  click (): The user clicks a button or link.
+                </li>
+                <li className="list-item">
+                  getText(): Get the text of an element.
+                </li>
+                <ul className="list-items">Handling WebDriver Exceptions</ul>
+                <li className="list-item">Common exceptions include</li>
+                <li className="list-item">
+                  NoSuchElementException: No element was found
+                </li>
+                <li className="list-item">
+                  TimeoutException: Operation timed out
+                </li>
+                <li className="list-item">
+                  StaleElementReferenceException: Element is no longer attached
+                  to the DOM.
+                </li>
+                <h1>Advanced Selenium Concepts</h1>
+                <h4>&gt; Handling Alerts and Pop-ups</h4>
+                <img
+                  style={{
+                    width: "600px",
+                    borderRadius: "15px",
+                    boxShadow: "0 0 20px",
+                  }}
+                  src={image2}
+                  alt=""
+                />
+                <h4>&gt; Working with Multiple Windows and Frames</h4>
+                <img
+                  style={{
+                    width: "600px",
+                    borderRadius: "15px",
+                    boxShadow: "0 0 20px",
+                  }}
+                  src={image3}
+                  alt=""
+                />
+                <h4>&gt; Implicit and Explicit Waits</h4>
+                <img
+                  style={{
+                    width: "600px",
+                    borderRadius: "15px",
+                    boxShadow: "0 0 20px",
+                  }}
+                  src={image4}
+                  alt=""
+                />
+                <h1>In the realm of Selenium Testing</h1>
+                <p>
+                  Page Object Model (POM)- Organize your tests as per
+                  interaction with the page relative to the logic of a test.{" "}
+                  <br />
+                  <span style={{ fontWeight: "bold" }}>Independence:</span> All
+                  tests should be independent of each other to prevent bad
+                  test-writing practices where a failure in one part causes
+                  several downstream failures. <br />
+                  <span style={{ fontWeight: "bold" }}>Silent Waits:</span> Use
+                  practical wait strategies for dynamic content, such as setting
+                  Expected Wait or Page Load times.
+                  <br />
+                  <span style={{ fontWeight: "bold" }}>Assertions:</span>{" "}
+                  Validate test outputs using assertions to establish the
+                  significance and reliability of each test.
+                </p>
+                <h1>Conclusion</h1>
+                <p>
+                  There are other ways to do this also, e.g., using JSoup, but
+                  you can use the Selenium + Java combo for testing web
+                  applications; it is simple, a very powerful combination, and
+                  creating them at will in no time! Creating robust and
+                  maintainable test scripts by Misagh Moayyed Introduction.
+                  Written test automation is a great way to verify the expected
+                  behavior of an application. No matter whether you are only
+                  starting to learn Selenium or would like a comprehensive
+                  tutorial on mastering Selenium with Java.
+                </p>
+              </div>
+            )}
+            {step === 1 && <Java />}
+            {step === 2 && <Variables />}
           </div>
         </div>
       </div>
