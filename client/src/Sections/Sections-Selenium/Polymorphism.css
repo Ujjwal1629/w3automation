@@ -49,6 +49,9 @@
   line-height: 2;
   color: #333;
   margin-bottom: 10px;
+  display: list-item;
+list-style: auto;
+
 }
 
 .Polymorphism pre {

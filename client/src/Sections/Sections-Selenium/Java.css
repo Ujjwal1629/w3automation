@@ -31,4 +31,7 @@
   font-optical-sizing: auto;
   line-height: 2;
   text-align: left;
+  display: list-item;
+list-style: auto;
+
 }

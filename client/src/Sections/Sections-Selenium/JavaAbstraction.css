@@ -31,6 +31,8 @@
   line-height: 2;
   margin-bottom: 20px;
   color: #333;
+  display: list-item;
+
 }
 
 .javaAbstraction pre {

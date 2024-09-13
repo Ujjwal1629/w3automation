@@ -38,6 +38,9 @@
   margin-bottom: 20px;
   color: #333;
   padding-left: 20px;
+  display: list-item;
+list-style: auto;
+
 }
 
 .JavaConditions pre {
