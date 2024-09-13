@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+.main {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+.container-left {
+  display: flex;
+  background-color: #e7e9eb;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 230px;
+  height: 100vh;
+  padding: 20px 10px;
+}
+.container-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+}
+.container-links h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  color: #04aa6d;
+}
+.container-links h4 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  color: #04aa6d;
+}
+.container-links .links {
+  text-decoration: none;
+  color: #000;
+  font-family: sans-serif;
+}
+.container-links .links:hover {
+  color: #008a57;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 30px 0px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.container-head {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.prev {
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  border: 0.5px solid #04aa6d;
+  background-color: #04aa6d;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.prev:hover {
+  background-color: #008a57;
+}
+.next {
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  border: 0.5px solid #04aa6d;
+  background-color: #04aa6d;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.next:hover {
+  background-color: #008a57;
+}
+.main-page {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  flex-direction: column;
+}
+.IntroJava {
+  width: 100%;
+}
+.IntroJava h1 {
+  font-size: 2rem;
+  font-family: "Open Sans", sans-serif;
+  color: #000;
+}
+.IntroJava h4 {
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  color: #000;
+}
+.IntroJava p {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 350;
+  line-height: 2;
+  width: 90%;
+}
+.list-item {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  line-height: 2;
+}
+.list-items {
+  font-size: 22px;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  line-height: 2;
+  text-align: left;
+}

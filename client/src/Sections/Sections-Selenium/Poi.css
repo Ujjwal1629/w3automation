@@ -1,0 +1,67 @@
+/* Importing the Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+/* Styles for POI component */
+.Poi h1 {
+  font-size: 2rem;
+  font-family: "Open Sans", sans-serif;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.Poi p {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 350;
+  line-height: 1.8;
+  width: 90%;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.Poi h2 {
+  font-size: 1.75rem;
+  font-family: "Open Sans", sans-serif;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.Poi h3 {
+  font-size: 1.25rem;
+  font-family: "Open Sans", sans-serif;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.Poi ul {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 350;
+  line-height: 2;
+  color: #333;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.Poi li {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  line-height: 2;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.Poi pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.Poi code {
+  font-family: "Roboto Mono", monospace;
+  font-size: 16px;
+  color: #d6336c;
+  white-space: pre-wrap;
+}
