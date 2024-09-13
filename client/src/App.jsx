@@ -13,6 +13,7 @@ import API from "./Pages/API";
 import Playwright from "./Pages/Playwright";
 import Jmeter from "./Pages/Jmeter";
 import Cypress from "./Pages/Cypress";
+import Footer from "./Components/Footer";
 
 axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
@@ -42,6 +43,7 @@ function HomePage() {
       <Navbar />
       <Header />
       <Home />
+      <Footer />
     </div>
   );
 }

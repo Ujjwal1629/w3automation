@@ -8,17 +8,36 @@ import image3 from "../assets/java3.png";
 import image4 from "../assets/java4.png"; // always store images in assets folder then import it like this and name accordingly like image, myImage, car, bike etc
 import Java from "../Sections/Sections-Selenium/Java";
 import Variables from "../Sections/Sections-Selenium/Variables";
+import DataTypes from "../Sections/Sections-Selenium/DataTypes";
+import JavaOperation from "../Sections/Sections-Selenium/JavaOperation";
+import JavaStrings from "../Sections/Sections-Selenium/JavaStrings";
+import JavaMethods from "../Sections/Sections-Selenium/JavaMethods";
+import JavaArrays from "../Sections/Sections-Selenium/JavaArray";
+import JavaAbstraction from "../Sections/Sections-Selenium/JavaAbstraction";
+import JavaConditions from "../Sections/Sections-Selenium/JavaConditions";
+import JavaAPIs from "../Sections/Sections-Selenium/JavaApi";
+import JavaConstructor from "../Sections/Sections-Selenium/JavaConstructor";
+import DataTypeConversion from "../Sections/Sections-Selenium/DataTypeConversion";
+import Encapsulation from "../Sections/Sections-Selenium/Encapsulation";
+import EnumInJava from "../Sections/Sections-Selenium/EnumInJava";
+import ExceptionHandlingInJava from "../Sections/Sections-Selenium/ExceptionHandlingInJava";
+import FileHandlingInJava from "../Sections/Sections-Selenium/FileHandlingInJava";
+import InheritanceDocument from "../Sections/Sections-Selenium/Inheritance";
+import JavaIteration from "../Sections/Sections-Selenium/JavaIteration";
+import Poi from "../Sections/Sections-Selenium/Poi";
+import Polymorphism from "../Sections/Sections-Selenium/Polymorphism";
 
 export default function Selenium() {
   const [step, setStep] = useState(0);
 
-  const scrollToSection = (e, id) => {
+  const handleLinkClick = (e, stepValue) => {
     e.preventDefault();
-    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    setStep(stepValue);
+    document.getElementById("main-page").scrollIntoView({ behavior: "smooth" });
   };
 
   const handleNextClick = () => {
-    setStep((prevStep) => (prevStep < 2 ? prevStep + 1 : prevStep));
+    setStep((prevStep) => (prevStep < 20 ? prevStep + 1 : prevStep));
   };
 
   const handlePrevClick = () => {
@@ -35,82 +54,143 @@ export default function Selenium() {
             <h1>Selenium With Java</h1>
             <a
               className="links"
-              href="#Selenium-Java-Intro"
-              onClick={(e) => scrollToSection(e, "Selenium-Java-Intro")}
+              href="#java-section"
+              onClick={(e) => handleLinkClick(e, 1)}
             >
-              What is Selenium?
+              Java
             </a>
             <a
               className="links"
-              href="#preRequisite-Selenium-Java"
-              onClick={(e) => scrollToSection(e, "preRequisite-Selenium-Java")}
+              href="#variables-section"
+              onClick={(e) => handleLinkClick(e, 2)}
             >
-              Pre-Requisites For Selenium With Java
+              Variables
             </a>
             <a
               className="links"
-              href="#Intro-Java"
-              onClick={(e) => scrollToSection(e, "Intro-Java")}
+              href="#dataTypes-section"
+              onClick={(e) => handleLinkClick(e, 3)}
             >
-              Introduction To Java
+              Data Types
             </a>
             <a
               className="links"
-              href="#Classes And Objects Class-Object"
-              onClick={(e) =>
-                scrollToSection(e, "Classes And Objects Class-Object")
-              }
+              href="#javaOperation-section"
+              onClick={(e) => handleLinkClick(e, 4)}
             >
-              Classes And Objects
+              Java Operations
             </a>
             <a
               className="links"
-              href="#Java-Programming-Features"
-              onClick={(e) => scrollToSection(e, "Java-Programming-Features")}
+              href="#javaStrings-section"
+              onClick={(e) => handleLinkClick(e, 5)}
             >
-              Basic Java Programming and Features
+              Java Strings
             </a>
             <a
               className="links"
-              href="#java-methods"
-              onClick={(e) => scrollToSection(e, "java-methods")}
+              href="#javaMethods-section"
+              onClick={(e) => handleLinkClick(e, 6)}
             >
-              Methods Introduction
+              Java Methods
             </a>
             <a
               className="links"
-              href="#methods-types"
-              onClick={(e) => scrollToSection(e, "methods-types")}
+              href="#javaArrays-section"
+              onClick={(e) => handleLinkClick(e, 7)}
             >
-              Types Of Methods
+              Java Arrays
             </a>
             <a
               className="links"
-              href="#methods-static-nonStatic"
-              onClick={(e) => scrollToSection(e, "methods-static-nonStatic")}
+              href="#javaAbstraction-section"
+              onClick={(e) => handleLinkClick(e, 8)}
             >
-              Methods - Static and Non Static
+              Java Abstraction
             </a>
             <a
               className="links"
-              href="#if-else-statement"
-              onClick={(e) => scrollToSection(e, "if-else-statement")}
+              href="#javaConditions-section"
+              onClick={(e) => handleLinkClick(e, 9)}
             >
-              If and Else Statement
+              Java Conditions
             </a>
             <a
               className="links"
-              href="#for-loop"
-              onClick={(e) => scrollToSection(e, "for-loop")}
+              href="#javaAPIs-section"
+              onClick={(e) => handleLinkClick(e, 10)}
             >
-              For Loop
+              Java APIs
             </a>
             <a
               className="links"
-              href="#nested-for-loop"
-              onClick={(e) => scrollToSection(e, "nested-for-loop")}
+              href="#javaConstructor-section"
+              onClick={(e) => handleLinkClick(e, 11)}
             >
-              Nested For Loop
+              Java Constructor
+            </a>
+            <a
+              className="links"
+              href="#dataTypeConversion-section"
+              onClick={(e) => handleLinkClick(e, 12)}
+            >
+              Data Type Conversion
+            </a>
+            <a
+              className="links"
+              href="#encapsulation-section"
+              onClick={(e) => handleLinkClick(e, 13)}
+            >
+              Encapsulation
+            </a>
+            <a
+              className="links"
+              href="#enumInJava-section"
+              onClick={(e) => handleLinkClick(e, 14)}
+            >
+              Enum In Java
+            </a>
+            <a
+              className="links"
+              href="#exceptionHandlingInJava-section"
+              onClick={(e) => handleLinkClick(e, 15)}
+            >
+              Exception Handling In Java
+            </a>
+            <a
+              className="links"
+              href="#fileHandlingInJava-section"
+              onClick={(e) => handleLinkClick(e, 16)}
+            >
+              File Handling In Java
+            </a>
+            <a
+              className="links"
+              href="#inheritanceDocument-section"
+              onClick={(e) => handleLinkClick(e, 17)}
+            >
+              Inheritance
+            </a>
+            <a
+              className="links"
+              href="#javaIteration-section"
+              onClick={(e) => handleLinkClick(e, 18)}
+            >
+              Java Iteration
+            </a>
+            <a
+              className="links"
+              href="#poi-section"
+              onClick={(e) => handleLinkClick(e, 19)}
+            >
+              Poi
+            </a>
+            <a
+              className="links"
+              href="#polymorphism-section"
+              onClick={(e) => handleLinkClick(e, 20)}
+            >
+              Polymorphism
             </a>
           </div>
         </div>
@@ -334,6 +414,24 @@ export default function Selenium() {
             )}
             {step === 1 && <Java />}
             {step === 2 && <Variables />}
+            {step === 3 && <DataTypes />}
+            {step === 4 && <JavaOperation />}
+            {step === 5 && <JavaStrings />}
+            {step === 6 && <JavaMethods />}
+            {step === 7 && <JavaArrays />}
+            {step === 8 && <JavaAbstraction />}
+            {step === 9 && <JavaConditions />}
+            {step === 10 && <JavaAPIs />}
+            {step === 11 && <JavaConstructor />}
+            {step === 12 && <DataTypeConversion />}
+            {step === 13 && <Encapsulation />}
+            {step === 14 && <EnumInJava />}
+            {step === 15 && <ExceptionHandlingInJava />}
+            {step === 16 && <FileHandlingInJava />}
+            {step === 17 && <InheritanceDocument />}
+            {step === 18 && <JavaIteration />}
+            {step === 19 && <Poi />}
+            {step === 20 && <Polymorphism />}
           </div>
         </div>
       </div>
