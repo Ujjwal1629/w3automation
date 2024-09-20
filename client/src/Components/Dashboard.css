@@ -3,10 +3,12 @@
 .dashboard {
   padding: 20px;
 }
+
 .dashboard > h1 {
   font-family: "Noto Sans", sans-serif;
   color: #333;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -30,4 +32,60 @@ tr:nth-child(even) {
 
 tr:hover {
   background-color: #ddd;
+}
+
+/* Media Queries for responsiveness */
+@media screen and (max-width: 768px) {
+  /* For tablets and smaller screens */
+  .dashboard {
+    padding: 15px;
+  }
+
+  table {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  th, td {
+    padding: 8px; /* Decrease padding */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* For mobile phones */
+  .dashboard {
+    padding: 10px;
+  }
+
+  table {
+    font-size: 12px; /* Further adjust font size */
+  }
+
+  th, td {
+    padding: 6px;
+  }
+
+  th, td {
+    display: block; /* Stack table cells vertically */
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  tr {
+    display: block; /* Stack rows */
+    margin-bottom: 10px;
+  }
+
+  tr:hover {
+    background-color: inherit; /* Disable hover effect on mobile for usability */
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  td {
+    border-top: none; /* Clean up borders for stacked view */
+  }
 }

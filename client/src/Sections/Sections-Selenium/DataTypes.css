@@ -11,7 +11,7 @@
 .dataTypes p {
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
-  font-weight: 350;
+  font-weight: 400;
   line-height: 1.8;
   width: 90%;
   color: #333;
@@ -35,7 +35,7 @@
 .dataTypes ul {
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
-  font-weight: 350;
+  font-weight: 400;
   line-height: 2;
   margin-bottom: 20px;
   color: #333;
@@ -66,4 +66,15 @@ list-style: auto;
   font-size: 16px;
   color: #d6336c;
   white-space: pre-wrap;
+}
+@media (max-width: 768px) {
+  .dataTypes{
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .dataTypes{
+    width: 80%;
+  }
 }

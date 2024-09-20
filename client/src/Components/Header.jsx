@@ -13,29 +13,12 @@ export default function Header() {
               navigate("/Selenium");
             }}
           >
-            SELENIUM WITH JAVA <i class="arrow down"></i>            
-          </li>
-          <li className="ga-active"
-            onClick={() => {
-              navigate("/API");
-            }}>
-            API <i class="arrow down">
-            </i>
+            SELENIUM WITH JAVA          
           </li>
           <li  onClick={() => {
               navigate("/Playwright");
             }}>
-            PLAYWRIGHT <i class="arrow down"></i>
-          </li>
-          <li  onClick={() => {
-              navigate("/Cypress");
-            }}>
-            CYPRESS <i class="arrow down"></i>
-          </li>
-          <li  onClick={() => {
-              navigate("/Jmeter");
-            }}>
-            JMETER <i class="arrow down"></i>
+            PLAYWRIGHT
           </li>
         </ul>
       </div>

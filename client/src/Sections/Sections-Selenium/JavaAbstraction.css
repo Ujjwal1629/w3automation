@@ -11,7 +11,7 @@
 .javaAbstraction p {
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
-  font-weight: 350;
+  font-weight: 400;
   line-height: 1.8;
   color: #333;
   margin-bottom: 20px;
@@ -27,7 +27,7 @@
 .javaAbstraction ul, .javaAbstraction ol {
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
-  font-weight: 350;
+  font-weight: 400;
   line-height: 2;
   margin-bottom: 20px;
   color: #333;
@@ -64,4 +64,15 @@
 .javaAbstraction th {
   background-color: #f4f4f4;
   font-weight: bold;
+}
+@media (max-width: 768px) {
+  .javaAbstraction{
+    width: 65%;
+  }
+}
+
+@media (max-width: 480px) {
+  .javaAbstraction{
+    width: 45%;
+  }
 }

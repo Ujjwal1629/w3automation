@@ -11,7 +11,7 @@
 .javaApis p {
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
-  font-weight: 350;
+  font-weight: 400;
   line-height: 1.8;
   color: #333;
   margin-bottom: 20px;
@@ -27,7 +27,7 @@
 .javaApis ul {
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
-  font-weight: 350;
+  font-weight: 400;
   line-height: 2;
   margin-bottom: 20px;
   color: #333;
@@ -50,3 +50,15 @@
   color: #d6336c;
   white-space: pre-wrap;
 }
+@media (max-width: 768px) {
+  .javaApis{
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .javaApis{
+    width: 55%;
+  }
+}
+

@@ -40,8 +40,13 @@ function App() {
 function HomePage() {
   return (
     <div className="app">
+      <div>
       <Navbar />
+      </div>
+      <div className="header">
       <Header />
+      </div>
+     
       <Home />
       <Footer />
     </div>

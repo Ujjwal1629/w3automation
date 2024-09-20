@@ -9,7 +9,7 @@
   font-size: 18px;
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 350;
+  font-weight: 400;
   line-height: 2;
   width: 90%;
 }
@@ -34,4 +34,15 @@
   display: list-item;
 list-style: auto;
 
+}
+@media (max-width: 768px) {
+  .Java{
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .Java{
+    width: 95%;
+  }
 }

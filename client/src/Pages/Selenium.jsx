@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Selenium.css";
 import Navbar from "../Components/Navbar";
 import Header from "../Components/Header";
@@ -29,6 +29,20 @@ import Polymorphism from "../Sections/Sections-Selenium/Polymorphism";
 
 export default function Selenium() {
   const [step, setStep] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+  
+    handleResize(); // Check on initial render
+    window.addEventListener('resize', handleResize);
+  
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleLinkClick = (e, stepValue) => {
     e.preventDefault();
@@ -47,8 +61,11 @@ export default function Selenium() {
   return (
     <div>
       <Navbar />
+      <div className="header">
       <Header />
+      </div>
       <div className="main">
+      <div className={`container-left ${isMobile ? 'hidden' : ''}`}>
         <div className="container-left">
           <div className="container-links">
             <h1>Selenium With Java</h1>
@@ -194,6 +211,7 @@ export default function Selenium() {
             </a>
           </div>
         </div>
+        </div>
         <div className="main-container">
           <div className="container-head">
             <button className="prev" onClick={handlePrevClick}>
@@ -302,11 +320,8 @@ export default function Selenium() {
                 </ol>
                 <h4>Example: Automating a Google Search</h4>
                 <img
-                  style={{
-                    width: "600px",
-                    borderRadius: "15px",
-                    boxShadow: "0 0 20px",
-                  }}
+                className="img-selenium"
+                 
                   src={image}
                   alt=""
                 />
@@ -353,31 +368,21 @@ export default function Selenium() {
                 <h1>Advanced Selenium Concepts</h1>
                 <h4>&gt; Handling Alerts and Pop-ups</h4>
                 <img
-                  style={{
-                    width: "600px",
-                    borderRadius: "15px",
-                    boxShadow: "0 0 20px",
-                  }}
+                className="img-selenium"
+                 
                   src={image2}
                   alt=""
                 />
                 <h4>&gt; Working with Multiple Windows and Frames</h4>
                 <img
-                  style={{
-                    width: "600px",
-                    borderRadius: "15px",
-                    boxShadow: "0 0 20px",
-                  }}
+                className="img-selenium"
+                 
                   src={image3}
                   alt=""
                 />
                 <h4>&gt; Implicit and Explicit Waits</h4>
                 <img
-                  style={{
-                    width: "600px",
-                    borderRadius: "15px",
-                    boxShadow: "0 0 20px",
-                  }}
+                className="img-selenium"
                   src={image4}
                   alt=""
                 />

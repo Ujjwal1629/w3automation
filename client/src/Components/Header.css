@@ -5,21 +5,31 @@
   background-color: #04aa6d;
   justify-content: flex-start;
   text-align: center;
+  padding: 10px 0px;
+  padding-top: 40px;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap;
+  scrollbar-width: none; /* Prevent items from wrapping */
 }
+
 .header ul {
   display: flex;
-  gap: 60px;
-  margin: 5px 0px;
+  gap: 60px; /* Keep the gap between items */
+  margin: 5px 0;
+  padding: 0px 10px;
 }
+
 .header li {
   list-style: none;
   font-family: sans-serif;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 20px;
   color: #fff;
 }
+
+/* Remove arrow styles if not needed */
 .arrow {
   border: 1px solid #fff;
   border-width: 0 2px 2px 0;
@@ -27,7 +37,46 @@
   padding: 3px;
   text-align: center;
 }
+
 .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+}
+
+/* Media Queries for responsiveness */
+@media screen and (max-width: 768px) {
+  /* For tablets and smaller screens */
+  .header {
+    justify-content: flex-start; /* Align items to the start */
+  }
+
+  .header ul {
+    gap: 30px; /* Reduce the gap between items */
+  }
+
+  .header li {
+    font-size: 14px; /* Decrease font size slightly */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* For mobile phones */
+  .header {
+    flex-direction: row; /* Keep items in a row */
+    align-items: center; /* Center items vertically */
+  }
+
+  .header ul {
+    flex-direction: row; /* Ensure items remain in a row */
+/* Smaller gap between list items */
+    width: auto; /* Let width adjust automatically */
+  }
+
+  .header li {
+    font-size: 12px; /* Further reduce font size */
+  }
+
+  .arrow {
+    padding: 2px; /* Smaller arrow size for mobile */
+  }
 }
