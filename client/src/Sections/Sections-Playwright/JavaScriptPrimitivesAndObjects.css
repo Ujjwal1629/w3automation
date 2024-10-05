@@ -1,0 +1,73 @@
+.JavaScriptPrimitivesAndObjects {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 20px auto;
+  color: #333;
+}
+
+.JavaScriptPrimitivesAndObjects h1 {
+  font-size: 2.5rem;
+  color: #000;
+}
+
+.JavaScriptPrimitivesAndObjects h2 {
+  font-size: 2rem;
+  color: #000;
+}
+
+.JavaScriptPrimitivesAndObjects h3 {
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.JavaScriptPrimitivesAndObjects p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.JavaScriptPrimitivesAndObjects ul,
+.JavaScriptPrimitivesAndObjects ol {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.JavaScriptPrimitivesAndObjects pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.JavaScriptPrimitivesAndObjects code {
+  font-family: 'Courier New', Courier, monospace;
+  color: #d6336c;
+}
+
+.JavaScriptPrimitivesAndObjects table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+.JavaScriptPrimitivesAndObjects th,
+.JavaScriptPrimitivesAndObjects td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.JavaScriptPrimitivesAndObjects th {
+  background-color: #f2f2f2;
+}
+
+@media (max-width: 768px) {
+  .JavaScriptPrimitivesAndObjects {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .JavaScriptPrimitivesAndObjects {
+    width: 50%;
+  }
+}

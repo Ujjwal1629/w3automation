@@ -1,0 +1,56 @@
+.JavaScriptLoops {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 20px auto;
+  color: #333;
+}
+
+.JavaScriptLoops h1 {
+  font-size: 2.5rem;
+  color: #000;
+}
+
+.JavaScriptLoops h2 {
+  font-size: 2rem;
+  color: #000;
+}
+
+.JavaScriptLoops h3 {
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.JavaScriptLoops p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.JavaScriptLoops ul,
+.JavaScriptLoops ol {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.JavaScriptLoops pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.JavaScriptLoops code {
+  font-family: 'Courier New', Courier, monospace;
+  color: #d6336c;
+}
+
+@media (max-width: 768px) {
+  .JavaScriptLoops {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .JavaScriptLoops {
+    width: 70%;
+  }
+}

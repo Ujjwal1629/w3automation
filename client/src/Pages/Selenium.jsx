@@ -26,6 +26,27 @@ import InheritanceDocument from "../Sections/Sections-Selenium/Inheritance";
 import JavaIteration from "../Sections/Sections-Selenium/JavaIteration";
 import Poi from "../Sections/Sections-Selenium/Poi";
 import Polymorphism from "../Sections/Sections-Selenium/Polymorphism";
+import SeleniumAlertsTheory from "../Sections/Sections-Selenium/SeleniumAlertsTheory";
+import CdpSeleniumTheory from "../Sections/Sections-Selenium/CdpSeleniumTheory";
+import DataDrivenFramework from "../Sections/Sections-Selenium/DataDrivenFramework";
+import DockerInSelenium from "../Sections/Sections-Selenium/DockerInSelenium";
+import ExtentReportsInSelenium from "../Sections/Sections-Selenium/ExtentReportsInSelenium";
+import HandlingWebElements from "../Sections/Sections-Selenium/HandlingWebElements";
+import HandlingWindowInSelenium from "../Sections/Sections-Selenium/HandlingWindowInSelenium";
+import IsElementPresentInSelenium from "../Sections/Sections-Selenium/IsElementPresentInSelenium";
+import HandlingIFramesInSelenium from "../Sections/Sections-Selenium/HandlingIFramesInSelenium";
+import JavaScriptExecutorInSelenium from "../Sections/Sections-Selenium/JavaScriptExecutorInSelenium";
+import Log4jInSelenium from "../Sections/Sections-Selenium/Log4jInSelenium";
+import PageObjectModelInSelenium from "../Sections/Sections-Selenium/PageObjectModelInSelenium";
+import RelativeLocatorsInSelenium from "../Sections/Sections-Selenium/RelativeLocatorsInSelenium";
+import ReportNGInSelenium from "../Sections/Sections-Selenium/ReportNGInSelenium";
+import ScreenshotsInSelenium from "../Sections/Sections-Selenium/ScreenshotsInSelenium";
+import ActionAPIsInSelenium from "../Sections/Sections-Selenium/ActionAPIsInSelenium";
+import SeleniumGrid from "../Sections/Sections-Selenium/SeleniumGrid";
+import SeleniumSelect from "../Sections/Sections-Selenium/SeleniumSelect";
+import SeleniumWaits from "../Sections/Sections-Selenium/SeleniumWaits";
+import SeleniumXPath from "../Sections/Sections-Selenium/SeleniumXPath";
+import TestNGFramework from "../Sections/Sections-Selenium/TestNGFramework";
 
 export default function Selenium() {
   const [step, setStep] = useState(0);
@@ -51,7 +72,7 @@ export default function Selenium() {
   };
 
   const handleNextClick = () => {
-    setStep((prevStep) => (prevStep < 20 ? prevStep + 1 : prevStep));
+    setStep((prevStep) => (prevStep < 41 ? prevStep + 1 : prevStep));
   };
 
   const handlePrevClick = () => {
@@ -67,149 +88,50 @@ export default function Selenium() {
       <div className="main">
       <div className={`container-left ${isMobile ? 'hidden' : ''}`}>
         <div className="container-left">
-          <div className="container-links">
-            <h1>Selenium With Java</h1>
-            <a
-              className="links"
-              href="#java-section"
-              onClick={(e) => handleLinkClick(e, 1)}
-            >
-              Java
-            </a>
-            <a
-              className="links"
-              href="#variables-section"
-              onClick={(e) => handleLinkClick(e, 2)}
-            >
-              Variables
-            </a>
-            <a
-              className="links"
-              href="#dataTypes-section"
-              onClick={(e) => handleLinkClick(e, 3)}
-            >
-              Data Types
-            </a>
-            <a
-              className="links"
-              href="#javaOperation-section"
-              onClick={(e) => handleLinkClick(e, 4)}
-            >
-              Java Operations
-            </a>
-            <a
-              className="links"
-              href="#javaStrings-section"
-              onClick={(e) => handleLinkClick(e, 5)}
-            >
-              Java Strings
-            </a>
-            <a
-              className="links"
-              href="#javaMethods-section"
-              onClick={(e) => handleLinkClick(e, 6)}
-            >
-              Java Methods
-            </a>
-            <a
-              className="links"
-              href="#javaArrays-section"
-              onClick={(e) => handleLinkClick(e, 7)}
-            >
-              Java Arrays
-            </a>
-            <a
-              className="links"
-              href="#javaAbstraction-section"
-              onClick={(e) => handleLinkClick(e, 8)}
-            >
-              Java Abstraction
-            </a>
-            <a
-              className="links"
-              href="#javaConditions-section"
-              onClick={(e) => handleLinkClick(e, 9)}
-            >
-              Java Conditions
-            </a>
-            <a
-              className="links"
-              href="#javaAPIs-section"
-              onClick={(e) => handleLinkClick(e, 10)}
-            >
-              Java APIs
-            </a>
-            <a
-              className="links"
-              href="#javaConstructor-section"
-              onClick={(e) => handleLinkClick(e, 11)}
-            >
-              Java Constructor
-            </a>
-            <a
-              className="links"
-              href="#dataTypeConversion-section"
-              onClick={(e) => handleLinkClick(e, 12)}
-            >
-              Data Type Conversion
-            </a>
-            <a
-              className="links"
-              href="#encapsulation-section"
-              onClick={(e) => handleLinkClick(e, 13)}
-            >
-              Encapsulation
-            </a>
-            <a
-              className="links"
-              href="#enumInJava-section"
-              onClick={(e) => handleLinkClick(e, 14)}
-            >
-              Enum In Java
-            </a>
-            <a
-              className="links"
-              href="#exceptionHandlingInJava-section"
-              onClick={(e) => handleLinkClick(e, 15)}
-            >
-              Exception Handling In Java
-            </a>
-            <a
-              className="links"
-              href="#fileHandlingInJava-section"
-              onClick={(e) => handleLinkClick(e, 16)}
-            >
-              File Handling In Java
-            </a>
-            <a
-              className="links"
-              href="#inheritanceDocument-section"
-              onClick={(e) => handleLinkClick(e, 17)}
-            >
-              Inheritance
-            </a>
-            <a
-              className="links"
-              href="#javaIteration-section"
-              onClick={(e) => handleLinkClick(e, 18)}
-            >
-              Java Iteration
-            </a>
-            <a
-              className="links"
-              href="#poi-section"
-              onClick={(e) => handleLinkClick(e, 19)}
-            >
-              Poi
-            </a>
-            <a
-              className="links"
-              href="#polymorphism-section"
-              onClick={(e) => handleLinkClick(e, 20)}
-            >
-              Polymorphism
-            </a>
-          </div>
+        <div className="container-links">
+              <h1>Selenium With Java</h1>
+              <a className="links" href="#java-section" onClick={(e) => handleLinkClick(e, 1)}>Java</a>
+              <a className="links" href="#variables-section" onClick={(e) => handleLinkClick(e, 2)}>Variables</a>
+              <a className="links" href="#dataTypes-section" onClick={(e) => handleLinkClick(e, 3)}>Data Types</a>
+              <a className="links" href="#javaOperation-section" onClick={(e) => handleLinkClick(e, 4)}>Java Operations</a>
+              <a className="links" href="#javaStrings-section" onClick={(e) => handleLinkClick(e, 5)}>Java Strings</a>
+              <a className="links" href="#javaMethods-section" onClick={(e) => handleLinkClick(e, 6)}>Java Methods</a>
+              <a className="links" href="#javaArrays-section" onClick={(e) => handleLinkClick(e, 7)}>Java Arrays</a>
+              <a className="links" href="#javaAbstraction-section" onClick={(e) => handleLinkClick(e, 8)}>Java Abstraction</a>
+              <a className="links" href="#javaConditions-section" onClick={(e) => handleLinkClick(e, 9)}>Java Conditions</a>
+              <a className="links" href="#javaAPIs-section" onClick={(e) => handleLinkClick(e, 10)}>Java APIs</a>
+              <a className="links" href="#javaConstructor-section" onClick={(e) => handleLinkClick(e, 11)}>Java Constructor</a>
+              <a className="links" href="#dataTypeConversion-section" onClick={(e) => handleLinkClick(e, 12)}>Data Type Conversion</a>
+              <a className="links" href="#encapsulation-section" onClick={(e) => handleLinkClick(e, 13)}>Encapsulation</a>
+              <a className="links" href="#enumInJava-section" onClick={(e) => handleLinkClick(e, 14)}>Enum In Java</a>
+              <a className="links" href="#exceptionHandlingInJava-section" onClick={(e) => handleLinkClick(e, 15)}>Exception Handling In Java</a>
+              <a className="links" href="#fileHandlingInJava-section" onClick={(e) => handleLinkClick(e, 16)}>File Handling In Java</a>
+              <a className="links" href="#inheritanceDocument-section" onClick={(e) => handleLinkClick(e, 17)}>Inheritance</a>
+              <a className="links" href="#javaIteration-section" onClick={(e) => handleLinkClick(e, 18)}>Java Iteration</a>
+              <a className="links" href="#poi-section" onClick={(e) => handleLinkClick(e, 19)}>Poi</a>
+              <a className="links" href="#polymorphism-section" onClick={(e) => handleLinkClick(e, 20)}>Polymorphism</a>
+              <a className="links" href="#seleniumAlerts-section" onClick={(e) => handleLinkClick(e, 21)}>Selenium Alerts</a>
+              <a className="links" href="#cdpSelenium-section" onClick={(e) => handleLinkClick(e, 22)}>CDP Selenium</a>
+              <a className="links" href="#dataDrivenFramework-section" onClick={(e) => handleLinkClick(e, 23)}>Data Driven Framework</a>
+              <a className="links" href="#dockerInSelenium-section" onClick={(e) => handleLinkClick(e, 24)}>Docker In Selenium</a>
+              <a className="links" href="#extentReportsInSelenium-section" onClick={(e) => handleLinkClick(e, 25)}>Extent Reports</a>
+              <a className="links" href="#handlingWebElements-section" onClick={(e) => handleLinkClick(e, 26)}>Handling Web Elements</a>
+              <a className="links" href="#handlingWindowInSelenium-section" onClick={(e) => handleLinkClick(e, 27)}>Handling Window</a>
+              <a className="links" href="#isElementPresentInSelenium-section" onClick={(e) => handleLinkClick(e, 28)}>Is Element Present</a>
+              <a className="links" href="#handlingIFramesInSelenium-section" onClick={(e) => handleLinkClick(e, 29)}>Handling IFrames</a>
+              <a className="links" href="#javaScriptExecutorInSelenium-section" onClick={(e) => handleLinkClick(e, 30)}>JavaScript Executor</a>
+              <a className="links" href="#log4jInSelenium-section" onClick={(e) => handleLinkClick(e, 31)}>Log4j</a>
+              <a className="links" href="#pageObjectModelInSelenium-section" onClick={(e) => handleLinkClick(e, 32)}>Page Object Model</a>
+              <a className="links" href="#relativeLocatorsInSelenium-section" onClick={(e) => handleLinkClick(e, 33)}>Relative Locators</a>
+              <a className="links" href="#reportNGInSelenium-section" onClick={(e) => handleLinkClick(e, 34)}>ReportNG</a>
+              <a className="links" href="#screenshotsInSelenium-section" onClick={(e) => handleLinkClick(e, 35)}>Screenshots</a>
+              <a className="links" href="#actionAPIsInSelenium-section" onClick={(e) => handleLinkClick(e, 36)}>Action APIs</a>
+              <a className="links" href="#seleniumGrid-section" onClick={(e) => handleLinkClick(e, 37)}>Selenium Grid</a>
+              <a className="links" href="#seleniumSelect-section" onClick={(e) => handleLinkClick(e, 38)}>Selenium Select</a>
+              <a className="links" href="#seleniumWaits-section" onClick={(e) => handleLinkClick(e, 39)}>Selenium Waits</a>
+              <a className="links" href="#seleniumXPath-section" onClick={(e) => handleLinkClick(e, 40)}>Selenium XPath</a>
+              <a className="links" href="#testNGFramework-section" onClick={(e) => handleLinkClick(e, 41)}>TestNG Framework</a>
+            </div>
         </div>
         </div>
         <div className="main-container">
@@ -437,6 +359,27 @@ export default function Selenium() {
             {step === 18 && <JavaIteration />}
             {step === 19 && <Poi />}
             {step === 20 && <Polymorphism />}
+            {step === 21 && <SeleniumAlertsTheory />}
+            {step === 22 && <CdpSeleniumTheory />}
+            {step === 23 && <DataDrivenFramework />}
+            {step === 24 && <DockerInSelenium />}
+            {step === 25 && <ExtentReportsInSelenium />}
+            {step === 26 && <HandlingWebElements />}
+            {step === 27 && <HandlingWindowInSelenium />}
+            {step === 28 && <HandlingIFramesInSelenium />}
+            {step === 29 && <IsElementPresentInSelenium />}
+            {step === 30 && <JavaScriptExecutorInSelenium />}
+            {step === 31 && <Log4jInSelenium />}
+            {step === 32 && <PageObjectModelInSelenium />}
+            {step === 33 && <RelativeLocatorsInSelenium />}
+            {step === 34 && <ReportNGInSelenium />}
+            {step === 35 && <ScreenshotsInSelenium />}
+            {step === 36 && <ActionAPIsInSelenium />}
+            {step === 37 && <SeleniumGrid />}
+            {step === 38 && <SeleniumSelect />}
+            {step === 39 && <SeleniumWaits />}
+            {step === 40 && <SeleniumXPath />}
+            {step === 41 && <TestNGFramework />}
           </div>
         </div>
       </div>

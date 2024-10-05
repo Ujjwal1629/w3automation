@@ -1,0 +1,48 @@
+.OperatorsAndExpressions {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  color: #d6336c;
+}
+@media (max-width: 768px) {
+  .OperatorsAndExpressions {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .OperatorsAndExpressions {
+    width: 45%;
+  }
+}

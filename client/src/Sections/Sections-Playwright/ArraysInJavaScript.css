@@ -1,0 +1,68 @@
+.ArraysInJavaScript {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 20px auto;
+  color: #333;
+}
+
+.ArraysInJavaScript h1 {
+  font-size: 2.5rem;
+  color: #000;
+}
+
+.ArraysInJavaScript h2 {
+  font-size: 2rem;
+  color: #000;
+}
+
+.ArraysInJavaScript h3 {
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.ArraysInJavaScript p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.ArraysInJavaScript ul,
+.ArraysInJavaScript ol {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.ArraysInJavaScript pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.ArraysInJavaScript code {
+  font-family: 'Courier New', Courier, monospace;
+  color: #d6336c;
+}
+
+.ArraysInJavaScript li {
+  margin-bottom: 10px;
+}
+
+.ArraysInJavaScript ul {
+  list-style-type: disc;
+}
+
+.ArraysInJavaScript ul li {
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .ArraysInJavaScript {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ArraysInJavaScript {
+    width: 55%;
+  }
+}

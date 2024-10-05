@@ -1,0 +1,59 @@
+.ClassOOPS {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 20px auto;
+  color: #333;
+}
+
+.ClassOOPS h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+.ClassOOPS h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+.ClassOOPS h3 {
+  font-size: 1.75rem;
+  color: #2c3e50;
+}
+
+.ClassOOPS p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.ClassOOPS ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.ClassOOPS ul li {
+  margin-bottom: 10px;
+}
+
+.ClassOOPS pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.ClassOOPS code {
+  font-family: 'Courier New', Courier, monospace;
+  color: #d6336c;
+}
+
+@media (max-width: 768px) {
+  .ClassOOPS {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ClassOOPS {
+    width: 45%;
+  }
+}

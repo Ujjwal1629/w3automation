@@ -1,0 +1,78 @@
+.SeleniumWaits {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.8;
+  /* width: 90%; */
+  margin: auto;
+  color: #333;
+}
+
+.SeleniumWaits h1 {
+  font-size: 2rem;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.SeleniumWaits h2 {
+  font-size: 1.75rem;
+  color: #000;
+  margin-top: 20px;
+}
+
+.SeleniumWaits h3 {
+  font-size: 1.5rem;
+   color: #000;
+}
+
+.SeleniumWaits h4 {
+  font-size: 1.25rem;
+   color: #000;
+  margin-top: 15px;
+}
+
+.SeleniumWaits p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.SeleniumWaits ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.SeleniumWaits table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.SeleniumWaits table, th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.SeleniumWaits pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 10px 0;
+}
+
+.SeleniumWaits code {
+  font-family: "Roboto Mono", monospace;
+  color: #d6336c;
+}
+
+@media (max-width: 768px) {
+  .SeleniumWaits {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .SeleniumWaits {
+    width: 35%;
+  }
+}

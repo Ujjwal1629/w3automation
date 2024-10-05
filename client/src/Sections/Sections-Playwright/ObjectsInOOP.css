@@ -1,0 +1,66 @@
+.ObjectsInOOP {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 20px auto;
+  color: #333;
+}
+
+.ObjectsInOOP h1 {
+  font-size: 2.5rem;
+  color: #000;
+}
+
+.ObjectsInOOP h2 {
+  font-size: 2rem;
+  color: #000;
+}
+
+.ObjectsInOOP h3 {
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.ObjectsInOOP h4 {
+  font-size: 1.25rem;
+  color: #000;
+}
+
+.ObjectsInOOP h5 {
+  font-size: 1.1rem;
+  color: #000;
+}
+
+.ObjectsInOOP p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.ObjectsInOOP ul,
+.ObjectsInOOP ol {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.ObjectsInOOP pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.ObjectsInOOP code {
+  font-family: 'Courier New', Courier, monospace;
+  color: #d6336c;
+}
+
+@media (max-width: 768px) {
+  .ObjectsInOOP {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ObjectsInOOP {
+    width: 45%;
+  }
+}

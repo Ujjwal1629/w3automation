@@ -1,0 +1,37 @@
+.StaticMethods {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+ul {
+  margin-left: 20px;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  color: #d6336c;
+}
+@media (max-width: 768px) {
+  .StaticMethods {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .StaticMethods {
+    width: 40%;
+  }
+}

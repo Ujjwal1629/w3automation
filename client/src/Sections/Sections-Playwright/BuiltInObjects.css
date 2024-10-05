@@ -1,0 +1,81 @@
+.BuiltInObjects {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 20px auto;
+  color: #333;
+}
+
+.BuiltInObjects h1 {
+  font-size: 2.5rem;
+  color: #000;
+}
+
+.BuiltInObjects h2 {
+  font-size: 2rem;
+  color: #000;
+}
+
+.BuiltInObjects h3 {
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.BuiltInObjects h4 {
+  font-size: 1.25rem;
+  color: #000;
+}
+
+.BuiltInObjects h5 {
+  font-size: 1.1rem;
+  color: #000;
+}
+
+.BuiltInObjects p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.BuiltInObjects ul,
+.BuiltInObjects ol {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.BuiltInObjects pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.BuiltInObjects code {
+  font-family: 'Courier New', Courier, monospace;
+  color: #d6336c;
+}
+
+.BuiltInObjects table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.BuiltInObjects th, .BuiltInObjects td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.BuiltInObjects th {
+  background-color: #f2f2f2;
+}
+
+@media (max-width: 768px) {
+  .BuiltInObjects {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .BuiltInObjects {
+    width: 44%;
+  }
+}

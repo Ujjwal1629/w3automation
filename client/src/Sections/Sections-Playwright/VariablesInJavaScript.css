@@ -1,0 +1,53 @@
+.VariablesInJavaScript {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+h1, h2, h3, h4 {
+  color: #333;
+}
+
+ul {
+  margin-left: 20px;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  color: #d6336c;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+@media (max-width: 768px) {
+  .VariablesInJavaScript {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .VariablesInJavaScript {
+    width: 45%;
+  }
+}

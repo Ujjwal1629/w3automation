@@ -1,0 +1,62 @@
+.TestNGFramework {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 20px auto;
+  /* width: 80%; */
+  color: #333;
+}
+
+.TestNGFramework h1 {
+  font-size: 2.5rem;
+  color: #000;
+}
+
+.TestNGFramework h2 {
+  font-size: 2rem;
+   color: #000;
+}
+
+.TestNGFramework h3 {
+  font-size: 1.5rem;
+   color: #000;
+}
+
+.TestNGFramework h4 {
+  font-size: 1.25rem;
+   color: #000;
+}
+
+.TestNGFramework p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.TestNGFramework ul,
+.TestNGFramework ol {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.TestNGFramework pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.TestNGFramework code {
+  font-family: 'Courier New', Courier, monospace;
+  color: #d6336c;
+}
+
+@media (max-width: 768px) {
+  .TestNGFramework {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .TestNGFramework {
+    width: 40%;
+  }
+}
