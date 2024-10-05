@@ -66,58 +66,58 @@ export default function Playwright() {
     <div className="container-left">
     <div className="container-links">
     <h1>Playwright</h1>
-    <a className="links" href="#JavaScriptOverview" onClick={(e) => handleLinkClick(e, 1)}>
+    <a className="links" href="#JavaScriptOverview" onClick={(e) => handleLinkClick(e, 0)}>
       JavaScript Overview
     </a>
-    <a className="links" href="#VariablesInJavaScript" onClick={(e) => handleLinkClick(e, 2)}>
+    <a className="links" href="#VariablesInJavaScript" onClick={(e) => handleLinkClick(e, 1)}>
     Variables In JavaScript
     </a>
-    <a className="links" href="#StringsInJavaScript" onClick={(e) => handleLinkClick(e, 3)}>
+    <a className="links" href="#StringsInJavaScript" onClick={(e) => handleLinkClick(e, 2)}>
     Strings In JavaScript
     </a>
-    <a className="links" href="#ObjectsInOOP" onClick={(e) => handleLinkClick(e, 4)}>
+    <a className="links" href="#ObjectsInOOP" onClick={(e) => handleLinkClick(e, 3)}>
     Objects In OOP
     </a>
-    <a className="links" href="#BuiltInObjects" onClick={(e) => handleLinkClick(e, 5)}>
+    <a className="links" href="#BuiltInObjects" onClick={(e) => handleLinkClick(e, 4)}>
     Built-In Objects
     </a>
-    <a className="links" href="#JavaScriptLoops" onClick={(e) => handleLinkClick(e, 6)}>
+    <a className="links" href="#JavaScriptLoops" onClick={(e) => handleLinkClick(e, 5)}>
     JavaScript Loops
     </a>
-    <a className="links" href="#JavaScriptPrimitivesAndObjects" onClick={(e) => handleLinkClick(e, 7)}>
+    <a className="links" href="#JavaScriptPrimitivesAndObjects" onClick={(e) => handleLinkClick(e, 6)}>
     JavaScript Primitives And Objects
     </a>
-    <a className="links" href="#OperatorsAndExpressions" onClick={(e) => handleLinkClick(e, 8)}>
+    <a className="links" href="#OperatorsAndExpressions" onClick={(e) => handleLinkClick(e, 7)}>
     Operators And Expressions
     </a>
-    <a className="links" href="#ConditionsInJavaScript" onClick={(e) => handleLinkClick(e, 9)}>
+    <a className="links" href="#ConditionsInJavaScript" onClick={(e) => handleLinkClick(e, 8)}>
     Conditions In JavaScript
     </a>
-    <a className="links" href="#EncapsulationInJavaScript" onClick={(e) => handleLinkClick(e, 10)}>
+    <a className="links" href="#EncapsulationInJavaScript" onClick={(e) => handleLinkClick(e, 9)}>
       Encapsulation In JavaScript
     </a>
-    <a className="links" href="#FunctionsInJavaScript" onClick={(e) => handleLinkClick(e, 11)}>
+    <a className="links" href="#FunctionsInJavaScript" onClick={(e) => handleLinkClick(e, 10)}>
       Functions In JavaScript
     </a>
-    <a className="links" href="#InheritanceInOOP" onClick={(e) => handleLinkClick(e, 12)}>
+    <a className="links" href="#InheritanceInOOP" onClick={(e) => handleLinkClick(e, 11)}>
       Inheritance In OOP
     </a>
-    <a className="links" href="#AbstractionInJavaScript" onClick={(e) => handleLinkClick(e, 13)}>
+    <a className="links" href="#AbstractionInJavaScript" onClick={(e) => handleLinkClick(e, 12)}>
       Abstraction In JavaScript
     </a>
-    <a className="links" href="#ClassOOPS" onClick={(e) => handleLinkClick(e, 14)}>
+    <a className="links" href="#ClassOOPS" onClick={(e) => handleLinkClick(e, 13)}>
       Classes And OOP
     </a>
-    <a className="links" href="#ArraysInJavaScript" onClick={(e) => handleLinkClick(e, 15)}>
+    <a className="links" href="#ArraysInJavaScript" onClick={(e) => handleLinkClick(e, 14)}>
       Arrays In JavaScript
     </a>
-    <a className="links" href="#StaticMethods" onClick={(e) => handleLinkClick(e, 16)}>
+    <a className="links" href="#StaticMethods" onClick={(e) => handleLinkClick(e, 15)}>
       Static Methods
     </a>
-    <a className="links" href="#Polymorphism" onClick={(e) => handleLinkClick(e, 17)}>
+    <a className="links" href="#Polymorphism" onClick={(e) => handleLinkClick(e, 16)}>
       Polymorphism
     </a>
-    <a className="links" href="#NodeInstallation" onClick={(e) => handleLinkClick(e, 18)}>
+    <a className="links" href="#NodeInstallation" onClick={(e) => handleLinkClick(e, 17)}>
       Node Installation
     </a>
 </div>
