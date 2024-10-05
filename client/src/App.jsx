@@ -9,10 +9,7 @@ import { Toaster } from "react-hot-toast"; //using react hot toast to fetch cond
 import Dashboard from "./Components/Dashboard";
 import Header from "./Components/Header";
 import Selenium from "./Pages/Selenium";
-import API from "./Pages/API";
 import Playwright from "./Pages/Playwright";
-import Jmeter from "./Pages/Jmeter";
-import Cypress from "./Pages/Cypress";
 import Footer from "./Components/Footer";
 
 axios.defaults.baseURL = "http://localhost:8000";
@@ -28,10 +25,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Selenium" element={<Selenium />} />
-        <Route path="/API" element={<API />} />
         <Route path="/Playwright" element={<Playwright />} />
-        <Route path="/Jmeter" element={<Jmeter />} />
-        <Route path="/Cypress" element={<Cypress />} />
       </Routes>
     </div>
   );
