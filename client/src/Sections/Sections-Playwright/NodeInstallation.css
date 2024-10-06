@@ -61,6 +61,11 @@
 
 @media (max-width: 580px) {
   .NodeInstallation {
-    width: 35%;
+    width: 30%;
   }
+  @media (max-width: 380px) {
+    .NodeInstallation {
+      width: 30%;
+    }
+}
 }
