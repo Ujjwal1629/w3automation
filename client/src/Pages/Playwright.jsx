@@ -63,7 +63,7 @@ export default function Playwright() {
       </div>
     <div className="main">
     <div className={`container-left ${isMobile ? 'hidden' : ''}`}>
-    <div className="container-left">
+    <div className="container-leftt">
     <div className="container-links">
     <h1>Playwright</h1>
     <a className="links" href="#JavaScriptOverview" onClick={(e) => handleLinkClick(e, 0)}>

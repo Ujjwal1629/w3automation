@@ -87,7 +87,7 @@ export default function Selenium() {
       </div>
       <div className="main">
       <div className={`container-left ${isMobile ? 'hidden' : ''}`}>
-        <div className="container-left">
+        <div className="container-leftt">
         <div className="container-links">
               <h1>Selenium With Java</h1>
               <a className="links" href="#java-section" onClick={(e) => handleLinkClick(e, 1)}>Java</a>
@@ -156,7 +156,7 @@ export default function Selenium() {
                   programming languages like Java, C#, Python, Ruby, etc. So,
                   developers can write their test scripts in any one of these
                   languages.
-                </p>
+             </p>
                 <br />
                 <h1>Why Choose Selenium with Java?</h1>
                 <p>
@@ -239,7 +239,7 @@ export default function Selenium() {
                   <li className="list-item">Do actions on web elements.</li>
                   <li className="list-item">Validate the results.</li>
                   <li className="list-item">Close the browser.</li>
-                </ol>
+             </ol>
                 <h4>Example: Automating a Google Search</h4>
                 <img
                 className="img-selenium"
@@ -262,10 +262,10 @@ export default function Selenium() {
                   <li className="list-item">By.partialLinkText</li>
                   <li className="list-item">By.xpath</li>
                   <li className="list-item">By.cssSelector</li>
-                </ol>
+             </ol>
                 <ul className="list-items">
                   Performing Actions on Web Elements.
-                </ul>
+             </ul>
                 <li className="list-item">
                   sendKeys(): To type text in an input field.
                 </li>
@@ -336,8 +336,8 @@ export default function Selenium() {
                   behavior of an application. No matter whether you are only
                   starting to learn Selenium or would like a comprehensive
                   tutorial on mastering Selenium with Java.
-                </p>
-              </div>
+             </p>
+         </div>
             )}
             {step === 1 && <Java />}
             {step === 2 && <Variables />}
