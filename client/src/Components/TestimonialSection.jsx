@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import './TestimonialSection.css';
 
@@ -40,6 +40,8 @@ const testimonials = [
 export default function TestimonialSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -62,6 +64,22 @@ export default function TestimonialSection() {
     setTimeout(() => setIsAnimating(false), 500);
   };
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current - touchEndX.current > 50) {
+      handleNext(); // Swipe left
+    } else if (touchStartX.current - touchEndX.current < -50) {
+      handlePrev(); // Swipe right
+    }
+  };
+
   return (
     <section className="testimonials-section">
       <div className="testimonials-container">
@@ -70,7 +88,10 @@ export default function TestimonialSection() {
           <p>Join thousands of successful automation engineers who transformed their careers with us</p>
         </div>
 
-        <div className="testimonials-carousel">
+        <div className="testimonials-carousel"
+             onTouchStart={handleTouchStart}
+             onTouchMove={handleTouchMove}
+             onTouchEnd={handleTouchEnd}>
           {/* Background Elements */}
           <div className="background-elements">
             <div className="circle circle-1"></div>
