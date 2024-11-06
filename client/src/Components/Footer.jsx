@@ -1,79 +1,120 @@
-import React from 'react'
-import "./Footer.css"
+import React from 'react';
+import { Mail, MapPin, Phone, ChevronRight, Send } from 'lucide-react';
+import { FaLinkedin,FaGithub,FaTwitter,FaYoutube } from "react-icons/fa";
+import "./Footer.css";
 
 export default function Footer() {
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <div className="footer-w3">
-  <div class="footer-container">
-    <div class="footer">
-      <div class="footer-content">
-        <div class="newsletter">
-          <h2>Subscribe to Our Newsletter</h2>
-          <div class="newsletter-form">
-            <input class="newsletter-input" placeholder="Email here" />
-            <button class="newsletter-btn">Submit</button>
+    <footer className="main-footer">
+      <div className="footer-top">
+        <div className="footer-container">
+          {/* Newsletter Section */}
+          <div className="newsletter-section">
+            <h2>Stay Updated with Latest Tutorials</h2>
+            <p>Get the latest automation testing tips and tutorials directly in your inbox</p>
+            <form onSubmit={handleSubscribe} className="newsletter-form">
+              <div className="input-group">
+                <input type="email" placeholder="Enter your email" />
+                <button type="submit">
+                  <Send size={20} />
+                  <span>Subscribe</span>
+                </button>
+              </div>
+            </form>
           </div>
-        </div>
-        <div class="footer-row">
-          <div class="footer-column">
-            <div class="footer-about">
-              <h3>About Us</h3>
 
+          {/* Main Footer Content */}
+          <div className="footer-content">
+            {/* About Section */}
+            <div className="footer-section">
+              <h3>About JourneyToAutomation</h3>
               <p>
-              At W3AUTOMATION, we are dedicated to empowering professionals with the knowledge and skills needed to excel in the field of automation testing. Our comprehensive library of courses is designed to cover a wide range of tools, frameworks, and best practices, ensuring that learners of all levels—from beginners to experts—can find the right resources to advance their careers.
-
+                Empowering professionals with cutting-edge automation testing knowledge. 
+                Our platform offers comprehensive courses designed for all skill levels, 
+                from beginners to advanced practitioners.
               </p>
-
+              <div className="social-links">
+                <a href="#" className="social-btn">
+                <FaLinkedin />
+                </a>
+                <a href="#" className="social-btn">
+                <FaGithub />
+                </a>
+                <a href="#" className="social-btn">
+                <FaTwitter />
+                </a>
+                <a href="#" className="social-btn">
+                <FaYoutube />
+                </a>
+              </div>
             </div>
-          </div>
 
-          <div class="footer-column">
-            <div class="footer-links">
-              <h3>Useful Links</h3>
-              <a href="/">Home</a>
-              <a href="/aboutus">About</a>
-              <a href="/services">Courses</a>
-              <a href="/contact">Contact Us</a>
+            {/* Quick Links */}
+            <div className="footer-section">
+              <h3>Quick Links</h3>
+              <ul className="quick-links">
+                <li><ChevronRight size={16} /><a href="/">Home</a></li>
+                <li><ChevronRight size={16} /><a href="/courses">Courses</a></li>
+                <li><ChevronRight size={16} /><a href="/tutorials">Tutorials</a></li>
+                <li><ChevronRight size={16} /><a href="/contact">Contact</a></li>
+              </ul>
             </div>
-          </div>
-          <div class="footer-column">
-            <div class="footer-contact">
-              <h3>Get In Touch</h3>
-              <p>
-                <i class="fa fa-map-marker" aria-hidden="true"></i> New Delhi, 110001
-              </p>
-              <p>
-                <i class="fa fa-envelope"></i> gandhihemant10@gmail.com
-              </p>
+
+            {/* Popular Courses */}
+            <div className="footer-section">
+              <h3>Popular Courses</h3>
+              <ul className="course-links">
+                <li><a href="/selenium">Selenium Master Course</a></li>
+                <li><a href="/playwright">Playwright Testing</a></li>
+                <li><a href="/cypress">Cypress Automation</a></li>
+                <li><a href="/api">API Testing</a></li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div className="footer-section">
+              <h3>Contact Us</h3>
+              <ul className="contact-info">
+                <li>
+                  <MapPin size={18} />
+                  <span>New Delhi, 110001</span>
+                </li>
+                <li>
+                  <Mail size={18} />
+                  <a href="mailto:gandhihemant10@gmail.com">gandhihemant10@gmail.com</a>
+                </li>
+                <li>
+                  <Phone size={18} />
+                  <span>+91 XXX XXX XXXX</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-      <div class="footer-menu">
-        <div class="f-menu">
-          <a href="#">Terms of Use</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">FAQs</a>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="footer-row">
-          <div class="footer-column">
-            <p>
-              &copy; <a href="#">W3automation</a>, All Rights
-              Reserved.
-            </p>
-          </div>
-          <div class="footer-column">
-            <p>
-              Developed & Maintained By{" "}
-              Ujjwal Singh
-            </p>
+
+      {/* Bottom Bar */}
+      <div className="footer-bottom">
+        <div className="footer-container">
+          <div className="bottom-content">
+            <div className="copyright">
+              <p>&copy; {new Date().getFullYear()} JourneyToAutomation. All rights reserved.</p>
+            </div>
+            <div className="bottom-links">
+              <a href="/privacy">Privacy Policy</a>
+              <a href="/terms">Terms of Use</a>
+              <a href="/faq">FAQ</a>
+            </div>
+            <div className="credits">
+              <p>Developed/Designed by <a href="#" className="developer-link">JourneyToAutomation</a></p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-    </div>
-  )
+    </footer>
+  );
 }
