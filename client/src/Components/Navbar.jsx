@@ -94,7 +94,7 @@ export default function Navbar() {
             />
           </div>
           <div className="nav-buttons">
-            <button onClick={() => window.open("https://courses.journeytoautomation.org/courses")}>Courses</button>
+            <button onClick={() => window.open("https://courses.journeytoautomation.org/store")}>Courses</button>
             <button>Contact Us</button>
             <button>About Us</button>
           </div>
