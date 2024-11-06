@@ -201,6 +201,9 @@
     gap: 0;
     padding: 0.5rem 0rem;
   }
+  .main-nav{
+    padding: 1rem 1rem;
+  }
 }
 
 /* Animation for mobile menu */

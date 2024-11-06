@@ -6,7 +6,7 @@ const testimonials = [
   {
     id: 1,
     name: "Sarthak Gupta",
-    role: "QA Lead at Microsoft",
+    role: "QA Lead",
     text: "The Selenium Master course transformed our testing process. The practical examples and in-depth explanations made complex concepts easy to understand.",
     rating: 5,
     course: "Selenium Master Course"
@@ -14,7 +14,7 @@ const testimonials = [
   {
     id: 2,
     name: "Ujjwal Singh",
-    role: "Senior SDET at Amazon",
+    role: "Senior Automation tester",
     text: "I went from manual testing to automation expert in just 3 months. The Playwright course content is top-notch and always up-to-date with latest practices.",
     rating: 5,
     course: "Playwright Testing"
@@ -30,7 +30,7 @@ const testimonials = [
   {
     id: 4,
     name: "Vishvesh kushwaha",
-    role: "DevOps Engineer at Google",
+    role: "DevOps Engineer",
     text: "Cypress course was exactly what our team needed. Clear explanations, real-world examples, and excellent support from the instructors.",
     rating: 5,
     course: "Cypress Automation"
