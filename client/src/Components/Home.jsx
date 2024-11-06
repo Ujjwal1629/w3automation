@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Play, BookOpen, Code, Terminal, Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Play, BookOpen, Code, Terminal, Search } from 'lucide-react';
 import './Home.css';
 import LearningPathways from './Learning';
 
