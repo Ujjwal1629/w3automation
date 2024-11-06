@@ -58,9 +58,9 @@ export default function Footer() {
               <h3>Quick Links</h3>
               <ul className="quick-links">
                 <li><ChevronRight size={16} /><a href="/">Home</a></li>
-                <li><ChevronRight size={16} /><a href="/courses">Courses</a></li>
-                <li><ChevronRight size={16} /><a href="/tutorials">Tutorials</a></li>
-                <li><ChevronRight size={16} /><a href="/contact">Contact</a></li>
+                <li><ChevronRight size={16} /><a href="https://courses.journeytoautomation.org/store">Courses</a></li>
+                <li><ChevronRight size={16} /><a href="/">Tutorials</a></li>
+                <li><ChevronRight size={16} /><a href="/">Contact</a></li>
               </ul>
             </div>
 
@@ -70,8 +70,8 @@ export default function Footer() {
               <ul className="course-links">
                 <li><a href="/selenium">Selenium Master Course</a></li>
                 <li><a href="/playwright">Playwright Testing</a></li>
-                <li><a href="/cypress">Cypress Automation</a></li>
-                <li><a href="/api">API Testing</a></li>
+                <li><a href="/">Cypress Automation</a></li>
+                <li><a href="/">API Testing</a></li>
               </ul>
             </div>
 
@@ -85,7 +85,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Mail size={18} />
-                  <a href="mailto:gandhihemant10@gmail.com">gandhihemant10@gmail.com</a>
+                  <a href="mailto:gandhihemant10@gmail.com">journeytoautomation@gmail.com</a>
                 </li>
                 <li>
                   <Phone size={18} />
