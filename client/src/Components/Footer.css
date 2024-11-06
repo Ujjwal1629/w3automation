@@ -131,6 +131,8 @@
 .quick-links li, .course-links li {
   margin-bottom: 12px;
   transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
 .quick-links li:hover, .course-links li:hover {

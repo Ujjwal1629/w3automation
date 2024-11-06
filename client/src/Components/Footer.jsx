@@ -31,23 +31,23 @@ export default function Footer() {
           <div className="footer-content">
             {/* About Section */}
             <div className="footer-section">
-              <h3>About JourneyToAutomation</h3>
+              <h3>About Us</h3>
               <p>
                 Empowering professionals with cutting-edge automation testing knowledge. 
                 Our platform offers comprehensive courses designed for all skill levels, 
                 from beginners to advanced practitioners.
               </p>
               <div className="social-links">
-                <a href="#" className="social-btn">
+                <a href="https://www.linkedin.com/in/hemant-gandhi254/" className="social-btn">
                 <FaLinkedin />
                 </a>
-                <a href="#" className="social-btn">
+                <a href="https://github.com/hemantgandhi1" className="social-btn">
                 <FaGithub />
                 </a>
-                <a href="#" className="social-btn">
+                <a href="https://x.com/Journeytoauto" className="social-btn">
                 <FaTwitter />
                 </a>
-                <a href="#" className="social-btn">
+                <a href="https://www.youtube.com/@Journeytoautomation" className="social-btn">
                 <FaYoutube />
                 </a>
               </div>
