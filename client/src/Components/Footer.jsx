@@ -38,19 +38,40 @@ export default function Footer() {
                 from beginners to advanced practitioners.
               </p>
               <div className="social-links">
-                <a href="https://www.linkedin.com/in/hemant-gandhi254/" className="social-btn">
-                <FaLinkedin />
-                </a>
-                <a href="https://github.com/hemantgandhi1" className="social-btn">
-                <FaGithub />
-                </a>
-                <a href="https://x.com/Journeytoauto" className="social-btn">
-                <FaTwitter />
-                </a>
-                <a href="https://www.youtube.com/@Journeytoautomation" className="social-btn">
-                <FaYoutube />
-                </a>
-              </div>
+  <a
+    href="https://www.linkedin.com/in/hemant-gandhi254/"
+    className="social-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaLinkedin />
+  </a>
+  <a
+    href="https://github.com/hemantgandhi1"
+    className="social-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaGithub />
+  </a>
+  <a
+    href="https://x.com/Journeytoauto"
+    className="social-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaTwitter />
+  </a>
+  <a
+    href="https://www.youtube.com/@Journeytoautomation"
+    className="social-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaYoutube />
+  </a>
+</div>
+
             </div>
 
             {/* Quick Links */}
