@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import './TestimonialSection.css';
+import videoPath from "../assets/video1.mp4";
 
 const testimonials = [
   {
@@ -9,15 +10,17 @@ const testimonials = [
     role: "QA Lead",
     text: "The Selenium Master course transformed our testing process. The practical examples and in-depth explanations made complex concepts easy to understand.",
     rating: 5,
-    course: "Selenium Master Course"
+    course: "Selenium Master Course",
+    type: "text",
   },
   {
     id: 2,
     name: "Ujjwal Singh",
-    role: "Senior Automation tester",
+    role: "Senior Automation Tester",
     text: "I went from manual testing to automation expert in just 3 months. The Playwright course content is top-notch and always up-to-date with latest practices.",
     rating: 5,
-    course: "Playwright Testing"
+    course: "Playwright Testing",
+    type: "text",
   },
   {
     id: 3,
@@ -25,30 +28,39 @@ const testimonials = [
     role: "Test Automation Engineer",
     text: "The API testing course provided invaluable insights into modern testing practices. The hands-on projects really helped cement my understanding.",
     rating: 5,
-    course: "API Testing Masterclass"
+    course: "API Testing Masterclass",
+    type: "text",
   },
   {
     id: 4,
-    name: "Vishvesh kushwaha",
+    name: "Vishvesh Kushwaha",
     role: "DevOps Engineer",
     text: "Cypress course was exactly what our team needed. Clear explanations, real-world examples, and excellent support from the instructors.",
     rating: 5,
-    course: "Cypress Automation"
-  }
+    course: "Cypress Automation",
+    type: "text",
+  },
+  {
+    id: 5,
+    name: "Ankita Sharma",
+    role: "Automation Architect",
+    videoUrl: videoPath,
+    course: "Advanced Automation Strategies",
+    type: "video",
+  },
+  {
+    id: 6,
+    name: "Manoj Kumar",
+    role: "Senior QA Engineer",
+    videoUrl: "https://www.example.com/video2.mp4",
+    course: "Load Testing Mastery",
+    type: "video",
+  },
 ];
 
 export default function TestimonialSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [currentIndex]);
 
   const handlePrev = () => {
     if (isAnimating) return;
@@ -64,22 +76,6 @@ export default function TestimonialSection() {
     setTimeout(() => setIsAnimating(false), 500);
   };
 
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    if (touchStartX.current - touchEndX.current > 50) {
-      handleNext(); // Swipe left
-    } else if (touchStartX.current - touchEndX.current < -50) {
-      handlePrev(); // Swipe right
-    }
-  };
-
   return (
     <section className="testimonials-section">
       <div className="testimonials-container">
@@ -88,19 +84,7 @@ export default function TestimonialSection() {
           <p>Join thousands of successful automation engineers who transformed their careers with us</p>
         </div>
 
-        <div className="testimonials-carousel"
-             onTouchStart={handleTouchStart}
-             onTouchMove={handleTouchMove}
-             onTouchEnd={handleTouchEnd}>
-          {/* Background Elements */}
-          <div className="background-elements">
-            <div className="circle circle-1"></div>
-            <div className="circle circle-2"></div>
-            <div className="dots dots-1"></div>
-            <div className="dots dots-2"></div>
-          </div>
-
-          {/* Navigation Buttons */}
+        <div className="testimonials-carousel">
           <button className="nav-button prev" onClick={handlePrev}>
             <ChevronLeft size={24} />
           </button>
@@ -108,49 +92,51 @@ export default function TestimonialSection() {
             <ChevronRight size={24} />
           </button>
 
-          {/* Testimonial Cards */}
           <div className="testimonials-wrapper">
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className={`testimonial-card ${index === currentIndex ? 'active' : ''} ${
-                  isAnimating ? 'animating' : ''
-                }`}
+                className={`testimonial-card ${index === currentIndex ? 'active' : ''}`}
                 style={{
                   transform: `translateX(${(index - currentIndex) * 100}%)`,
                   opacity: index === currentIndex ? 1 : 0,
-                  zIndex: index === currentIndex ? 1 : 0
+                  zIndex: index === currentIndex ? 1 : 0,
                 }}
               >
-                <Quote className="quote-icon" size={40} />
-                <div className="testimonial-content">
-                  <p className="testimonial-text">{testimonial.text}</p>
-                  <div className="rating">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="star" size={16} fill="#FFD700" color="#FFD700" />
-                    ))}
+                {testimonial.type === "text" ? (
+                  <>
+                    <Quote className="quote-icon" size={40} />
+                    <div className="testimonial-content">
+                      <p className="testimonial-text">{testimonial.text}</p>
+                      <div className="rating">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="star" size={16} fill="#FFD700" color="#FFD700" />
+                        ))}
+                      </div>
+                      <div className="course-tag">{testimonial.course}</div>
+                    </div>
+                    <div className="testimonial-author">
+                      <div className="author-info">
+                        <h4>{testimonial.name}</h4>
+                        <p>{testimonial.role}</p>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <div className="video-testimonial">
+                    <video controls className="testimonial-video">
+                      <source src={testimonial.videoUrl} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    <div className="testimonial-author">
+                      <div className="author-info">
+                        <h4>{testimonial.name}</h4>
+                        <p>{testimonial.role}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="course-tag">{testimonial.course}</div>
-                </div>
-                <div className="testimonial-author">
-                  {/* <img src={testimonial.image} alt={testimonial.name} className="author-image" /> */}
-                  <div className="author-info">
-                    <h4>{testimonial.name}</h4>
-                    <p>{testimonial.role}</p>
-                  </div>
-                </div>
+                )}
               </div>
-            ))}
-          </div>
-
-          {/* Indicators */}
-          <div className="carousel-indicators">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                className={`indicator ${index === currentIndex ? 'active' : ''}`}
-                onClick={() => setCurrentIndex(index)}
-              />
             ))}
           </div>
         </div>

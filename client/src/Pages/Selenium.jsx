@@ -47,6 +47,7 @@ import SeleniumSelect from "../Sections/Sections-Selenium/SeleniumSelect";
 import SeleniumWaits from "../Sections/Sections-Selenium/SeleniumWaits";
 import SeleniumXPath from "../Sections/Sections-Selenium/SeleniumXPath";
 import TestNGFramework from "../Sections/Sections-Selenium/TestNGFramework";
+import Footer from "../Components/Footer";
 
 export default function Selenium() {
   const [step, setStep] = useState(0);
@@ -369,6 +370,7 @@ export default function Selenium() {
           </div>
         </div>
       </div>
+       <Footer />
     </div>
   );
 }

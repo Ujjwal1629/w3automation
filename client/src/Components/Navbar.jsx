@@ -104,7 +104,7 @@ export default function Navbar() {
       <div className="sub-nav">
         <a onClick={() => navigate("/Selenium")}>SELENIUM WITH JAVA</a>
         <a onClick={() => navigate("/Playwright")}>PLAYWRIGHT</a>
-        <a onClick={() => navigate("/")}>INTERVIEW QUESTIONS</a>
+        <a onClick={() => navigate("/InterviewQuestions")}>INTERVIEW QUESTIONS</a>
         <a onClick={() => navigate("/")}>API TESTING</a>
       </div>
     </nav>

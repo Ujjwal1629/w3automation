@@ -1,0 +1,134 @@
+/* InterviewQA.css */
+.interview-qa {
+  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.interview-qa .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.qa-section {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  animation: slideUp 0.8s ease-out;
+  margin-top: 40px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-icon {
+  color: #5b21b6;
+  margin-right: 12px;
+}
+
+.section-header h3 {
+  color: #1f2937;
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.questions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.qa-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.qa-card:hover {
+  border-color: #5b21b6;
+  box-shadow: 0 4px 12px rgba(91, 33, 182, 0.1);
+}
+
+.qa-card.expanded {
+  border-color: #5b21b6;
+  background: rgba(91, 33, 182, 0.02);
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question-header h4 {
+  font-size: 18px;
+  color: #1f2937;
+  margin: 0;
+  font-weight: 500;
+  flex: 1;
+}
+
+.chevron-icon {
+  color: #5b21b6;
+  width: 20px;
+  height: 20px;
+  margin-left: 16px;
+  transition: transform 0.3s ease;
+}
+
+.answer {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 16px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .qa-section {
+    padding: 20px;
+  }
+
+  .question-header h4 {
+    font-size: 16px;
+  }
+
+  .answer {
+    font-size: 14px;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
