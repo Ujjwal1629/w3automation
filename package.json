@@ -10,6 +10,11 @@
     "vite": "^6.0.5"
   },
   "engines": {
-  "node": "16.x || 18.x"
-}
+    "node": "16.x || 18.x"
+  },
+  "scripts": {
+    "build": "vite build", 
+    "dev": "vite",        
+    "preview": "vite preview"  
+  }
 }
