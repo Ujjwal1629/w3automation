@@ -3,9 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import Register from "./Components/Register";
-import Login from "./Components/Login";
-import axios from "axios";
-import { Toaster } from "react-hot-toast"; //using react hot toast to fetch conditions and display, stated inside authController
+import Login from "./Components/Login";//using react hot toast to fetch conditions and display, stated inside authController
 import Dashboard from "./Components/Dashboard";
 import Selenium from "./Pages/Selenium";
 import Playwright from "./Pages/Playwright";
