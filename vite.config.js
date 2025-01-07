@@ -2,9 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  root: './',  // Ensure Vite points to the root of the project
-  plugins: [react()],
+  root: '.',
   build: {
-    outDir: 'dist',  // Output directory for production build
+    outDir: 'dist'
   },
+  plugins: [react()]
 })
