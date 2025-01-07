@@ -1,0 +1,152 @@
+.about-us {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.hero-sectionn {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border-radius: 20px;
+  color: white;
+}
+
+.hero-sectionn h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.mission-statement {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  padding: 0 15px;
+}
+
+.content-section {
+  margin-top: 40px;
+}
+
+.about-description {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.about-description h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.about-description p {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+  padding: 0 15px;
+}
+
+.feature-card {
+  padding: 25px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.icon-wrapper {
+  margin-bottom: 15px;
+}
+
+.feature-icon {
+  width: 32px;
+  height: 32px;
+  color: #6366f1;
+}
+
+.feature-card h3 {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+.feature-card p {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .about-us {
+    padding: 10px;
+  }
+
+  .hero-sectionn {
+    padding: 40px 15px;
+    margin-bottom: 40px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-us {
+    padding: 10px 5px;
+  }
+
+  .hero-sectionn {
+    padding: 30px 10px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+  }
+
+  .content-section {
+    margin-top: 30px;
+  }
+
+  .about-description {
+    margin-bottom: 30px;
+  }
+
+  .feature-card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  .about-us {
+    padding: 5px;
+  }
+
+  .hero-sectionn {
+    padding: 20px 10px;
+  }
+
+  .features-grid {
+    margin-top: 20px;
+  }
+}

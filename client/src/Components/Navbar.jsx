@@ -96,7 +96,7 @@ export default function Navbar() {
           <div className="nav-buttons">
             <button onClick={() => window.open("https://courses.journeytoautomation.org/store")}>Courses</button>
             <button>Contact Us</button>
-            <button>About Us</button>
+            <button onClick={() => navigate("/about")}>About Us</button>
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@ export default function Navbar() {
         <a onClick={() => navigate("/Selenium")}>SELENIUM WITH JAVA</a>
         <a onClick={() => navigate("/Playwright")}>PLAYWRIGHT</a>
         <a onClick={() => navigate("/InterviewQuestions")}>INTERVIEW QUESTIONS</a>
-        <a onClick={() => navigate("/")}>API TESTING</a>
+        <a onClick={() => navigate("/ApiTesting")}>API TESTING</a>
       </div>
     </nav>
   );

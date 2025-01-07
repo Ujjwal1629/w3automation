@@ -42,6 +42,7 @@
   padding: 15px;
   border-radius: 5px;
   overflow-x: auto;
+  color: #d6336c;
 }
 
 .TestNGFramework code {

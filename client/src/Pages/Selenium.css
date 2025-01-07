@@ -114,87 +114,88 @@
 
 .IntroJava {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .IntroJava h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-family: "Open Sans", sans-serif;
   color: #1f2937;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+  width: fit-content;
 }
 
 .IntroJava h4 {
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-family: "Open Sans", sans-serif;
-  color: #6b7280;
-}
-
-.img-selenium {
-  width: 600px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.img-selenium:hover {
-  transform: translateY(-5px);
-}
-
-.IntroJava p,
-.list-item,
-.list-items {
-  font-family: "Open Sans", sans-serif;
-  line-height: 2;
   color: #4b5563;
+  margin: 1.5rem 0 1rem;
+  font-weight: 500;
 }
 
 .IntroJava p {
-  font-size: 18px;
-  font-weight: 400;
-  width: 90%;
-}
-
-.list-item {
-  font-size: 18px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 .list-items {
-  font-size: 22px;
-  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 1.5rem 0 0.5rem;
+  padding-left: 0;
+}
+
+.list-item {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin: 1rem;
+  position: relative;
+}
+
+.img-selenium {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
 }
 
 @media (max-width: 768px) {
-  .main {
+  .IntroJava {
     width: 95%;
+    padding: 15px;
   }
 
-  .container-head {
-    align-items: center;
+  .IntroJava h1 {
+    font-size: 2rem;
   }
+
   .img-selenium {
-    width: 300px;
-    height: 60px;
+    width: 100%;
+    height: auto;
   }
 }
 
 @media (max-width: 480px) {
-  .container-links h1,
-  .container-links h4 {
-    font-size: 1.2rem;
-  }
-
-  .prev, .next {
-    font-size: 1rem;
-  }
-
   .IntroJava h1 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
-  .IntroJava p {
-    font-size: 16px;
+  .IntroJava h4 {
+    font-size: 1.1rem;
   }
-  .img-selenium {
-    width: 300px;
-    height: 60px;
+
+  .IntroJava p,
+  .list-item {
+    font-size: 1rem;
   }
 }

@@ -53,7 +53,7 @@ export default function Playwright() {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Check on initial render
+    handleResize();
     window.addEventListener('resize', handleResize);
 
     return () => {

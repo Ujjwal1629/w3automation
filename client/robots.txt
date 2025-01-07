@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://JourneytoAutomation.org/W3web/sitemap.xml
