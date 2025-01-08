@@ -10,7 +10,7 @@ import PlaywrightWithJavaScript from '../Sections/Sections-ApiTesting/Playwright
 // import ApiOverview from '../Sections/Sections-ApiTesting/ApiOverview';
 
 const sections = [
-  { path: 'PlaywrightWithJavaScript', component: <PlaywrightWithJavaScript /> },
+  // { path: 'PlaywrightWithJavaScript', component: <PlaywrightWithJavaScript /> },
 ];
 
 export default function ApiTesting() {

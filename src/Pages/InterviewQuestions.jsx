@@ -22,6 +22,18 @@ const InterviewQA = () => {
         {
           question: 'Explain the concept of OOP in Java.',
           answer: 'Java is an Object-Oriented Programming (OOP) language that organizes data and behavior in objects. Key concepts include: Encapsulation (bundling data and methods), Abstraction (hiding complexity), Inheritance (allowing new classes to inherit properties), and Polymorphism (enabling objects to be treated as instances of their parent class).'
+        },
+        {
+          question: 'What is the difference between HashMap and HashTable?',
+          answer: 'HashMap is non-synchronized and permits null values/keys, while HashTable is synchronized and doesn\'t allow nulls. HashMap performs better in non-threaded applications, while HashTable is thread-safe but has lower performance.'
+        },
+        {
+          question: 'Explain the Java Memory Model.',
+          answer: 'The Java Memory Model consists of Heap (object storage), Stack (method execution and local variables), Method Area (class metadata), and Native Method Stack. It defines how threads interact with memory, ensuring consistent behavior across platforms.'
+        },
+        {
+          question: 'What are the differences between Abstract Class and Interface?',
+          answer: 'Abstract classes can have constructor, instance variables, and concrete methods, while interfaces can only have constants and abstract methods (prior to Java 8). A class can implement multiple interfaces but extend only one abstract class.'
         }
       ]
     },
@@ -114,82 +126,83 @@ const InterviewQA = () => {
 
   return (
     <span>
-     <Navbar />
-    <div className="interview-qa home">
-      <div className="container">
-        <div className="hero-section">
-          <div className="hero-content">
-            <h1>
-              Technical Interview <span className="highlight">Questions</span>
-            </h1>
-            <p className="subtitle">
-              Master your next technical interview with comprehensive Q&A
-            </p>
-            <div className="search-bar">
-              <input
-                type="text"
-                placeholder="Search questions..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              <Search className="search-icon" />
+      <Navbar/>
+      <div className="interview-qa">
+        <div className="container">
+          <div className="hero-section glass-effect">
+            <div className="hero-content">
+              <h1>
+                Technical Interview Questions
+              </h1>
+              <p className="subtitle">
+                Master your next technical interview with comprehensive Q&A
+              </p>
+              <div className="search-bar glass-effect">
+                <Search className="search-icon" />
+                <input
+                  type="text"
+                  placeholder="Search questions..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="topics-container">
-          <div className="topics-scroll-wrapper">
+          <div className="topics-container">
             <div className="topics-grid">
               {filteredCategories.map((category) => (
                 <div
                   key={category.id}
-                  className={`topic-card ${selectedCategory === category.id ? 'selected' : ''}`}
+                  className={`topic-card glass-effect ${selectedCategory === category.id ? 'selected' : ''}`}
                   onClick={() => setSelectedCategory(category.id)}
                 >
                   <div className="topic-icon">{category.icon}</div>
                   <h2>{category.title}</h2>
                   <p>{category.description}</p>
+                  <span className="question-count">
+                    {category.questions.length} questions
+                  </span>
                 </div>
               ))}
             </div>
           </div>
-        </div>
 
-        {selectedCategory && (
-          <div className="qa-section">
-            <div className="section-header">
-              <BookOpen className="header-icon" />
-              <h3>Interview Questions</h3>
-            </div>
-            <div className="questions-container">
-              {filteredCategories
-                .find(cat => cat.id === selectedCategory)
-                ?.questions.map((qa, index) => (
-                  <div
-                    key={index}
-                    className={`qa-card ${expandedQuestions[index] ? 'expanded' : ''}`}
-                    onClick={() => toggleQuestion(index)}
-                  >
-                    <div className="question-header">
-                      <h4>{qa.question}</h4>
-                      {expandedQuestions[index] ? (
-                        <ChevronUp className="chevron-icon" />
-                      ) : (
-                        <ChevronDown className="chevron-icon" />
+          {selectedCategory && (
+            <div className="qa-section">
+              <div className="section-header">
+                <BookOpen className="header-icon" />
+                <h3>Interview Questions</h3>
+              </div>
+              <div className="questions-container">
+                {filteredCategories
+                  .find(cat => cat.id === selectedCategory)
+                  ?.questions.map((qa, index) => (
+                    <div
+                      key={index}
+                      className={`qa-card ${expandedQuestions[index] ? 'expanded' : ''}`}
+                      onClick={() => toggleQuestion(index)}
+                    >
+                      <div className="question-header">
+                        <h4>{qa.question}</h4>
+                        {expandedQuestions[index] ? (
+                          <ChevronUp className="chevron-icon" />
+                        ) : (
+                          <ChevronDown className="chevron-icon" />
+                        )}
+                      </div>
+                      {expandedQuestions[index] && (
+                        <div className="answer">
+                          {qa.answer}
+                        </div>
                       )}
                     </div>
-                    {expandedQuestions[index] && (
-                      <div className="answer">
-                        {qa.answer}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                  ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
     </span>
   );
 };

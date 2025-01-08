@@ -13,17 +13,25 @@
 
 .qa-section {
   background: white;
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 32px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   animation: slideUp 0.8s ease-out;
   margin-top: 40px;
+  border: 1px solid rgba(91, 33, 182, 0.08);
 }
 
 .section-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .header-icon {
@@ -46,21 +54,24 @@
 
 .qa-card {
   background: white;
-  border: 2px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .qa-card:hover {
   border-color: #5b21b6;
-  box-shadow: 0 4px 12px rgba(91, 33, 182, 0.1);
+  box-shadow: 0 8px 24px rgba(91, 33, 182, 0.08);
+  transform: translateY(-2px);
 }
 
 .qa-card.expanded {
   border-color: #5b21b6;
-  background: rgba(91, 33, 182, 0.02);
+  background: linear-gradient(to right, rgba(91, 33, 182, 0.02), rgba(91, 33, 182, 0.04));
 }
 
 .question-header {
@@ -93,6 +104,15 @@
   line-height: 1.6;
   font-size: 16px;
   animation: fadeIn 0.3s ease-out;
+}
+
+.question-count {
+  background: rgba(91, 33, 182, 0.08);
+  color: #5b21b6;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 /* Responsive styles */

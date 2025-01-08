@@ -13,13 +13,9 @@ import InterviewQuestions from "./Pages/InterviewQuestions";
 import AboutUs from './Pages/AboutUs';
 import ApiTesting from "./Pages/ApiTesting";
 
-axios.defaults.baseURL = "http://localhost:8000";
-axios.defaults.withCredentials = true;
-
 function App() {
   return (
     <div className="route">
-      <Toaster position="bottom-right" toastOptions={{ duration: 3000 }} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
@@ -40,8 +36,7 @@ function HomePage() {
     <div className="app">
       <div>
       <Navbar />
-      </div>
-     
+      </div>     
       <Home />
       <TestimonialSection />
       <Footer />

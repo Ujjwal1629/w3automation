@@ -9,7 +9,7 @@
   text-align: center;
   margin-bottom: 60px;
   padding: 60px 20px;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
   border-radius: 20px;
   color: white;
 }
