@@ -60,3 +60,21 @@
     width: 30%;
   }
 }
+
+.prev, .next {
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  border: none;
+  background-color: #5b21b6;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(91, 33, 182, 0.1);
+}
+
+.prev:hover, .next:hover {
+  background-color: #4c1d95;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(91, 33, 182, 0.2);
+}

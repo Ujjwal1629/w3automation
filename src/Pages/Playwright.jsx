@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "./Playwright.css";
 import Navbar from "../Components/Navbar";
 import ArraysInJavaScript from '../Sections/Sections-Playwright/ArraysInJavaScript';
@@ -45,9 +45,10 @@ const sections = [
 ];
 
 export default function Playwright() {
+  const [step, setStep] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const location = useLocation();
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -61,6 +62,31 @@ export default function Playwright() {
     };
   }, []);
 
+  const sectionNames = sections.map(section => section.path);
+
+  const handleLinkClick = (e, stepValue) => {
+    e.preventDefault();
+    setStep(stepValue);
+    navigate(`/Playwright/${sectionNames[stepValue]}`);
+    document.getElementById("main-page").scrollIntoView({ behavior: "smooth" });
+  };
+  
+  const handleNextClick = () => {
+    if (step < sectionNames.length - 1) {
+      const nextStep = step + 1;
+      setStep(nextStep);
+      navigate(`/Playwright/${sectionNames[nextStep]}`);
+    }
+  };
+  
+  const handlePrevClick = () => {
+    if (step > 0) {
+      const prevStep = step - 1;
+      setStep(prevStep);
+      navigate(`/Playwright/${sectionNames[prevStep]}`);
+    }
+  };
+
   return (
     <div className="Playwright">
       <Navbar />
@@ -70,22 +96,27 @@ export default function Playwright() {
             <div className="container-links">
               <h1>Playwright</h1>
               {sections.map((section, index) => (
-                <Link key={index} className="links" to={section.path}>
+                <a
+                  key={index}
+                  className="links"
+                  href={`#${section.path}`}
+                  onClick={(e) => handleLinkClick(e, index)}
+                >
                   {section.path.replace(/([A-Z])/g, ' $1').trim()}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
         </div>
         <div className="main-container">
-          <div className="main-page">
-            <Routes>
-      <Route path="/" element={<JavaScriptOverview />} />
-
-{sections.map((section, index) => (
-  <Route key={index} path={`/${section.path}`} element={section.component} />
-))}
-            </Routes>
+          <div className="container-head">
+            <button className="prev" onClick={handlePrevClick}>Prev</button>
+            <button className="next" onClick={handleNextClick}>Next</button>
+          </div>
+          <div className="main-page" id="main-page">
+            {sections.map((section, index) => (
+              step === index && section.component
+            ))}
           </div>
         </div>
       </div>

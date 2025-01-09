@@ -116,7 +116,6 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  margin: 20px auto;
 }
 
 .IntroJava h1 {
@@ -169,7 +168,7 @@
   margin: 2rem 0;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .IntroJava {
     width: 95%;
     padding: 15px;
@@ -186,6 +185,9 @@
 }
 
 @media (max-width: 480px) {
+  .IntroJava {
+    width: 95%;
+  }
   .IntroJava h1 {
     font-size: 1.75rem;
   }
@@ -198,4 +200,4 @@
   .list-item {
     font-size: 1rem;
   }
-}
+} */

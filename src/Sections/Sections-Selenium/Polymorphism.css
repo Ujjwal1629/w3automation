@@ -71,12 +71,12 @@ list-style: auto;
 }
 @media (max-width: 768px) {
   .Polymorphism{
-    width: 95%;
+    width: 65%;
   }
 }
 
 @media (max-width: 480px) {
   .Polymorphism{
-    width: 60%;
+    width: 40%;
   }
 }
