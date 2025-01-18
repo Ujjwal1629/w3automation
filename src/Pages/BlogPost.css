@@ -1,0 +1,293 @@
+.blog-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+}
+
+.blog-content {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+/* Header Styles */
+.blog-header {
+  margin-bottom: 48px;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tag {
+  padding: 4px 12px;
+  background-color: #f3f0ff;
+  color: #5b21b6;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  color: #666;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.meta-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.blog-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.blog-subtitle {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* Action Buttons */
+.blog-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.action-button:hover {
+  color: #5b21b6;
+}
+
+.action-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Featured Image */
+.featured-image-container {
+  margin-bottom: 48px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.featured-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Blog Content */
+.blog-article {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #374151;
+}
+
+.blog-article h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 48px 0 24px;
+}
+
+.blog-article h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 32px 0 16px;
+}
+
+.blog-article p {
+  margin-bottom: 24px;
+}
+
+.blog-article blockquote {
+  border-left: 4px solid #5b21b6;
+  padding-left: 20px;
+  margin: 32px 0;
+  font-style: italic;
+  color: #4b5563;
+}
+
+/* Author Bio */
+.author-bio {
+  margin-top: 48px;
+  padding: 24px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.author-info {
+  display: flex;
+  gap: 16px;
+}
+
+.author-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.author-role {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.author-description {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Related Posts */
+.related-posts {
+  margin-top: 48px;
+}
+
+.related-posts-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 24px;
+}
+
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.related-post-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.related-post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(91, 33, 182, 0.1);
+}
+
+.related-post-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.related-post-content {
+  padding: 24px;
+}
+
+.related-post-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.related-post-preview {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .blog-content {
+    padding: 24px 16px;
+  }
+
+  .blog-title {
+    font-size: 32px;
+  }
+
+  .blog-subtitle {
+    font-size: 16px;
+  }
+
+  .blog-meta {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .blog-article {
+    font-size: 16px;
+  }
+
+  .blog-article h2 {
+    font-size: 24px;
+  }
+
+  .blog-article h3 {
+    font-size: 20px;
+  }
+
+  .author-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .related-posts-grid {
+    grid-template-columns: 1fr;
+  }
+}
