@@ -107,6 +107,8 @@ export default function Home() {
   const [charIndex, setCharIndex] = useState(0);
   const scrollContainerRef = useRef(null);
 
+  ReactGA.initialize("G-FPDLKPFE8H");
+
   useEffect(() => {
     ReactGA.send({ hitType: "pageview", page: window.location.pathname });
     
