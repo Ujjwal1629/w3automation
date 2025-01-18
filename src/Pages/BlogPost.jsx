@@ -2,6 +2,7 @@ import React from 'react';
 import { Calendar, Clock, User, Share2, BookmarkPlus } from 'lucide-react';
 import './BlogPost.css';
 import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 // Dummy Data
 const dummyBlogData = {
@@ -202,6 +203,7 @@ const BlogPost = () => {
         )}
       </div>
     </div>
+     <Footer />
     </>
   );
 };
