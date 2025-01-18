@@ -4,7 +4,7 @@ import "./Java.css";
 export default function Java() {
   return (
     <div className="Java">
-      <h1>Presentation to Java</h1>
+      <h1>What is Java?</h1>
       <p>
         Java is an object-oriented, class-based high-level programming language
         that aims to have the fewest possible number of execution dependencies.

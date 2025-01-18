@@ -69,7 +69,7 @@ export default function Selenium() {
 
   // Define section names for dynamic URL mapping
   const sectionNames = [
-    "Intro", "Java", "Variables", "DataTypes", "JavaOperation", "JavaStrings",
+    "Introduction to Selenium", "Java", "Variables", "DataTypes", "JavaOperation", "JavaStrings",
     "JavaMethods", "JavaArrays", "JavaAbstraction", "JavaConditions", "JavaAPIs",
     "JavaConstructor", "DataTypeConversion", "Encapsulation", "EnumInJava",
     "ExceptionHandlingInJava", "FileHandlingInJava", "InheritanceDocument",

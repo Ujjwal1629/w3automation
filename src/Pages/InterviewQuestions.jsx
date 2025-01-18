@@ -34,6 +34,10 @@ const InterviewQA = () => {
         {
           question: 'What are the differences between Abstract Class and Interface?',
           answer: 'Abstract classes can have constructor, instance variables, and concrete methods, while interfaces can only have constants and abstract methods (prior to Java 8). A class can implement multiple interfaces but extend only one abstract class.'
+        },
+        {
+          question: 'testing?',
+          answer: 'testing'
         }
       ]
     },
@@ -149,7 +153,7 @@ const InterviewQA = () => {
             </div>
           </div>
 
-          <div className="topics-container">
+          <div className="topics-container flex flex-col">
             <div className="topics-grid">
               {filteredCategories.map((category) => (
                 <div

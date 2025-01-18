@@ -12,8 +12,10 @@ import TestimonialSection from "./Components/TestimonialSection";
 import InterviewQuestions from "./Pages/InterviewQuestions";
 import AboutUs from './Pages/AboutUs';
 import ApiTesting from "./Pages/ApiTesting";
+import ReactGA from "react-ga4";
 
 function App() {
+  ReactGA.initialize("G-FPDLKPFE8H");
   return (
     <div className="route">
       <Routes>

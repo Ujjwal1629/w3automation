@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Play, BookOpen, Code, Terminal, Search } from 'lucide-react';
 import './Home.css';
 import LearningPathways from './Learning';
+import ReactGA from "react-ga4";
 
 const codeExamples = {
   selenium: `
@@ -106,6 +107,17 @@ export default function Home() {
   const [charIndex, setCharIndex] = useState(0);
   const scrollContainerRef = useRef(null);
 
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+    
+    // Track initial landing
+    ReactGA.event({
+      category: "User Engagement",
+      action: "Page Visit",
+      label: "Home Page",
+    });
+  }, []);
+
   const filteredTopics = Object.entries(TOPICS_MAP).filter(([key, value]) => {
     const searchLower = searchQuery.toLowerCase();
     return (
@@ -113,19 +125,88 @@ export default function Home() {
       value.description.toLowerCase().includes(searchLower)
     );
   });
+
   const handleStartLearning = () => {
     const selectedPath = TOPICS_MAP[selectedTopic]?.path;
     if (selectedPath) {
+      // Track when user starts learning a topic
+      ReactGA.event({
+        category: "Learning Journey",
+        action: "Started Learning",
+        label: TOPICS_MAP[selectedTopic].title,
+      });
+      
       window.scrollTo(0, 0);
       navigate(selectedPath);
     }
   };
+
   const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
+    const query = e.target.value;
+    setSearchQuery(query);
+    
+    // Track search interactions
+    if (query.length > 2) {
+      ReactGA.event({
+        category: "Search",
+        action: "Topic Search",
+        label: query,
+      });
+    }
+
     if (filteredTopics.length === 1) {
       setSelectedTopic(filteredTopics[0][0]);
+      
+      // Track automatic topic selection from search
+      ReactGA.event({
+        category: "Search",
+        action: "Auto Select Topic",
+        label: filteredTopics[0][0],
+      });
     }
   };
+
+  const handleTopicSelection = (key) => {
+    setSelectedTopic(key);
+    
+    // Track manual topic selection
+    ReactGA.event({
+      category: "User Interaction",
+      action: "Topic Selected",
+      label: TOPICS_MAP[key].title,
+    });
+  };
+
+  // Track code example viewing
+  useEffect(() => {
+    if (selectedTopic) {
+      ReactGA.event({
+        category: "Content Interaction",
+        action: "Viewed Code Example",
+        label: TOPICS_MAP[selectedTopic].title,
+      });
+    }
+  }, [selectedTopic]);
+  // const filteredTopics = Object.entries(TOPICS_MAP).filter(([key, value]) => {
+  //   const searchLower = searchQuery.toLowerCase();
+  //   return (
+  //     value.title.toLowerCase().includes(searchLower) ||
+  //     value.description.toLowerCase().includes(searchLower)
+  //   );
+  // });
+  // const handleStartLearning = () => {
+  //   const selectedPath = TOPICS_MAP[selectedTopic]?.path;
+  //   if (selectedPath) {
+  //     window.scrollTo(0, 0);
+  //     navigate(selectedPath);
+  //   }
+  // };
+  // const handleSearch = (e) => {
+  //   setSearchQuery(e.target.value);
+  //   if (filteredTopics.length === 1) {
+  //     setSelectedTopic(filteredTopics[0][0]);
+  //   }
+  // };
 
   useEffect(() => {
     const currentText = placeholderTexts[textIndex];
