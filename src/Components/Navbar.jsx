@@ -107,6 +107,7 @@ export default function Navbar() {
         <a onClick={() => navigate("/InterviewQuestions")}>INTERVIEW QUESTIONS</a>
         <a onClick={() => navigate("/ApiTesting")}>API TESTING</a>
         <a onClick={() => navigate("/Blogs")}>BLOGS</a>
+        <a onClick={() => navigate("/AuthPractice")}>AUTHTESTING</a>
       </div>
     </nav>
   );
