@@ -108,7 +108,7 @@ const TestPractice = () => {
     <>
       <Navbar />
       <div className="test-practice">
-        <div className="practice-container">
+        <div className="practice-container1">
           <div className="form-container">
             <div className="form-header">
               <h1>Testing Practice Area</h1>

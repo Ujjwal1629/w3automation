@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +6,23 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isPracticeDropdownOpen, setIsPracticeDropdownOpen] = useState(false);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isPracticeDropdownOpen && !event.target.closest('.dropdown-container')) {
+        setIsPracticeDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isPracticeDropdownOpen]);
+
+  const togglePracticeDropdown = () => {
+    setIsPracticeDropdownOpen(!isPracticeDropdownOpen);
+  };
 
   const topics = [
     { title: "Java Basics", step: 1, route: "/Selenium/Intro" },
@@ -107,7 +124,26 @@ export default function Navbar() {
         <a onClick={() => navigate("/InterviewQuestions")}>INTERVIEW QUESTIONS</a>
         <a onClick={() => navigate("/ApiTesting")}>API TESTING</a>
         <a onClick={() => navigate("/Blogs")}>BLOGS</a>
-        <a onClick={() => navigate("/AuthPractice")}>AUTHTESTING</a>
+        <div className="dropdown-container">
+          <a 
+            className={isPracticeDropdownOpen ? 'active' : ''} 
+            onClick={togglePracticeDropdown}
+          >
+            Practice
+          </a>
+          {isPracticeDropdownOpen && (
+            <div className="dropdown-menu">
+              <a onClick={() => {
+                navigate("/AuthPractice");
+                setIsPracticeDropdownOpen(false);
+              }}>AUTHTESTING</a>
+              <a onClick={() => {
+                navigate("/APITestPractice");
+                setIsPracticeDropdownOpen(false);
+              }}>APITestPractice</a>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );
