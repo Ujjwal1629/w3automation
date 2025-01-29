@@ -129,7 +129,7 @@ export default function Navbar() {
             className={isPracticeDropdownOpen ? 'active' : ''} 
             onClick={togglePracticeDropdown}
           >
-            Practice
+            PRACTICE SITE
           </a>
           {isPracticeDropdownOpen && (
             <div className="dropdown-menu">
