@@ -24,8 +24,8 @@ const UserForm = () => {
     e.preventDefault();
 
     try {
-      // Replace with your backend API endpoint
-      const response = await fetch('https://your-backend-api.com/save-to-google-sheets', {
+      // Have to add our backend API endpoint
+      const response = await fetch('http://localhost:3000/save-to-google-sheets', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -55,7 +55,10 @@ const UserForm = () => {
 
   return (
     <div className="form-container">
-      {/* Course Details Section */}
+      {/* Background Overlay */}
+      <div className="background-overlay"></div>
+
+      {/* Two-Column Layout */}
       <div className="course-details">
         <h2>Selenium Java Automation Training</h2>
         <p><strong>Batch Starting Date:</strong> 4th September 2024</p>
@@ -78,102 +81,97 @@ const UserForm = () => {
         </ul>
         <p>Catch you all on Demo Classes at <strong>4th September - 8:00 PM IST</strong>.</p>
         <p><em>Thank You!</em></p>
-        <p><strong>Trainer Name:</strong> Hemant Gandhi</p>
+        <p><strong>Trainer Name:</strong> Hemant Gandhi -  <strong>+91- 8810201221</strong></p>
       </div>
 
-      {/* Form Section */}
-      <h2>Register Now</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="firstName">First Name</label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="whatsappNumber">WhatsApp Number</label>
-          <input
-            type="tel"
-            id="whatsappNumber"
-            name="whatsappNumber"
-            value={formData.whatsappNumber}
-            onChange={handleChange}
-            placeholder="Enter your WhatsApp number"
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="email">Email ID</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Enter your email address"
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="country">Country</label>
-          <input
-            type="text"
-            id="country"
-            name="country"
-            value={formData.country}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="experience">Total Experience in IT/Testing</label>
-          <input
-            type="text"
-            id="experience"
-            name="experience"
-            value={formData.experience}
-            onChange={handleChange}
-            placeholder="e.g., 5 years"
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="queries">Any Queries?</label>
-          <textarea
-            id="queries"
-            name="queries"
-            value={formData.queries}
-            onChange={handleChange}
-            placeholder="Mention your queries here (optional)"
-          />
-        </div>
-
-        <button type="submit" className="submit-btn">
-          Submit
-        </button>
-      </form>
+      {/* Registration Form */}
+      <div className="form-section">
+        <h2>Register Now</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="firstName">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="whatsappNumber">WhatsApp Number</label>
+            <input
+              type="tel"
+              id="whatsappNumber"
+              name="whatsappNumber"
+              value={formData.whatsappNumber}
+              onChange={handleChange}
+              placeholder="Enter your WhatsApp number"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email ID</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email address"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="country">Country</label>
+            <input
+              type="text"
+              id="country"
+              name="country"
+              value={formData.country}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="experience">Total Experience in IT/Testing</label>
+            <input
+              type="text"
+              id="experience"
+              name="experience"
+              value={formData.experience}
+              onChange={handleChange}
+              placeholder="e.g., 5 years"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="queries">Any Queries?</label>
+            <textarea
+              id="queries"
+              name="queries"
+              value={formData.queries}
+              onChange={handleChange}
+              placeholder="Mention your queries here (optional)"
+            />
+          </div>
+          <button type="submit" className="submit-btn">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
