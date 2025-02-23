@@ -1,249 +1,197 @@
-import React, { useState } from 'react';
-import { Eye, EyeOff, AlertCircle, CheckCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../Components/Navbar';
 
+const generateDynamicId = (base, type) => {
+  const timestamp = Date.now().toString();
+  if (type === 'start') return `1234${timestamp.slice(-4)}`;
+  if (type === 'end') return `${timestamp.slice(-4)}5678`;
+  if (type === 'contains') return `87${timestamp.slice(-4)}65`;
+  return timestamp;
+};
+
 const TestPractice = () => {
-  const [formType, setFormType] = useState('login');
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    username: '',
-    confirmPassword: '',
-    duplicateField1: '',
-    duplicateField2: ''
-  });
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
+  const [dynamicStart, setDynamicStart] = useState('');
+  const [dynamicEnd, setDynamicEnd] = useState('');
+  const [dynamicContains, setDynamicContains] = useState('');
 
-  // Dynamic ID generation for practice
-  const generateDynamicId = (prefix, index) => {
-    const timestamp = Date.now();
-    return `${prefix}_${timestamp}_${index}`;
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSuccessMessage('Form submitted successfully!');
-    }, 2000);
-  };
+  useEffect(() => {
+    setDynamicStart(generateDynamicId('dynamic', 'start'));
+    setDynamicEnd(generateDynamicId('dynamic', 'end'));
+    setDynamicContains(generateDynamicId('dynamic', 'contains'));
+  }, []);
 
   return (
     <>
-    <Navbar />
-    <div className="test-practice">
-      <div className="practice-container1">
-        <div className="form-container">
-          <div className="form-header">
-            <h1>Automation Testing Practice Area</h1>
-            <p>Practice various locator strategies and relative locators</p>
-          </div>
+      <Navbar />
+      <div className="test-practice">
+        <div className="practice-container">
+          <header className="practice-header">
+            <h1>Automation Testing Practice</h1>
+            <p>Practice different locator strategies and test scenarios</p>
+          </header>
 
-          {/* Duplicate Elements Section */}
           <div className="practice-section">
-            <h3>Practice Duplicate Elements</h3>
-            <div className="duplicate-fields">
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="duplicate-input"
-                  name="duplicateField1"
-                  placeholder="First duplicate field"
-                  data-testid="duplicate-1"
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="duplicate-input"
-                  name="duplicateField2"
-                  placeholder="Second duplicate field"
-                  data-testid="duplicate-2"
-                  onChange={handleInputChange}
-                />
-              </div>
+            <div className="section-header">
+              <h3>📝 Identical Fields</h3>
+              <span className="section-desc">Practice handling duplicate elements</span>
+            </div>
+            <div className="input-group">
+              <input type="text" id="duplicateField" className="identical-input" placeholder="Identical Field" />
+              <input type="text" id="duplicateField" className="identical-input" placeholder="Identical Field" />
             </div>
           </div>
 
-          {/* Relative Locators Practice Section */}
           <div className="practice-section">
-            <h3>Practice Relative Locators</h3>
-            <div className="relative-elements-grid">
-              <button className="reference-btn" id="centerButton">Center</button>
-              <button className="reference-btn above" id="aboveButton">Above</button>
-              <button className="reference-btn below" id="belowButton">Below</button>
-              <button className="reference-btn left" id="leftButton">Left</button>
-              <button className="reference-btn right" id="rightButton">Right</button>
+            <div className="section-header">
+              <h3>🔄 Dynamic ID Testing</h3>
+              <span className="section-desc">Handle elements with dynamic IDs</span>
+            </div>
+            <div className="input-group">
+              <input type="text" id={dynamicStart} className="dynamic-input" placeholder="ID starts with" />
+              <input type="text" id={dynamicContains} className="dynamic-input" placeholder="ID contains" />
+              <input type="text" id={dynamicEnd} className="dynamic-input" placeholder="ID ends with" />
             </div>
           </div>
 
-          {/* Dynamic IDs Practice Section */}
           <div className="practice-section">
-            <h3>Practice Dynamic IDs</h3>
-            <div className="dynamic-elements">
-              <input
-                type="text"
-                id={generateDynamicId('input', 'start')}
-                className="dynamic-input"
-                placeholder="ID starts with 'input'"
-              />
-              <input
-                type="text"
-                id={`middle_${Date.now()}_field`}
-                className="dynamic-input"
-                placeholder="ID contains 'field'"
-              />
-              <input
-                type="text"
-                id={`practice_${Date.now()}_end`}
-                className="dynamic-input"
-                placeholder="ID ends with 'end'"
-              />
+            <div className="section-header">
+              <h3>🎯 Relative Locator Testing</h3>
+              <span className="section-desc">Practice relative locator strategies</span>
             </div>
-          </div>
-
-          <form onSubmit={handleSubmit} className="practice-form">
-            <button
-              type="submit"
-              className={`submit-button ${loading ? 'loading' : ''}`}
-              disabled={loading}
-            >
-              {loading ? (
-                <span className="loading-spinner"></span>
-              ) : (
-                'Submit Form'
-              )}
-            </button>
-          </form>
-
-          <div className="testing-hints">
-            <h3>Testing Scenarios:</h3>
-            <ul>
-              <li>Find elements with duplicate attributes using index</li>
-              <li>Use relative locators (above, below, left-of, right-of)</li>
-              <li>Handle dynamic IDs using starts-with, contains, and ends-with</li>
-              <li>Practice various XPath and CSS selector strategies</li>
-            </ul>
+            <div className="relative-grid">
+              <input type="text" id="baseField" className="relative-input base" placeholder="Base Field" />
+              <input type="text" id="aboveField" className="relative-input above" placeholder="Above Base" />
+              <input type="text" id="belowField" className="relative-input below" placeholder="Below Base" />
+              <input type="text" id="leftField" className="relative-input left" placeholder="Left of Base" />
+              <input type="text" id="rightField" className="relative-input right" placeholder="Right of Base" />
+            </div>
           </div>
         </div>
+
+        <style jsx>{`
+          .test-practice {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+          }
+
+          .practice-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+          }
+
+          .practice-header {
+            text-align: center;
+            margin-bottom: 3rem;
+          }
+
+          .practice-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+          }
+
+          .practice-header p {
+            font-size: 1.2rem;
+            color: #64748b;
+          }
+
+          .practice-section {
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+          }
+
+          .practice-section:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+          }
+
+          .section-header {
+            margin-bottom: 1.5rem;
+          }
+
+          .section-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+          }
+
+          .section-desc {
+            font-size: 0.95rem;
+            color: #64748b;
+          }
+
+          .input-group {
+            display: grid;
+            gap: 1rem;
+          }
+
+          .identical-input, .dynamic-input, .relative-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+          }
+
+          .identical-input:focus, .dynamic-input:focus, .relative-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+          }
+
+          .relative-grid {
+            display: grid;
+            grid-template-areas:
+              ".... above ...."
+              "left base right"
+              ".... below ....";
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+          }
+
+          .base { grid-area: base; background: #eef2ff; }
+          .above { grid-area: above; }
+          .below { grid-area: below; }
+          .left { grid-area: left; }
+          .right { grid-area: right; }
+
+          @media (max-width: 768px) {
+            .practice-container {
+              padding: 1.5rem;
+            }
+
+            .practice-section {
+              padding: 1.5rem;
+            }
+
+            .relative-grid {
+              grid-template-areas:
+                "above"
+                "left"
+                "base"
+                "right"
+                "below";
+            }
+          }
+        `}</style>
       </div>
-
-      <style jsx>{`
-        .test-practice {
-          padding: 2rem;
-          background: #f3f4f6;
-          min-height: 100vh;
-        }
-
-        .practice-container1 {
-          max-width: 800px;
-          margin: 0 auto;
-        }
-
-        .form-container {
-          background: white;
-          padding: 2rem;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .practice-section {
-          margin: 2rem 0;
-          padding: 1rem;
-          border: 1px solid #e5e7eb;
-          border-radius: 4px;
-        }
-
-        .duplicate-fields {
-          display: flex;
-          gap: 1rem;
-        }
-
-        .relative-elements-grid {
-          display: grid;
-          grid-template-areas:
-            ". above ."
-            "left center right"
-            ". below .";
-          gap: 1rem;
-          margin: 2rem 0;
-        }
-
-        .reference-btn {
-          padding: 0.5rem 1rem;
-          background: #4f46e5;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
-
-        .reference-btn.above { grid-area: above; }
-        .reference-btn.below { grid-area: below; }
-        .reference-btn.left { grid-area: left; }
-        .reference-btn.right { grid-area: right; }
-        #centerButton { grid-area: center; }
-
-        .dynamic-elements {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .dynamic-input {
-          padding: 0.5rem;
-          border: 1px solid #e5e7eb;
-          border-radius: 4px;
-        }
-
-        .submit-button {
-          width: 100%;
-          padding: 0.75rem;
-          background: #4f46e5;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
-
-        .submit-button:disabled {
-          opacity: 0.7;
-          cursor: not-allowed;
-        }
-
-        .loading-spinner {
-          width: 20px;
-          height: 20px;
-          border: 2px solid #ffffff;
-          border-radius: 50%;
-          border-top-color: transparent;
-          animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
-    </div>
     </>
   );
 };

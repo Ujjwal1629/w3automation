@@ -141,6 +141,10 @@ export default function Navbar() {
                 navigate("/APITestPractice");
                 setIsPracticeDropdownOpen(false);
               }}>API Testing</a>
+               <a onClick={() => {
+                navigate("/AlertTest");
+                setIsPracticeDropdownOpen(false);
+              }}>Alert Box</a>
             </div>
           )}
         </div>
