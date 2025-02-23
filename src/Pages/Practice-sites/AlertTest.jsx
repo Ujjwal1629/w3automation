@@ -1,127 +1,118 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Navbar from '../../Components/Navbar';
 
 const AlertTest = () => {
   const [testResult, setTestResult] = useState('');
 
-  const styles = {
+// Update the styles object with responsive styles
+const styles = {
     container: {
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%)',
-      padding: '32px',
-      fontFamily: "'Inter', sans-serif"
+      padding: '16px',
+      fontFamily: "'Inter', sans-serif",
+      '@media (minWidth: 768px)': {
+        padding: '32px'
+      }
     },
     mainWrapper: {
       maxWidth: '1400px',
       margin: '0 auto',
-      width: '95%'
+      width: '100%',
+      padding: '0 16px'
     },
     card: {
       display: 'grid',
-      gridTemplateColumns: '1fr 2fr',
-      gap: '32px',
+      gridTemplateColumns: '1fr',
+      gap: '24px',
       background: 'white',
-      padding: '32px',
+      padding: '20px',
       borderRadius: '16px',
-      boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)'
-    },
-    leftColumn: {
-      background: '#f8fafc',
-      padding: '24px',
-      borderRadius: '12px',
-      border: '1px solid #e2e8f0',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '20px'
-    },
-    rightColumn: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '24px'
+      boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)',
+      '@media (minWidth: 768px)': {
+        gridTemplateColumns: '1fr 2fr',
+        gap: '32px',
+        padding: '32px'
+      }
     },
     header: {
-      marginBottom: '32px',
-      textAlign: 'center'
+      marginBottom: '24px',
+      textAlign: 'center',
+      '@media (minWidth: 768px)': {
+        marginBottom: '32px'
+      }
     },
     title: {
-      fontSize: '2.5rem',
+      fontSize: '1.8rem',
       fontWeight: 'bold',
       background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
-      marginBottom: '16px'
+      marginBottom: '12px',
+      '@media (minWidth: 768px)': {
+        fontSize: '2.5rem',
+        marginBottom: '16px'
+      }
     },
     subtitle: {
       color: '#4b5563',
-      fontSize: '1.2rem'
-    },
-    resultContainer: {
-      background: '#ffffff',
-      borderRadius: '12px',
-      padding: '24px',
-      border: '1px solid #e2e8f0',
-      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)'
-    },
-    resultTitle: {
-      fontSize: '1.25rem',
-      fontWeight: '600',
-      color: '#1f2937',
-      marginBottom: '16px',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '8px'
-    },
-    resultCode: {
-      background: '#f8fafc',
-      padding: '16px',
-      borderRadius: '8px',
       fontSize: '1rem',
-      color: '#4b5563',
-      fontFamily: 'monospace',
-      border: '1px solid #e2e8f0'
+      '@media (minWidth: 768px)': {
+        fontSize: '1.2rem'
+      }
     },
-    button: {
-      padding: '16px 24px',
-      border: 'none',
-      borderRadius: '12px',
-      color: 'white',
-      fontWeight: '500',
-      cursor: 'pointer',
-      transition: 'all 0.3s ease',
-      fontSize: '1.1rem',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      gap: '12px'
-    },
-    basicButton: {
-      background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'
-    },
-    confirmButton: {
-      background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)'
-    },
-    promptButton: {
-      background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)'
-    },
-    infoSection: {
-      background: '#ffffff',
-      borderRadius: '12px',
-      padding: '24px',
-      border: '1px solid #e2e8f0'
-    },
-    infoCard: {
+    leftColumn: {
       background: '#f8fafc',
       padding: '20px',
-      borderRadius: '8px',
-      marginBottom: '16px',
-      border: '1px solid #e2e8f0'
+      borderRadius: '12px',
+      border: '1px solid #e2e8f0',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '16px',
+      '@media (minWidth: 768px)': {
+        padding: '24px',
+        gap: '20px'
+      }
     },
-    description: {
+    button: {
+      padding: '14px 20px',
       fontSize: '1rem',
-      color: '#4b5563',
-      lineHeight: '1.6'
+      '@media (minWidth: 768px)': {
+        padding: '16px 24px',
+        fontSize: '1.1rem'
+      }
+    },
+    resultContainer: {
+      padding: '16px',
+      '@media (minWidth: 768px)': {
+        padding: '24px'
+      }
+    },
+    infoCard: {
+      padding: '16px',
+      marginBottom: '12px',
+      '@media (minWidth: 768px)': {
+        padding: '20px',
+        marginBottom: '16px'
+      }
+    },
+    resultTitle: {
+      fontSize: '1.1rem',
+      '@media (minWidth: 768px)': {
+        fontSize: '1.25rem'
+      }
     }
   };
+  
+  // Add a useEffect hook to handle responsive design
+  useEffect(() => {
+    const handleResize = () => {
+      // Add any specific resize logic if needed
+    };
+  
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleBasicAlert = () => {
     alert('This is a basic alert message!');

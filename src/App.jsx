@@ -29,7 +29,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Selenium/*" element={<Selenium />} />
         <Route path="/Playwright/*" element={<Playwright />} />
-        <Route path="/ApiTesting/*" element={<ApiTesting />} />
+        {/* <Route path="/ApiTesting/*" element={<ApiTesting />} /> */}
         <Route path="/InterviewQuestions/*" element={<InterviewQuestions />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/Blogs" element={<BlogPost />} />
