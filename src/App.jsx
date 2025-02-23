@@ -16,6 +16,7 @@ import ReactGA from "react-ga4";
 import BlogPost from "./Pages/BlogPost";
 import TestPractice from "./Pages/Practice-sites/TestPractice";
 import APITestPractice from "./Pages/Practice-sites/APITestPractice";
+import UserForm from "./Pages/UserForm/UserForm";
 
 function App() {
   ReactGA.initialize("G-FPDLKPFE8H");
@@ -34,6 +35,7 @@ function App() {
         <Route path="/Blogs" element={<BlogPost />} />
         <Route path="/AuthPractice" element={<TestPractice />} />
         <Route path="/APITestPractice" element={<APITestPractice />} />
+        <Route path="/userForm" element={<UserForm/>} />
       </Routes>
     </div>
   );
