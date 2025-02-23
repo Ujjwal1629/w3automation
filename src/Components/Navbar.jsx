@@ -122,7 +122,7 @@ export default function Navbar() {
         <a onClick={() => navigate("/Selenium")}>SELENIUM WITH JAVA</a>
         <a onClick={() => navigate("/Playwright")}>PLAYWRIGHT</a>
         <a onClick={() => navigate("/InterviewQuestions")}>INTERVIEW QUESTIONS</a>
-        <a onClick={() => navigate("/ApiTesting")}>API TESTING</a>
+        {/* <a onClick={() => navigate("/ApiTesting")}>API TESTING</a> */}
         <a onClick={() => navigate("/Blogs")}>BLOGS</a>
         <div className="dropdown-container">
           <a 
@@ -141,6 +141,10 @@ export default function Navbar() {
                 navigate("/APITestPractice");
                 setIsPracticeDropdownOpen(false);
               }}>API Testing</a>
+               <a onClick={() => {
+                navigate("/AlertTest");
+                setIsPracticeDropdownOpen(false);
+              }}>Alert Box</a>
             </div>
           )}
         </div>

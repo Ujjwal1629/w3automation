@@ -16,7 +16,7 @@ import ReactGA from "react-ga4";
 import BlogPost from "./Pages/BlogPost";
 import TestPractice from "./Pages/Practice-sites/TestPractice";
 import APITestPractice from "./Pages/Practice-sites/APITestPractice";
-import UserForm from "./Pages/UserForm/UserForm";
+import AlertTest from './Pages/Practice-sites/AlertTest.jsx';
 
 function App() {
   ReactGA.initialize("G-FPDLKPFE8H");
@@ -29,13 +29,12 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Selenium/*" element={<Selenium />} />
         <Route path="/Playwright/*" element={<Playwright />} />
-        <Route path="/ApiTesting/*" element={<ApiTesting />} />
+        {/* <Route path="/ApiTesting/*" element={<ApiTesting />} /> */}
         <Route path="/InterviewQuestions/*" element={<InterviewQuestions />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/Blogs" element={<BlogPost />} />
         <Route path="/AuthPractice" element={<TestPractice />} />
         <Route path="/APITestPractice" element={<APITestPractice />} />
-        <Route path="/userForm" element={<UserForm/>} />
       </Routes>
     </div>
   );
