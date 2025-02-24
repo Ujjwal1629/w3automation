@@ -34,7 +34,7 @@ const UserForm = () => {
       });
 
       if (response.ok) {
-        alert('Thank you for registering! You will receive updates soon.');
+        alert('Thank you for registering! You will be added to a WhatsApp group for further information on the course..');
         setFormData({
           firstName: '',
           lastName: '',
@@ -53,6 +53,15 @@ const UserForm = () => {
     }
   };
 
+  // Function to handle copying the phone number to the clipboard
+  const copyPhoneNumber = () => {
+    navigator.clipboard.writeText('+91 8810201221').then(() => {
+      alert('Phone number copied to clipboard');
+    }).catch((err) => {
+      console.error('Failed to copy phone number: ', err);
+    });
+  };
+
   return (
     <div className="form-container">
       {/* Background Overlay */}
@@ -61,7 +70,8 @@ const UserForm = () => {
       {/* Two-Column Layout */}
       <div className="course-details">
         <h2>Selenium Java Automation Training</h2>
-        <p><strong>Batch Starting Date:</strong> 4th September 2024</p>
+        <p><strong>Demo sessions:</strong> 15th and 16th March 2025 at 8 PM IST</p>
+        <p><strong>Batch Starting Date:</strong> 17th March 2025</p>
         <p><strong>Course Content:</strong> Java, Selenium, TestNG, Page Object Model, Framework Types, Writing Automation Framework from Scratch, Git, GitHub, GitHub Desktop, Agile Methodology, Resume Assistance, and many more!</p>
         <p><strong>Why Join Us?</strong></p>
         <ul>
@@ -79,9 +89,14 @@ const UserForm = () => {
           <li>✅ Course Fees: INR 8000 / 100€ / 120 USD</li>
           <li>✅ Mode of Training: Online</li>
         </ul>
-        <p>Catch you all on Demo Classes at <strong>4th September - 8:00 PM IST</strong>.</p>
+        <p>Catch you all on Demo Classes on <strong>15th and 16th March 2025 at 8 PM IST</strong>.</p>
         <p><em>Thank You!</em></p>
-        <p><strong>Trainer Name:</strong> Hemant Gandhi -  <strong>+91- 8810201221</strong></p>
+        <p><strong>Trainer Name:</strong>Hemant Gandhi
+        {/* <strong>(+91-8810201221)</strong></p> */}
+        <strong><span onClick={copyPhoneNumber} style={{ cursor: 'pointer', textDecoration: 'none', userSelect: 'none' }}>
+          (+91-8810201221)
+        </span></strong>
+        </p>
       </div>
 
       {/* Registration Form */}
