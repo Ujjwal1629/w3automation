@@ -159,3 +159,18 @@ textarea {
   font-size: 0.875rem;
   margin-top: 0.25rem;
 }
+
+.react-phone-number-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.react-phone-number-input__input {
+  border: none;
+  outline: none;
+}
+
+.react-phone-number-input__country-select {
+  margin-right: 8px;
+}

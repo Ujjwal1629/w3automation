@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import PhoneInput from 'react-phone-number-input';
+import { isValidPhoneNumber } from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 import './UserForm.css';
 
 const UserForm = () => {
@@ -40,9 +43,9 @@ const UserForm = () => {
     }
 
     // WhatsApp Number validation
-    if (!formData.whatsappNumber.trim()) {
+    if (!formData.whatsappNumber) {
       newErrors.whatsappNumber = 'WhatsApp Number is required';
-    } else if (!/^\d{10,}$/.test(formData.whatsappNumber)) {
+    } else if (!isValidPhoneNumber(formData.whatsappNumber)) {
       newErrors.whatsappNumber = 'Invalid WhatsApp Number';
     }
 
@@ -199,14 +202,13 @@ const UserForm = () => {
           </div>
           <div className="form-group">
             <label htmlFor="whatsappNumber">WhatsApp Number</label>
-            <input
-              type="tel"
-              id="whatsappNumber"
-              name="whatsappNumber"
-              value={formData.whatsappNumber}
-              onChange={handleChange}
-              placeholder="Enter your WhatsApp number"
-            />
+              <PhoneInput
+                international
+                defaultCountry="IN" // Default country (e.g., India)
+                value={formData.whatsappNumber}
+                onChange={(value) => setFormData({ ...formData, whatsappNumber: value })}
+                placeholder="Enter your WhatsApp number"
+              />
             {errors.whatsappNumber && <span className="error">{errors.whatsappNumber}</span>}
           </div>
           <div className="form-group">

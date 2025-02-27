@@ -36,6 +36,7 @@ function App() {
         <Route path="/Blogs" element={<BlogPost />} />
         <Route path="/AuthPractice" element={<TestPractice />} />
         <Route path="/APITestPractice" element={<APITestPractice />} />
+        <Route path="/AlertTest" element={<AlertTest />} />
         <Route path="/userForm" element={<UserForm/>} />
       </Routes>
     </div>
