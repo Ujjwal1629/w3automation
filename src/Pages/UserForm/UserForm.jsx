@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import { isValidPhoneNumber } from 'react-phone-number-input';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'react-phone-number-input/style.css';
 import './UserForm.css';
 
@@ -84,9 +86,16 @@ const UserForm = () => {
       });
 
       if (response.ok) {
-        alert(
-          'Thank you for registering! You will be added to a WhatsApp group for further information on the course.'
-        );
+        
+        toast.success('Thank you for registering! You will be added to a WhatsApp group for further information on the course.', {
+          position: 'top-right',
+          autoClose: 5000, // Close after 5 seconds
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+
         // Reset form data after successful submission
         setFormData({
           firstName: '',
@@ -120,6 +129,8 @@ const UserForm = () => {
 
   return (
     <div className="form-container">
+      <ToastContainer />
+
       {/* Background Overlay */}
       <div className="background-overlay"></div>
 
