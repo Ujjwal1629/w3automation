@@ -1,0 +1,15 @@
+.instructor-container {
+    margin-top: 20px;
+  }
+  
+  .instructor-container h2 {
+    font-size: 24px;
+    color: #6A5ACD;
+    margin-bottom: 15px;
+  }
+  
+  .instructor-container p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #f5f5f5;
+  }

@@ -1,0 +1,88 @@
+.overview-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .left-section {
+    flex: 70%;
+  }
+  
+  .right-section {
+    flex: 30%;
+  }
+  
+  .left-section h3,
+  .right-section h3 {
+    font-size: 20px;
+    color: #6A5ACD;
+    margin-bottom: 10px;
+  }
+  
+  .left-section p {
+    font-size: 16px;
+    color: #f5f5f5;
+    margin-bottom: 15px;
+  }
+  
+  .left-section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .left-section li {
+    font-size: 16px;
+    color: #f5f5f5;
+    margin-bottom: 5px;
+  }
+  
+  .right-section {
+    flex: 30%;
+  }
+  
+  .right-section h3 {
+    font-size: 20px;
+    color: #6A5ACD; /* Highlighted heading */
+    margin-bottom: 15px;
+  }
+  
+  .right-section table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #333; /* Dark background for table */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .right-section td {
+    padding: 12px;
+    font-size: 16px;
+    color: #f5f5f5; /* Light text for contrast */
+    border-bottom: 1px solid #444; /* Subtle divider between rows */
+  }
+  
+  .right-section tr:last-child td {
+    border-bottom: none; /* Remove border from the last row */
+  }
+  
+  .right-section tr:nth-child(even) {
+    background-color: #2c2c2c; /* Alternate row color */
+  }
+  
+  .right-section tr:hover {
+    background-color: #4e73df; /* Hover effect for interactivity */
+  }
+  
+  .right-section td:first-child {
+    font-weight: bold; /* Bold feature names */
+    color: #6A5ACD; /* Highlight feature names */
+  }
+  
+  iframe {
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border: none;
+  }
