@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Tabs from './Tabs';
-import OverviewContent from './OverviewContent';
-import CurriculumContent from './CurriculumContent';
-import InstructorContent from './InstructorContent';
+import Tabs from './Tabs/Tabs';
+import OverviewContent from './Overview/OverviewContent';
+import CurriculumContent from './Curriculum/CurriculumContent';
+import InstructorContent from './Instructor/InstructorContent';
 import './CourseDetailPage.css'; // Import the corresponding CSS file
 import profilePic from '../../assets/night.png';
 
