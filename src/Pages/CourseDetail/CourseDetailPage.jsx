@@ -1,147 +1,178 @@
+// CourseDetailPage.jsx
 import React, { useState } from 'react';
-import Tabs from './Tabs/Tabs';
-import OverviewContent from './Overview/OverviewContent';
-import CurriculumContent from './Curriculum/CurriculumContent';
-import InstructorContent from './Instructor/InstructorContent';
-import './CourseDetailPage.css'; // Import the corresponding CSS file
-import profilePic from '../../assets/night.png';
+import './CourseDetailPage.css';
+import courseImage from '../../assets/night.png'
 
 const CourseDetailPage = () => {
-  const [activeTab, setActiveTab] = useState('Overview');
+  const [expandedSyllabus, setExpandedSyllabus] = useState(null);
 
-  const courseDetails = {
-    courseName: 'Selenium Java Automation Training',
-    instructorName: 'Hemant Gandhi',
-    instructorProfilePic: profilePic, // Replace with actual image URL
-    overview: {
-      classSchedule: 'Mon - Thu, 8:00 PM - 9:30 PM IST',
-      demoSessions: 'First 2 sessions are free!',
-      salientFeatures: ['Live Classes', 'Recorded Sessions', 'Resume Assistance', 'Interview Prep'],
-      syllabus: [
-        {
-            title: 'Core Java Topics Covered in Course – 18 Sessions – 25 Hours',
-            topics: [
-                'Introduction to Core Java',
-                'Basic Java Programming and Features',
-                'Methods - Introduction',
-                'Predefined Method - MathRandom Class',
-                'Methods - Static and Non Static',
-                'If and Else Statements',
-                'For Loops',
-                'Nested Loops',
-                'Break and Continue',
-                'Switch cases',
-                'Do While Loops',
-                'Arrays 2D and 3D',
-                'Java Keywords - this, static, super and final, Constructors, Exception handling.',
-                'OOPS - Static and Non Static',
-                'Exception Handling',
-                'Packages and Access Modifiers',
-                'Java Collections - ArrayList, HashMap, HashSet',                
-            ],
-          },
-          {
-            title: 'Introduction to Selenium – 2 Sessions – 3 Hours',
-            topics: [
-                'What is Test Automation?',
-                'Why Test Automation?',
-                'Types of Testing Tools',
-                'Effective Use of Tools - potential benefits and risks',
-                'Difference between manual and Automation.',
-                'The automated Testing process',
-                'Introduction to Selenium',
-                'Discussion on Selenium platform independence and browser independence',
-                'Detailed Discussion on selenium architecture and components',
-                'Locators',
-                'Locating elements using ID, Name, link and Xpath, Relative locators in Selenium 4.0',
-                'Understanding of ChroPath and SelectorsHub',
-            ],
-          },
-        {
-          title: 'Selenium Webdriver – 9 Sessions – 15 Hours',
-          topics: [
-            'WebDriver Introduction',
-            'Selenium Webdriver Basics and Architecture',
-            'WebElement, Explicit and Implicit Wait',
-            'Handling MouseOvers, drag and drop and other gestures',
-            'Alerts and Actions',
-            'Iframes, tabs and popups handling',
-            'Handling CheckBoxes and Alerts',
-            'Xpath vs CSS, Actions',
-            'Window Handling, JavaScriptExecutor, Properties',
-          ],
-        },
-        {
-          title: 'Advance Selenium Webdriver – 9 Sessions – 18 Hours',
-          topics: [
-            'Handling JavaScript alerts and Keyboard Events',
-            'Maven, DB Connectivity and TestNG',
-            'POI JARS',
-            'Log4j API',
-            'TestNG - Parameterization, groups, testsuites etc',
-            'Extent Reports and Allure Reports',
-            'Page Object Model Design Pattern',
-            'Keyword Driven Framework',
-            'Data Driven Framework',
-          ],
-        },
-        {
-          title: 'Version Control – 1 Session – 2 hours',
-          topics: ['Git', 'GitHub', 'Github Desktop'],
-        },
-        {
-          title: 'CI / CD - Jenkins Pipeline – 2 Sessions – 3 Hours',
-          topics: [
-            'Continuous Integration using Jenkins and GIT on EC2 Instance of AWS cloud',
-            'Configuring the CI CD Pipeline',
-            'Running the pipeline from Jenkins File'
-            ],
-        },
-      ],
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video URL
-    },
-    courseFeatures: {
+  // Sample dynamic data (this could come from an API)
+  const courseData = {
+    title: "Complete Automation Testing Masterclass",
+    description: "Master automation testing with industry-standard tools and practices",
+    enrolled: 521000,
+    stats: {
       lectures: 95,
       quiz: 0,
-      duration: '30 hours',
-      skillLevel: 'All levels',
-      language: 'English',
+      duration: "30 hours",
+      skillLevel: "All levels",
+      language: "English",
       students: 1100,
-      assessments: 'Yes',
+      assessments: "Yes"
     },
-    curriculum: [
-      { week: 'Week 1', topics: ['Introduction to Java', 'Basic Syntax'] },
-      { week: 'Week 2', topics: ['Control Flow', 'Functions'] },
-      { week: 'Week 3', topics: ['OOP Concepts', 'Exception Handling'] },
+    schedule: {
+      classTiming: "Mon - Thu, 8:00 PM - 9:30 PM IST",
+      demo: "First 2 sessions are free!",
+      features: [
+        "Live Classes",
+        "Recorded Sessions",
+        "Resume Assistance",
+        "Interview Prep",
+        "Course Syllabus"
+      ]
+    },
+    syllabus: [
+      {
+        title: "Core Java",
+        topics: [
+          "Basic Java Programming and Features",
+          "Methods - Introduction",
+          "Predefined Method - MathRandom Class",
+          "Methods - Static and Non Static"
+        ]
+      },
+      {
+        title: "Introduction to Selenium",
+        topics: [
+          "Selenium Basics",
+          "Setup and Configuration",
+          "First Test Case"
+        ]
+      }
     ],
-    instructorBio:
-      'Hemant Gandhi is an experienced automation tester with over 10 years of experience in Selenium and Java.',
+    pricing: {
+      price: "$199",
+      contact: "+1-555-0123",
+      linkedin: "https://linkedin.com/company/example"
+    },
+    instructor: {
+      name: "John Doe",
+      bio: "10+ years industry experience in automation testing",
+      image: courseImage
+    }
   };
 
   return (
-    <div className="course-page">
-      {/* Course Name */}
-      <div className="course-header">
-        <h1>{courseDetails.courseName}</h1>
-      </div>
+    <div className="course-detail-page">
+      {/* Header Section */}
+      <header className="course-header">
+        <div className="header-content">
+          <h1 className="course-title">{courseData.title}</h1>
+          <p className="course-desc">{courseData.description}</p>
+          <p className="enrollment">
+            {courseData.enrolled.toLocaleString()} students enrolled
+          </p>
+        </div>
+        <div className="header-image">
+          <img src={`${courseImage}`} alt="Course" className="course-img-3d" />
+        </div>
+      </header>
 
-      {/* Instructor Info */}
-      <div className="instructor-info">
-        <img src={courseDetails.instructorProfilePic} alt="Instructor" />
-        <h2>{courseDetails.instructorName}</h2>
-      </div>
+      {/* Middle Section */}
+      <section className="course-middle">
+        <div className="middle-content">
+          {/* Course Stats */}
+          <div className="stats-grid">
+            {Object.entries(courseData.stats).map(([key, value]) => (
+              <div key={key} className="stat-card card-3d">
+                <span className="stat-value">{value}</span>
+                <span className="stat-label">{key}</span>
+              </div>
+            ))}
+          </div>
 
-      {/* Tabs */}
-      <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+          {/* Schedule Section */}
+          <div className="schedule-section card-3d">
+            <h2>Class/Demo Timings & Features</h2>
+            <div className="schedule-content">
+              <p><strong>Class Schedule:</strong> {courseData.schedule.classTiming}</p>
+              <p><strong>Demo Sessions:</strong> {courseData.schedule.demo}</p>
+              <div className="features">
+                <h3>Salient Features:</h3>
+                <ul>
+                  {courseData.schedule.features.map((feature, index) => (
+                    <li key={index}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
 
-      {/* Tab Content */}
-      <div className="tab-content">
-        {activeTab === 'Overview' && (
-          <OverviewContent details={courseDetails.overview} features={courseDetails.courseFeatures} />
-        )}
-        {activeTab === 'Curriculum' && <CurriculumContent curriculum={courseDetails.curriculum} />}
-        {activeTab === 'Instructor' && <InstructorContent bio={courseDetails.instructorBio} />}
-      </div>
+          {/* Syllabus Section */}
+          <div className="syllabus-section">
+            <h2>Course Syllabus</h2>
+            {courseData.syllabus.map((item, index) => (
+              <div key={index} className="syllabus-item card-3d">
+                <div 
+                  className="syllabus-header"
+                  onClick={() => setExpandedSyllabus(
+                    expandedSyllabus === item.title ? null : item.title
+                  )}
+                >
+                  <h3>{item.title}</h3>
+                  <span className="expand-btn">
+                    {expandedSyllabus === item.title ? '-' : '+'}
+                  </span>
+                </div>
+                {expandedSyllabus === item.title && (
+                  <ul className="syllabus-topics">
+                    {item.topics.map((topic, idx) => (
+                      <li key={idx}>{topic}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Pricing Sidebar */}
+        <aside className="pricing-sidebar card-3d">
+          <h3>Pricing</h3>
+          <p className="price">{courseData.pricing.price}</p>
+          <p>Contact: {courseData.pricing.contact}</p>
+          <a href={courseData.pricing.linkedin} target="_blank" rel="noopener noreferrer">
+            LinkedIn Profile
+          </a>
+          <button className="enroll-btn">Enroll Now</button>
+        </aside>
+      </section>
+
+      {/* Instructor Section */}
+      <section className="instructor-section">
+        <img src={courseData.instructor.image} alt={courseData.instructor.name} className="instructor-img card-3d" />
+        <div className="instructor-info">
+          <h2>About Instructor</h2>
+          <h3>{courseData.instructor.name}</h3>
+          <p>{courseData.instructor.bio}</p>
+        </div>
+      </section>
+
+      {/* Additional Sections */}
+      <section className="video-section card-3d">
+        <h2>Sample Video</h2>
+        {/* Add video player here */}
+      </section>
+
+      <section className="testimonials-section">
+        <h2>What Our Students Say</h2>
+        {/* Add testimonial cards */}
+      </section>
+
+      <section className="faq-section">
+        <h2>FAQs</h2>
+        {/* Add accordion-style FAQs */}
+      </section>
     </div>
   );
 };

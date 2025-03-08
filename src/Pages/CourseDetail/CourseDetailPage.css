@@ -1,99 +1,201 @@
-/* General Styles */
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #1e1e1e; /* Dark background */
-    color: #f5f5f5; /* Light text */
-  }
-  
-  .course-page {
-    min-height: 100vh; /* Full-screen height */
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  /* Course Header */
+/* CourseDetailPage.css */
+.course-detail-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.course-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.course-desc {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+.enrollment {
+  font-size: 1.1rem;
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.header-image img {
+  max-width: 400px;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.course-img-3d:hover {
+  transform: translateZ(20px) rotateY(10deg);
+}
+
+.course-middle {
+  display: flex;
+  gap: 40px;
+  position: relative;
+}
+
+.middle-content {
+  flex: 3;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.5rem;
+  color: #3498db;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  text-transform: capitalize;
+  color: #7f8c8d;
+}
+
+.schedule-section, .syllabus-section {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+}
+
+.card-3d {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: translateZ(20px);
+}
+
+.syllabus-item {
+  margin: 15px 0;
+  padding: 20px;
+}
+
+.syllabus-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: #ecf0f1;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.expand-btn {
+  font-size: 1.5rem;
+  color: #3498db;
+}
+
+.syllabus-topics {
+  padding: 15px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { height: 0; opacity: 0; }
+  to { height: auto; opacity: 1; }
+}
+
+.pricing-sidebar {
+  flex: 1;
+  background: #2c3e50;
+  color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.price {
+  font-size: 2rem;
+  color: #27ae60;
+  margin: 20px 0;
+}
+
+.enroll-btn {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.enroll-btn:hover {
+  transform: scale(1.05);
+}
+
+.instructor-section {
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+  background: #fff;
+  border-radius: 15px;
+  margin: 40px 0;
+}
+
+.instructor-img {
+  max-width: 200px;
+  border-radius: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .course-header {
+    flex-direction: column;
     text-align: center;
-    background: linear-gradient(135deg, #4e73df, #6A5ACD); /* Gradient for header */
-    color: white;
-    padding: 30px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
   }
-  
-  .course-header h1 {
-    font-size: 36px;
-    font-weight: bold;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+
+  .course-middle {
+    flex-direction: column;
   }
-  
-  /* Instructor Info */
-  .instructor-info {
-    text-align: center;
-    margin-bottom: 30px;
+
+  .pricing-sidebar {
+    position: static;
   }
-  
-  .instructor-info img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid #6A5ACD;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .instructor-info img:hover {
-    transform: scale(1.1);
-    border-color: #4e73df;
-  }
-  
-  .instructor-info h2 {
-    font-size: 24px;
-    margin-top: 10px;
-    color: #6A5ACD;
-  }
-  
-  /* Tabs */
-  .tabs-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-  
-  .tab-button {
-    padding: 12px 25px;
-    background-color: #2c2c2c; /* Darker button background */
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    color: #f5f5f5; /* Light text */
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .tab-button:hover {
-    background-color: #6A5ACD;
-    color: white;
-  }
-  
-  .active-tab {
-    background-color: #6A5ACD;
-    color: white;
-  }
-  
-  /* Tab Content */
-  .tab-content {
-    flex: 1; /* Take remaining vertical space */
-    background-color: #2c2c2c; /* Dark card background */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    overflow-y: auto; /* Enable scrolling if content overflows */
-  }
+}
