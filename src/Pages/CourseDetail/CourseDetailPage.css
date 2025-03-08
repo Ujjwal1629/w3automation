@@ -1,4 +1,3 @@
-/* CourseDetailPage.css */
 .course-detail-page {
   max-width: 1400px;
   margin: 0 auto;
@@ -8,20 +7,42 @@
 }
 
 .course-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px;
-  background: #fff;
+  position: relative;
+  background-size: cover;
+  background-position: center;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
+  isolation: isolate;
+  overflow: hidden; /* Ensures the header doesn't overflow */
+}
+
+.course-header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9); /* Lighter overlay with high opacity */
+  z-index: 0;
+  backdrop-filter: blur(5px); /* Apply blur effect */
+}
+
+.course-header > * {
+  position: relative;
+  z-index: 1;
 }
 
 .course-title {
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: #ffffff; /* Bright white text for contrast */
   margin-bottom: 10px;
+  text-shadow: 0 0 10px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for contrast */
 }
 
 .course-title span {
@@ -29,31 +50,37 @@
 }
 
 .course-desc {
+  width: 75%;
   font-size: 1.2rem;
-  color: #7f8c8d;
+  color: #ffffff; /* Bright white text for contrast */
   margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.instructor-name {
+  font-size: 1.2rem; 
+  color: #ecf0f1; 
+  margin-top: 10px; 
+  margin-bottom: 10px; 
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .enrollment {
   font-size: 1.1rem;
-  color: #27ae60;
+  color: #4ecdc4; /* Brighter color for emphasis */
   font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.header-image img {
-  max-width: 400px;
-  border-radius: 15px;
-  transition: transform 0.3s ease;
-}
-
-.course-img-3d:hover {
-  transform: translateZ(20px) rotateY(10deg);
+.course-desc, .enrollment {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Enhanced text shadow for readability */
 }
 
 .course-middle {
   display: flex;
   gap: 40px;
   position: relative;
+  align-items: flex-start;
 }
 
 .middle-content {
@@ -64,7 +91,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 15px;
-  margin: 30px 0;
+  /* margin: 30px 0; */
+  margin-bottom: 20px;
 }
 
 .stat-card {
@@ -100,23 +128,25 @@
 
 .schedule-section, .syllabus-section {
   background: #fff;
-  padding: 30px;
+  padding: 20px;
   border-radius: 15px;
   margin-bottom: 40px;
 }
 
 .card-3d {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
 
 .card-3d:hover {
-  transform: translateZ(20px);
+  transform: translateY(-5px);
 }
 
 .syllabus-item {
-  margin: 15px 0;
-  padding: 20px;
+  margin: 10px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
 }
 
 .syllabus-header {
@@ -124,19 +154,52 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  background: #ecf0f1;
-  padding: 15px;
-  border-radius: 10px;
+  background: #e0e0e0;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
 }
 
 .expand-btn {
   font-size: 1.5rem;
   color: #3498db;
+  transition: color 0.2s ease;
+}
+
+.expand-btn:hover {
+  color: #007bff;
 }
 
 .syllabus-topics {
-  padding: 15px;
+  padding: 10px;
+  margin-top: 10px;
+  list-style: none;
   animation: slideDown 0.3s ease;
+}
+
+.syllabus-topics li {
+  margin-bottom: 5px;
+  font-size: 1.2rem; /* Increased font size for better readability */
+  color: #333;
+}
+
+.syllabus-topics li::before {
+  content: "●"; /* Add bullet points */
+  color: #2c3e50; /* Highlight color for bullet points */
+  display: inline-block; /* Ensure bullet points are inline */
+  width: 1em; /* Space between bullet points and text */
+  margin-left: -1em; /* Offset bullet points to align with text */
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slideDown {
@@ -146,44 +209,144 @@
 
 /* Pricing Sidebar */
 .pricing-sidebar {
-  flex: 1;
-  background: #2c3e50; /* Darker background for better contrast */
-  padding: 20px; /* Add padding to the sidebar for spacing */
+  flex: 1; /* Takes up 1 part of the available space */
+  background: #2c3e50;
+  padding: 20px;
   border-radius: 15px;
-  position: sticky;
-  top: 20px;
-  height: fit-content;
+  height: fit-content; /* Adjusts height based on content */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Schedule Card */
 .schedule-card {
-  background: #34495e; /* Slightly lighter than sidebar for distinction */
-  padding: 20px;
+  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%); /* Gradient background */
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden; /* For any potential overflow effects */
+}
+
+.schedule-card:hover {
+  transform: translateY(-5px); /* Subtle lift on hover */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Icon styling */
+.schedule-card .icon {
+  font-size: 1.4rem;
+  color: #3498db; /* Bright accent color */
+}
+
+.schedule-card .icon-small {
+  font-size: 1.1rem;
+  color: #2ecc71; /* Another accent color for variety */
+  margin-right: 6px;
+}
+
+/* Timings section */
+.schedule-card .timings {
+  background: rgba(255, 255, 255, 0.05); /* Subtle background for separation */
+  padding: 15px;
   border-radius: 10px;
-  margin-bottom: 20px; /* Space between schedule and pricing */
-}
-
-.schedule-card h3 {
-  color: #ffffff;
   margin-bottom: 15px;
-  font-size: 1.5rem;
 }
 
-.schedule-card p,
+.schedule-card .timings-label {
+  color: #ecf0f1;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.schedule-card .timings p {
+  color: #bdc3c7; /* Softer color for readability */
+  margin: 8px 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.schedule-card .timings p:hover {
+  color: #ecf0f1; /* Brighten on hover for interactivity */
+}
+
+/* Demo session */
+.schedule-card .demo-session {
+  color: #ecf0f1;
+  font-size: 1.1rem;
+  margin: 15px 0;
+  padding: 10px;
+  background: rgba(52, 152, 219, 0.1); /* Subtle highlight */
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.schedule-card .demo-session:hover {
+  background: rgba(52, 152, 219, 0.2); /* Slightly stronger highlight on hover */
+}
+
+/* Features list */
 .schedule-card .features-list h4 {
-  color: #ecf0f1; /* Light gray for readability */
-  margin: 10px 0;
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .schedule-card ul {
-  color: #ecf0f1;
-  padding-left: 20px;
+  list-style: none; /* Remove default bullets */
+  padding: 0;
+  color: #bdc3c7;
+}
+
+.schedule-card ul li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.schedule-card ul li::before {
+  content: '✓'; /* Custom checkmark */
+  position: absolute;
+  left: 0;
+  color: #2ecc71; /* Green accent */
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.schedule-card ul li:hover {
+  color: #ecf0f1; /* Brighten text on hover */
+}
+
+/* Animation for a modern touch */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.schedule-card .schedule-content {
+  animation: fadeIn 0.5s ease forwards; /* Fade-in effect */
 }
 
 /* Pricing Card */
 .pricing-card {
-  background: #2c3e50; /* Matches sidebar background */
+  background: rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 15px;
   transition: transform 0.3s ease;
@@ -194,7 +357,7 @@
 }
 
 .pricing-card h3 {
-  color: #ffffff; /* White for better visibility */
+  color: #ffffff;
   margin-bottom: 20px;
   font-size: 1.5rem;
   position: relative;
@@ -213,21 +376,20 @@
   border-radius: 2px;
 }
 
-.pricing-card .price {
-  font-size: 2rem;
-  color: #2ecc71; /* Lighter green for better visibility */
-  margin: 20px 0;
-  font-weight: bold;
+.pricing-card .prices .price {
+  font-size: 1rem; 
+  color: #bdc3c7;
+  margin: 10px 0; 
 }
 
 .pricing-card p {
-  color: #ecf0f1; /* Light gray for readability */
-  margin: 15px 0;
+  color: #ecf0f1;
+  margin-top: 25px;
   font-size: 1.1rem;
 }
 
 .pricing-card .linkedin-link {
-  color: #66b2ff !important; /* Lighter blue for visibility */
+  color: #66b2ff !important;
   text-decoration: underline;
   display: block;
   margin: 15px 0;
@@ -235,12 +397,12 @@
 }
 
 .pricing-card .linkedin-link:hover {
-  color: #8ccbff !important; /* Even lighter blue on hover */
+  color: #8ccbff !important;
 }
 
 .pricing-card .enroll-btn {
   background: #3498db;
-  color: #ffffff; /* White text for contrast */
+  color: #ffffff;
   border: none;
   padding: 12px 25px;
   border-radius: 25px;
@@ -253,21 +415,7 @@
 
 .pricing-card .enroll-btn:hover {
   transform: scale(1.05);
-  background: #2980b9; /* Slightly darker on hover */
-}
-
-.instructor-section {
-  display: flex;
-  gap: 30px;
-  padding: 40px;
-  background: #fff;
-  border-radius: 15px;
-  margin: 40px 0;
-}
-
-.instructor-img {
-  max-width: 200px;
-  border-radius: 15px;
+  background: #2980b9;
 }
 
 .schedule-card {
@@ -279,11 +427,12 @@
 }
 
 .schedule-card h3 {
-  color: #ecf0f1;
-  margin-bottom: 15px;
-  position: relative;
-  padding-left: 20px;
-}
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    position: relative;
+    padding-left: 20px;
+  }
 
 .schedule-card h3::before {
   content: '';
@@ -342,21 +491,145 @@
 .linkedin-link:hover {
   color: #5faee3 !important;
 }
+.instructor-section {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 40px;
+  margin: 40px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.instructor-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.instructor-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 30px;
+  background: #3498db;
+  border-radius: 2px;
+}
+
+.instructor-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px;
+}
+
+.instructor-img {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.instructor-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-circle {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 2px solid #3498db;
+  top: 10px;
+  left: 10px;
+  z-index: -1;
+}
+
+.instructor-info {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.instructor-name {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.instructor-title {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 15px;
+}
+
+.instructor-bio {
+  color: #34495e;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.ratings {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.rating-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rating-number, .student-number {
+  font-size: 1.2rem;
+  color: #3498db;
+  font-weight: bold;
+}
+
+.linkedin-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #0e76a8;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.linkedin-link:hover {
+  color: #0059b2;
+}
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-  .course-header {
+@media (max-width: 768px) {
+  .instructor-container {
     flex-direction: column;
+    align-items: center;
+  }
+  
+  .instructor-img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .img-circle {
+    width: 130px;
+    height: 130px;
+    top: 7px;
+    left: 7px;
+  }
+  
+  .instructor-info {
+    padding-left: 0;
     text-align: center;
-  }
-
-  .course-middle {
-    flex-direction: column;
-  }
-
-  .pricing-sidebar {
-    position: static;
-    margin-bottom: 40px;
   }
 }
 

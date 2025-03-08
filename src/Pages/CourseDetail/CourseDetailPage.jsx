@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import { FaUser, FaLink, FaLinkedin } from 'react-icons/fa';
 import './CourseDetailPage.css';
-import courseImage from '../../assets/night.png'
+import bg1 from '../../assets/bg1.jpg'
+import bg2 from '../../assets/bg5B.jpg'
+import { useNavigate } from 'react-router-dom';
 
 const CourseDetailPage = () => {
+  const navigate = useNavigate();
   const [expandedSyllabus, setExpandedSyllabus] = useState(null);
 
   // Sample dynamic data (this could come from an API)
   const courseData = {
     title: "SELENIUM WITH JAVA 2025 COURSE DETAILS",
-    description: "Master automation testing by learning industry-standard tools like Selenium, Appium, Cypress, and Postman. Automate web, mobile, and API testing efficiently with best practices like CI/CD integration, parallel execution, and robust test frameworks.",
+    description: "This course is designed to provide students with a comprehensive understanding of Selenium WebDriver using Java. By the end of the course, students will be able to automate web applications, write robust test scripts, and implement test automation frameworks.",
     enrolled: 521000,
-    courseImage: courseImage,
+    courseImage: bg1,
+    backgroundImage: bg2,
     stats: {
       lectures: 95,
       'Mock Test':"Yes",
@@ -23,7 +28,11 @@ const CourseDetailPage = () => {
       assessments: "Yes"
     },
     schedule: {
-      classTiming: "Mon - Thu, 8:00 PM - 9:30 PM IST",
+      classTiming: {
+        indian: "10:00 AM IST",
+        uk: "9:00 AM GMT",
+        us: "8:00 AM EST"
+      },
       demo: "First 2 sessions are free!",
       features: [
         "Live Classes",
@@ -67,13 +76,6 @@ const CourseDetailPage = () => {
           "Effective Use of Tools - potential benefits and risks",
           "Difference between manual and Automation.",
           "The automated Testing process"
-        ]
-      },
-      {
-        title: "Introduction to Selenium",
-        topics: [
-          "Discussion on Selenium platform independence and browser independence",
-          "Detailed Discussion on selenium architecture and components"
         ]
       },
       {
@@ -129,34 +131,40 @@ const CourseDetailPage = () => {
       }
     ],
     pricing: {
-      price: "$199",
+      price: {
+        indian: "8000 INR",
+        uk: "100 EUROS",
+        us: "120 USD"
+      },
       contact: "+1-555-0123",
-      linkedin: "https://linkedin.com/company/example"
+      linkedin: "https://www.linkedin.com/in/hemant-gandhi254/"
     },
     instructor: {
       name: "Hemant Gandhi",
       bio: "10+ years industry experience in automation testing",
-      image: courseImage
+      image: bg1
     }
   };
+
+  const navigateToEnroll = () =>{
+    navigate('/userForm');
+  }
 
   return (
     <div className="course-detail-page">
 
-      {/* Header Section */}
-      <header className="course-header">
+      {/* Header Section  */}
+      <header className="course-header" style={{ backgroundImage: `url(${courseData.backgroundImage})` }}>
         <div className="header-content">
           <h1 className="course-title">
             {courseData.title.split(" ").slice(0, 4).join(" ")}{" "}
             <span>{courseData.title.split(" ").slice(4).join(" ")}</span>
           </h1>
           <p className="course-desc">{courseData.description}</p>
+          <p className="instructor-name"><strong>Instructor</strong>: {courseData.instructor.name}</p>
           <p className="enrollment">
-            {courseData.enrolled.toLocaleString()} students enrolled
+            {courseData.enrolled.toLocaleString()} students enrolled already
           </p>
-        </div>
-        <div className="header-image">
-          <img src={`${courseData.courseImage}`} alt="Course" className="course-img-3d" />
         </div>
       </header>
 
@@ -205,13 +213,16 @@ const CourseDetailPage = () => {
         <aside className="pricing-sidebar card-3d">
           {/* Schedule Card */}
           <div className="schedule-card">
-            <h3>Class/Demo Timings & Features</h3>
+            <h3>Timings & Features</h3>
             <div className="schedule-content">
+              <div className="timings">
+                <p style={{ color: '#ffffff'}}><strong>Class Schedule:</strong></p>
+                <p>India: {courseData.schedule.classTiming.indian}</p>
+                <p>UK: {courseData.schedule.classTiming.uk}</p>
+                <p>US: {courseData.schedule.classTiming.us}</p>
+              </div>
               <p>
-                <strong>Class Schedule:</strong> {courseData.schedule.classTiming}
-              </p>
-              <p>
-                <strong>Demo Sessions:</strong> {courseData.schedule.demo}
+                <strong style={{ color:'#ffffff'}}>Demo Sessions:</strong> {courseData.schedule.demo}
               </p>
               <div className="features-list">
                 <h4>Salient Features:</h4>
@@ -226,31 +237,55 @@ const CourseDetailPage = () => {
 
           {/* Pricing Card */}
           <div className="pricing-card">
-            <h3>Pricing</h3>
+            <h3>Course Pricing</h3>
             <div className="pricing-content">
-              <p className="price">{courseData.pricing.price}</p>
-              <p>Contact: {courseData.pricing.contact}</p>
+              <div className="prices">
+                <p className="price">India: {courseData.pricing.price.indian}</p>
+                <p className="price">UK: {courseData.pricing.price.uk}</p>
+                <p className="price">US: {courseData.pricing.price.us}</p>
+              </div>
+              <p><strong>Contact:</strong> {courseData.pricing.contact}</p>
               <a 
                 href={courseData.pricing.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="linkedin-link"
               >
-                LinkedIn Profile
+                <FaLinkedin size={24} />
               </a>
-              <button className="enroll-btn">Enroll Now</button>
+              <button className="enroll-btn" onClick={navigateToEnroll}>Enroll Now</button>
             </div>
           </div>
-      </aside>
+        </aside>
       </section>
 
-      {/* Instructor Section */}
       <section className="instructor-section">
-        <img src={courseData.instructor.image} alt={courseData.instructor.name} className="instructor-img card-3d" />
-        <div className="instructor-info">
-          <h3>{courseData.instructor.name}</h3>
-          <p>{courseData.instructor.bio}</p>
+      <h2 className="instructor-title">About Instructor</h2>
+      <div className="instructor-container">
+        <div className="instructor-img">
+          <img src={courseData.instructor.image} alt={courseData.instructor.name} className="instructor-img" />
+          <div className="img-circle"></div> {/* Placeholder for circular border */}
         </div>
+        <div className="instructor-info">
+          <h3 className="instructor-name">{courseData.instructor.name}</h3>
+          <p className="instructor-title">{courseData.instructor.title}</p>
+          <p className="instructor-bio">{courseData.instructor.bio}</p>
+          <div className="ratings">
+            <div className="rating-item">
+              <FaUser size={24} color="#ffc107" /> {/* User icon */}
+              <span className="rating-number">{courseData.instructor.ratings}</span>
+            </div>
+            <div className="rating-item">
+              <FaLink size={24} color="#ffc107" /> {/* Link icon */}
+              <span className="student-number">{courseData.instructor.students}</span>
+            </div>
+          </div>
+          <a href={courseData.instructor.linkedin} className="linkedin-link" target="_blank" rel="noopener noreferrer">
+            <FaLink size={24} color="#0e76a8" /> {/* LinkedIn icon */}
+            LinkedIn Profile
+          </a>
+        </div>
+      </div>
       </section>
 
       {/* Additional Sections */}
