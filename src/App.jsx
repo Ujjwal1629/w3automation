@@ -18,6 +18,7 @@ import TestPractice from "./Pages/Practice-sites/TestPractice";
 import APITestPractice from "./Pages/Practice-sites/APITestPractice";
 import AlertTest from './Pages/Practice-sites/AlertTest.jsx';
 import UserForm from './Pages/UserForm/UserForm.jsx';
+import CourseDetailPage from "./Pages/CourseDetail/CourseDetailPage.jsx";
 
 function App() {
   ReactGA.initialize("G-FPDLKPFE8H");
@@ -38,6 +39,7 @@ function App() {
         <Route path="/APITestPractice" element={<APITestPractice />} />
         <Route path="/AlertTest" element={<AlertTest />} />
         <Route path="/userForm" element={<UserForm/>} />
+        <Route path="/syllabus-java-selenium" element={<CourseDetailPage/>} />
       </Routes>
     </div>
   );

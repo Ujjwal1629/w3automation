@@ -7,6 +7,8 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isPracticeDropdownOpen, setIsPracticeDropdownOpen] = useState(false);
+  const [isCoursesDropdownOpen, setIsCoursesDropdownOpen] = useState(false);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isPracticeDropdownOpen && !event.target.closest('.dropdown-container')) {
@@ -22,6 +24,13 @@ export default function Navbar() {
 
   const togglePracticeDropdown = () => {
     setIsPracticeDropdownOpen(!isPracticeDropdownOpen);
+    setIsCoursesDropdownOpen(false); // Close other dropdown
+
+  };
+
+  const toggleCoursesDropdown = () => {
+    setIsCoursesDropdownOpen(!isCoursesDropdownOpen);
+    setIsPracticeDropdownOpen(false); // Close other dropdown
   };
 
   const topics = [
@@ -145,6 +154,29 @@ export default function Navbar() {
                 navigate("/AlertTest");
                 setIsPracticeDropdownOpen(false);
               }}>Alert Box</a>
+            </div>
+          )}
+        </div>
+
+          {/* New Upcoming Courses Dropdown */}
+        <div className="dropdown-container">
+          <a 
+            className={isCoursesDropdownOpen ? 'active' : ''} 
+            onClick={toggleCoursesDropdown}
+          >
+            UPCOMING COURSES
+          </a>
+          {isCoursesDropdownOpen && (
+            <div className="dropdown-menu courses-menu">
+              <a 
+                onClick={() => {
+                  navigate("/syllabus-java-selenium");
+                  setIsCoursesDropdownOpen(false);
+                }}
+                className="dropdown-item"
+              >
+                Java & Selenium
+              </a>
             </div>
           )}
         </div>
