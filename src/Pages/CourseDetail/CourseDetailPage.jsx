@@ -1,46 +1,48 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaUser, FaLink, FaLinkedin, FaStar } from 'react-icons/fa';
 import './CourseDetailPage.css';
-import bg1 from '../../assets/bg1.jpg'
 import bg2 from '../../assets/bg5B.jpg'
-import { useNavigate } from 'react-router-dom';
+import instructorImg from '../../assets/profilePic.jpg';
 
 const CourseDetailPage = () => {
   const navigate = useNavigate();
   const [expandedSyllabus, setExpandedSyllabus] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   // Sample dynamic data (this could come from an API)
   const courseData = {
     title: "SELENIUM WITH JAVA 2025 COURSE DETAILS",
     description: "This course is designed to provide students with a comprehensive understanding of Selenium WebDriver using Java. By the end of the course, students will be able to automate web applications, write robust test scripts, and implement test automation frameworks.",
-    enrolled: 521000,
-    courseImage: bg1,
+    enrolled: 150,
     backgroundImage: bg2,
     stats: {
       'Live - Projects':'2',
-      lectures: 95,
-      'Mock Test':"Yes",
-      quiz: 0,
-      duration: "30 hours",
+      lectures: 32,
+      duration: "60 hours",
+      Certification:'Yes',
+      Recordings:'Lifetime access',
+      'Mock Test':"Weekly",
       'Skill Level': "All levels",
       language: "English",
       Placement: "Assistance",
-      students: 1100,
       assessments: "Yes"
     },
     schedule: {
       classTiming: {
-        indian: "10:00 AM IST",
-        uk: "9:00 AM GMT",
-        us: "8:00 AM EST"
+        indian: "08:00 PM IST",
+        us: "10:30 AM GMT",
+        uk: "02:30 PM GMT",
       },
       demo: "First 2 sessions are free!",
+      date:'18th & 19th March 2025',
+      classDate:'20th March 2025 Onwards',
+      days:'Monday to Thursday',
       features: [
         "Live Classes",
         "Recorded Sessions",
         "Resume Assistance",
         "Interview Prep",
-        "Course Syllabus"
       ]
     },
     syllabus: [
@@ -137,16 +139,16 @@ const CourseDetailPage = () => {
         uk: "100 EUROS",
         us: "120 USD"
       },
-      contact: "+1-555-0123",
+      contact: "+91 8810201221",
       linkedin: "https://www.linkedin.com/in/hemant-gandhi254/"
     },
     instructor: {
       name: "Hemant Gandhi",
-      title:'Manager',
-      bio: "10+ years industry experience in automation testing",
-      students: '500',
-      ratings: '4.8',
-      image: bg1
+      title:'QA Automation Lead and Trainer',
+      bio: "With over 10 years of experience in the software testing industry. He has worked extensively with various automation testing tools and frameworks, specializing in delivering high-quality software solutions. His passion for quality assurance and automation drives him to share knowledge and help others excel in this field.",
+      students: '200',
+      ratings: '4.2',
+      image: instructorImg
     }, 
     testimonials: [
       {
@@ -161,12 +163,34 @@ const CourseDetailPage = () => {
       userName: "Mayooran Thiruchselvam",
       userReview: "The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand."
       }
+    ],
+    faqs: [
+        {
+          question: "Is this course suitable for beginners?",
+          answer: "Yes, this course starts with the basics and gradually moves to advanced topics."
+        },
+        {
+          question: "Will I get hands-on experience?",
+          answer: "Absolutely! The course includes multiple assignments and a real-world project."
+        },
+        {
+          question: "What if I miss a class?",
+          answer: "Recorded sessions will be available for all lectures with lifetime access."
+        },
+        {
+          question: "Do I need to install any software?",
+          answer: "Yes, you will need to install Java, Eclipse, and Selenium WebDriver. Detailed instructions will be provided in the class as well for both macOS and Windows."
+        }
     ]
   };
 
   const navigateToEnroll = () =>{
     navigate('/userForm');
   }
+
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
   return (
     <div className="course-detail-page">
@@ -180,9 +204,6 @@ const CourseDetailPage = () => {
           </h1>
           <p className="course-desc">{courseData.description}</p>
           <p className="instructor-name-header"><strong>Instructor</strong>: {courseData.instructor.name}</p>
-          <p className="enrollment">
-            {courseData.enrolled.toLocaleString()} students enrolled already
-          </p>
         </div>
       </header>
 
@@ -231,24 +252,54 @@ const CourseDetailPage = () => {
         <aside className="pricing-sidebar card-3d">
           {/* Schedule Card */}
           <div className="schedule-card">
-            <h3>Timings & Features</h3>
+            <h3 className='schedule-title-class' style={{paddingLeft: '20px'}}>Timings & Features</h3>
             <div className="schedule-content">
-              <div className="timings">
-                <p style={{ color: '#ffffff'}}><strong>Class Schedule:</strong></p>
-                <p>India: {courseData.schedule.classTiming.indian}</p>
-                <p>UK: {courseData.schedule.classTiming.uk}</p>
-                <p>US: {courseData.schedule.classTiming.us}</p>
-              </div>
-              <p>
-                <strong style={{ color:'#ffffff'}}>Demo Sessions:</strong> {courseData.schedule.demo}
+              {/* Demo Sessions Section */}
+              <p className="demo-session">
+                <strong className="demo-session-label">Demo Sessions:</strong>
+                <span className="demo-session-value">{courseData.schedule.demo}</span>
               </p>
-              <div className="features-list">
-                <h4>Salient Features:</h4>
-                <ul>
-                  {courseData.schedule.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
+
+              {/* Demo Schedule Section */}
+              <div className="timings">
+                <p className="schedule-heading">
+                  <strong>Demo Schedule:</strong>
+                  <span className="schedule-date">{courseData.schedule.date}</span>
+                </p>
+
+                {/* Time Zones Section */}
+                <div className="timezone-wrapper">
+                  <h3 className="timezone-heading">Time Zones</h3>
+                  <div className="timezone-grid">
+                    {Object.entries(courseData.schedule.classTiming).map(([key, value]) => (
+                      <p className="timezone-item" key={key}>
+                        <span className="timezone-label">{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
+                        <span className="timezone-value">{value}</span>
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Class Schedule Section */}
+              <div className="timings">
+                <p className="schedule-heading">
+                  <strong>Class Schedule:</strong>
+                  <span className="schedule-date">{courseData.schedule.classDate}</span>
+                  <span className="schedule-days">{courseData.schedule.days}</span>
+                </p>
+
+                <div className="timezone-wrapper">
+                <h3 className="timezone-heading">Time Zones</h3>
+                <div className="timezone-grid">
+                  {Object.entries(courseData.schedule.classTiming).map(([key, value]) => (
+                    <p className="timezone-item" key={key}>
+                      <span className="timezone-label">{key.toUpperCase()}:</span>
+                      <span className="timezone-value">{value}</span>
+                    </p>
                   ))}
-                </ul>
+                </div>
+                </div>
               </div>
             </div>
           </div>
@@ -258,19 +309,11 @@ const CourseDetailPage = () => {
             <h3>Course Pricing</h3>
             <div className="pricing-content">
               <div className="prices">
-                <p className="price">India: {courseData.pricing.price.indian}</p>
-                <p className="price">UK: {courseData.pricing.price.uk}</p>
-                <p className="price">US: {courseData.pricing.price.us}</p>
+                <p className="price"><strong>INDIA</strong>: {courseData.pricing.price.indian}</p>
+                <p className="price"><strong>UK:</strong> {courseData.pricing.price.uk}</p>
+                <p className="price"><strong>US:</strong> {courseData.pricing.price.us}</p>
               </div>
-              <p><strong>Contact:</strong> {courseData.pricing.contact}</p>
-              <a 
-                href={courseData.pricing.linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="linkedin-link"
-              >
-                <FaLinkedin size={24} />
-              </a>
+              <p style={{display:'grid'}}><strong style={{marginBottom:7}}>For Payment Or Any Other Query Whatsapp on:</strong> {courseData.pricing.contact}</p>
               <button className="enroll-btn" onClick={navigateToEnroll}>Enroll Now</button>
             </div>
           </div>
@@ -289,38 +332,40 @@ const CourseDetailPage = () => {
           <p className="instructor-title">{courseData.instructor.title}</p>
           <p className="instructor-bio">{courseData.instructor.bio}</p>
           <div className="ratings">
-  {/* Rating */}
-  <div className="rating-item">
-    <div className="tooltip-wrapper">
-      <FaStar 
-        size={24} 
-        color="#ffc107" 
-        className="icon"
-      />
-      <span className="tooltip-text">Rating</span>
-    </div>
-    <span className="rating-number">4.8</span>
-  </div>
+        {/* Rating */}
+        <div className="rating-item">
+          <div className="tooltip-wrapper">
+            <FaStar 
+              size={24} 
+              color="#ffc107" 
+              className="icon"
+            />
+            <span className="tooltip-text">Rating</span>
+          </div>
+          <span className="rating-number">{courseData.instructor.ratings}</span>
+        </div>
 
-  {/* Students */}
-  <div className="rating-item">
-    <div className="tooltip-wrapper">
-      <FaUser 
-        size={24} 
-        color="#ffc107" 
-        className="icon"
-      />
-      <span className="tooltip-text">Students Enrolled</span>
-    </div>
-    <span className="student-number">521,000</span>
-  </div>
+        {/* Students */}
+        <div className="rating-item">
+          <div className="tooltip-wrapper">
+            <FaUser 
+              size={24} 
+              color="#ffc107" 
+              className="icon"
+            />
+            <span className="tooltip-text">Students Trained</span>
+          </div>
+          <span className="student-number">{courseData.instructor.students}</span>
+        </div>
 
-  {/* LinkedIn */}
-  <div className="linkedin-wrapper">
-    <FaLinkedin size={24} color="#0e76a8" />
-    <span className="tooltip-text">View LinkedIn Profile</span>
-  </div>
-</div>
+        {/* LinkedIn */}
+        <div className="linkedin-wrapper">
+          <a href={courseData.pricing.linkedin} target="_blank" rel="noopener noreferrer">
+            <FaLinkedin size={24} color="#0e76a8" />
+            <span className="tooltip-text">View LinkedIn Profile</span>
+          </a>
+        </div>
+      </div>
         </div>
       </div>
       </section>
@@ -337,10 +382,33 @@ const CourseDetailPage = () => {
       </div>
     </section>
 
-      <section className="faq-section">
-        <h2>FAQs</h2>
-        {/* Add accordion-style FAQs */}
-      </section>
+    <section className="faq-section">
+      <h2 className="faq-title">
+        <span className="faq-highlight">Got Questions?</span> We've Got Answers!
+      </h2>
+      <div className="faq-container">
+        {courseData.faqs.map((faq, index) => (
+          <div 
+            key={index} 
+            className={`faq-item ${activeIndex === index ? 'active' : ''}`}
+          >
+            <div 
+              className="faq-question" 
+              onClick={() => toggleFAQ(index)}
+            >
+              <span>{faq.question}</span>
+              <span className="faq-icon">
+                {activeIndex === index ? '−' : '+'}
+              </span>
+            </div>
+            <div className="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
     </div>
   );
 };

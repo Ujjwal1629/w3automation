@@ -65,19 +65,13 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.enrollment {
-  font-size: 1.1rem;
-  color: #4ecdc4; /* Brighter color for emphasis */
-  font-weight: bold;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.course-desc, .enrollment {
+.course-desc {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Enhanced text shadow for readability */
 }
 
 .course-middle {
   display: flex;
+  margin-bottom: 20px;
   gap: 40px;
   position: relative;
   align-items: flex-start;
@@ -89,41 +83,51 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 15px;
-  /* margin: 30px 0; */
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Increased min width */
+  gap: 20px; /* Slightly larger gap for better separation */
+  margin-bottom: 25px;
+  padding: 15px; /* Added padding for better spacing */
+  background: #f8fafc; /* Light background to make grid stand out */
+  border-radius: 12px; /* Rounded corners for the grid container */
 }
 
 .stat-card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 10px;
+  background: linear-gradient(135deg, #ffffff, #f0f5ff); /* Subtle gradient for vibrancy */
+  padding: 20px; /* Increased padding */
+  border-radius: 12px;
   text-align: center;
-  transition: transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease; /* Smoother transition */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); /* Stronger shadow for depth */
+  border: 1px solid rgba(52, 152, 219, 0.2); /* Subtle border for definition */
+  min-width: 0; /* Allows proper text overflow handling */
 }
 
 .stat-card:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translateY(-8px) scale(1.03); /* More pronounced hover effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+  background: linear-gradient(135deg, #ffffff, #e6f0ff); /* Brighter gradient on hover */
 }
 
 .stat-value {
   display: block;
-  font-size: 1.2rem;
-  color: #3498db;
-  margin-bottom: 3px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 1.4rem; 
+  font-weight: 600; 
+  color: #2980b9; 
+  margin-bottom: 6px; 
+  white-space: normal; /* Changed to normal to allow wrapping */
+  word-wrap: break-word; /* Ensures long words break properly */
+  line-height: 1.3; /* Better readability for wrapped text */
+  max-width: 100%; /* Prevents overflow */
 }
 
 .stat-label {
   display: block;
-  font-size: 0.8rem;
-  color: #7f8c8d;
+  font-size: 1.1rem; 
+  color: #636e72; 
   text-transform: capitalize;
-  line-height: 1.2;
+  line-height: 1.3;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .schedule-section, .syllabus-section {
@@ -217,131 +221,124 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Schedule Card */
-.schedule-card {
-  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%); /* Gradient background */
-  padding: 25px;
-  border-radius: 15px;
-  margin-bottom: 25px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow for depth */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden; /* For any potential overflow effects */
-}
+/* Schedule Content */
 
-.schedule-card:hover {
-  transform: translateY(-5px); /* Subtle lift on hover */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-/* Icon styling */
-.schedule-card .icon {
-  font-size: 1.4rem;
-  color: #3498db; /* Bright accent color */
-}
-
-.schedule-card .icon-small {
-  font-size: 1.1rem;
-  color: #2ecc71; /* Another accent color for variety */
-  margin-right: 6px;
-}
-
-/* Timings section */
-.schedule-card .timings {
-  background: rgba(255, 255, 255, 0.05); /* Subtle background for separation */
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-
-.schedule-card .timings-label {
-  color: #ecf0f1;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.schedule-card .timings p {
-  color: #bdc3c7; /* Softer color for readability */
-  margin: 8px 0;
-  font-size: 1rem;
-  line-height: 1.4;
-  transition: color 0.3s ease;
-}
-
-.schedule-card .timings p:hover {
-  color: #ecf0f1; /* Brighten on hover for interactivity */
-}
-
-/* Demo session */
-.schedule-card .demo-session {
-  color: #ecf0f1;
-  font-size: 1.1rem;
-  margin: 15px 0;
-  padding: 10px;
-  background: rgba(52, 152, 219, 0.1); /* Subtle highlight */
-  border-radius: 8px;
-  transition: background 0.3s ease;
-}
-
-.schedule-card .demo-session:hover {
-  background: rgba(52, 152, 219, 0.2); /* Slightly stronger highlight on hover */
-}
-
-/* Features list */
-.schedule-card .features-list h4 {
+/* Schedule Content Container */
+.schedule-content {
+  font-family: 'Arial', sans-serif;
   color: #ffffff;
-  font-size: 1.2rem;
+  /* padding: 20px; */
+  padding-left: 20px;
+  padding-right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Demo Sessions Section */
+.demo-session {
+  display: grid;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.demo-session-label {
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 600;
+  margin-right: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.demo-session-value {
+  margin-top: 4px;
+  font-size: 1rem;
+  color: #d0d0d0;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.demo-session:hover .demo-session-value {
+  color: #ffffff;
+}
+
+/* Timings Section */
+.timings {
+  margin-bottom: 24px;
+}
+
+.schedule-heading {
+  font-size: 1.1rem;
+  color: #ffffff;
   margin-bottom: 12px;
+}
+
+.schedule-heading strong {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.schedule-date,
+.schedule-days {
+  display: block;
+  font-size: 1.1rem;
+  color: #d0d0d0;
+  margin-top: 4px;
+}
+
+/* Time Zones Wrapper */
+.timezone-wrapper {
+  padding: 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.timezone-heading {
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Time Zone Grid */
+.timezone-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.timezone-item {
+  margin: 0;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  transition: background 0.2s ease;
 }
 
-.schedule-card ul {
-  list-style: none; /* Remove default bullets */
-  padding: 0;
-  color: #bdc3c7;
+.timezone-item:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
 
-.schedule-card ul li {
-  position: relative;
-  padding-left: 25px;
-  margin-bottom: 10px;
+.timezone-label {
+  color: #d0d0d0;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.timezone-value {
+  color: #ffffff;
+  font-weight: 400;
   font-size: 1rem;
-  line-height: 1.5;
-  transition: color 0.3s ease;
-}
-
-.schedule-card ul li::before {
-  content: '✓'; /* Custom checkmark */
-  position: absolute;
-  left: 0;
-  color: #2ecc71; /* Green accent */
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.schedule-card ul li:hover {
-  color: #ecf0f1; /* Brighten text on hover */
-}
-
-/* Animation for a modern touch */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.schedule-card .schedule-content {
-  animation: fadeIn 0.5s ease forwards; /* Fade-in effect */
 }
 
 /* Pricing Card */
@@ -377,27 +374,16 @@
 }
 
 .pricing-card .prices .price {
-  font-size: 1rem; 
-  color: #bdc3c7;
-  margin: 10px 0; 
+  font-size: 1.1rem; 
+  color: #ecf0f1;
+  margin: 5px 0; 
 }
 
 .pricing-card p {
   color: #ecf0f1;
-  margin-top: 25px;
   font-size: 1.1rem;
-}
-
-.pricing-card .linkedin-link {
-  color: #66b2ff !important;
-  text-decoration: underline;
-  display: block;
-  margin: 15px 0;
-  transition: color 0.3s ease;
-}
-
-.pricing-card .linkedin-link:hover {
-  color: #8ccbff !important;
+  margin-top: 25px;
+  margin-bottom: 10px;
 }
 
 .pricing-card .enroll-btn {
@@ -419,8 +405,6 @@
 }
 
 .schedule-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
   border-radius: 10px;
   margin-bottom: 25px;
   backdrop-filter: blur(10px);
@@ -428,13 +412,19 @@
 
 .schedule-card h3 {
     color: #ffffff;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
     position: relative;
-    padding-left: 20px;
   }
 
-.schedule-card h3::before {
+.timezone-heading h3{
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+.schedule-title-class::before {
   content: '';
   position: absolute;
   left: 0;
@@ -446,9 +436,16 @@
   border-radius: 2px;
 }
 
-.schedule-content p {
-  color: #bdc3c7;
-  margin: 10px 0;
+.timezone-heading::before{
+  content: '';
+  position: absolute;
+  right: 260px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: #3498db;
+  border-radius: 2px;
 }
 
 .features-list {
@@ -470,16 +467,9 @@
   position: relative;
   padding-left: 25px;
   margin-bottom: 8px;
-  color: #bdc3c7;
+  color: rgb(255, 255, 255);
 }
 
-.features-list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #27ae60;
-  font-weight: bold;
-}
 
 .linkedin-link {
   color: #3498db !important;
@@ -494,8 +484,8 @@
 .instructor-section {
   background: #ffffff;
   border-radius: 15px;
-  padding: 40px;
-  margin: 40px 0;
+  padding: 20px;
+  margin-bottom: 40px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
@@ -503,37 +493,7 @@
 .section-title {
   font-size: 2rem;
   color: #2c3e50;
-  margin-bottom: 30px;
-  padding-left: 20px;
-  position: relative;
-}
-
-.section-title::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 30px;
-  background: #3498db;
-  border-radius: 2px;
-}
-
-
-/* Instructor Section */
-.instructor-section {
-  background: #fff;
-  border-radius: 15px;
-  padding: 40px;
-  margin: 40px 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.section-title {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   padding-left: 20px;
   position: relative;
 }
@@ -592,7 +552,6 @@
 .instructor-name {
   font-size: 1.75rem;
   color: #2c3e50;
-  margin-bottom: 8px;
   position: relative;
   padding-left: 20px;
 }
@@ -633,9 +592,9 @@
   color: #34495e;
   line-height: 1.6;
   margin-bottom: 20px;
+  margin-right: 22%;
 }
 
-/* New Tooltip System */
 .tooltip-wrapper {
   position: relative;
   display: inline-flex;
@@ -689,12 +648,80 @@
   color: #0059b2;
 }
 
+
+/* Rating Container */
+.ratings {
+  display: ruby;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
 .rating-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 15px;
+  position: relative;
+  flex: 1 1 200px; /* Responsive flex basis */
+  min-width: 150px;
+  justify-content: flex-start;
 }
+
+/* Icon Container */
+.tooltip-wrapper {
+  position: relative;
+  display: contents;
+  align-items: center;
+  cursor: help;
+  padding: 4px;
+}
+
+.tooltip-wrapper:hover .icon {
+  color: #0059b2;
+}
+
+.tooltip-text {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.tooltip-wrapper:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* LinkedIn Item */
+.linkedin-item {
+  flex: 1 1 180px;
+  min-width: 130px;
+}
+
+.linkedin-link {
+  color: #0e76a8;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  margin-left: 8px;
+}
+
+.linkedin-link:hover {
+  color: #0059b2;
+}
+
 
 .rating-number {
   font-size: 1.2rem;
@@ -714,6 +741,24 @@
 
 .tooltip-wrapper:hover .icon {
   color: #0059b2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ratings {
+    gap: 15px;
+  }
+  
+  .rating-item {
+    flex: 1 1 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+  
+  .tooltip-text {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
 }
 
 /* Responsive Design */
@@ -871,5 +916,118 @@
   
   .pricing-card .price {
     font-size: 1.8rem;
+  }
+}
+
+/* FAQ Section */
+.faq-section {
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 40px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.faq-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.faq-highlight {
+  color: #00d4ff;
+  background: linear-gradient(45deg, #00d4ff, #ff007a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.faq-container {
+  max-width: 800px;
+  width: 100%;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item.active {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.faq-question {
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.faq-icon {
+  font-size: 1.5rem;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #00d4ff;
+  border-radius: 50%;
+  color: #1a1a2e;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px; /* Adjust based on content */
+}
+
+.faq-answer p {
+  padding: 10px 25px 20px;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .faq-title {
+    font-size: 2rem;
+  }
+
+  .faq-question {
+    font-size: 1.1rem;
+  }
+
+  .faq-answer p {
+    font-size: 0.95rem;
   }
 }
