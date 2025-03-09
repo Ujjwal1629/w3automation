@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaUser, FaLink, FaLinkedin } from 'react-icons/fa';
+import { FaUser, FaLink, FaLinkedin, FaStar } from 'react-icons/fa';
 import './CourseDetailPage.css';
 import bg1 from '../../assets/bg1.jpg'
 import bg2 from '../../assets/bg5B.jpg'
@@ -17,6 +17,7 @@ const CourseDetailPage = () => {
     courseImage: bg1,
     backgroundImage: bg2,
     stats: {
+      'Live - Projects':'2',
       lectures: 95,
       'Mock Test':"Yes",
       quiz: 0,
@@ -141,9 +142,26 @@ const CourseDetailPage = () => {
     },
     instructor: {
       name: "Hemant Gandhi",
+      title:'Manager',
       bio: "10+ years industry experience in automation testing",
+      students: '500',
+      ratings: '4.8',
       image: bg1
-    }
+    }, 
+    testimonials: [
+      {
+      userName: "Supriya D",
+      userReview: "I recently completed Hemant Gandhi's automation testing class on Java and Selenium, and it was outstanding. The instructor made complex topics easy to understand, and the hands-on exercises were incredibly valuable."
+      },
+      {
+      userName: "Srikanth chivukula",
+      userReview: "I really appreciate you for taking time from daily routines and providing training on Java and Selenium. The topics covered are good and detailed. The support provided post sessions is also excellent.!"
+      },
+      {
+      userName: "Mayooran Thiruchselvam",
+      userReview: "The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand."
+      }
+    ]
   };
 
   const navigateToEnroll = () =>{
@@ -161,7 +179,7 @@ const CourseDetailPage = () => {
             <span>{courseData.title.split(" ").slice(4).join(" ")}</span>
           </h1>
           <p className="course-desc">{courseData.description}</p>
-          <p className="instructor-name"><strong>Instructor</strong>: {courseData.instructor.name}</p>
+          <p className="instructor-name-header"><strong>Instructor</strong>: {courseData.instructor.name}</p>
           <p className="enrollment">
             {courseData.enrolled.toLocaleString()} students enrolled already
           </p>
@@ -260,7 +278,7 @@ const CourseDetailPage = () => {
       </section>
 
       <section className="instructor-section">
-      <h2 className="instructor-title">About Instructor</h2>
+      <h2 className="section-title">About Instructor</h2>
       <div className="instructor-container">
         <div className="instructor-img">
           <img src={courseData.instructor.image} alt={courseData.instructor.name} className="instructor-img" />
@@ -271,33 +289,53 @@ const CourseDetailPage = () => {
           <p className="instructor-title">{courseData.instructor.title}</p>
           <p className="instructor-bio">{courseData.instructor.bio}</p>
           <div className="ratings">
-            <div className="rating-item">
-              <FaUser size={24} color="#ffc107" /> {/* User icon */}
-              <span className="rating-number">{courseData.instructor.ratings}</span>
-            </div>
-            <div className="rating-item">
-              <FaLink size={24} color="#ffc107" /> {/* Link icon */}
-              <span className="student-number">{courseData.instructor.students}</span>
-            </div>
-          </div>
-          <a href={courseData.instructor.linkedin} className="linkedin-link" target="_blank" rel="noopener noreferrer">
-            <FaLink size={24} color="#0e76a8" /> {/* LinkedIn icon */}
-            LinkedIn Profile
-          </a>
+  {/* Rating */}
+  <div className="rating-item">
+    <div className="tooltip-wrapper">
+      <FaStar 
+        size={24} 
+        color="#ffc107" 
+        className="icon"
+      />
+      <span className="tooltip-text">Rating</span>
+    </div>
+    <span className="rating-number">4.8</span>
+  </div>
+
+  {/* Students */}
+  <div className="rating-item">
+    <div className="tooltip-wrapper">
+      <FaUser 
+        size={24} 
+        color="#ffc107" 
+        className="icon"
+      />
+      <span className="tooltip-text">Students Enrolled</span>
+    </div>
+    <span className="student-number">521,000</span>
+  </div>
+
+  {/* LinkedIn */}
+  <div className="linkedin-wrapper">
+    <FaLinkedin size={24} color="#0e76a8" />
+    <span className="tooltip-text">View LinkedIn Profile</span>
+  </div>
+</div>
         </div>
       </div>
       </section>
 
-      {/* Additional Sections */}
-      <section className="video-section card-3d">
-        <h2>Sample Video</h2>
-        {/* Add video player here */}
-      </section>
-
-      <section className="testimonials-section">
-        <h2>What Our Students Say</h2>
-        {/* Add testimonial cards */}
-      </section>
+      <section className="testimonials-section-coursePage">
+      <h2 className="testimonials-heading-coursePage">What Our Students Say</h2>
+      <div className="testimonials-container-coursePage">
+        {courseData.testimonials.map((testimonial, index) => (
+          <div className="testimonial-card-coursePage" key={index}>
+            <h3 className="username-coursePage">{testimonial.userName}</h3>
+            <p className="user-review-coursePage">{testimonial.userReview}</p>
+          </div>
+        ))}
+      </div>
+    </section>
 
       <section className="faq-section">
         <h2>FAQs</h2>
