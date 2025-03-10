@@ -481,6 +481,161 @@
 .linkedin-link:hover {
   color: #5faee3 !important;
 }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .course-middle {
+    flex-direction: column;
+    gap: 20px; /* Reduce gap for smaller screens */
+    align-items: center;
+  }
+
+  .middle-content {
+    width: 100%; /* Take full width */
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjusted column size */
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .stat-card {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.2rem; 
+  }
+
+  .stat-label {
+    font-size: 1rem; 
+  }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .course-middle {
+    margin-bottom: 10px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Reduce min width */
+  }
+
+  .stat-card {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .stat-value {
+    font-size: 1.1rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+  }
+
+  .schedule-section, .syllabus-section {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .syllabus-header {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .syllabus-topics li {
+    font-size: 1rem;
+  }
+
+  .pricing-sidebar {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .pricing-card {
+    padding: 20px;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .pricing-card .prices .price {
+    font-size: 1rem;
+  }
+
+  .pricing-card .enroll-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
+
+/* Very Small Screens */
+@media (max-width: 480px) {
+  .course-middle {
+    gap: 10px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(80px, 1fr)); /* Adjust to 2 columns */
+    gap: 10px;
+    padding: 8px;
+  }
+
+  .stat-card {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .stat-value {
+    font-size: 1rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+  }
+
+  .schedule-section, .syllabus-section {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .syllabus-header {
+    font-size: 0.85rem;
+    padding: 6px;
+  }
+
+  .syllabus-topics li {
+    font-size: 0.9rem;
+  }
+
+  .pricing-sidebar {
+    width: 100%;
+  }
+
+  .pricing-card {
+    padding: 15px;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .pricing-card .prices .price {
+    font-size: 0.95rem;
+  }
+
+  .pricing-card .enroll-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}
+
 .instructor-section {
   background: #ffffff;
   border-radius: 15px;
@@ -881,16 +1036,77 @@
 .username-coursePage {
   font-size: 1.3rem;
   color: #2c3e50;
-  margin-bottom: 5px; /* Reduced margin from 10px to 5px */
+  margin-bottom: 5px; 
   font-weight: bold;
 }
 
 /* Review Styling */
 .user-review-coursePage {
   font-size: 1rem;
-  line-height: 1.4; /* Reduced line height from 1.5 to 1.4 */
+  line-height: 1.4; 
   color: #666;
   font-style: italic;
+}
+
+/* Responsive Design for testimonial*/
+
+@media screen and (max-width: 1024px) {
+  .testimonials-container-coursePage {
+    flex-wrap: wrap; /* Wrap items to new line */
+    justify-content: center;
+  }
+
+  .testimonial-card-coursePage {
+    flex: 0 1 calc(50% - 20px); /* Two cards per row on tablets */
+    max-width: 100%;
+  }
+
+  .testimonials-heading-coursePage {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .testimonials-section-coursePage {
+    padding: 20px;
+  }
+
+  .testimonials-heading-coursePage {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .testimonials-container-coursePage {
+    flex-direction: column;
+    align-items: center;
+    overflow-x: auto; /* Allow horizontal scroll */
+  }
+
+  .testimonial-card-coursePage {
+    flex: 0 1 90%; /* Single card per row */
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .testimonials-heading-coursePage {
+    font-size: 1.3rem;
+  }
+
+  .testimonial-card-coursePage {
+    flex: 0 1 100%; /* Full width on small screens */
+    max-width: 100%;
+    padding: 15px;
+    height: auto;
+  }
+
+  .username-coursePage {
+    font-size: 1.1rem;
+  }
+
+  .user-review-coursePage {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 768px) {
