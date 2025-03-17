@@ -137,7 +137,6 @@ const styles = {
 
   return (
     <>
-      <Navbar />
       <div style={styles.container}>
         <div style={styles.mainWrapper}>
           <header style={styles.header}>

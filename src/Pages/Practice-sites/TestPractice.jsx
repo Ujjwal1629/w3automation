@@ -3,9 +3,9 @@ import Navbar from '../../Components/Navbar';
 
 const generateDynamicId = (base, type) => {
   const timestamp = Date.now().toString();
-  if (type === 'start') return `1234${timestamp.slice(-4)}`;
-  if (type === 'end') return `${timestamp.slice(-4)}5678`;
-  if (type === 'contains') return `87${timestamp.slice(-4)}65`;
+  if (type === 'start') return `start_${timestamp.slice(-4)}_abc`;
+  if (type === 'end') return `xyz_${timestamp.slice(-4)}_end`;
+  if (type === 'contains') return `mid_${timestamp.slice(-4)}_def`;
   return timestamp;
 };
 
@@ -22,7 +22,6 @@ const TestPractice = () => {
 
   return (
     <>
-      <Navbar />
       <div className="test-practice">
         <div className="practice-container">
           <header className="practice-header">

@@ -134,26 +134,37 @@ export default function Navbar() {
         {/* <a onClick={() => navigate("/ApiTesting")}>API TESTING</a> */}
         <a onClick={() => navigate("/Blogs")}>BLOGS</a>
         <div className="dropdown-container">
-          <a 
-            className={isPracticeDropdownOpen ? 'active' : ''} 
-            onClick={togglePracticeDropdown}
-          >
-            PRACTICE SITE
-          </a>
+          <a onClick={() => navigate("/practice")}>PRACTICE SITE</a>
           {isPracticeDropdownOpen && (
             <div className="dropdown-menu">
               <a onClick={() => {
                 navigate("/AuthPractice");
                 setIsPracticeDropdownOpen(false);
-              }}>Form Testing</a>
-              <a onClick={() => {
+              }}>Form Elements</a>
+              {/* <a onClick={() => {
                 navigate("/APITestPractice");
                 setIsPracticeDropdownOpen(false);
-              }}>API Testing</a>
+              }}>API Testing</a> */}
                <a onClick={() => {
                 navigate("/AlertTest");
                 setIsPracticeDropdownOpen(false);
               }}>Alert Box</a>
+                <a onClick={() => {
+                navigate("/ImageTest");
+                setIsPracticeDropdownOpen(false);
+              }}>Image Context</a>
+               <a onClick={() => {
+                navigate("/BrowserWindowTabOpener");
+                setIsPracticeDropdownOpen(false);
+              }}>Browser Tab Opener</a>
+               <a onClick={() => {
+                navigate("/LinksTesting");
+                setIsPracticeDropdownOpen(false);
+              }}>Links Testing</a>
+                <a onClick={() => {
+                navigate("/Authentication");
+                setIsPracticeDropdownOpen(false);
+              }}>Authentication</a>
             </div>
           )}
         </div>

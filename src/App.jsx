@@ -19,6 +19,11 @@ import APITestPractice from "./Pages/Practice-sites/APITestPractice";
 import AlertTest from './Pages/Practice-sites/AlertTest.jsx';
 import UserForm from './Pages/UserForm/UserForm.jsx';
 import CourseDetailPage from "./Pages/CourseDetail/CourseDetailPage.jsx";
+import ImageTest from "./Pages/Practice-sites/ImageTest.jsx";
+import BrowserWindowTabOpener from "./Pages/Practice-sites/BrowserWindowTabOpener.jsx";
+import LinksTesting from "./Pages/Practice-sites/LinksTesting.jsx";
+import Authentication from "./Pages/Practice-sites/Authentication.jsx";
+import Practice from "./Pages/Practice.jsx";
 
 function App() {
   ReactGA.initialize("G-FPDLKPFE8H");
@@ -40,6 +45,11 @@ function App() {
         <Route path="/AlertTest" element={<AlertTest />} />
         <Route path="/userForm" element={<UserForm/>} />
         <Route path="/syllabus-java-selenium" element={<CourseDetailPage/>} />
+        <Route path="/ImageTest" element={<ImageTest />} />
+        <Route path="/BrowserWindowTabOpener" element={<BrowserWindowTabOpener />} />
+        <Route path="/LinksTesting" element={<LinksTesting />} />
+        <Route path="/Authentication" element={<Authentication />} />
+        <Route path="/practice/*" element={<Practice />} />
       </Routes>
     </div>
   );
