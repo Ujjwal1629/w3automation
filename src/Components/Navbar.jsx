@@ -140,7 +140,7 @@ export default function Navbar() {
               <a onClick={() => {
                 navigate("/AuthPractice");
                 setIsPracticeDropdownOpen(false);
-              }}>Form Elements</a>
+              }}>Form Test</a>
               {/* <a onClick={() => {
                 navigate("/APITestPractice");
                 setIsPracticeDropdownOpen(false);
