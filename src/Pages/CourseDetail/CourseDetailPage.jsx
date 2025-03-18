@@ -131,6 +131,40 @@ const CourseDetailPage = () => {
           "Configuring the CI CD Pipeline",
           "Running the pipeline from Jenkins File"
         ]
+      },
+      {
+        title: "REST Assured API Automation",
+        topics: [
+          "Adding REST Libraries to the Maven Project",
+          "Sample Test Case Scripting",
+          "Performing POST Requests",
+          "Performing GET Requests",
+          "Performing DELETE Requests",
+          "Request and Response Spec Builder", 
+          "POJO Concepts",
+          "GraphQL Automation",
+          "End-to-End Scenarios using REST Assured",
+          "Parsing JSON and XML Responses using JSON Path and XML Path",
+          "Validating JSON Schema",
+          "BDD and Non-BDD Approaches",
+          "Serialization and Deserialization of Requests and Responses"
+        ]
+      },
+      {
+        title: "Basics of the Cucumber Framework",
+        topics: [
+          "Introduction to Cucumber",
+          "Creating a New Feature and File Syntax",
+          "Runner File and Creating Step Definitions",
+          "Combining TESTNG with Cucumber",
+          "Executing Cases using Runner File",
+          "Preparing the Scenario Name based on Tags",
+          "Scenario Outline, Scenario Templates, and Different Cucumber Tags and Annotations",
+          "PickledTestStep Concept and Its Purpose",
+          "Sharing Reports over the Cucumber Cloud",
+          "Data Tables",
+          "Parallel Testing"
+        ]
       }
     ],
     pricing: {

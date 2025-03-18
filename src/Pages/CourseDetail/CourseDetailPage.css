@@ -743,12 +743,13 @@
   border-radius: 2px;
 }
 
+/* Instructor Bio */
 .instructor-bio {
   color: #34495e;
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: 20px;
-  margin-right: 22%;
 }
+
 
 .tooltip-wrapper {
   position: relative;
@@ -896,24 +897,6 @@
 
 .tooltip-wrapper:hover .icon {
   color: #0059b2;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .ratings {
-    gap: 15px;
-  }
-  
-  .rating-item {
-    flex: 1 1 100%;
-    min-width: 0;
-    justify-content: center;
-  }
-  
-  .tooltip-text {
-    font-size: 0.7rem;
-    padding: 3px 6px;
-  }
 }
 
 /* Responsive Design */
