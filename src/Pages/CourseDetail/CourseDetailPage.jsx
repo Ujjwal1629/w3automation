@@ -49,9 +49,9 @@ const CourseDetailPage = () => {
       {
         title: "Core Java Topics Covered in Course",
         topics: [
-          "Introduction to Core Java",
+          "Installing Java, History and Features Of Java",
           "Classes and Objects",
-          "Basic Java Programming and Features",
+          "Data Types, Variables, Operators",
           "Strings",
           "Methods - Introduction",
           "Predefined Method - MathRandom Class",
@@ -85,7 +85,7 @@ const CourseDetailPage = () => {
         title: "Locators",
         topics: [
           "Locating elements using ID, Name, link and Xpath, Relative locators in Selenium 4.0",
-          "Understanding of ChroPath and SelectorsHub"
+          "Understanding of SelectorsHub browser extension"
         ]
       },
       {
@@ -110,26 +110,10 @@ const CourseDetailPage = () => {
           "POI JARS",
           "Log4j API",
           "TestNG - Parameterization, groups, testsuites etc",
-          "Extent Reports and Allure Reports",
+          "ReportNG and Allure Reports",
           "Page Object Model Design Pattern",
           "Keyword Driven Framework",
           "Data Driven Framework"
-        ]
-      },
-      {
-        title: "Version Control",
-        topics: [
-          "Git",
-          "GitHub",
-          "Github Desktop"
-        ]
-      },
-      {
-        title: "CI / CD - Jenkins Pipeline",
-        topics: [
-          "Continuous Integration using Jenkins and GIT on EC2 Instance",
-          "Configuring the CI CD Pipeline",
-          "Running the pipeline from Jenkins File"
         ]
       },
       {
@@ -160,12 +144,28 @@ const CourseDetailPage = () => {
           "Executing Cases using Runner File",
           "Preparing the Scenario Name based on Tags",
           "Scenario Outline, Scenario Templates, and Different Cucumber Tags and Annotations",
-          "PickledTestStep Concept and Its Purpose",
           "Sharing Reports over the Cucumber Cloud",
           "Data Tables",
           "Parallel Testing"
         ]
-      }
+      },
+      
+      {
+        title: "Version Control",
+        topics: [
+          "Git",
+          "GitHub",
+          "Github Desktop"
+        ]
+      },
+      {
+        title: "CI / CD - Jenkins Pipeline",
+        topics: [
+          "Continuous Integration using Jenkins and GIT on EC2 Instance",
+          "Configuring the CI CD Pipeline",
+          "Running the pipeline from Jenkins File"
+        ]
+      },
     ],
     pricing: {
       price: {
