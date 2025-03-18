@@ -748,6 +748,7 @@
   color: #34495e;
   line-height: 1.5;
   margin-bottom: 20px;
+  margin: 0 auto 20px auto; /*Center on smaller screens*/
 }
 
 
@@ -818,10 +819,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 120px;
   position: relative;
   flex: 1 1 200px; /* Responsive flex basis */
   min-width: 150px;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 /* Icon Container */
@@ -926,15 +928,54 @@
   .instructor-name, .instructor-title {
     padding-left: 0;
   }
+  .instructor-bio {
+    font-size: 0.95rem;
+    text-align: justify;
+  }
   
   .tooltip-text {
     font-size: 0.7rem;
     padding: 3px 6px;
   }
   
-  .rating-item {
+  .ratings {
     flex-direction: column;
     align-items: center;
+  }
+
+  .rating-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .instructor-name {
+    font-size: 1.3rem;
+  }
+
+  .instructor-title {
+    font-size: 1rem;
+  }
+
+  .instructor-bio {
+    font-size: 0.9rem;
+    max-width: 95%;
+    text-align: left; /* Prevents awkward justification on small screens */
+  }
+
+  .ratings {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rating-item {
+    flex-direction: column;
+    text-align: center;
   }
 }
 
