@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CertificateTemplate = () => {
+const CertificateTemplate = ({ name, completionDate, issuedDate, certificateNumber }) => {
   return (
     <>
       <div
@@ -132,7 +132,7 @@ const CertificateTemplate = () => {
                 textShadow: '1px 1px 5px rgba(0, 0, 0, 0.1)',
               }}
             >
-              Archit Garg
+              {name}
             </div>
             <div
               className="subtitle"
@@ -180,7 +180,7 @@ const CertificateTemplate = () => {
                 color: '#1a2a44',
               }}
             >
-              December 23, 2024
+              {completionDate}
             </div>
           </div>
           <div
@@ -244,8 +244,9 @@ const CertificateTemplate = () => {
                 boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
               }}
             >
-              Certificate No: JTA-2025-0103-001<br />
-              Issued On: January 3, 2025
+              Certificate No: {certificateNumber}
+              <br />
+              Issued On: {issuedDate}
             </div>
           </div>
         </div>
