@@ -99,11 +99,7 @@ const GetCertificate = () => {
       setError('Failed to generate certificate. Please try again.');
     } finally {
       setLoading(false);
-      const tempDiv = document.querySelector('.certificate-temp-container');
-      if (tempDiv) {
-        ReactDOM.unmountComponentAtNode(tempDiv);
-        tempDiv.remove();
-      }
+      document.querySelector('.certificate-temp-container')?.remove();
     }
   };
 
