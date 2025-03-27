@@ -7,11 +7,14 @@ import { jsPDF } from 'jspdf';
 import { FiDownload, FiCalendar, FiUser, FiHash } from 'react-icons/fi';
 
 const GetCertificate = () => {
+
+  const newDate = new Date();  
+
   const [formData, setFormData] = useState({
     name: '',
     completionDate: '',
     issuedDate: '',
-    certificateNumber: 'JTA-' + new Date().getFullYear() + '-'
+    certificateNumber: `JTA-${newDate.getFullYear()}-${String(newDate.getDate()).padStart(2, '0')}${String(newDate.getMonth() + 1).padStart(2, '0')}-`
   });
 
   const [error, setError] = useState('');
