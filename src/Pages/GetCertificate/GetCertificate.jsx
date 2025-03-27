@@ -4,13 +4,14 @@ import './GetCertificate.css';
 import CertificateTemplate from '../../Template/CertificateTemplate';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import { FiDownload, FiCalendar, FiUser, FiHash } from 'react-icons/fi';
 
 const GetCertificate = () => {
   const [formData, setFormData] = useState({
     name: '',
     completionDate: '',
     issuedDate: '',
-    certificateNumber: 'JTA-2025-'
+    certificateNumber: 'JTA-' + new Date().getFullYear() + '-'
   });
 
   const [error, setError] = useState('');
@@ -27,11 +28,11 @@ const GetCertificate = () => {
 
   const validateForm = () => {
     if (!formData.name.trim()) {
-      setError('Name is required');
+      setError('Please enter participant name');
       return false;
     }
-    if (!formData.certificateNumber.trim()) {
-      setError('Certificate number is required');
+    if (!formData.completionDate) {
+      setError('Please select completion date');
       return false;
     }
     setError('');
@@ -45,13 +46,12 @@ const GetCertificate = () => {
     setError('');
 
     try {
-      // a temporary container for the certificate
       const tempDiv = document.createElement('div');
       tempDiv.style.position = 'absolute';
       tempDiv.style.left = '-9999px';
+      tempDiv.className = 'certificate-temp-container';
       document.body.appendChild(tempDiv);
 
-      // a root and render the certificate
       const root = ReactDOM.createRoot(tempDiv);
       root.render(
         <div ref={certificateRef}>
@@ -59,32 +59,24 @@ const GetCertificate = () => {
         </div>
       );
 
-      // Waiting for rendering to complete
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise(resolve => setTimeout(resolve, 300));
 
-      // Converting to canvas with optimized settings
       const canvas = await html2canvas(certificateRef.current, {
-        scale: 3, // High resolution for print quality
+        scale: 3,
         logging: false,
         useCORS: true,
-        backgroundColor: '#ffffff', // White background for print
-        windowWidth: 900, 
-        windowHeight: 600, 
-        ignoreElements: (element) => {
-          // Ignoring any elements that shouldn't be captured
-          return element.classList?.contains('no-print');
-        }
+        backgroundColor: '#ffffff',
+        windowWidth: 900,
+        windowHeight: 600
       });
 
-      // Generate PDF with precise dimensions
       const pdf = new jsPDF({
         orientation: 'landscape',
         unit: 'px',
-        format: [900, 600], // Exact certificate size
-        hotfixes: ['px_scaling'] // Fix PDF.js scaling issues
+        format: [900, 600],
+        hotfixes: ['px_scaling']
       });
 
-      // Add image with precise positioning
       const imgData = canvas.toDataURL('image/png', 1.0);
       pdf.addImage({
         imageData: imgData,
@@ -95,89 +87,115 @@ const GetCertificate = () => {
         height: 600,
         compression: 'FAST' // Balance quality and file size
       });
-
-      // Save with sanitized filename
+      
       const fileName = `${formData.name.replace(/[^a-z0-9]/gi, '_')}_Certificate.pdf`;
       pdf.save(fileName);
 
     } catch (err) {
-      console.error('Error generating PDF:', err);
+      console.error('PDF Generation Error:', err);
       setError('Failed to generate certificate. Please try again.');
     } finally {
       setLoading(false);
-      // Clean up temporary elements
-      const tempDivs = document.querySelectorAll('.temp-certificate');
-      tempDivs.forEach(div => {
-        ReactDOM.unmountComponentAtNode(div);
-        div.remove();
-      });
+      const tempDiv = document.querySelector('.certificate-temp-container');
+      if (tempDiv) {
+        ReactDOM.unmountComponentAtNode(tempDiv);
+        tempDiv.remove();
+      }
     }
   };
 
   return (
-    <div className="get-certificate-container">
-      <h1>Generate Certificate</h1>
+    <div className="certificate-generator">
+      <div className="generator-container">
+        <header className="generator-header">
+          <h1>
+            <span>Get Certificate</span>
+          </h1>
+        </header>
 
-      {error && <div className="error-message">{error}</div>}
+        {error && <div className="error-message">{error}</div>}
 
-      <form className="certificate-form">
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+        <div className="form-card">
+          <div className="input-group">
+            <label htmlFor="name">
+              <FiUser className="input-icon" />
+              Participant Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Enter full name"
+              required
+            />
+          </div>
+
+          <div className="input-row">
+            <div className="input-group">
+              <label htmlFor="completionDate">
+                <FiCalendar className="input-icon" />
+                Completion Date
+              </label>
+              <input
+                type="date"
+                id="completionDate"
+                name="completionDate"
+                value={formData.completionDate}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="issuedDate">
+                <FiCalendar className="input-icon" />
+                Issued Date
+              </label>
+              <input
+                type="date"
+                id="issuedDate"
+                name="issuedDate"
+                value={formData.issuedDate}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="certificateNumber">
+              <FiHash className="input-icon" />
+              Certificate Number
+            </label>
+            <input
+              type="text"
+              id="certificateNumber"
+              name="certificateNumber"
+              value={formData.certificateNumber}
+              onChange={handleChange}
+              placeholder="Certificate ID"
+              required
+            />
+          </div>
+
+          <button
+            className="generate-btn"
+            onClick={generatePDF}
+            disabled={loading}
+          >
+            {loading ? (
+              <span className="loading-spinner"></span>
+            ) : (
+              <>
+                <FiDownload className="btn-icon" />
+                Generate Certificate
+              </>
+            )}
+          </button>
         </div>
-
-        <div className="form-group">
-          <label htmlFor="completionDate">Completion Date:</label>
-          <input
-            type="date"
-            id="completionDate"
-            name="completionDate"
-            value={formData.completionDate}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="issuedDate">Issued Date:</label>
-          <input
-            type="date"
-            id="issuedDate"
-            name="issuedDate"
-            value={formData.issuedDate}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="certificateNumber">Certificate Number:</label>
-          <input
-            type="text"
-            id="certificateNumber"
-            name="certificateNumber"
-            value={formData.certificateNumber}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <button
-          type="button"
-          className="download-btn"
-          onClick={generatePDF}
-          disabled={loading}
-        >
-          {loading ? 'Generating...' : 'Get Certificate'}
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
