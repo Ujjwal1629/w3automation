@@ -10,7 +10,7 @@ const GetCertificate = () => {
     name: '',
     completionDate: '',
     issuedDate: '',
-    certificateNumber: ''
+    certificateNumber: 'JTA-2025-'
   });
 
   const [error, setError] = useState('');
@@ -45,13 +45,13 @@ const GetCertificate = () => {
     setError('');
 
     try {
-      // Create a temporary container for the certificate
+      // a temporary container for the certificate
       const tempDiv = document.createElement('div');
       tempDiv.style.position = 'absolute';
       tempDiv.style.left = '-9999px';
       document.body.appendChild(tempDiv);
 
-      // Create a root and render the certificate
+      // a root and render the certificate
       const root = ReactDOM.createRoot(tempDiv);
       root.render(
         <div ref={certificateRef}>
@@ -59,19 +59,19 @@ const GetCertificate = () => {
         </div>
       );
 
-      // Wait for rendering to complete
+      // Waiting for rendering to complete
       await new Promise(resolve => setTimeout(resolve, 100));
 
-      // Convert to canvas with optimized settings
+      // Converting to canvas with optimized settings
       const canvas = await html2canvas(certificateRef.current, {
         scale: 3, // High resolution for print quality
         logging: false,
         useCORS: true,
         backgroundColor: '#ffffff', // White background for print
-        windowWidth: 900, // Match certificate width
-        windowHeight: 600, // Match certificate height
+        windowWidth: 900, 
+        windowHeight: 600, 
         ignoreElements: (element) => {
-          // Ignore any elements that shouldn't be captured
+          // Ignoring any elements that shouldn't be captured
           return element.classList?.contains('no-print');
         }
       });
