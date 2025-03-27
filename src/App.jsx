@@ -25,6 +25,7 @@ import LinksTesting from "./Pages/Practice-sites/LinksTesting.jsx";
 import Authentication from "./Pages/Practice-sites/Authentication.jsx";
 import Practice from "./Pages/Practice.jsx";
 import GetCertificate from "./Pages/GetCertificate/GetCertificate.jsx"
+import Template from "./Template/CertificateTemplate.jsx"
 
 function App() {
   ReactGA.initialize("G-FPDLKPFE8H");
@@ -52,6 +53,7 @@ function App() {
         <Route path="/Authentication" element={<Authentication />} />
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/getCertificate" element={<GetCertificate />} />
+        <Route path="/template" element={<Template />} />
       </Routes>
     </div>
   );

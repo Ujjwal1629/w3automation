@@ -62,23 +62,43 @@ const GetCertificate = () => {
       // Wait for rendering to complete
       await new Promise(resolve => setTimeout(resolve, 100));
 
-      // Convert to canvas
+      // Convert to canvas with optimized settings
       const canvas = await html2canvas(certificateRef.current, {
-        scale: 2,
+        scale: 3, // High resolution for print quality
         logging: false,
         useCORS: true,
-        backgroundColor: null
+        backgroundColor: '#ffffff', // White background for print
+        windowWidth: 900, // Match certificate width
+        windowHeight: 600, // Match certificate height
+        ignoreElements: (element) => {
+          // Ignore any elements that shouldn't be captured
+          return element.classList?.contains('no-print');
+        }
       });
 
-      // Generate PDF
-      const pdf = new jsPDF('landscape');
-      const imgData = canvas.toDataURL('image/png');
-      const imgProps = pdf.getImageProperties(imgData);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      // Generate PDF with precise dimensions
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'px',
+        format: [900, 600], // Exact certificate size
+        hotfixes: ['px_scaling'] // Fix PDF.js scaling issues
+      });
 
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save(`${formData.name}_Certificate.pdf`);
+      // Add image with precise positioning
+      const imgData = canvas.toDataURL('image/png', 1.0);
+      pdf.addImage({
+        imageData: imgData,
+        format: 'PNG',
+        x: 0,
+        y: 0,
+        width: 900,
+        height: 600,
+        compression: 'FAST' // Balance quality and file size
+      });
+
+      // Save with sanitized filename
+      const fileName = `${formData.name.replace(/[^a-z0-9]/gi, '_')}_Certificate.pdf`;
+      pdf.save(fileName);
 
     } catch (err) {
       console.error('Error generating PDF:', err);
