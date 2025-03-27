@@ -50,8 +50,8 @@ const CertificateTemplate = ({
         {/* Footer with Signature */}
         <div className="footer">
           <div className="signature-block">
-            <div className="sig-line" />
             <div className="signature">Hemant Gandhi</div>
+            <div className="sig-line" />
             <div className="sig-title">Test Automation Trainer</div>
           </div>
           <div className="cert-details">
