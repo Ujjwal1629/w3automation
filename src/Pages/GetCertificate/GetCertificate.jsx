@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react';
+import ReactDOM from 'react-dom/client';
 import './GetCertificate.css';
-import { useReactToPrint } from 'react-to-print';
-import CertificateTemplate from '../../Template/CertificateTemplate.jsx'; // Make sure to create this file
+import CertificateTemplate from '../../Template/CertificateTemplate';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 const GetCertificate = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +13,9 @@ const GetCertificate = () => {
     certificateNumber: ''
   });
 
-  const certificateRef = useRef();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const certificateRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,49 +25,81 @@ const GetCertificate = () => {
     }));
   };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     // Validation can be added here
-//     console.log('Form submitted:', formData);
-//   };
+  const validateForm = () => {
+    if (!formData.name.trim()) {
+      setError('Name is required');
+      return false;
+    }
+    if (!formData.certificateNumber.trim()) {
+      setError('Certificate number is required');
+      return false;
+    }
+    setError('');
+    return true;
+  };
 
-  const handleDownload = useReactToPrint({
-    content: () => certificateRef.current,
-    pageStyle: `
-      @page {
-        size: A4 landscape;
-        margin: 0;
-      }
-      @media print {
-        body {
-          margin: 0;
-          padding: 0;
-        }
-      }
-    `,
-    documentTitle: `${formData.name}_Certificate`,
-    // onAfterPrint: () => alert('Certificate downloaded successfully!')
-    onBeforeGetContent: () => {
+  const generatePDF = async () => {
+    if (!validateForm()) return;
 
-        // Force update the content right before printing
-  
-        return new Promise((resolve) => {
-  
-          setFormData(prev => ({...prev}));
-  
-          resolve();
-  
-        });
-  
-      },
-  
-      removeAfterPrint: true
-  });
+    setLoading(true);
+    setError('');
+
+    try {
+      // Create a temporary container for the certificate
+      const tempDiv = document.createElement('div');
+      tempDiv.style.position = 'absolute';
+      tempDiv.style.left = '-9999px';
+      document.body.appendChild(tempDiv);
+
+      // Create a root and render the certificate
+      const root = ReactDOM.createRoot(tempDiv);
+      root.render(
+        <div ref={certificateRef}>
+          <CertificateTemplate {...formData} />
+        </div>
+      );
+
+      // Wait for rendering to complete
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      // Convert to canvas
+      const canvas = await html2canvas(certificateRef.current, {
+        scale: 2,
+        logging: false,
+        useCORS: true,
+        backgroundColor: null
+      });
+
+      // Generate PDF
+      const pdf = new jsPDF('landscape');
+      const imgData = canvas.toDataURL('image/png');
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`${formData.name}_Certificate.pdf`);
+
+    } catch (err) {
+      console.error('Error generating PDF:', err);
+      setError('Failed to generate certificate. Please try again.');
+    } finally {
+      setLoading(false);
+      // Clean up temporary elements
+      const tempDivs = document.querySelectorAll('.temp-certificate');
+      tempDivs.forEach(div => {
+        ReactDOM.unmountComponentAtNode(div);
+        div.remove();
+      });
+    }
+  };
 
   return (
     <div className="get-certificate-container">
       <h1>Generate Certificate</h1>
-      
+
+      {error && <div className="error-message">{error}</div>}
+
       <form className="certificate-form">
         <div className="form-group">
           <label htmlFor="name">Name:</label>
@@ -113,22 +149,15 @@ const GetCertificate = () => {
           />
         </div>
 
-        <button 
-          type="button" 
+        <button
+          type="button"
           className="download-btn"
-          onClick={handleDownload}
-          disabled={!formData.name || !formData.certificateNumber}
+          onClick={generatePDF}
+          disabled={loading}
         >
-          Get Certificate
+          {loading ? 'Generating...' : 'Get Certificate'}
         </button>
       </form>
-
-      {/* Hidden template that will be converted to PDF */}
-      <div style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}>
-                <div ref={certificateRef}>
-          <CertificateTemplate {...formData} />
-        </div>
-      </div>
     </div>
   );
 };
