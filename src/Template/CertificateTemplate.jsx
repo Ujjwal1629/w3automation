@@ -9,6 +9,19 @@ const CertificateTemplate = ({
   issuedDate = 'N/A',
   certificateNumber = 'N/A',
 }) => {
+
+    // date formatting function
+    const formatDate = (dateString) => {
+      if (dateString === 'N/A') return dateString;
+      
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    };
+
   return (
     <div className="certificate-container" id="certificate">
       <div className="certificate">
@@ -40,7 +53,7 @@ const CertificateTemplate = ({
             alt="Journey to Automation Logo" 
             className="logo"
           />
-          <h2 className="organization-name">Journey to Automation</h2>
+          <h2 className="organization-name">JOURNEY TO AUTOMATION</h2>
         </div>
 
         {/* Header Section */}
@@ -56,7 +69,7 @@ const CertificateTemplate = ({
           <p className="subtitle">has successfully completed the course</p>
           <h3 className="course">SELENIUM WITH JAVA AND DEVOPS</h3>
           <p className="subtitle">Completed on</p>
-          <p className="completion-date">{completionDate}</p>
+          <p className="completion-date">{formatDate(completionDate)}</p>
         </div>
 
         {/* Footer with Signature */}

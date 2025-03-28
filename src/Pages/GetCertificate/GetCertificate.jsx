@@ -70,7 +70,10 @@ const GetCertificate = () => {
         useCORS: true,
         backgroundColor: '#ffffff',
         windowWidth: 900,
-        windowHeight: 600
+        windowHeight: 600,
+        letterRendering: true,
+        allowTaint: true,
+        ignoreElements: (el) => el.classList.contains('no-print')
       });
 
       const pdf = new jsPDF({
