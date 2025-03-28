@@ -1,5 +1,7 @@
 import React from 'react';
 import './CertificateTemplate.css';
+import logo from '../assets/logo-edit.png';
+import imgSignature from '../assets/sig-edit.png';
 
 const CertificateTemplate = ({
   name = 'Unknown',
@@ -31,6 +33,16 @@ const CertificateTemplate = ({
           />
         </svg>
 
+        {/* Logo and Organization Name */}
+        <div className="logo-container">
+          <img 
+            src={logo}
+            alt="Journey to Automation Logo" 
+            className="logo"
+          />
+          <h2 className="organization-name">Journey to Automation</h2>
+        </div>
+
         {/* Header Section */}
         <div className="header">
           <h1 className="title">Certificate of Completion</h1>
@@ -42,7 +54,7 @@ const CertificateTemplate = ({
           <p className="subtitle">This is to certify that</p>
           <h2 className="name">{name}</h2>
           <p className="subtitle">has successfully completed the course</p>
-          <h3 className="course">SELENIUM WITH JAVA WITH DEVOPS</h3>
+          <h3 className="course">SELENIUM WITH JAVA AND DEVOPS</h3>
           <p className="subtitle">Completed on</p>
           <p className="completion-date">{completionDate}</p>
         </div>
@@ -50,9 +62,14 @@ const CertificateTemplate = ({
         {/* Footer with Signature */}
         <div className="footer">
           <div className="signature-block">
-            <div className="signature">Hemant Gandhi</div>
+          <img 
+              src={imgSignature} 
+              alt="Signature" 
+              className="signature-image"
+            />
             <div className="sig-line" />
-            <div className="sig-title">Test Automation Trainer</div>
+            <div className="signature">Hemant Gandhi</div>
+            <div className="sig-title">(Test Automation Trainer)</div>
           </div>
           <div className="cert-details">
             <p>Certificate No: {certificateNumber}</p>
