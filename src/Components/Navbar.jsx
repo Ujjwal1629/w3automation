@@ -145,11 +145,6 @@ export default function Navbar() {
             <button>Contact Us</button>
             <button onClick={() => navigate("/about")}>About Us</button>
           </div>
-          <div className="nav-item">
-            <a onClick={() => navigate("/ecommerce")} className="ecommerce-link">
-              ECOMMERCE STORE
-            </a>
-          </div>
         </div>
       </div>
 
@@ -215,10 +210,9 @@ export default function Navbar() {
                 navigate("/practice/auth");
                 setIsPracticeDropdownOpen(false);
               }}>Authentication</a>
-                <a onClick={() => {
-                navigate("/practice/ecommerce");
-                setIsPracticeDropdownOpen(false);
-              }}>E-commerce Store</a>
+                <a onClick={() => navigate("/ecommerce")} className="ecommerce-link">
+              ECOMMERCE STORE
+            </a>
             </div>
           )}
         </div>

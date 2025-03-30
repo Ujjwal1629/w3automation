@@ -8,7 +8,6 @@ import Authentication from './Practice-sites/Authentication';
 import TestPractice from './Practice-sites/TestPractice';
 import BrowserWindowOpener from './Practice-sites/BrowserWindowTabOpener';
 import Navbar from '../Components/Navbar';
-import EcommerceTesting from './Practice-sites/pages/EcommerceTesting';
 
 const Practice = () => {
   const navigate = useNavigate();
@@ -26,7 +25,6 @@ const Practice = () => {
     { name: 'Browser Tab Opener', path: 'browser' },
     { name: 'Links Testing', path: 'links' },
     { name: 'Authentication', path: 'auth' },
-    { name: 'EcommerceTesting', path: 'ecom' }
   ];
 
   // Navigate to first component by default if on base practice route
@@ -67,7 +65,7 @@ const Practice = () => {
             <Route path="browser" element={<BrowserWindowOpener />} />
             <Route path="links" element={<LinksTesting />} />
             <Route path="auth" element={<Authentication />} />
-            <Route path="ecom" element={<EcommerceTesting />} />
+            {/* <Route path="ecom" element={<EcommerceStore />} /> */}
           </Routes>
         </div>
       </div>
