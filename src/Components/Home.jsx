@@ -244,7 +244,7 @@ export default function Home() {
                 Learn industry-leading automation tools and frameworks through our interactive modules.
               </p>
 
-              <div className="search-bar">
+              <div className="search-bar-home">
                 <input 
                   type="text" 
                   value={searchQuery}
@@ -252,7 +252,7 @@ export default function Home() {
                   placeholder={placeholder || "Search topics..."}
                   className="search-input"
                 />
-                <Search className="search-icon" />
+                <Search className="search-icon-home" />
               </div>
             </div>
 

@@ -210,7 +210,7 @@ export default function Navbar() {
                 navigate("/practice/auth");
                 setIsPracticeDropdownOpen(false);
               }}>Authentication</a>
-                <a onClick={() => navigate("/ecommerce")} className="ecommerce-link">
+                <a onClick={() => navigate("/practice/ecom")} className="ecommerce-link">
               ECOMMERCE STORE
             </a>
             </div>

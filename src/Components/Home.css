@@ -72,14 +72,14 @@
   animation: fadeInUp 0.8s ease-out;
 }
 
-.search-bar {
+.search-bar-home {
   position: relative;
   max-width: 500px;
   margin: 0 auto;
   animation: fadeIn 1s ease-out;
 }
 
-.search-bar input {
+.search-bar-home input {
   width: 100%;
   padding: 16px 48px 16px 24px;
   border: 2px solid #e5e7eb;
@@ -89,13 +89,13 @@
   transition: all 0.3s ease;
 }
 
-.search-bar input:focus {
+.search-bar-home input:focus {
   outline: none;
   border-color: #5b21b6;
   box-shadow: 0 0 0 4px rgba(91, 33, 182, 0.1);
 }
 
-.search-icon {
+.search-icon-home {
   position: absolute;
   right: 16px;
   top: 50%;
@@ -265,7 +265,7 @@
     font-size: 16px;
   }
   
-  .search-bar input {
+  .search-bar-home input {
     padding: 14px 40px 14px 20px;
   }
   
