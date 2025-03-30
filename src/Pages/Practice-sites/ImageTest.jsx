@@ -28,23 +28,88 @@ const ImageTest = () => {
   };
 
   // Handle menu item clicks
-  const handleMenuItemClick = (action) => {
+  const handleMenuItemClick = async (action) => {
+    const image = document.querySelector('.test-image');
+    const imageUrl = image.src;
+
     switch(action) {
       case 'view':
-        alert('View Image in Full Screen');
+        // Open image in full screen
+        const fullScreenWindow = window.open(imageUrl, '_blank');
+        if (fullScreenWindow) {
+          fullScreenWindow.focus();
+        }
         break;
+
       case 'save':
-        alert('Save Image');
+        try {
+          // Fetch the image and create a download link
+          const response = await fetch(imageUrl);
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'image.jpg'; // You can customize the filename
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+          document.body.removeChild(a);
+        } catch (error) {
+          console.error('Error saving image:', error);
+          alert('Failed to save image. Please try again.');
+        }
         break;
+
       case 'copy':
-        alert('Copy Image');
+        try {
+          // Copy image to clipboard
+          const response = await fetch(imageUrl);
+          const blob = await response.blob();
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              [blob.type]: blob
+            })
+          ]);
+          alert('Image copied to clipboard!');
+        } catch (error) {
+          console.error('Error copying image:', error);
+          alert('Failed to copy image. Please try again.');
+        }
         break;
+
       case 'edit':
-        alert('Edit Image');
+        // Open image in a new tab with basic editing capabilities
+        const editWindow = window.open(`https://pixlr.com/e/?image=${encodeURIComponent(imageUrl)}`, '_blank');
+        if (editWindow) {
+          editWindow.focus();
+        }
         break;
+
       case 'share':
-        alert('Share Image');
+        if (navigator.share) {
+          try {
+            // Fetch the image and convert to blob
+            const response = await fetch(imageUrl);
+            const blob = await response.blob();
+            const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
+            
+            await navigator.share({
+              title: 'Shared Image',
+              text: 'Check out this image!',
+              files: [file]
+            });
+          } catch (error) {
+            console.error('Error sharing image:', error);
+            alert('Failed to share image. Please try again.');
+          }
+        } else {
+          // Fallback for browsers that don't support Web Share API
+          const shareUrl = window.location.href;
+          await navigator.clipboard.writeText(shareUrl);
+          alert('Link copied to clipboard! Share this link with others.');
+        }
         break;
+
       default:
         break;
     }

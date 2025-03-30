@@ -3,9 +3,9 @@ import Navbar from '../../Components/Navbar';
 
 const generateDynamicId = (base, type) => {
   const timestamp = Date.now().toString();
-  if (type === 'start') return `start_${timestamp.slice(-4)}_abc`;
-  if (type === 'end') return `xyz_${timestamp.slice(-4)}_end`;
-  if (type === 'contains') return `mid_${timestamp.slice(-4)}_def`;
+  if (type === 'start') return `ABCD_${timestamp.slice(-4)}`;
+  if (type === 'end') return `${timestamp.slice(-4)}_DCBA`;
+  if (type === 'contains') return `${timestamp.slice(-2)}_ABCD_${timestamp.slice(-2)}`;
   return timestamp;
 };
 

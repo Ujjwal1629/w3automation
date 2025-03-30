@@ -8,6 +8,7 @@ export default function Navbar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isPracticeDropdownOpen, setIsPracticeDropdownOpen] = useState(false);
   const [isCoursesDropdownOpen, setIsCoursesDropdownOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -22,15 +23,35 @@ export default function Navbar() {
     };
   }, [isPracticeDropdownOpen]);
 
+  const handleMouseEnter = (item) => {
+    setHoveredItem(item);
+    if (item === 'practice') {
+      setIsPracticeDropdownOpen(true);
+    } else if (item === 'courses') {
+      setIsCoursesDropdownOpen(true);
+    }
+  };
+
+  const handleMouseLeave = (item) => {
+    setTimeout(() => {
+      if (!hoveredItem) {
+        if (item === 'practice') {
+          setIsPracticeDropdownOpen(false);
+        } else if (item === 'courses') {
+          setIsCoursesDropdownOpen(false);
+        }
+      }
+    }, 100);
+  };
+
   const togglePracticeDropdown = () => {
     setIsPracticeDropdownOpen(!isPracticeDropdownOpen);
-    setIsCoursesDropdownOpen(false); // Close other dropdown
-
+    setIsCoursesDropdownOpen(false);
   };
 
   const toggleCoursesDropdown = () => {
     setIsCoursesDropdownOpen(!isCoursesDropdownOpen);
-    setIsPracticeDropdownOpen(false); // Close other dropdown
+    setIsPracticeDropdownOpen(false);
   };
 
   const topics = [
@@ -128,41 +149,65 @@ export default function Navbar() {
       </div>
 
       <div className="sub-nav">
-        <a onClick={() => navigate("/Selenium")}>SELENIUM WITH JAVA</a>
-        <a onClick={() => navigate("/Playwright")}>PLAYWRIGHT</a>
-        <a onClick={() => navigate("/InterviewQuestions")}>INTERVIEW QUESTIONS</a>
+        <a 
+          onClick={() => navigate("/Selenium")}
+          onMouseEnter={() => handleMouseEnter('selenium')}
+          onMouseLeave={() => handleMouseLeave('selenium')}
+        >
+          SELENIUM WITH JAVA
+        </a>
+        <a 
+          onClick={() => navigate("/Playwright")}
+          onMouseEnter={() => handleMouseEnter('playwright')}
+          onMouseLeave={() => handleMouseLeave('playwright')}
+        >
+          PLAYWRIGHT
+        </a>
+        <a 
+          onClick={() => navigate("/InterviewQuestions")}
+          onMouseEnter={() => handleMouseEnter('interview')}
+          onMouseLeave={() => handleMouseLeave('interview')}
+        >
+          INTERVIEW QUESTIONS
+        </a>
         {/* <a onClick={() => navigate("/ApiTesting")}>API TESTING</a> */}
-        <a onClick={() => navigate("/Blogs")}>BLOGS</a>
-        <div className="dropdown-container">
+        <a 
+          onClick={() => navigate("/Blogs")}
+          onMouseEnter={() => handleMouseEnter('blogs')}
+          onMouseLeave={() => handleMouseLeave('blogs')}
+        >
+          BLOGS
+        </a>
+        <div 
+          className="dropdown-container"
+          onMouseEnter={() => handleMouseEnter('practice')}
+          onMouseLeave={() => handleMouseLeave('practice')}
+        >
           <a onClick={() => navigate("/practice")}>PRACTICE SITE</a>
           {isPracticeDropdownOpen && (
             <div className="dropdown-menu">
               <a onClick={() => {
-                navigate("/AuthPractice");
+                navigate("/practice");
                 setIsPracticeDropdownOpen(false);
               }}>Form Test</a>
-              {/* <a onClick={() => {
-                navigate("/APITestPractice");
-                setIsPracticeDropdownOpen(false);
-              }}>API Testing</a> */}
-               <a onClick={() => {
-                navigate("/AlertTest");
+              <a onClick={() => {
+                navigate("/practice/alert");
                 setIsPracticeDropdownOpen(false);
               }}>Alert Box</a>
-                <a onClick={() => {
-                navigate("/ImageTest");
+              <a onClick={() => {
+                navigate("/practice/image");
                 setIsPracticeDropdownOpen(false);
               }}>Image Context</a>
-               <a onClick={() => {
-                navigate("/BrowserWindowTabOpener");
+              <a onClick={() => {
+                navigate("/practice/browser");
                 setIsPracticeDropdownOpen(false);
               }}>Browser Tab Opener</a>
-               <a onClick={() => {
-                navigate("/LinksTesting");
+              <a onClick={() => {
+                navigate("/practice/links");
                 setIsPracticeDropdownOpen(false);
               }}>Links Testing</a>
-                <a onClick={() => {
-                navigate("/Authentication");
+              <a onClick={() => {
+                navigate("/practice/auth");
                 setIsPracticeDropdownOpen(false);
               }}>Authentication</a>
             </div>
@@ -170,17 +215,26 @@ export default function Navbar() {
         </div>
 
           {/* New Upcoming Courses Dropdown */}
-        <div className="dropdown-container">
+        <div 
+          className="dropdown-container"
+          onMouseEnter={() => handleMouseEnter('courses')}
+          onMouseLeave={() => handleMouseLeave('courses')}
+          onClick={toggleCoursesDropdown}
+        >
           <a 
             className={isCoursesDropdownOpen ? 'active' : ''} 
-            onClick={toggleCoursesDropdown}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleCoursesDropdown();
+            }}
           >
             UPCOMING COURSES
           </a>
           {isCoursesDropdownOpen && (
             <div className="dropdown-menu courses-menu">
               <a 
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   navigate("/syllabus-java-selenium");
                   setIsCoursesDropdownOpen(false);
                 }}
