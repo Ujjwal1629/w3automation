@@ -1,0 +1,307 @@
+.certificate-container {
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.certificate {
+  width: 900px; /* Fixed width for PDF */
+  height: 600px; /* Fixed height for PDF */
+  background: #ffffff;
+  position: relative;
+  padding: 25px;
+  box-sizing: border-box;
+  background-image: linear-gradient(135deg, #f8f9fa, #ffffff);
+  
+  /* Double border effect that will render well in PDF */
+  border: 12px solid #ffffff;
+  outline: 2px solid #b08d57;
+  box-shadow: 
+    0 0 0 10px #ffffff,
+    0 0 0 12px #1a2a44;
+  
+  /* Prevent any unexpected scaling */
+  transform: scale(1);
+  transform-origin: top left;
+
+  overflow: hidden;
+
+}
+
+/* Logo Section - Fixed positioning */
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.logo {
+  height: 45px; 
+  width: auto;
+  max-width: 200px; /* Prevent stretching */
+  margin: 0 auto 10px;
+  display: block;
+}
+
+.organization-name {
+  font-family: 'Georgia', serif;
+  font-size: 24px;
+  color: #1a2a44;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 5px 0 0;
+  line-height: 1.2;
+}
+
+/* Decorative Elements */
+.accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(to right, #b08d57, #1a2a44);
+}
+
+.corner-ornament {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  opacity: 0.3;
+}
+
+.top-left {
+  top: 15px;
+  left: 15px;
+}
+
+.bottom-right {
+  bottom: 15px;
+  right: 15px;
+}
+
+/* Header Section - Fixed spacing */
+.header {
+  text-align: center;
+  padding-bottom: 15px;
+  /* margin: 10px 0 20px; */
+  position: relative;
+}
+
+.title {
+  font-family: 'Georgia', serif;
+  font-size: 42px;
+  color: #222222;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 15px;
+  line-height: 1.2;
+}
+
+.underline {
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(to right, #b08d57, #1a2a44);
+  margin: 0 auto;
+}
+
+/* Main Content - Fixed layout */
+.content {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  color: #2d3b55;
+  height: 280px; /* Fixed height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px 0;
+  position: relative;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  color: darkslategray;
+  margin: 5px 0;
+  letter-spacing: 0.5px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.name {
+  font-family: 'Times New Roman', serif;
+  font-size: 42px;
+  color: #b08d57;
+  font-weight: bold;
+  margin: 10px 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
+  line-height: 1.2;
+}
+
+.course {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a2a44;
+  margin: 15px 0;
+  line-height: 1.3;
+}
+
+.completion-date {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1a2a44;
+  margin: 5px 0 20px;
+  line-height: 1.4;
+}
+
+/* Footer - Fixed positioning */
+.footer {
+  position: absolute;
+  bottom: 35px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.signature-block {
+  text-align: center;
+  width: 250px;
+}
+
+.signature-image {
+  margin-bottom: -45px;
+  height: 135px; /* Fixed height */
+  width: auto;
+  max-width: 200px; /* Prevent stretching */
+  /* margin: 0 auto 5px; */
+  /* display: block; */
+}
+
+.signature {
+  font-family: 'Times New Roman', serif;
+  font-size: 24px;
+  color: #1a2a44;
+  margin: 5px 0;
+  line-height: 1.2;
+}
+
+.sig-line {
+  width: 200px;
+  border-top: 2px solid #b08d57;
+  margin: 10px auto;
+  position: relative;
+}
+
+.sig-line:after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 100%;
+  border-top: 1px dashed #b08d57;
+}
+
+.sig-title {
+  font-size: 14px;
+  color: #444444;
+  font-family: 'Arial', sans-serif;
+  margin: 5px 0 0;
+  line-height: 1.3;
+}
+
+.cert-details {
+  text-align: right;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  color: #333333;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  line-height: 1.4;
+}
+
+.cert-details p {
+  margin: 5px 0;
+}
+
+/* PDF Print Specific Adjustments */
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+  
+  .certificate {
+    box-shadow: none;
+    border: none;
+    outline: none;
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+  
+  .certificate-container {
+    height: 600px;
+    width: 900px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Ensure all elements maintain their position */
+  * {
+    position: static !important;
+    float: none !important;
+  }
+}
+
+/* Print Adjustments */
+@media print {
+  .certificate {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    page-break-after: always;
+  }
+  
+  .certificate-container {
+    height: 600px;
+    width: 900px;
+  }
+  
+  body, .certificate {
+    background: #fff !important;
+  }
+  
+  .signature-image {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* Force dark colors and prevent anti-aliasing */
+body {
+  -webkit-print-color-adjust: exact !important;
+  color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+/* Specific text elements */
+.title, .name, .course, .signature {
+  color: #000000 !important; /* pure black for critical text */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}

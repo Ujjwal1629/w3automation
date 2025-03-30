@@ -49,9 +49,9 @@ const CourseDetailPage = () => {
       {
         title: "Core Java Topics Covered in Course",
         topics: [
-          "Introduction to Core Java",
+          "Installing Java, History and Features Of Java",
           "Classes and Objects",
-          "Basic Java Programming and Features",
+          "Data Types, Variables, Operators",
           "Strings",
           "Methods - Introduction",
           "Predefined Method - MathRandom Class",
@@ -85,7 +85,7 @@ const CourseDetailPage = () => {
         title: "Locators",
         topics: [
           "Locating elements using ID, Name, link and Xpath, Relative locators in Selenium 4.0",
-          "Understanding of ChroPath and SelectorsHub"
+          "Understanding of SelectorsHub browser extension"
         ]
       },
       {
@@ -110,12 +110,46 @@ const CourseDetailPage = () => {
           "POI JARS",
           "Log4j API",
           "TestNG - Parameterization, groups, testsuites etc",
-          "Extent Reports and Allure Reports",
+          "ReportNG and Allure Reports",
           "Page Object Model Design Pattern",
           "Keyword Driven Framework",
           "Data Driven Framework"
         ]
       },
+      {
+        title: "REST Assured API Automation",
+        topics: [
+          "Adding REST Libraries to the Maven Project",
+          "Sample Test Case Scripting",
+          "Performing POST Requests",
+          "Performing GET Requests",
+          "Performing DELETE Requests",
+          "Request and Response Spec Builder", 
+          "POJO Concepts",
+          "GraphQL Automation",
+          "End-to-End Scenarios using REST Assured",
+          "Parsing JSON and XML Responses using JSON Path and XML Path",
+          "Validating JSON Schema",
+          "BDD and Non-BDD Approaches",
+          "Serialization and Deserialization of Requests and Responses"
+        ]
+      },
+      {
+        title: "Basics of the Cucumber Framework",
+        topics: [
+          "Introduction to Cucumber",
+          "Creating a New Feature and File Syntax",
+          "Runner File and Creating Step Definitions",
+          "Combining TESTNG with Cucumber",
+          "Executing Cases using Runner File",
+          "Preparing the Scenario Name based on Tags",
+          "Scenario Outline, Scenario Templates, and Different Cucumber Tags and Annotations",
+          "Sharing Reports over the Cucumber Cloud",
+          "Data Tables",
+          "Parallel Testing"
+        ]
+      },
+      
       {
         title: "Version Control",
         topics: [
@@ -131,7 +165,7 @@ const CourseDetailPage = () => {
           "Configuring the CI CD Pipeline",
           "Running the pipeline from Jenkins File"
         ]
-      }
+      },
     ],
     pricing: {
       price: {
