@@ -1,0 +1,148 @@
+.ecom-navbar {
+  width: 100%;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.ecom-navbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ecom-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.ecom-logo h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.home-btn {
+  padding: 0.5rem;
+}
+
+.ecom-search {
+  flex: 1;
+  max-width: 500px;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.ecom-nav-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4444;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+}
+
+.home-icon {
+  /* This class can be removed since we're using the common icon styles */
+}
+
+.mobile-search-btn {
+  display: none;
+}
+
+.mobile-search {
+  display: none;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .desktop-search {
+    display: none;
+  }
+
+  .mobile-search-btn {
+    display: block;
+  }
+
+  .mobile-search {
+    display: block;
+  }
+
+  .ecom-navbar-content {
+    justify-content: space-between;
+  }
+
+  .ecom-nav-actions {
+    gap: 0.5rem;
+  }
+
+  .icon-btn {
+    padding: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ecom-logo h1 {
+    font-size: 1.2rem;
+  }
+
+  .ecom-nav-actions {
+    gap: 0.3rem;
+  }
+
+  .mobile-search {
+    padding: 0.5rem;
+  }
+}
+
+/* Common icon styles */
+.icon-btn svg {
+  color: #666;
+  font-size: 1.2rem;
+} 

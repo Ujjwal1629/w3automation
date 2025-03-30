@@ -119,7 +119,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="main-nav">
-        <a href="/" className="logo">
+        <a href="/" className="header-logo">
           JourneyToAutomation
         </a>
         <button 
@@ -144,6 +144,11 @@ export default function Navbar() {
             <button onClick={() => window.open("https://courses.journeytoautomation.org/store")}>Courses</button>
             <button>Contact Us</button>
             <button onClick={() => navigate("/about")}>About Us</button>
+          </div>
+          <div className="nav-item">
+            <a onClick={() => navigate("/ecommerce")} className="ecommerce-link">
+              ECOMMERCE STORE
+            </a>
           </div>
         </div>
       </div>
@@ -210,6 +215,10 @@ export default function Navbar() {
                 navigate("/practice/auth");
                 setIsPracticeDropdownOpen(false);
               }}>Authentication</a>
+                <a onClick={() => {
+                navigate("/practice/ecommerce");
+                setIsPracticeDropdownOpen(false);
+              }}>E-commerce Store</a>
             </div>
           )}
         </div>

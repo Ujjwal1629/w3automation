@@ -18,7 +18,7 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
+.header-logo {
   color: #ffffff;
   font-size: 1.5rem;
   font-weight: 600;
@@ -27,7 +27,7 @@
   transition: color 0.3s ease;
 }
 
-.logo:hover {
+.header-logo:hover {
   color: rgba(255, 255, 255, 0.9);
 }
 
