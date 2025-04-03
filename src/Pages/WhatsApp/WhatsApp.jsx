@@ -2,6 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './WhatsApp.css';
 
 const WhatsApp = () => {
+  // Test data matching your API structure
+  const testData = {
+    data: [
+      ["101", "Bastard", "6388574174", "email@example.com"],
+      ["102", "Mum", "6393841758", "email@example.com"],
+      ["103", "Dad", "7505497194", "email@example.com"]
+    ]
+  };
+
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [messageTemplate, setMessageTemplate] = useState(
@@ -11,37 +20,56 @@ const WhatsApp = () => {
   const [isActive, setIsActive] = useState(false);
   const [copiedMessage, setCopiedMessage] = useState('');
 
-  // Load users (simulating API call)
+  // Load users data
   useEffect(() => {
-    const loadUsers = async () => {
+    const loadData = () => {
       setIsLoading(true);
-      // Simulate 200 users
-      const mockUsers = Array.from({ length: 200 }, (_, i) => ({
-        id: i + 1,
-        name: `User ${i + 1}`,
-        number: `12345678${String(i).padStart(3, '0')}`,
-        completed: false
-      }));
-      setUsers(mockUsers);
-      setIsLoading(false);
+      
+      // Simulate API call with timeout
+      setTimeout(() => {
+        const formattedUsers = testData.data.map(user => ({
+          id: user[0],
+          name: user[1],
+          number: user[2],
+          completed: false,
+          active: false
+        }));
+        
+        setUsers(formattedUsers);
+        setIsLoading(false);
+        console.log('Users loaded:', formattedUsers);
+      }, 1000);
     };
-    loadUsers();
+
+    loadData();
   }, []);
 
+  // Handle the messaging process
+  useEffect(() => {
+    if (isActive && currentIndex < users.length) {
+      prepareNextMessage();
+    }
+  }, [isActive, currentIndex, users.length]);
+
   const startProcess = () => {
+    console.log('Start process clicked');
+    
+    // Reset all users to inactive
+    setUsers(prevUsers => 
+      prevUsers.map(u => ({ ...u, active: false }))
+    );
+    
     setCurrentIndex(0);
     setIsActive(true);
-    prepareNextMessage();
   };
 
   const prepareNextMessage = () => {
-    if (currentIndex >= users.length || !isActive) {
-      setIsActive(false);
-      return;
-    }
-
     const user = users[currentIndex];
+    console.log('Processing user:', user);
+
     const message = messageTemplate.replace(/{name}/g, user.name);
+    console.log('Generated message:', message);
+
     setCopiedMessage(message);
     
     // Update UI to show current user
@@ -53,18 +81,28 @@ const WhatsApp = () => {
   };
 
   const handleMessageSent = () => {
+    console.log('Marking message as sent for user:', users[currentIndex].name);
+
     setUsers(prevUsers => 
       prevUsers.map((u, idx) => 
         idx === currentIndex ? {...u, completed: true, active: false} : u
       )
     );
-    setCurrentIndex(prev => prev + 1);
-    prepareNextMessage();
+    
+    // Move to next user or end the process
+    if (currentIndex < users.length - 1) {
+      setCurrentIndex(prev => prev + 1);
+    } else {
+      setIsActive(false);
+      console.log('All messages sent!');
+    }
   };
 
   const generateWhatsAppLink = (number) => {
+    // Ensure number is in international format (remove leading 0 if present)
+    const formattedNumber = number.startsWith('0') ? number.substring(1) : number;
     const encodedMessage = encodeURIComponent(copiedMessage);
-    return `https://wa.me/${number}?text=${encodedMessage}`;
+    return `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
   };
 
   const pauseProcess = () => {
@@ -73,7 +111,6 @@ const WhatsApp = () => {
 
   const resumeProcess = () => {
     setIsActive(true);
-    prepareNextMessage();
   };
 
   const pendingCount = users.filter(u => !u.completed).length;
@@ -103,8 +140,8 @@ const WhatsApp = () => {
       {!isActive ? (
         <div className="control-buttons">
           {completedCount === 0 ? (
-            <button onClick={startProcess} disabled={isLoading}>
-              {isLoading ? 'Loading...' : 'Start Messaging'}
+            <button onClick={startProcess} disabled={isLoading || users.length === 0}>
+              {isLoading ? 'Loading Users...' : 'Start Messaging'}
             </button>
           ) : (
             <>
@@ -118,6 +155,9 @@ const WhatsApp = () => {
       ) : (
         <div className="current-message">
           <h3>Now sending to: {users[currentIndex]?.name}</h3>
+          <div className="contact-info">
+            <p><strong>Phone:</strong> {users[currentIndex]?.number}</p>
+          </div>
           <div className="message-preview">
             <p>{copiedMessage}</p>
           </div>
