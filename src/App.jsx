@@ -28,6 +28,7 @@ import GetCertificate from "./Pages/GetCertificate/GetCertificate.jsx"
 import Template from "./Template/CertificateTemplate.jsx"
 // import EcommerceTesting from "./Pages/Practice-sites/pages/EcommerceTesting.jsx";
 import EcommerceStore from "./Pages/EcommerceStore/EcommerceStore";
+import WhatsApp from "./Pages/WhatsApp/WhatsApp.jsx";
 
 function App() {
   ReactGA.initialize("G-FPDLKPFE8H");
@@ -56,6 +57,7 @@ function App() {
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/getCertificate" element={<GetCertificate />} />
         <Route path="/template" element={<Template />} />
+        <Route path="/whatsApp" element={<WhatsApp />} />
         {/* <Route path="/EcommerceTesting" element={<EcommerceTesting />} /> */}
         {/* <Route path="/practice/ecommerce" element={<EcommerceTesting />} /> */}
         <Route path="/ecommerce/*" element={<EcommerceStore />} />
