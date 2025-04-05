@@ -29,6 +29,7 @@ const EcommerceNavbar = ({ onSearch }) => {
       <div className="ecom-navbar-content">
         <div className="ecom-logo">
           <button className="icon-btn home-btn" onClick={() => navigate('/')}>
+            <span className='home-btn-text'>Go to Home</span>
             <FaHome className="home-icon" />
           </button>
           <h1 onClick={() => navigate('/ecommerce')}>TestShop</h1>

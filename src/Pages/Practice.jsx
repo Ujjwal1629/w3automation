@@ -9,7 +9,10 @@ import TestPractice from './Practice-sites/TestPractice';
 import BrowserWindowOpener from './Practice-sites/BrowserWindowTabOpener';
 import Navbar from '../Components/Navbar';
 import EcommerceStore from './EcommerceStore/EcommerceStore';
-
+import SliderTest from './Practice-sites/SliderTest';
+import ResizableDiv from './Practice-sites/Resizable';
+import DragDropTest from './Practice-sites/DragDropTest';
+import DatePickerDropdown from './Practice-sites/DatePickerDropdown';
 const Practice = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,7 +29,11 @@ const Practice = () => {
     { name: 'Browser Tab Opener', path: 'browser' },
     { name: 'Links Testing', path: 'links' },
     { name: 'Authentication', path: 'auth' },
-    { name: 'Ecommerce Store', path: 'ecom' },
+    { name: 'Ecommerce Store', path: 'ecommerce' },
+    { name: 'Slider', path: 'slider' },
+    { name: 'Resizable', path: 'resizable' },
+    { name: 'Drag Drop', path: 'dragdrop' },
+    { name: 'Date Picker', path: 'datepicker' },
   ];
 
   // Navigate to first component by default if on base practice route
@@ -67,7 +74,11 @@ const Practice = () => {
             <Route path="browser" element={<BrowserWindowOpener />} />
             <Route path="links" element={<LinksTesting />} />
             <Route path="auth" element={<Authentication />} />
-            <Route path="ecom" element={<EcommerceStore />} />
+            <Route path="ecommerce/*" element={<EcommerceStore />} />
+            <Route path="slider" element={<SliderTest />} />
+            <Route path="resizable" element={<ResizableDiv />} />
+            <Route path="dragdrop" element={<DragDropTest />} />
+            <Route path="datepicker" element={<DatePickerDropdown />} />
           </Routes>
         </div>
       </div>

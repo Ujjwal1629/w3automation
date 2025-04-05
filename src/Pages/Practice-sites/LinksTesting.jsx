@@ -6,16 +6,29 @@ const LinksTesting = () => {
 
   // Generate an array of 35 links for each section
   const generateLinks = (sectionNumber) => {
+    const dummyUrls = [
+      'https://www.google.com',
+      'https://www.youtube.com',
+      'https://www.facebook.com',
+      'https://www.twitter.com',
+      'https://www.linkedin.com',
+      'https://www.github.com',
+      'https://www.amazon.com'
+    ];
+
     const links = [];
     for (let i = 1; i <= 35; i++) {
+      // Get a random URL from the dummyUrls array
+      const randomUrl = dummyUrls[Math.floor(Math.random() * dummyUrls.length)];
+      
       links.push({
         id: `link-${sectionNumber}-${i}`,
         text: `Test Link ${i} (Section ${sectionNumber})`,
-        href: `#section${sectionNumber}-link${i}`,
-        target: i % 3 === 0 ? '_blank' : undefined,
+        href: randomUrl,
+        target: '_blank', // Making all links open in new tab for better user experience
         className: `test-link section${sectionNumber}-link`,
         onClick: (e) => {
-          e.preventDefault();
+          // Removed preventDefault to allow links to open
           setActiveSection(`section${sectionNumber}`);
         }
       });

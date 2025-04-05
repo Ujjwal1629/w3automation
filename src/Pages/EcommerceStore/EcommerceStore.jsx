@@ -22,10 +22,10 @@ const EcommerceStore = () => {
         <EcommerceNavbar onSearch={handleSearch} />
         <main className="ecommerce-main">
           <Routes>
-            <Route path="/" element={<ProductList searchQuery={searchQuery} />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route index element={<ProductList searchQuery={searchQuery} />} />
+            <Route path="product/:id" element={<ProductDetail />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="checkout" element={<Checkout />} />
           </Routes>
         </main>
         <EcommerceFooter />
