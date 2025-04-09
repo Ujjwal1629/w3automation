@@ -28,14 +28,10 @@ import GetCertificate from "./Pages/GetCertificate/GetCertificate.jsx"
 import Template from "./Template/CertificateTemplate.jsx"
 // import EcommerceTesting from "./Pages/Practice-sites/pages/EcommerceTesting.jsx";
 import EcommerceStore from "./Pages/EcommerceStore/EcommerceStore";
-<<<<<<< HEAD
-import WhatsApp from "./Pages/WhatsApp/WhatsApp.jsx";
-=======
 import SliderTest from "./Pages/Practice-sites/SliderTest.jsx";
 import ResizableDiv from "./Pages/Practice-sites/Resizable.jsx";
 import DragDropTest from "./Pages/Practice-sites/DragDropTest.jsx";
 import DatePickerDropdown from "./Pages/Practice-sites/DatePickerDropdown.jsx";
->>>>>>> main
 
 function App() {
   ReactGA.initialize("G-FPDLKPFE8H");
