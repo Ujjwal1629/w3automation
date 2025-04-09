@@ -163,8 +163,6 @@ const Authentication = () => {
           <h2 className="auth-title">Sign in</h2>
         </div>
         
-        <p className="subtitle">Use your Google Account</p>
-
         {/* Credentials Hint */}
         <div className="credentials-hint">
           <FaInfoCircle />
@@ -281,12 +279,6 @@ const Authentication = () => {
             </>
           )}
         </form>
-
-        <div className="help-links">
-          <a href="#" className="help-link">Forgot email?</a>
-          <a href="#" className="help-link">Guest browsing</a>
-          <a href="#" className="help-link">More information</a>
-        </div>
       </div>
 
       {/* CSS Styles */}
@@ -294,10 +286,8 @@ const Authentication = () => {
         .auth-container {
           display: flex;
           justify-content: center;
-          align-items: center;
-          min-height: 100vh;
           padding: 1rem;
-          background: white;
+          // background: white;
           font-family: 'Google Sans', Arial, sans-serif;
         }
 
