@@ -57,7 +57,6 @@ function App() {
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/getCertificate" element={<GetCertificate />} />
         <Route path="/template" element={<Template />} />
-        <Route path="/whatsApp" element={<WhatsApp />} />
         {/* <Route path="/EcommerceTesting" element={<EcommerceTesting />} /> */}
         {/* <Route path="/practice/ecommerce" element={<EcommerceTesting />} /> */}
         <Route path="/ecommerce/*" element={<EcommerceStore />} />
