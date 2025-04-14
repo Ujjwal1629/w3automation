@@ -34,9 +34,40 @@ export default function SeleniumIDE() {
   const textareaRef = useRef(null);
   const outputRef = useRef(null);
   const editorRef = useRef(null);
+  const [sampleApp, setSampleApp] = useState({
+    username: '',
+    password: '',
+    submitted: false
+  });
+  
+  const [appState, setAppState] = useState('ready'); // 'ready' or 'modified'
+  
+  const updateSampleApp = (field, value) => {
+    setSampleApp(prev => ({...prev, [field]: value}));
+    setAppState('modified');
+  };
+  
+  const handleSampleAppSubmit = () => {
+    setSampleApp(prev => ({...prev, submitted: true}));
+    setAppState('modified');
+  };
+  
+  const resetSampleAppForm = () => {
+    setSampleApp({
+      username: '',
+      password: '',
+      submitted: false
+    });
+    setAppState('ready');
+  };
+  
+  const resetSampleApp = () => {
+    resetSampleAppForm();
+    // Add any additional reset logic here
+  };
 
- // Auto-scroll output to bottom
- useEffect(() => {
+  // Auto-scroll output to bottom
+  useEffect(() => {
     if (outputRef.current) {
       outputRef.current.scrollTop = outputRef.current.scrollHeight;
     }
@@ -167,74 +198,147 @@ export default function SeleniumIDE() {
   };
 
   return (
-    <div className="ide-container">
-      <div className="editor-panel">
-        <div className="editor-header">
-          <h2>Java Selenium IDE</h2>
-          <div className="window-controls">
-            <span className="dot red"></span>
-            <span className="dot yellow"></span>
-            <span className="dot green"></span>
+    <div className="selenium-ide-container">
+      {/* Top Header - Fixed */}
+      <header className="selenium-ide-header">
+        <h2 className="selenium-ide-title">Java Selenium IDE</h2>
+        <div className="selenium-ide-header-controls">
+          <motion.button
+            className="selenium-ide-execute-button"
+            onClick={executeCode}
+            disabled={isExecuting}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {isExecuting ? (
+              <>
+                <span className="selenium-ide-spinner"></span>
+                Executing...
+              </>
+            ) : (
+              'Run (Ctrl+Enter)'
+            )}
+          </motion.button>
+          <div className="selenium-ide-window-controls">
+            <span className="selenium-ide-dot selenium-ide-dot-red"></span>
+            <span className="selenium-ide-dot selenium-ide-dot-yellow"></span>
+            <span className="selenium-ide-dot selenium-ide-dot-green"></span>
           </div>
         </div>
-        
-        <div className="monaco-container">
-          <Editor
-            height="100%"
-            defaultLanguage="java"
-            value={code}
-            onChange={(value) => setCode(value || '')}
-            onMount={handleEditorDidMount}
-            options={{
-              minimap: { enabled: false },
-              fontSize: 14,
-              wordWrap: 'on',
-              automaticLayout: true,
-              scrollBeyondLastLine: false,
-              renderWhitespace: 'selection',
-              tabSize: 2,
-            }}
-            theme="vs-dark"
-          />
-        </div>
-      </div>
-      
-      <div className="output-panel">
-        <div className="output-header">
-          <h3>Execution Output</h3>
-          <button 
-            className="clear-button"
-            onClick={() => setOutput('')}
-          >
-            Clear
-          </button>
-        </div>
-        <pre 
-          ref={outputRef}
-          className={`output-content ${output.startsWith('Error:') ? 'error' : ''}`}
-        >
-          {output || 'Output will appear here...'}
-        </pre>
-      </div>
-      
-      <div className="action-bar">
-        <motion.button
-          className="execute-button"
-          onClick={executeCode}
-          disabled={isExecuting}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          {isExecuting ? (
-            <>
-              <span className="spinner"></span>
-              Executing...
-            </>
-          ) : (
-            'Run Code (Ctrl+Enter)'
-          )}
-        </motion.button>
-      </div>
+      </header>
+  
+      {/* Scrollable Content Area */}
+      <main className="selenium-ide-content-area">
+        {/* Sample App Section */}
+        <section className="selenium-ide-sample-app-section">
+          <div className="selenium-ide-section-header">
+            <h3 className="selenium-ide-section-title">Web Elements to Automate</h3>
+            <button 
+              className="selenium-ide-reset-button"
+              onClick={resetSampleApp}
+            >
+              Reset All Elements
+            </button>
+          </div>
+          
+          <div className="selenium-ide-sample-app-grid">
+            {/* Login Form */}
+            <div className="selenium-ide-sample-form selenium-ide-card">
+              <h4 className="selenium-ide-form-title">Login Form</h4>
+              <div className="selenium-ide-form-group">
+                <label htmlFor="selenium-ide-username-field" className="selenium-ide-form-label">Username:</label>
+                <input 
+                  type="text" 
+                  id="selenium-ide-username-field"
+                  className="selenium-ide-form-input"
+                  value="testuser"
+                  onChange={(e) => updateSampleData('username', e.target.value)}
+                  placeholder="testuser"
+                />
+              </div>
+              <div className="selenium-ide-form-group">
+                <label htmlFor="selenium-ide-password-field" className="selenium-ide-form-label">Password:</label>
+                <input 
+                  type="password" 
+                  id="selenium-ide-password-field"
+                  className="selenium-ide-form-input"
+                  value="password"
+                  onChange={(e) => updateSampleData('password', e.target.value)}
+                  placeholder="••••••••"
+                />
+              </div>
+              <div className="selenium-ide-button-group">
+                <button id="selenium-ide-login-btn" className="selenium-ide-btn selenium-ide-btn-primary">
+                  Login
+                </button>
+                <button id="selenium-ide-clear-btn" className="selenium-ide-btn selenium-ide-btn-secondary">
+                  Clear
+                </button>
+              </div>
+            </div>
+  
+            {/* Interactive Elements */}
+            <div className="selenium-ide-action-elements selenium-ide-card">
+              <h4 className="selenium-ide-elements-title">UI Components</h4>
+              <div className="selenium-ide-elements-grid">
+                <button id="selenium-ide-action-btn-1" className="selenium-ide-btn">
+                  Click Me
+                </button>
+                <div className="selenium-ide-checkbox-group">
+                  <input type="checkbox" id="selenium-ide-terms-checkbox" className="selenium-ide-checkbox" />
+                  <label htmlFor="selenium-ide-terms-checkbox" className="selenium-ide-checkbox-label">Accept Terms</label>
+                </div>
+                <div className="selenium-ide-form-group">
+                  <label htmlFor="selenium-ide-dropdown-menu" className="selenium-ide-form-label">Dropdown:</label>
+                  <select id="selenium-ide-dropdown-menu" className="selenium-ide-dropdown">
+                    <option value="">Select an option</option>
+                    <option value="opt1">Option 1</option>
+                    <option value="opt2">Option 2</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+  
+        {/* Editor + Output Section */}
+        <section className="selenium-ide-editor-output-section">
+          <div className="selenium-ide-editor-panel selenium-ide-card">
+            <div className="selenium-ide-panel-header">
+              <h3 className="selenium-ide-panel-title">Selenium Code Editor</h3>
+            </div>
+            <div className="selenium-ide-editor-wrapper">
+              <Editor
+                height="100%"
+                defaultLanguage="java"
+                value={code}
+                onChange={setCode}
+                options={{
+                  minimap: { enabled: false },
+                  fontSize: 14,
+                  automaticLayout: true,
+                  scrollBeyondLastLine: false
+                }}
+                theme="vs-dark"
+              />
+            </div>
+          </div>
+  
+          <div className="selenium-ide-output-panel selenium-ide-card">
+            <div className="selenium-ide-panel-header">
+              <h3 className="selenium-ide-panel-title">Execution Output</h3>
+              <button 
+                className="selenium-ide-clear-btn"
+              >
+                Clear
+              </button>
+            </div>
+            <pre className={`selenium-ide-output-content ${output.includes('ERROR') ? 'selenium-ide-error' : ''}`}>
+              {output || 'Ready for execution...'}
+            </pre>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
