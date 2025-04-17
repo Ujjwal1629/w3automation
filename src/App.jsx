@@ -32,6 +32,7 @@ import SliderTest from "./Pages/Practice-sites/SliderTest.jsx";
 import ResizableDiv from "./Pages/Practice-sites/Resizable.jsx";
 import DragDropTest from "./Pages/Practice-sites/DragDropTest.jsx";
 import DatePickerDropdown from "./Pages/Practice-sites/DatePickerDropdown.jsx";
+import SeleniumIDE from "./Pages/Selenium-Java/SeleniumIDE";
 
 function App() {
   ReactGA.initialize("G-FPDLKPFE8H");
@@ -68,6 +69,8 @@ function App() {
         <Route path="/resizable" element={<ResizableDiv />} />
         <Route path="/dragdrop" element={<DragDropTest />} />
         <Route path="/datepicker" element={<DatePickerDropdown />} />
+        
+        <Route path="/selenium-java" element={<SeleniumIDE />} />
       </Routes>
     </div>
   );
