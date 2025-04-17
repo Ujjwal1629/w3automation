@@ -19,7 +19,7 @@ const CourseDetailPage = () => {
     stats: {
       'Live - Projects':'2',
       lectures: 32,
-      duration: "60 hours",
+      duration: "2.5 Months",
       Certification:'Yes',
       Recordings:'Lifetime access',
       'Mock Test':"Weekly",
@@ -30,13 +30,13 @@ const CourseDetailPage = () => {
     },
     schedule: {
       classTiming: {
-        indian: "08:00 PM IST",
-        us: "10:30 AM GMT",
-        uk: "02:30 PM GMT",
+        indian: "07:30 AM IST",
+        us: "10:00 PM GMT",
+        uk: "03:00 AM GMT",
       },
       demo: "First 2 sessions are free!",
-      date:'18th & 19th March 2025',
-      classDate:'20th March 2025 Onwards',
+      date:'2nd May 2025',
+      classDate:'5th May 2025 Onwards',
       days:'Monday to Thursday',
       features: [
         "Live Classes",
