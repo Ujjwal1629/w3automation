@@ -4,9 +4,11 @@
 /* Main Navigation Styles */
 .navbar {
   font-family: 'Poppins', sans-serif;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  right: 0;
+  z-index: 9999;
 }
 
 .main-nav {
@@ -132,20 +134,17 @@
   background: white;
   transition: all 0.3s ease;
 }
+
 .dropdown-container {
   display: inline-block;
+  padding-top: 5px;
 }
-.dropdown-container a {
-  display: inline-block;
-}
+
 .dropdown-menu {
-  left: 0;
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  min-width: 100px;
-  z-index: 1000;
-  margin-top: 5px;
+  min-width: 200px;
 }
 
 .dropdown-menu a {
@@ -177,15 +176,11 @@
     display: flex;
   }
   .dropdown-menu {
-    position: static;
+    position: static !important;
+    width: 100%;
     box-shadow: none;
     background: transparent;
     margin-top: 0;
-  }
-
-  .dropdown-menu a {
-    padding: 0.5rem 1rem;
-    color: #374151;
   }
 
   .dropdown-container {
@@ -250,6 +245,7 @@
     transform: translateY(-9px) rotate(-45deg);
   }
 }
+
 @media (max-width: 524px) {
   .sub-nav{
     gap: 0;

@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import "./Register.css";
+import api from '../api';
+import "./auth.css";
 import { toast } from "react-hot-toast";
-import logo from "../assets/logo.png";
-//Icons
-import { FaUser } from "react-icons/fa";
-import { IoIosMail } from "react-icons/io";
-import { FaGoogle } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -22,88 +16,72 @@ export default function Register() {
     e.preventDefault();
     const { name, email, password } = data;
     try {
-      const data = await axios.post("/register", {
+      const res = await api.post('/auth/register', {
+        username: name,
         email,
         password,
-        name,
       });
-      if (data.error) {
-        toast.error(data.error);
+      if (res.data.error) {
+        toast.error(res.data.error);
       } else {
-        setData({});
-        toast.success("Registration successful");
-        navigate("/login");
+        setData({ name: '', email: '', password: '' });
+        toast.success('Registration successful');
+        navigate('/login');
       }
     } catch (error) {
-      console.log(error);
+      toast.error('Registration failed');
     }
   };
   return (
-    <section className="register">
-      <Link to={"/"}>
-        {" "}
-        <img src={logo} alt="" className="logo" />
-      </Link>
-      <div className="register-container">
-        <div className="register-details">
-          <h1>
-            Become an Automation Engineer! <br />
-            Enroll now💚
-          </h1>
-        </div>
-        <div className="registration">
-          <div className="sign-up">
-            <h1 className="sign-up-head">Create Your Account</h1>
+    <div className="auth-bg">
+      <div className="auth-card">
+        <button className="auth-back-btn" onClick={() => navigate('/')}>← Home</button>
+        <div className="auth-brand">Journey<span style={{color:'#8c52ff'}}>to</span><span style={{color:'#ff5757'}}>automation</span></div>
+        <h2 className="auth-title">Create your account</h2>
+        <form onSubmit={registerUser} className="auth-form">
+          <div className="auth-field">
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Enter your name"
+              value={data.name}
+              onChange={(e) => setData({ ...data, name: e.target.value })}
+              required
+            />
           </div>
-          <button className="google">
-            Continue with Google <FaGoogle />
+          <div className="auth-field">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+              value={data.email}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
+              required
+            />
+          </div>
+          <div className="auth-field">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Enter your password"
+              value={data.password}
+              onChange={(e) => setData({ ...data, password: e.target.value })}
+              required
+            />
+          </div>
+          <div className="auth-footer">
+            <span className="auth-link-text">Already have an account?</span>
+            <span className="auth-link" onClick={() => navigate('/login')}>Login</span>
+          </div>
+          <button className="auth-submit" type="submit">
+            Register
           </button>
-          <form onSubmit={registerUser} className="sign-up-form">
-            <div className="sign-up-name">
-              <span>
-                <FaUser />
-              </span>
-              <input
-                type="text"
-                placeholder="Enter your name"
-                value={data.name}
-                onChange={(e) => setData({ ...data, name: e.target.value })}
-              />
-            </div>
-            <div className="sign-up-mail">
-              <span>
-                <IoIosMail />
-              </span>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={data.email}
-                onChange={(e) => setData({ ...data, email: e.target.value })}
-              />
-            </div>
-            <div className="sign-up-password">
-              <span>
-                <FaLock />
-              </span>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={data.password}
-                onChange={(e) => setData({ ...data, password: e.target.value })}
-              />
-            </div>
-            <div className="sign-up-links">
-              <label htmlFor="" className="forgot">
-                Forgot your password?
-              </label>
-            </div>
-            <button className="signup" type="submit">
-              Sign up
-            </button>
-          </form>
-        </div>
+        </form>
       </div>
-    </section>
+    </div>
   );
 }
 

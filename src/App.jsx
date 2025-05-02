@@ -33,13 +33,18 @@ import ResizableDiv from "./Pages/Practice-sites/Resizable.jsx";
 import DragDropTest from "./Pages/Practice-sites/DragDropTest.jsx";
 import DatePickerDropdown from "./Pages/Practice-sites/DatePickerDropdown.jsx";
 import SeleniumIDE from "./Pages/Selenium-Java/SeleniumIDE";
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   ReactGA.initialize("G-FPDLKPFE8H");
   return (
     <div className="route">
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={
+          <ThemeProvider>
+            <HomePage />
+          </ThemeProvider>
+        } />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -71,6 +76,8 @@ function App() {
         <Route path="/datepicker" element={<DatePickerDropdown />} />
         
         <Route path="/selenium-java" element={<SeleniumIDE />} />
+        <Route path="/register" element={<Register />} />
+<Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );
@@ -83,7 +90,7 @@ function HomePage() {
       <Navbar />
       </div>     
       <Home />
-      <TestimonialSection />
+      {/* <TestimonialSection /> */}
       <Footer />
     </div>
   );

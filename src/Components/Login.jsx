@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Login.css";
-import { IoIosMail } from "react-icons/io";
-import { FaLock } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
-import axios from "axios";
+import "./auth.css";
+import api from '../api';
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -19,70 +15,62 @@ export default function Login() {
     e.preventDefault();
     const { email, password } = data;
     try {
-      const { data } = await axios.post("/dashboard", {
+      const res = await api.post('/auth/login', {
         email,
         password,
       });
-      if (data.error) {
-        toast.error(data.error);
+      if (res.data.error) {
+        toast.error(res.data.error);
       } else {
-        setData({});
-        toast.success("Login successful");
+        setData({ email: '', password: '' });
+        toast.success('Login successful');
+        localStorage.setItem('token', res.data.token);
         navigate("/");
       }
-    } catch (error) {}
+    } catch (error) {
+      toast.error('Login failed');
+    }
   };
   return (
-    <section className="login">
-      <Link to={"/"}>
-        <img src={logo} alt="" className="logo" />
-      </Link>
-
-      <div className="login-container">
-        <h1 className="login-title">
-          Welcome back😀 <br /> Please login using your credentials
-        </h1>
-        <div className="login-content">
-          <div className="login-head">
-            <h1>Log in to your account</h1>
+    <div className="auth-bg">
+      <div className="auth-card">
+        <button className="auth-back-btn" onClick={() => navigate('/')}>← Home</button>
+        <div className="auth-brand">Journey<span style={{color:'#8c52ff'}}>to</span><span style={{color:'#ff5757'}}>automation</span></div>
+        <h2 className="auth-title">Sign in to your account</h2>
+        <form onSubmit={loginUser} className="auth-form">
+          <div className="auth-field">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              autoComplete="email"
+              placeholder="Enter your email"
+              value={data.email}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
+              required
+            />
           </div>
-          <button className="google1">
-            Continue with Google <FaGoogle />
+          <div className="auth-field">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              autoComplete="current-password"
+              placeholder="Enter your password"
+              value={data.password}
+              onChange={(e) => setData({ ...data, password: e.target.value })}
+              required
+            />
+          </div>
+          <div className="auth-footer">
+            <span className="auth-link-text">New user?</span>
+            <span className="auth-link" onClick={() => navigate('/register')}>Register</span>
+          </div>
+          <button className="auth-submit" type="submit">
+            Log In
           </button>
-          <form onSubmit={loginUser} className="login-form">
-            <div className="login-mail">
-              <span>
-                <IoIosMail />
-              </span>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={data.email}
-                onChange={(e) => setData({ ...data, email: e.target.value })}
-              />
-            </div>
-            <div className="login-password">
-              <span>
-                <FaLock />
-              </span>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={data.password}
-                onChange={(e) => setData({ ...data, password: e.target.value })}
-              />
-            </div>
-            <div className="login-links">
-              <label htmlFor="" className="forgot">
-                Forgot your password?
-              </label>
-            </div>
-            <button className="signup" type="submit">
-              Log In
-            </button>
-          </form>
-        </div>
+        </form>
       </div>
-    </section>
+    </div>
   );
 }

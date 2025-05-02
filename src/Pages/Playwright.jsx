@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Playwright.css";
 import Navbar from "../Components/Navbar";
+import PageLayout from '../Components/PageLayout';
 import ArraysInJavaScript from '../Sections/Sections-Playwright/ArraysInJavaScript';
 import ClassOOPS from '../Sections/Sections-Playwright/ClassOOPS';
 import ConditionsInJavaScript from '../Sections/Sections-Playwright/ConditionsInJavaScript';
@@ -90,36 +91,40 @@ export default function Playwright() {
   return (
     <div className="Playwright">
       <Navbar />
-      <div className="main">
-        <div className={`container-left ${isMobile ? 'hidden' : ''}`}>
-          <div className="container-leftt">
-            <div className="container-links">
-              <h1>Playwright</h1>
+      <PageLayout>
+        <div className="main">
+          <div className={`container-left ${isMobile ? 'hidden' : ''}`}>
+            <div className="container-leftt">
+              <div className="container-links">
+                <h1>Playwright</h1>
+                {sections.map((section, index) => (
+                  <a
+                    key={index}
+                    className="links"
+                    href={`#${section.path}`}
+                    onClick={(e) => handleLinkClick(e, index)}
+                  >
+                    {section.path.replace(/([A-Z])/g, ' $1').trim()}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="main-container">
+            <div className="container-head">
+              <button className="prev" onClick={handlePrevClick}>Prev</button>
+              <button className="next" onClick={handleNextClick}>Next</button>
+            </div>
+            <div className="main-page" id="main-page">
               {sections.map((section, index) => (
-                <a
-                  key={index}
-                  className="links"
-                  href={`#${section.path}`}
-                  onClick={(e) => handleLinkClick(e, index)}
-                >
-                  {section.path.replace(/([A-Z])/g, ' $1').trim()}
-                </a>
+                step === index && section.component
               ))}
             </div>
           </div>
         </div>
-        <div className="main-container">
-          <div className="container-head">
-            <button className="prev" onClick={handlePrevClick}>Prev</button>
-            <button className="next" onClick={handleNextClick}>Next</button>
-          </div>
-          <div className="main-page" id="main-page">
-            {sections.map((section, index) => (
-              step === index && section.component
-            ))}
-          </div>
-        </div>
-      </div>
+        {/* Fade effect at the bottom if scrollable */}
+        <div className="main-fade-bottom" aria-hidden="true"></div>
+      </PageLayout>
       <Footer />
     </div>
   );

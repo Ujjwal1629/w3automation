@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, ChevronDown, ChevronUp, BookOpen, Code, Terminal, Laptop } from 'lucide-react';
 import './InterviewQA.css';
 import Navbar from "../Components/Navbar";
+import PageLayout from '../Components/PageLayout';
 
 const InterviewQA = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -131,88 +132,90 @@ const InterviewQA = () => {
   return (
     <>
       <Navbar />
-      <div className="interview-qa">
-        <div className="container">
-          {/* <div className="search-section">
-            <div className="search-bar">
-              <Search size={20} className="search-icon" />
-              <input
-                type="text"
-                placeholder="Search interview questions..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-          </div> */}
-          
-          <div className="content-layout">
-            <div className="categories-sidebar">
-              <h2>Categories</h2>
-              {filteredCategories.map((category) => (
-                <div
-                  key={category.id}
-                  className={`category-item ${selectedCategory === category.id ? 'active' : ''}`}
-                  onClick={() => setSelectedCategory(category.id)}
-                >
-                  <div className="category-icon">{category.icon}</div>
-                  <div className="category-info">
-                    <h3>{category.title}</h3>
-                    <span className="question-count">{category.questions.length} questions</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="questions-content">
-              {selectedCategory ? (
-                <div className="qa-section">
-                  <div className="section-header">
-                    <div className="header-left">
-                      {filteredCategories.find(cat => cat.id === selectedCategory)?.icon}
-                      <h3>{filteredCategories.find(cat => cat.id === selectedCategory)?.title}</h3>
+      <PageLayout>
+        <div className="interview-qa">
+          <div className="container">
+            {/* <div className="search-section">
+              <div className="search-bar">
+                <Search size={20} className="search-icon" />
+                <input
+                  type="text"
+                  placeholder="Search interview questions..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
+            </div> */}
+            
+            <div className="content-layout">
+              <div className="categories-sidebar">
+                <h2>Categories</h2>
+                {filteredCategories.map((category) => (
+                  <div
+                    key={category.id}
+                    className={`category-item ${selectedCategory === category.id ? 'active' : ''}`}
+                    onClick={() => setSelectedCategory(category.id)}
+                  >
+                    <div className="category-icon">{category.icon}</div>
+                    <div className="category-info">
+                      <h3>{category.title}</h3>
+                      <span className="question-count">{category.questions.length} questions</span>
                     </div>
-                    <span className="question-total">
-                      {filteredCategories.find(cat => cat.id === selectedCategory)?.questions.length} Questions
-                    </span>
                   </div>
+                ))}
+              </div>
 
-                  <div className="questions-container">
-                    {filteredCategories
-                      .find(cat => cat.id === selectedCategory)
-                      ?.questions.map((qa, index) => (
-                        <div
-                          key={index}
-                          className={`qa-card ${expandedQuestions[index] ? 'expanded' : ''}`}
-                          onClick={() => toggleQuestion(index)}
-                        >
-                          <div className="question-header">
-                            <h4>{qa.question}</h4>
-                            {expandedQuestions[index] ? (
-                              <ChevronUp className="chevron-icon" />
-                            ) : (
-                              <ChevronDown className="chevron-icon" />
+              <div className="questions-content">
+                {selectedCategory ? (
+                  <div className="qa-section">
+                    <div className="section-header">
+                      <div className="header-left">
+                        {filteredCategories.find(cat => cat.id === selectedCategory)?.icon}
+                        <h3>{filteredCategories.find(cat => cat.id === selectedCategory)?.title}</h3>
+                      </div>
+                      <span className="question-total">
+                        {filteredCategories.find(cat => cat.id === selectedCategory)?.questions.length} Questions
+                      </span>
+                    </div>
+
+                    <div className="questions-container">
+                      {filteredCategories
+                        .find(cat => cat.id === selectedCategory)
+                        ?.questions.map((qa, index) => (
+                          <div
+                            key={index}
+                            className={`qa-card ${expandedQuestions[index] ? 'expanded' : ''}`}
+                            onClick={() => toggleQuestion(index)}
+                          >
+                            <div className="question-header">
+                              <h4>{qa.question}</h4>
+                              {expandedQuestions[index] ? (
+                                <ChevronUp className="chevron-icon" />
+                              ) : (
+                                <ChevronDown className="chevron-icon" />
+                              )}
+                            </div>
+                            {expandedQuestions[index] && (
+                              <div className="answer">
+                                {qa.answer}
+                              </div>
                             )}
                           </div>
-                          {expandedQuestions[index] && (
-                            <div className="answer">
-                              {qa.answer}
-                            </div>
-                          )}
-                        </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div className="no-selection">
-                  <BookOpen size={48} />
-                  <h3>Select a category to view questions</h3>
-                  <p>Choose from the categories on the left to explore interview questions</p>
-                </div>
-              )}
+                ) : (
+                  <div className="no-selection">
+                    <BookOpen size={48} />
+                    <h3>Select a category to view questions</h3>
+                    <p>Choose from the categories on the left to explore interview questions</p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </PageLayout>
     </>
   );
 };

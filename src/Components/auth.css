@@ -1,0 +1,131 @@
+.auth-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #ff5757 0%, #8c52ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 rgba(31, 38, 135, 0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 370px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-logo {
+  width: 54px;
+  height: 54px;
+  margin-bottom: 1.2rem;
+}
+
+.auth-brand {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  color: #2d3748;
+  background: none;
+}
+
+.auth-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #2d3748;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.auth-field label {
+  font-size: 0.95rem;
+  color: #7c3aed;
+  font-weight: 500;
+}
+
+.auth-field input {
+  padding: 0.65rem 1rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #f8fafc;
+  transition: border 0.2s;
+}
+.auth-field input:focus {
+  outline: none;
+  border: 1.5px solid #8c52ff;
+}
+
+.auth-back-btn {
+  background: none;
+  border: none;
+  color: #8c52ff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  align-self: flex-start;
+  transition: color 0.2s;
+  padding: 0;
+}
+.auth-back-btn:hover {
+  color: #ff5757;
+}
+
+.auth-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  font-size: 0.98rem;
+}
+.auth-link-text {
+  color: #64748b;
+}
+.auth-link {
+  color: #ff5757;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 0.15rem;
+  transition: color 0.2s;
+}
+.auth-link:hover {
+  color: #8c52ff;
+}
+
+.auth-submit {
+  background: linear-gradient(90deg, #ff5757 0%, #8c52ff 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 0;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(140, 82, 255, 0.10);
+}
+.auth-submit:hover {
+  background: linear-gradient(90deg, #8c52ff 0%, #ff5757 100%);
+}
