@@ -172,6 +172,21 @@ export default function Navbar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const useWindowSize = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+  
+    useEffect(() => {
+      const handleResize = () => setWidth(window.innerWidth);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+  
+    return width;
+  };
+
+  const width = useWindowSize();
+  const isMobile = width < 768;
+
   return (
     <nav
       className="navbar"
@@ -186,52 +201,50 @@ export default function Navbar() {
           ? 'rgba(26, 32, 44, 0.85)'
           : 'rgba(255, 255, 255, 0.85)',
       }}>
+
       {/* Modern upper navbar */}
       <div style={{
         display: 'flex',
+        flexWrap: 'wrap',
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '1rem 5%',
-        borderBottom: isDarkMode 
+        gap: '1rem',
+        borderBottom: isDarkMode
           ? '1px solid rgba(255, 255, 255, 0.1)'
           : '1px solid rgba(0, 0, 0, 0.1)',
       }}>
+
+        {/* Logo */}
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-          }}>
-          <div 
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 800,
-              fontSize: '1.5rem',
-              background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              marginRight: '1rem',
-              cursor: 'pointer',
-              letterSpacing: '-0.02em',
-            }}
-            onClick={() => navigate('/')}
-          >
-            Journeyto<span style={{color: '#8c52ff'}}>Automation</span>
-          </div>
+            flex: '1 1 120px',
+            cursor: 'pointer',
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontWeight: 800,
+            fontSize: '1.5rem',
+            background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            letterSpacing: '-0.02em',
+          }}
+          onClick={() => navigate('/')}
+        >
+          Journeyto<span style={{ color: '#8c52ff' }}>Automation</span>
         </div>
 
-        {/* Search bar with glass effect */}
+        {/* Search Bar */}
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1rem',
-            flex: 1,
+            flex: '2 1 200px',
             maxWidth: '400px',
-            margin: '0 2rem',
-          }}>
-          <input 
-            type="search" 
-            placeholder="Search JourneyToAutomation" 
+            display: 'flex',
+            width: '100%',
+          }}
+        >
+          <input
+            type="search"
+            placeholder="Search JourneyToAutomation"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyPress={handleSearch}
@@ -239,11 +252,11 @@ export default function Navbar() {
               width: '100%',
               padding: '0.75rem 1.25rem',
               borderRadius: '50px',
-              border: isDarkMode 
+              border: isDarkMode
                 ? '1px solid rgba(255, 255, 255, 0.1)'
                 : '1px solid rgba(0, 0, 0, 0.1)',
               outline: 'none',
-              backgroundColor: isDarkMode 
+              backgroundColor: isDarkMode
                 ? 'rgba(45, 55, 72, 0.5)'
                 : 'rgba(255, 255, 255, 0.5)',
               color: isDarkMode ? '#fff' : '#2d3748',
@@ -251,17 +264,21 @@ export default function Navbar() {
               WebkitBackdropFilter: 'blur(4px)',
               transition: 'all 0.3s ease',
               fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontSize: '1rem',
             }}
           />
         </div>
 
-        {/* Call-to-action buttons with glass effect */}
+        {/* Action Buttons */}
         <div style={{
+          flex: '1 1 200px',
           display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'flex-end',
           alignItems: 'center',
-          gap: '1rem',
-          marginLeft: 'auto',
+          gap: '0.5rem',
         }}>
+          {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
             style={{
@@ -271,10 +288,10 @@ export default function Navbar() {
               width: '40px',
               height: '40px',
               borderRadius: '50%',
-              border: isDarkMode 
+              border: isDarkMode
                 ? '1px solid rgba(255, 255, 255, 0.1)'
                 : '1px solid rgba(0, 0, 0, 0.1)',
-              backgroundColor: isDarkMode 
+              backgroundColor: isDarkMode
                 ? 'rgba(45, 55, 72, 0.5)'
                 : 'rgba(255, 255, 255, 0.5)',
               color: isDarkMode ? '#fff' : '#2d3748',
@@ -286,15 +303,16 @@ export default function Navbar() {
           >
             {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
           </button>
+
+          {/* Auth Buttons */}
           {user ? (
-            <div className={userMenuStyles['user-menu']} style={{marginLeft: '1rem', position: 'relative'}}>
+            <div className={userMenuStyles['user-menu']} style={{ position: 'relative' }}>
               <div
                 className={userMenuStyles['user-avatar']}
                 onClick={() => setShowUserMenu((v) => !v)}
                 title={user.name}
               >
-                <User size={18} style={{marginRight: 2}} />
-                {/* {user.name.split(' ')[0][0]} */}
+                <User size={18} style={{ marginRight: 2 }} />
               </div>
               <span
                 className={userMenuStyles['user-name']}
@@ -304,7 +322,10 @@ export default function Navbar() {
               </span>
               {showUserMenu && (
                 <div className={userMenuStyles['user-menu-dropdown']}>
-                  <button className={userMenuStyles['user-menu-dropdown-btn']} onClick={handleLogout}>
+                  <button
+                    className={userMenuStyles['user-menu-dropdown-btn']}
+                    onClick={handleLogout}
+                  >
                     Logout
                   </button>
                 </div>
@@ -312,46 +333,44 @@ export default function Navbar() {
             </div>
           ) : (
             <>
-              <button 
+              <button
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.5rem',
                   background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
                   color: '#fff',
-                  padding: '0.75rem 1.3rem',
+                  padding: '0.6rem 1.2rem',
                   borderRadius: '50px',
                   border: 'none',
                   fontWeight: 600,
                   cursor: 'pointer',
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  fontSize: '1rem',
-                  boxShadow: '0 2px 8px rgba(140, 82, 255, 0.10)',
+                  fontSize: '0.95rem',
                   transition: 'all 0.3s ease',
                 }}
                 onClick={() => navigate('/login')}
               >
                 Sign In
               </button>
-              <button 
+              <button
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.5rem',
-                  background: isDarkMode 
+                  background: isDarkMode
                     ? 'rgba(45, 55, 72, 0.5)'
                     : 'rgba(255, 255, 255, 0.5)',
                   color: isDarkMode ? '#fff' : '#2d3748',
-                  padding: '0.75rem 1.3rem',
+                  padding: '0.6rem 1.2rem',
                   borderRadius: '50px',
-                  border: isDarkMode 
+                  border: isDarkMode
                     ? '1.5px solid #8c52ff'
                     : '1.5px solid #ff5757',
                   fontWeight: 600,
                   cursor: 'pointer',
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  fontSize: '1rem',
-                  boxShadow: '0 2px 8px rgba(255, 87, 87, 0.10)',
+                  fontSize: '0.95rem',
                   transition: 'all 0.3s ease',
                 }}
                 onClick={() => navigate('/register')}
