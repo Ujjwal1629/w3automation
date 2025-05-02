@@ -382,122 +382,121 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Original sub-nav */}
-      <div className="sub-nav" style={{
-        backgroundColor: isDarkMode ? '#2d3748' : 'white',
-        borderBottom: isDarkMode ? '1px solid #4a5568' : '1px solid #e2e8f0',
-      }}>
-        <a onClick={() => navigate("/Selenium")} style={{ color: isDarkMode ? '#fff' : 'inherit' }}>SELENIUM WITH JAVA</a>
-        <a onClick={() => navigate("/Playwright")} style={{ color: isDarkMode ? '#fff' : 'inherit' }}>PLAYWRIGHT</a>
-        <a onClick={() => navigate("/InterviewQuestions")} style={{ color: isDarkMode ? '#fff' : 'inherit' }}>INTERVIEW QUESTIONS</a>
-        <a onClick={() => navigate("/Blogs")} style={{ color: isDarkMode ? '#fff' : 'inherit' }}>BLOGS</a>
-        <div className="dropdown-container">
-          <a 
-            onClick={togglePracticeDropdown} 
-            style={{ color: isDarkMode ? '#fff' : 'inherit' }}>
-            PRACTICE SITE
-          </a>
-          <DropdownPortal isOpen={isPracticeDropdownOpen}>
-            <div className="dropdown-menu" style={{
-              backgroundColor: isDarkMode 
-                ? 'rgba(45, 55, 72, 0.95)'
-                : 'rgba(255, 255, 255, 0.95)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
-              border: isDarkMode 
-                ? '1px solid rgba(255, 255, 255, 0.1)'
-                : '1px solid rgba(0, 0, 0, 0.1)',
-              borderRadius: '12px',
-              position: 'fixed',
-              top: `${dropdownPosition.practice.top}px`,
-              left: `${dropdownPosition.practice.left}px`,
-              zIndex: 99999
-            }}>
-              <a 
-                onClick={() => {
-                  navigate("/AuthPractice");
-                  setIsPracticeDropdownOpen(false);
-                }} 
-                style={{ color: isDarkMode ? '#fff' : 'inherit' }}>
-                Form Test
-              </a>
-              <a 
-                onClick={() => {
-                  navigate("/AlertTest");
-                  setIsPracticeDropdownOpen(false);
-                }} 
-                style={{ color: isDarkMode ? '#fff' : 'inherit' }}>
-                Alert Box
-              </a>
-              <a 
-                onClick={() => {
-                  navigate("/ImageTest");
-                  setIsPracticeDropdownOpen(false);
-                }} 
-                style={{ color: isDarkMode ? '#fff' : 'inherit' }}>
-                Image Context
-              </a>
-              <a 
-                onClick={() => {
-                  navigate("/BrowserWindowTabOpener");
-                  setIsPracticeDropdownOpen(false);
-                }} 
-                style={{ color: isDarkMode ? '#fff' : 'inherit' }}>
-                Browser Tab Opener
-              </a>
-              <a 
-                onClick={() => {
-                  navigate("/LinksTesting");
-                  setIsPracticeDropdownOpen(false);
-                }} 
-                style={{ color: isDarkMode ? '#fff' : 'inherit' }}>
-                Links Testing
-              </a>
-              <a 
-                onClick={() => {
-                  navigate("/Authentication");
-                  setIsPracticeDropdownOpen(false);
-                }} 
-                style={{ color: isDarkMode ? '#fff' : 'inherit' }}>
-                Authentication
-              </a>
-            </div>
-          </DropdownPortal>
-        </div>
+    {/* Responsive sub-nav */}
+    <div className="sub-nav" style={{
+      backgroundColor: isDarkMode ? '#2d3748' : 'white',
+      borderBottom: isDarkMode ? '1px solid #4a5568' : '1px solid #e2e8f0',
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '0.75rem 1rem',
+      gap: '1rem',
+    }}>
 
-        {/* Upcoming Courses Dropdown */}
-        <div className="dropdown-container courses-container">
-          <a 
-            className={isCoursesDropdownOpen ? 'active' : ''} 
-            onClick={toggleCoursesDropdown}
-            style={{ color: isDarkMode ? '#fff' : 'inherit' }}
-          >
-            UPCOMING COURSES
-          </a>
-          <DropdownPortal isOpen={isCoursesDropdownOpen}>
-            <div className="dropdown-menu courses-menu" style={{
-              backgroundColor: isDarkMode ? '#2d3748' : 'white',
-              boxShadow: isDarkMode ? '0 4px 6px rgba(0,0,0,0.3)' : '0 4px 6px rgba(0,0,0,0.1)',
-              position: 'fixed',
-              top: `${dropdownPosition.courses.top}px`,
-              left: `${dropdownPosition.courses.left}px`,
-              zIndex: 99999
-            }}>
+      {/* Static nav links */}
+      <a onClick={() => navigate("/Selenium")} style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}>
+        SELENIUM WITH JAVA
+      </a>
+      <a onClick={() => navigate("/Playwright")} style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}>
+        PLAYWRIGHT
+      </a>
+      <a onClick={() => navigate("/InterviewQuestions")} style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}>
+        INTERVIEW QUESTIONS
+      </a>
+      <a onClick={() => navigate("/Blogs")} style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}>
+        BLOGS
+      </a>
+
+      {/* Practice dropdown */}
+      <div className="dropdown-container" style={{ position: 'relative' }}>
+        <a 
+          onClick={togglePracticeDropdown} 
+          style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}
+        >
+          PRACTICE SITE
+        </a>
+        <DropdownPortal isOpen={isPracticeDropdownOpen}>
+          <div className="dropdown-menu" style={{
+            backgroundColor: isDarkMode 
+              ? 'rgba(45, 55, 72, 0.95)'
+              : 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
+            border: isDarkMode 
+              ? '1px solid rgba(255, 255, 255, 0.1)'
+              : '1px solid rgba(0, 0, 0, 0.1)',
+            borderRadius: '12px',
+            position: 'fixed',
+            top: `${dropdownPosition.practice.top}px`,
+            left: `${dropdownPosition.practice.left}px`,
+            zIndex: 99999,
+            padding: '0.5rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.5rem',
+            minWidth: '160px'
+          }}>
+            {[
+              { label: 'Form Test', path: '/AuthPractice' },
+              { label: 'Alert Box', path: '/AlertTest' },
+              { label: 'Image Context', path: '/ImageTest' },
+              { label: 'Browser Tab Opener', path: '/BrowserWindowTabOpener' },
+              { label: 'Links Testing', path: '/LinksTesting' },
+              { label: 'Authentication', path: '/Authentication' },
+            ].map(({ label, path }) => (
               <a 
+                key={path}
                 onClick={() => {
-                  navigate("/syllabus-java-selenium");
-                  setIsCoursesDropdownOpen(false);
-                }}
-                className="dropdown-item"
-                style={{ color: isDarkMode ? '#fff' : 'inherit' }}
+                  navigate(path);
+                  setIsPracticeDropdownOpen(false);
+                }} 
+                style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none' }}
               >
-                Java & Selenium
+                {label}
               </a>
-            </div>
-          </DropdownPortal>
-        </div>
+            ))}
+          </div>
+        </DropdownPortal>
       </div>
+
+      {/* Courses dropdown */}
+      <div className="dropdown-container courses-container" style={{ position: 'relative' }}>
+        <a 
+          className={isCoursesDropdownOpen ? 'active' : ''} 
+          onClick={toggleCoursesDropdown}
+          style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}
+        >
+          UPCOMING COURSES
+        </a>
+        <DropdownPortal isOpen={isCoursesDropdownOpen}>
+          <div className="dropdown-menu courses-menu" style={{
+            backgroundColor: isDarkMode ? '#2d3748' : 'white',
+            boxShadow: isDarkMode ? '0 4px 6px rgba(0,0,0,0.3)' : '0 4px 6px rgba(0,0,0,0.1)',
+            borderRadius: '12px',
+            position: 'fixed',
+            top: `${dropdownPosition.courses.top}px`,
+            left: `${dropdownPosition.courses.left}px`,
+            zIndex: 99999,
+            padding: '0.5rem',
+            minWidth: '160px'
+          }}>
+            <a 
+              onClick={() => {
+                navigate("/syllabus-java-selenium");
+                setIsCoursesDropdownOpen(false);
+              }}
+              className="dropdown-item"
+              style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none' }}
+            >
+              Java & Selenium
+            </a>
+          </div>
+        </DropdownPortal>
+      </div>
+    </div>
+
     </nav>
   );
 }
