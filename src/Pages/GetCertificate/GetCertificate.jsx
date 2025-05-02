@@ -51,7 +51,16 @@ const GetCertificate = () => {
     try {
       const tempDiv = document.createElement('div');
       tempDiv.style.position = 'absolute';
+      tempDiv.style.top = '-9999px';
       tempDiv.style.left = '-9999px';
+      tempDiv.style.width = '900px';
+      tempDiv.style.height = '600px';
+      tempDiv.style.backgroundColor = '#ffffff';
+      tempDiv.style.fontFamily = 'Arial, Helvetica, sans-serif';
+      tempDiv.style.lineHeight = '1.5';
+      tempDiv.style.color = '#000000';
+      tempDiv.style.overflow = 'hidden';
+      tempDiv.style.boxSizing = 'border-box';
       tempDiv.className = 'certificate-temp-container';
       document.body.appendChild(tempDiv);
 
@@ -62,13 +71,20 @@ const GetCertificate = () => {
         </div>
       );
 
-      await new Promise(resolve => setTimeout(resolve, 300));
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Waiting for fonts to fully load
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
 
       const canvas = await html2canvas(certificateRef.current, {
-        scale: 3,
+        scale: 4, //initially it was 3
         logging: false,
         useCORS: true,
         backgroundColor: '#ffffff',
+        scrollX: 0,
+        scrollY: 0,
         windowWidth: 900,
         windowHeight: 600,
         letterRendering: true,
@@ -91,7 +107,8 @@ const GetCertificate = () => {
         y: 0,
         width: 900,
         height: 600,
-        compression: 'FAST' // Balance quality and file size
+        compression: 'FAST', // Balance quality and file size
+        quality: 1.0 // Set quality to maximum
       });
       
       const fileName = `${formData.name.replace(/[^a-z0-9]/gi, '_')}_Certificate.pdf`;

@@ -77,7 +77,7 @@ function App() {
         
         <Route path="/selenium-java" element={<SeleniumIDE />} />
         <Route path="/register" element={<Register />} />
-<Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );
