@@ -52,6 +52,7 @@ const CertificateTemplate = ({
             src={logo}
             alt="Journey to Automation Logo" 
             className="logo"
+            crossOrigin="anonymous"
           />
           <h2 className="organization-name">JOURNEY TO AUTOMATION</h2>
         </div>
@@ -79,6 +80,7 @@ const CertificateTemplate = ({
               src={imgSignature} 
               alt="Signature" 
               className="signature-image"
+              crossOrigin="anonymous"
             />
             <div className="sig-line" />
             <div className="signature">Hemant Gandhi</div>
