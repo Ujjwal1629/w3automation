@@ -998,15 +998,14 @@ public class FirstTest {
           {[
             {
               id: 1,
-              name: "Rajat Sharma",
-              role: "Test Automation Lead",
+              name: "Kunal",
               videoUrl: video1,
               course: "Selenium with Java",
               rating: 5
             },
             {
               id: 2,
-              name: "Priya Patel",
+              name: "Mayank Garg",
               role: "Senior QA Engineer",
               videoUrl: whatsAppVideo,
               course: "Playwright Masterclass",
