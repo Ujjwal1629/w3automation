@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Play, BookOpen, Code, Terminal, Search, User, CheckCircle, Clock, Award, Users, ChevronRight, Menu, X } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Play, BookOpen, Code, Terminal, Search, User, CheckCircle, Clock, Award, Users, ChevronRight, Menu, X, Video } from 'lucide-react';
 import Navbar from './Navbar';
 import { useTheme } from '../context/ThemeContext';
 import { motion } from 'framer-motion';
+// Import video assets
+import video1 from '../assets/video1.mp4';
+import whatsAppVideo from '../assets/WhatsApp Video 2024-11-24 at 09.38.41.mp4';
 
 const GlassPanelStyles = {
   backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -723,7 +726,7 @@ public class FirstTest {
         transition={{ duration: 0.6 }}
         style={{
           padding: '5rem 5%',
-          backgroundColor: 'white',
+          backgroundColor: isDarkMode ? '#1a202c' : 'white',
           position: 'relative',
           overflow: 'hidden',
         }}>
@@ -734,7 +737,9 @@ public class FirstTest {
           left: '0',
           right: '0',
           bottom: '0',
-          background: 'linear-gradient(45deg, rgba(140,82,255,0.03) 0%, rgba(255,87,87,0.03) 100%)',
+          background: isDarkMode 
+            ? 'linear-gradient(45deg, rgba(140,82,255,0.05) 0%, rgba(255,87,87,0.05) 100%)'
+            : 'linear-gradient(45deg, rgba(140,82,255,0.03) 0%, rgba(255,87,87,0.03) 100%)',
           zIndex: 0,
         }} />
 
@@ -758,7 +763,7 @@ public class FirstTest {
             fontSize: '2.5rem',
             fontWeight: 800,
             marginBottom: '1.5rem',
-            color: '#2d3748',
+            color: isDarkMode ? '#ffffff' : '#2d3748',
           }}>
             What Our <span style={{
               background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
@@ -768,7 +773,7 @@ public class FirstTest {
           </h2>
           <p style={{
             fontSize: '1.125rem',
-            color: '#718096',
+            color: isDarkMode ? '#e2e8f0' : '#718096',
             maxWidth: '800px',
             margin: '0 auto',
             lineHeight: 1.6,
@@ -781,25 +786,29 @@ public class FirstTest {
           position: 'relative',
           zIndex: 1,
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
           gap: '2rem',
           maxWidth: '1200px',
           margin: '0 auto',
         }}>
           {[
             { 
-              name: "Sarah Johnson",
-              role: "QA Automation Engineer at Google",
-              image: "/api/placeholder/80/80",
-              text: "I was a manual tester with no automation experience. After completing the Selenium course, I landed a job at Google with a 70% salary increase! The practical projects were exactly what I needed.",
+              name: "Supriya Deshpande",
+              rating: 4,
+              text: "I recently completed Hemant Gandhi's automation testing class on Java and Selenium, and it was outstanding. The instructor made complex topics easy to understand, and the hands-on exercises were incredibly valuable. I highly recommend this course to anyone looking to advance their automation testing skills. Hemant Gandhi's expertise and the practical approach make it ideal for both beginners and those with some experience.",
               course: "Selenium with Java"
             },
             {
-              name: "Mark Davis",
-              role: "Senior Test Engineer at Microsoft",
-              image: "/api/placeholder/80/80",
-              text: "The Playwright course helped me modernize our testing strategy at work. We've reduced test execution time by 60% and caught more bugs earlier. Worth every penny!",
-              course: "Playwright Mastery"
+              name: "Srikanth Chivukula",
+              rating: 4,
+              text: "I really appreciate you for taking time from daily routines and providing training on Java and Selenium. The topics covered are good and detailed. The support provided post sessions is also excellent.",
+              course: "Selenium with Java"
+            },
+            {
+              name: "Mayooran Thiruchselvam",
+              rating: 5,
+              text: "The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand. Additionally, the practical demonstrations were effective in showcasing the functionality and potential use cases.",
+              course: "Automation Testing Masterclass"
             }
           ].map((testimonial, index) => (
             <motion.div
@@ -808,13 +817,20 @@ public class FirstTest {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10, boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
+              whileHover={{ 
+                y: -10, 
+                boxShadow: isDarkMode 
+                  ? '0 10px 30px rgba(0,0,0,0.3)'
+                  : '0 10px 30px rgba(0,0,0,0.1)'
+              }}
               style={{
-                backgroundColor: 'white',
+                backgroundColor: isDarkMode ? '#2d3748' : 'white',
                 borderRadius: '16px',
                 padding: '2rem',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
-                border: '1px solid #edf2f7',
+                boxShadow: isDarkMode 
+                  ? '0 4px 15px rgba(0,0,0,0.2)'
+                  : '0 4px 15px rgba(0,0,0,0.05)',
+                border: `1px solid ${isDarkMode ? '#4a5568' : '#edf2f7'}`,
                 display: 'flex',
                 flexDirection: 'column',
                 transition: 'all 0.3s ease',
@@ -828,53 +844,272 @@ public class FirstTest {
               }}>❝</div>
               <p style={{
                 fontSize: '1rem',
-                color: '#4a5568',
+                color: isDarkMode ? '#e2e8f0' : '#4a5568',
                 lineHeight: 1.6,
                 marginBottom: '2rem',
                 flex: 1,
               }}>{testimonial.text}</p>
+              
               <div style={{
                 display: 'flex',
-                alignItems: 'center',
-                gap: '1rem',
+                justifyContent: 'space-between',
+                alignItems: 'flex-end',
+                marginTop: 'auto',
               }}>
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name}
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div>
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.25rem',
+                }}>
                   <div style={{
-                    fontWeight: 600,
-                    color: '#2d3748',
+                    fontSize: '1.25rem',
+                    fontWeight: 700,
+                    color: isDarkMode ? '#ffffff' : '#2d3748',
                     marginBottom: '0.25rem',
                   }}>{testimonial.name}</div>
+                  
                   <div style={{
-                    fontSize: '0.875rem',
-                    color: '#718096',
-                  }}>{testimonial.role}</div>
+                    display: 'flex',
+                    gap: '0.25rem',
+                    marginBottom: '0.75rem',
+                  }}>
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} style={{
+                        color: i < testimonial.rating ? '#FFD700' : '#CBD5E0',
+                        fontSize: '1.25rem',
+                      }}>★</span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div style={{
+                  padding: '0.5rem 1rem',
+                  backgroundColor: isDarkMode ? 'rgba(255,255,255,0.1)' : '#f8f9fa',
+                  borderRadius: '50px',
+                  fontSize: '0.875rem',
+                  color: isDarkMode ? '#e2e8f0' : '#718096',
+                  fontWeight: 500,
+                }}>
+                  {testimonial.course}
                 </div>
               </div>
+              
+            </motion.div>
+          ))}
+        </div>
+        
+        <div style={{
+          textAlign: 'center',
+          marginTop: '3rem',
+        }}>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '50px',
+              backgroundColor: 'rgba(140, 82, 255, 0.1)',
+              color: '#8c52ff',
+              border: 'none',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+            }}
+          >
+            See More Testimonials
+            <ChevronRight size={18} />
+          </motion.button>
+        </div>
+      </motion.section>
+
+      {/* Video Testimonials Section */}
+      <section style={{
+        padding: '5rem 5%',
+        backgroundColor: isDarkMode ? '#2d3748' : '#f8f9fa',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        {/* Background elements */}
+        <div style={{
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          right: '0',
+          bottom: '0',
+          background: isDarkMode 
+            ? 'linear-gradient(45deg, rgba(255,87,87,0.05) 0%, rgba(140,82,255,0.05) 100%)'
+            : 'linear-gradient(45deg, rgba(255,87,87,0.03) 0%, rgba(140,82,255,0.03) 100%)',
+          zIndex: 0,
+        }} />
+
+        <div style={{
+          textAlign: 'center',
+          marginBottom: '3rem',
+          position: 'relative',
+          zIndex: 1,
+        }}>
+          <div style={{
+            display: 'inline-block',
+            padding: '0.5rem 1rem',
+            backgroundColor: 'rgba(255, 87, 87, 0.1)',
+            color: '#ff5757',
+            borderRadius: '50px',
+            fontSize: '0.875rem',
+            fontWeight: 600,
+            marginBottom: '1rem',
+          }}>
+            VIDEO TESTIMONIALS
+          </div>
+          <h2 style={{
+            fontSize: '2.5rem',
+            fontWeight: 800,
+            marginBottom: '1.5rem',
+            color: isDarkMode ? '#ffffff' : '#2d3748',
+          }}>
+            Watch What Our <span style={{
+              background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>Students</span> Share
+          </h2>
+          <p style={{
+            fontSize: '1.125rem',
+            color: isDarkMode ? '#e2e8f0' : '#718096',
+            maxWidth: '800px',
+            margin: '0 auto',
+            lineHeight: 1.6,
+          }}>
+            Hear success stories directly from our students who have mastered automation testing
+          </p>
+        </div>
+
+        <div style={{
+          position: 'relative',
+          zIndex: 1,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
+          gap: '2.5rem',
+          maxWidth: '1200px',
+          margin: '0 auto',
+        }}>
+          {[
+            {
+              id: 1,
+              name: "Rajat Sharma",
+              role: "Test Automation Lead",
+              videoUrl: video1,
+              course: "Selenium with Java",
+              rating: 5
+            },
+            {
+              id: 2,
+              name: "Priya Patel",
+              role: "Senior QA Engineer",
+              videoUrl: whatsAppVideo,
+              course: "Playwright Masterclass",
+              rating: 4
+            }
+          ].map((videoTestimonial, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
+              whileHover={{ 
+                y: -8, 
+                boxShadow: isDarkMode 
+                  ? '0 15px 35px rgba(0,0,0,0.3)'
+                  : '0 15px 35px rgba(0,0,0,0.1)'
+              }}
+              style={{
+                backgroundColor: isDarkMode ? '#2d3748' : 'white',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                boxShadow: isDarkMode 
+                  ? '0 4px 15px rgba(0,0,0,0.2)'
+                  : '0 4px 15px rgba(0,0,0,0.05)',
+                border: `1px solid ${isDarkMode ? '#4a5568' : '#edf2f7'}`,
+                transition: 'all 0.3s ease',
+              }}
+            >
               <div style={{
-                marginTop: '1rem',
-                padding: '0.5rem 1rem',
-                backgroundColor: '#f8f9fa',
-                borderRadius: '50px',
-                fontSize: '0.875rem',
-                color: '#718096',
-                alignSelf: 'flex-start',
+                position: 'relative',
+                paddingTop: '56.25%', // 16:9 aspect ratio
+                backgroundColor: '#000',
               }}>
-                {testimonial.course}
+                <video 
+                  controls
+                  preload="metadata"
+                  playsInline
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }}
+                >
+                  <source src={videoTestimonial.videoUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              
+              <div style={{
+                padding: '1.5rem',
+              }}>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-start',
+                  marginBottom: '1rem',
+                }}>
+                  <div>
+                    <h3 style={{
+                      fontSize: '1.25rem',
+                      fontWeight: 700,
+                      color: isDarkMode ? '#ffffff' : '#2d3748',
+                      marginBottom: '0.25rem',
+                    }}>{videoTestimonial.name}</h3>
+                    <p style={{
+                      fontSize: '0.875rem',
+                      color: isDarkMode ? '#e2e8f0' : '#718096',
+                      fontWeight: 500,
+                    }}>{videoTestimonial.role}</p>
+                  </div>
+                  
+                  <div style={{
+                    padding: '0.5rem 1rem',
+                    backgroundColor: isDarkMode ? 'rgba(255,255,255,0.1)' : '#f8f9fa',
+                    borderRadius: '50px',
+                    fontSize: '0.875rem',
+                    color: isDarkMode ? '#e2e8f0' : '#718096',
+                    fontWeight: 500,
+                  }}>
+                    {videoTestimonial.course}
+                  </div>
+                </div>
+                
+                <div style={{
+                  display: 'flex',
+                  gap: '0.25rem',
+                }}>
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} style={{
+                      color: i < videoTestimonial.rating ? '#FFD700' : '#CBD5E0',
+                      fontSize: '1.25rem',
+                    }}>★</span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }
