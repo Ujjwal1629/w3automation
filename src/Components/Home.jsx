@@ -998,7 +998,8 @@ public class FirstTest {
           {[
             {
               id: 1,
-              name: "Kunal",
+              name: "Kunal Desai",
+              role: "Software Release Manager",
               videoUrl: video1,
               course: "Selenium with Java",
               rating: 5
