@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation, useEffect } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import Register from "./Components/Register";
@@ -12,7 +12,6 @@ import TestimonialSection from "./Components/TestimonialSection";
 import InterviewQuestions from "./Pages/InterviewQuestions";
 import AboutUs from './Pages/AboutUs';
 import ApiTesting from "./Pages/ApiTesting";
-import ReactGA from "react-ga4";
 import BlogPost from "./Pages/BlogPost";
 import TestPractice from "./Pages/Practice-sites/TestPractice";
 import APITestPractice from "./Pages/Practice-sites/APITestPractice";
@@ -34,9 +33,17 @@ import DragDropTest from "./Pages/Practice-sites/DragDropTest.jsx";
 import DatePickerDropdown from "./Pages/Practice-sites/DatePickerDropdown.jsx";
 import SeleniumIDE from "./Pages/Selenium-Java/SeleniumIDE";
 import { ThemeProvider } from './context/ThemeContext';
+import { initGA, trackPageView } from './utils/analytics';
+
+initGA();
 
 function App() {
-  ReactGA.initialize("G-FPDLKPFE8H");
+  const location = useLocation();
+
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
+
   return (
     <div className="route">
       <Routes>
