@@ -9,9 +9,11 @@ dotenv.config();
 
 const app = express();
 
-// CORS setup to allow frontend origin
+// CORS setup to allow frontend origins for both dev and production
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://w3automation.vercel.app', 'https://journeytoautomation.org']
+    : 'http://localhost:5173',
   credentials: true,
 }));
 app.use(express.json());
