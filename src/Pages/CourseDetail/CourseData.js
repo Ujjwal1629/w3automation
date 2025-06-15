@@ -1,4 +1,5 @@
 import bg2 from '../../assets/bg5B.jpg';
+import jsBg from '../../assets/js-background1.jpg';
 import instructorImg from '../../assets/profilePic.jpg';
 
 const seleniumCourseData = {
@@ -211,7 +212,7 @@ const playwrightCourseData = {
     title: "PLAYWRIGHT WITH JAVASCRIPT 2025 COURSE DETAILS",
     description: "This course is designed to provide students with a comprehensive understanding of Playwright using JavaScript. By the end of the course, students will be able to automate web applications, write robust test scripts, and implement test automation frameworks using Playwright.",
     enrolled: 120,
-    backgroundImage: bg2,
+    backgroundImage: jsBg,
     stats: {
         'Live - Projects':'2',
         lectures: 28,
