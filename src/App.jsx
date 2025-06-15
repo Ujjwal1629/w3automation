@@ -67,7 +67,7 @@ function App() {
         <Route path="/APITestPractice" element={<APITestPractice />} />
         <Route path="/AlertTest" element={<AlertTest />} />
         <Route path="/userForm" element={<UserForm/>} />
-        <Route path="/syllabus-java-selenium" element={<CourseDetailPage/>} />
+        <Route path="/course/:courseId" element={<CourseDetailPage/>} />
         <Route path="/ImageTest" element={<ImageTest />} />
         <Route path="/BrowserWindowTabOpener" element={<BrowserWindowTabOpener />} />
         <Route path="/LinksTesting" element={<LinksTesting />} />

@@ -700,7 +700,7 @@ export default function Navbar() {
                   }}>
                     <a 
                       onClick={() => {
-                        navigate("/syllabus-java-selenium");
+                        navigate("/course/selenium");
                         setIsCoursesDropdownOpen(false);
                         setIsMenuOpen(false);
                       }}
@@ -711,7 +711,7 @@ export default function Navbar() {
                     </a>
                     <a 
                       onClick={() => {
-                        navigate("/syllabus-playwright-js");
+                        navigate("/course/playwright");
                         setIsCoursesDropdownOpen(false);
                         setIsMenuOpen(false);
                       }}
@@ -866,15 +866,15 @@ export default function Navbar() {
                   }}
                 >
                   {[
-                    { label: "Java & Selenium", route: "/syllabus-java-selenium" },
-                    { label: "Playwright with JavaScript", route: "/syllabus-playwright-js" }
+                    { label: "Java & Selenium", route: "/course/selenium" },
+                    { label: "Playwright with JavaScript", route: "/course/playwright" }
                   ].map(({ label, route }) => (
                     <a
                       key={route}
                       onClick={() => {
                         navigate(route);
                         setIsCoursesDropdownOpen(false);
-                        if (route === "/syllabus-playwright-js") setIsMenuOpen(false);
+                        if (route === "/course/playwright") setIsMenuOpen(false);
                       }}
                       style={{
                         display: 'block',
