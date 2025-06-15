@@ -1,5 +1,6 @@
 import "./App.css";
-import { Routes, Route, useLocation, useEffect } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import Register from "./Components/Register";
@@ -34,6 +35,7 @@ import DatePickerDropdown from "./Pages/Practice-sites/DatePickerDropdown.jsx";
 import SeleniumIDE from "./Pages/Selenium-Java/SeleniumIDE";
 import { ThemeProvider } from './context/ThemeContext';
 import { initGA, trackPageView } from './utils/analytics';
+import DriveAccessPage from "./Pages/GoogleDrive/DriveAccessPage.jsx";
 
 initGA();
 
@@ -85,6 +87,7 @@ function App() {
         <Route path="/selenium-java" element={<SeleniumIDE />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/drivePage" element={<DriveAccessPage/>} />
       </Routes>
     </div>
   );
