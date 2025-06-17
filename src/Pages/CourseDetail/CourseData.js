@@ -244,97 +244,91 @@ const playwrightCourseData = {
     },
     syllabus: [
         {
-            title: "Core JavaScript Topics Covered in Course",
-            topics: [
-                "JavaScript Basics: Variables, Data Types, Operators",
-                "Functions and Scope",
-                "Arrays and Objects",
-                "ES6 Features: let, const, arrow functions, destructuring",
-                "Promises and Async/Await",
-                "Error Handling",
-                "Modules and Imports/Exports"
-            ]
-        },
-        {
-            title: "Introduction to Playwright",
-            topics: [
-                "What is Playwright?",
-                "Why Playwright over other tools?",
-                "Supported Browsers and Platforms",
-                "Playwright vs Selenium"
-            ]
-        },
-        {
-            title: "Playwright Setup",
-            topics: [
-                "Installing Node.js and Playwright",
-                "Project Structure",
-                "Playwright Test Runner",
-                "Configuration Files"
-            ]
-        },
-        {
-            title: "Locators and Selectors",
-            topics: [
-                "Locating Elements using CSS, XPath, Text, Role",
-                "Best Practices for Selectors",
-                "Debugging Selectors"
-            ]
-        },
-        {
-            title: "Playwright API",
-            topics: [
-                "Browser, Context, and Page Objects",
-                "Navigation and Interactions",
-                "Handling Alerts, Frames, and Popups",
-                "Taking Screenshots and Videos",
-                "Assertions and Waits"
-            ]
-        },
-        {
-            title: "Advanced Playwright",
-            topics: [
-                "Parallel Test Execution",
-                "Data Driven Testing",
-                "Custom Test Fixtures",
-                "Network Interception and Mocking",
-                "Handling File Uploads/Downloads",
-                "Visual Regression Testing"
-            ]
-        },
-        {
-            title: "API Testing with Playwright",
-            topics: [
-                "Making API Requests",
-                "Validating API Responses",
-                "Combining UI and API Tests"
-            ]
-        },
-        {
-            title: "Cucumber with Playwright",
-            topics: [
-                "Introduction to BDD",
-                "Setting up Cucumber with Playwright",
-                "Writing Feature Files and Step Definitions",
-                "Running BDD Tests"
-            ]
-        },
-        {
-            title: "Version Control",
-            topics: [
-                "Git",
-                "GitHub",
-                "Github Desktop"
-            ]
-        },
-        {
-            title: "CI / CD - GitHub Actions",
-            topics: [
-                "Continuous Integration using GitHub Actions",
-                "Configuring the CI CD Pipeline",
-                "Running the pipeline from Workflow Files"
-            ]
-        },
+    title: "JavaScript Fundamentals for Test Automation",
+    topics: [
+        "JavaScript Basics: Variables (var, let, const), Data Types, Operators, String Manipulation, Template Literals",
+        "Control Flow and Loops: if/else, switch, for, while, do-while, break, continue",
+        "Functions and Scope: Function Declarations, Arrow Functions, this Keyword, Closures, Callback Functions",
+        "Arrays and Objects: Creating & manipulating arrays, map/filter/reduce, Object Literals, Destructuring, Spread Operator",
+        "ES6+ Features: let/const, Default Parameters, Rest/Spread Operators, Optional Chaining, Template Strings, Modules"
+    ]
+},
+{
+    title: "Advanced JavaScript Concepts",
+    topics: [
+        "Promises & Async/Await: Callbacks, Promises (resolve, reject, then, catch), async/await, Promise.all(), Promise.race()",
+        "JavaScript & Web Interactions: DOM access (querySelector, innerText), Events (click, change, keydown), Event Listeners, Local & Session Storage",
+        "JavaScript & API Testing: fetch() API, JSON.stringify/parse, HTTP methods (GET, POST, PUT, DELETE), API error handling"
+    ]
+},
+{
+    title: "Getting Started with Playwright & Setup",
+    topics: [
+        "What is Playwright and Why Use It?",
+        "Installing Playwright and Node.js",
+        "Setting Up VS Code for Playwright",
+        "Creating Your First Playwright Test",
+        "Understanding Core Features of Playwright"
+    ]
+},
+{
+    title: "Locators & Element Interactions in Playwright",
+    topics: [
+        "Playwright Locators: locator(), getByRole(), getByText()",
+        "Handling Clicks, Inputs, and Form Submissions",
+        "Keyboard and Mouse Events",
+        "Interacting with Dropdowns, Checkboxes, and Radio Buttons",
+        "Handling Alerts, Modals, and Frames"
+    ]
+},
+{
+    title: "Assertions, Hooks & Test Execution in Playwright",
+    topics: [
+        "Using Playwright Assertions (expect())",
+        "Soft vs Hard Assertions",
+        "Test Hooks: beforeAll, afterAll",
+        "Debugging with Trace Viewer and Debug Mode",
+        "Handling Dynamic Elements with Waits: waitForSelector, waitForTimeout"
+    ]
+},
+{
+    title: "Playwright Advanced Features",
+    topics: [
+        "Mocking API Requests and Network Interception",
+        "Handling File Uploads and Downloads",
+        "Authentication Handling: JWT, Cookies, Session Storage",
+        "Mobile Emulation and Responsive Testing",
+        "Running Tests Across Multiple Browsers"
+    ]
+},
+{
+    title: "Playwright Integration with JavaScript Frameworks",
+    topics: [
+        "Writing Reusable Test Functions",
+        "Using Page Object Model (POM) with Playwright",
+        "Data-Driven Testing with JSON and CSV",
+        "Handling Configuration Files (playwright.config.js)"
+    ]
+},
+{
+    title: "Using TypeScript in Playwright Automation",
+    topics: [
+        "Understand the Differences Between TypeScript and JavaScript",
+        "Deep Dive into TypeScript Type Syntaxes and Their Usage",
+        "Build Playwright Page Object Files in TypeScript and Enforce Typing Standards",
+        "Create Utility Files in TypeScript with Typing Enforcement",
+        "Refactor Playwright Tests into TypeScript-Compatible Code and Run E2E Tests"
+    ]
+},
+{
+    title: "CI/CD Integration & Reporting",
+    topics: [
+        "Generating Reports: HTML, JSON, Allure",
+        "Running Playwright Tests in CI/CD: GitHub Actions, Jenkins",
+        "Running Playwright Tests in Docker",
+        "Parallel Test Execution in CI/CD Pipelines"
+    ]
+},
     ],
     pricing: {
         price: {
