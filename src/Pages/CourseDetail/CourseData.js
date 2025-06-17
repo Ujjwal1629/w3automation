@@ -215,8 +215,8 @@ const playwrightCourseData = {
     backgroundImage: jsBg,
     stats: {
         'Live - Projects':'2',
-        lectures: 28,
-        duration: "2 Months",
+        lectures: 36,
+        duration: "4 Months",
         Certification:'Yes',
         Recordings:'Lifetime access',
         'Mock Test':"Weekly",
@@ -227,14 +227,14 @@ const playwrightCourseData = {
     },
     schedule: {
         classTiming: {
-            indian: "08:00 AM IST",
-            us: "09:30 PM GMT",
-            uk: "02:30 AM GMT",
+            indian: "08:00 PM IST",
+            us: "09:30 AM GMT",
+            uk: "02:30 PM GMT",
         },
         demo: "First 2 sessions are free!",
-        date:'10th May 2025',
-        classDate:'13th May 2025 Onwards',
-        days:'Monday to Thursday',
+        date:'5th & 6th July 2025',
+        classDate:'5th July 2025 Onwards',
+        days:'Saturday and Sunday',
         features: [
             "Live Classes",
             "Recorded Sessions",
@@ -246,11 +246,11 @@ const playwrightCourseData = {
         {
     title: "JavaScript Fundamentals for Test Automation",
     topics: [
-        "JavaScript Basics: Variables (var, let, const), Data Types, Operators, String Manipulation, Template Literals",
-        "Control Flow and Loops: if/else, switch, for, while, do-while, break, continue",
-        "Functions and Scope: Function Declarations, Arrow Functions, this Keyword, Closures, Callback Functions",
-        "Arrays and Objects: Creating & manipulating arrays, map/filter/reduce, Object Literals, Destructuring, Spread Operator",
-        "ES6+ Features: let/const, Default Parameters, Rest/Spread Operators, Optional Chaining, Template Strings, Modules"
+        "Variables (var, let, const), data types, operators, string manipulation methods, and template literals",
+        "Control flow structures like if/else, switch, and loops (for, while, do-while), including break and continue",
+        "Functions and scope, including function declarations, arrow functions, the this keyword, closures, and callback functions",
+        "Arrays and objects with methods like map, filter, reduce, object literals, destructuring, and the spread operator",
+        "ES6+ features such as let/const, default parameters, rest/spread operators, optional chaining, template strings, and module imports/exports"
     ]
 },
 {
