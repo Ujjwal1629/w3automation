@@ -700,7 +700,7 @@ export default function Navbar() {
                   }}>
                     <a 
                       onClick={() => {
-                        navigate("/syllabus-java-selenium");
+                        navigate("/course/selenium");
                         setIsCoursesDropdownOpen(false);
                         setIsMenuOpen(false);
                       }}
@@ -708,6 +708,17 @@ export default function Navbar() {
                       style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none', fontSize: '0.95rem' }}
                     >
                       Java & Selenium
+                    </a>
+                    <a 
+                      onClick={() => {
+                        navigate("/course/playwright");
+                        setIsCoursesDropdownOpen(false);
+                        setIsMenuOpen(false);
+                      }}
+                      className="dropdown-item"
+                      style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none', fontSize: '0.95rem' }}
+                    >
+                      Playwright with JavaScript
                     </a>
                   </div>
                 )}
@@ -816,32 +827,74 @@ export default function Navbar() {
               <a 
                 className={isCoursesDropdownOpen ? 'active' : ''} 
                 onClick={toggleCoursesDropdown}
-                style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}
+                style={{ 
+                  color: isDarkMode ? '#fff' : 'inherit',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  fontFamily: 'Segoe UI, Roboto, sans-serif',
+                  fontSize: '0.95rem'
+                }}
               >
                 UPCOMING COURSES
               </a>
+
               <DropdownPortal isOpen={isCoursesDropdownOpen}>
-                <div className="dropdown-menu courses-menu" style={{
-                  backgroundColor: isDarkMode ? '#2d3748' : 'white',
-                  boxShadow: isDarkMode ? '0 4px 6px rgba(0,0,0,0.3)' : '0 4px 6px rgba(0,0,0,0.1)',
-                  borderRadius: '12px',
-                  position: 'fixed',
-                  top: `${dropdownPosition.courses.top}px`,
-                  left: `${dropdownPosition.courses.left}px`,
-                  zIndex: 99999,
-                  padding: '0.5rem',
-                  minWidth: '160px'
-                }}>
-                  <a 
-                    onClick={() => {
-                      navigate("/syllabus-java-selenium");
-                      setIsCoursesDropdownOpen(false);
-                    }}
-                    className="dropdown-item"
-                    style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none' }}
-                  >
-                    Java & Selenium
-                  </a>
+                <div
+                  className="dropdown-menu courses-menu"
+                  style={{
+                    backgroundColor: isDarkMode 
+                      ? 'rgba(45, 55, 72, 0.95)'
+                      : 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(10px)',
+                    WebkitBackdropFilter: 'blur(10px)',
+                    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
+                    border: isDarkMode 
+                      ? '1px solid rgba(255, 255, 255, 0.1)'
+                      : '1px solid rgba(0, 0, 0, 0.1)',
+                    borderRadius: '12px',
+                    position: 'fixed',
+                    top: `${dropdownPosition.courses.top}px`,
+                    left: `${dropdownPosition.courses.left}px`,
+                    zIndex: 99999,
+                    padding: '0.5rem',
+                    minWidth: '180px',
+                    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                    fontSize: '0.95rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.25rem'
+                  }}
+                >
+                  {[
+                    { label: "Java & Selenium", route: "/course/selenium" },
+                    { label: "Playwright with JavaScript", route: "/course/playwright" }
+                  ].map(({ label, route }) => (
+                    <a
+                      key={route}
+                      onClick={() => {
+                        navigate(route);
+                        setIsCoursesDropdownOpen(false);
+                        if (route === "/course/playwright") setIsMenuOpen(false);
+                      }}
+                      style={{
+                        display: 'block',
+                        padding: '0.5rem 0.75rem',
+                        color: isDarkMode ? '#fff' : '#1a202c',
+                        cursor: 'pointer',
+                        textDecoration: 'none',
+                        borderRadius: '8px',
+                        transition: 'background 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = isDarkMode ? '#4a5568' : '#f1f1f1';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'transparent';
+                      }}
+                    >
+                      {label}
+                    </a>
+                  ))}
                 </div>
               </DropdownPortal>
             </div>
