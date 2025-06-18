@@ -332,9 +332,9 @@ const playwrightCourseData = {
     ],
     pricing: {
         price: {
-            indian: "7500 INR",
-            uk: "95 EUROS",
-            us: "110 USD"
+            indian: "8000 INR",
+            uk: "100 EUROS",
+            us: "120 USD"
         },
         contact: "+91 8810201221",
         linkedin: "https://www.linkedin.com/in/hemant-gandhi254/"
