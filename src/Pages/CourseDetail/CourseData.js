@@ -3,7 +3,7 @@ import jsBg from '../../assets/js-background1.jpg';
 import instructorImg from '../../assets/profilePic.jpg';
 
 const seleniumCourseData = {
-    title: "SELENIUM WITH JAVA 2025 COURSE DETAILS",
+    title: "SELENIUM WITH JAVA 2025",
     description: "This course is designed to provide students with a comprehensive understanding of Selenium WebDriver using Java. By the end of the course, students will be able to automate web applications, write robust test scripts, and implement test automation frameworks.",
     enrolled: 150,
     backgroundImage: bg2,
@@ -209,7 +209,7 @@ const seleniumCourseData = {
 };
 
 const playwrightCourseData = {
-    title: "PLAYWRIGHT WITH JAVASCRIPT 2025 COURSE DETAILS",
+    title: "PLAYWRIGHT WITH JAVASCRIPT 2025",
     description: "This course is designed to provide students with a comprehensive understanding of Playwright using JavaScript. By the end of the course, students will be able to automate web applications, write robust test scripts, and implement test automation frameworks using Playwright.",
     enrolled: 120,
     backgroundImage: jsBg,
@@ -332,9 +332,9 @@ const playwrightCourseData = {
     ],
     pricing: {
         price: {
-            indian: "7500 INR",
-            uk: "95 EUROS",
-            us: "110 USD"
+            indian: "8000 INR",
+            uk: "100 EUROS",
+            us: "120 USD"
         },
         contact: "+91 8810201221",
         linkedin: "https://www.linkedin.com/in/hemant-gandhi254/"
