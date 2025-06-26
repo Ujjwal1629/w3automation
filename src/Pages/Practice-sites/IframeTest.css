@@ -1,0 +1,126 @@
+.tab-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 12px 24px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: 300px;
+}
+
+.tab-button.active {
+  background-color: #2c5282;
+  color: white;
+}
+
+.tab-button:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.tab-button:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.dark-mode .tab-button {
+  background-color: #333;
+  color: #ddd;
+}
+
+.dark-mode .tab-button.active {
+  background-color: #6366f1;
+}
+
+.iframe-content-container {
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.iframe-border {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background: #fff;
+}
+
+.dark-mode .iframe-border {
+  border-color: #444;
+  background: #222;
+}
+
+.iframe-border h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.dark-mode .iframe-border h2 {
+  border-bottom-color: #444;
+}
+
+.iframe-info {
+  margin-top: 30px;
+}
+
+.code-block {
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.code-block h4 {
+  margin-bottom: 10px;
+  color: #2c5282;
+}
+
+.dark-mode .code-block h4 {
+  color: #6366f1;
+}
+
+.code-block pre {
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  padding: 15px;
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.dark-mode .code-block pre {
+  background-color: #1a1a1a;
+  border-color: #444;
+  color: #eee;
+}
+
+@media (max-width: 768px) {
+  .tab-container {
+    flex-direction: column;
+  }
+  
+  .tab-button {
+    max-width: none;
+    border-radius: 0;
+  }
+  
+  .tab-button:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0;
+  }
+  
+  .tab-button:last-child {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 0;
+  }
+} 

@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import Register from "./Components/Register";
@@ -63,30 +63,28 @@ function App() {
         <Route path="/InterviewQuestions/*" element={<InterviewQuestions />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/Blogs" element={<BlogPost />} />
-        <Route path="/AuthPractice" element={<TestPractice />} />
-        <Route path="/APITestPractice" element={<APITestPractice />} />
-        <Route path="/AlertTest" element={<AlertTest />} />
+        
+        {/* Redirects for old URLs */}
+        <Route path="/AuthPractice" element={<Navigate to="/practice/form" replace />} />
+        <Route path="/APITestPractice" element={<Navigate to="/practice/api" replace />} />
+        <Route path="/AlertTest" element={<Navigate to="/practice/alert" replace />} />
+        <Route path="/ImageTest" element={<Navigate to="/practice/image" replace />} />
+        <Route path="/BrowserWindowTabOpener" element={<Navigate to="/practice/browser" replace />} />
+        <Route path="/LinksTesting" element={<Navigate to="/practice/links" replace />} />
+        <Route path="/Authentication" element={<Navigate to="/practice/auth" replace />} />
+        <Route path="/slider" element={<Navigate to="/practice/slider" replace />} />
+        <Route path="/resizable" element={<Navigate to="/practice/resizable" replace />} />
+        <Route path="/dragdrop" element={<Navigate to="/practice/dragdrop" replace />} />
+        <Route path="/datepicker" element={<Navigate to="/practice/datepicker" replace />} />
+        
         <Route path="/userForm" element={<UserForm/>} />
         <Route path="/course/:courseId" element={<CourseDetailPage/>} />
-        <Route path="/ImageTest" element={<ImageTest />} />
-        <Route path="/BrowserWindowTabOpener" element={<BrowserWindowTabOpener />} />
-        <Route path="/LinksTesting" element={<LinksTesting />} />
-        <Route path="/Authentication" element={<Authentication />} />
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/getCertificate" element={<GetCertificate />} />
         <Route path="/template" element={<Template />} />
-        {/* <Route path="/EcommerceTesting" element={<EcommerceTesting />} /> */}
-        {/* <Route path="/practice/ecommerce" element={<EcommerceTesting />} /> */}
-        <Route path="/ecommerce/*" element={<EcommerceStore />} />
+        <Route path="/ecommerce/*" element={<Navigate to="/practice/ecommerce" replace />} />
         <Route path="practice/ecommerce/*" element={<EcommerceStore />} />
-        <Route path="/slider" element={<SliderTest />} />
-        <Route path="/resizable" element={<ResizableDiv />} />
-        <Route path="/dragdrop" element={<DragDropTest />} />
-        <Route path="/datepicker" element={<DatePickerDropdown />} />
-        
         <Route path="/selenium-java" element={<SeleniumIDE />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/drivePage" element={<DriveAccessPage/>} />
       </Routes>
     </div>

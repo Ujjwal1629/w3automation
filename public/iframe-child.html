@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested iframe Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 15px;
+            background-color: #f0f5fe;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 30px);
+        }
+        .content {
+            text-align: center;
+            width: 100%;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid #3498db;
+            border-radius: 4px;
+            width: 80%;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .input-label {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2>Nested Child iFrame</h2>
+        <p>This is a nested iframe (an iframe within an iframe).</p>
+        <input type="text" id="nestedFrameInput" placeholder="This input is inside a nested iframe...">
+        <div class="input-label">To access this input, you need to switch to both parent and child frames!</div>
+    </div>
+    
+    <script>
+        const input = document.getElementById('nestedFrameInput');
+        input.addEventListener('input', (e) => {
+            const value = e.target.value;
+            if (value) {
+                input.style.borderColor = '#27ae60';
+                input.style.boxShadow = '0 0 5px rgba(39, 174, 96, 0.5)';
+            } else {
+                input.style.borderColor = '#3498db';
+                input.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -3,6 +3,7 @@
   width: 100%;
   min-height: calc(100vh - 120px);
   position: relative;
+  margin-top: 140px;
 }
 
 .practice-sidebar {
@@ -13,6 +14,7 @@
   border-right: 1px solid #ddd;
   overflow-y: auto;
   transition: transform 0.3s ease;
+  padding-bottom: 40px;
 }
 
 .practice-sidebar h2 {

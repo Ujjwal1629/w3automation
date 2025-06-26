@@ -1,0 +1,196 @@
+.graphql-container {
+  padding: 20px;
+  max-width: 100%;
+}
+
+.graphql-container h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.graphql-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.query-selector {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.query-selector h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.query-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.query-item {
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.query-item:hover {
+  background-color: #e9e9e9;
+}
+
+.query-item.selected {
+  background-color: #e0e0e0;
+  border-left: 4px solid #3f51b5;
+}
+
+.operation-type {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.operation-type.query {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+.operation-type.mutation {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+}
+
+.operation-type.fragment {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.graphql-explorer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.explorer-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.query-editor-container,
+.variables-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.query-editor-container h3,
+.variables-container h3,
+.response-panel h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.query-editor,
+.variables-editor {
+  width: 100%;
+  height: 250px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  resize: none;
+}
+
+.response-panel {
+  margin-top: 10px;
+}
+
+.response-content {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  height: 300px;
+  overflow: auto;
+}
+
+.response-content pre {
+  margin: 0;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+}
+
+/* Dark mode styles */
+.dark-mode.graphql-container {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.dark-mode .query-selector h3,
+.dark-mode .query-editor-container h3,
+.dark-mode .variables-container h3,
+.dark-mode .response-panel h3 {
+  border-bottom-color: #444;
+  color: #e0e0e0;
+}
+
+.dark-mode .query-item {
+  background-color: #2d2d2d;
+  color: #e0e0e0;
+}
+
+.dark-mode .query-item:hover {
+  background-color: #3a3a3a;
+}
+
+.dark-mode .query-item.selected {
+  background-color: #3a3a3a;
+  border-left-color: #7986cb;
+}
+
+.dark-mode .query-editor,
+.dark-mode .variables-editor,
+.dark-mode .response-content {
+  background-color: #2d2d2d;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+@media (max-width: 960px) {
+  .graphql-layout {
+    flex-direction: column;
+  }
+  
+  .query-selector {
+    width: 100%;
+  }
+  
+  .explorer-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .query-editor,
+  .variables-editor {
+    height: 200px;
+  }
+  
+  .response-content {
+    height: 250px;
+  }
+} 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iframe Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+        .content {
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 80%;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .input-highlight {
+            color: #e74c3c;
+            margin-top: 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2>iFrame Content</h2>
+        <p>This is the content inside a single iframe. Use your automation tool to interact with elements inside this iframe.</p>
+        <input type="text" id="frameInput" placeholder="Type something here...">
+        <div class="input-highlight">This input is inside an iframe. You need to switch to this frame first to interact with it.</div>
+    </div>
+    
+    <script>
+        const input = document.getElementById('frameInput');
+        input.addEventListener('input', (e) => {
+            const value = e.target.value;
+            if (value) {
+                input.style.borderColor = '#3498db';
+            } else {
+                input.style.borderColor = '#ddd';
+            }
+        });
+    </script>
+</body>
+</html> 
