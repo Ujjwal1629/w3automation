@@ -13,7 +13,7 @@ import SliderTest from './Practice-sites/SliderTest';
 import ResizableDiv from './Practice-sites/Resizable';
 import DragDropTest from './Practice-sites/DragDropTest';
 import DatePickerDropdown from './Practice-sites/DatePickerDropdown';
-import APITestPractice from './Practice-sites/APITestPractice';
+// import APITestPractice from './Practice-sites/APITestPractice';
 import IframeTest from './Practice-sites/IframeTest';
 import RestApiTest from './Practice-sites/RestApiTest';
 import GraphQLTest from './Practice-sites/GraphQLTest';
@@ -34,7 +34,7 @@ const Practice = () => {
     { name: 'Browser Tab Opener', path: 'browser' },
     { name: 'Links Testing', path: 'links' },
     { name: 'Authentication', path: 'auth' },
-    { name: 'API Testing', path: 'api' },
+    // { name: 'API Testing', path: 'api' },
     { name: 'iFrame Testing', path: 'iframe' },
     { name: 'REST API', path: 'restapi' },
     { name: 'GraphQL', path: 'graphql' },
@@ -83,7 +83,7 @@ const Practice = () => {
             <Route path="browser" element={<BrowserWindowOpener />} />
             <Route path="links" element={<LinksTesting />} />
             <Route path="auth" element={<Authentication />} />
-            <Route path="api" element={<APITestPractice />} />
+            {/* <Route path="api" element={<APITestPractice />} /> */}
             <Route path="iframe" element={<IframeTest />} />
             <Route path="restapi" element={<RestApiTest />} />
             <Route path="graphql" element={<GraphQLTest />} />
