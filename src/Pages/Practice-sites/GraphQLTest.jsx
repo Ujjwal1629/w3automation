@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import './GraphQLTest.css';
 
@@ -6,6 +6,8 @@ const GraphQLTest = () => {
   const [selectedQuery, setSelectedQuery] = useState('getUsers');
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
   const themeContext = useTheme();
   const isDarkMode = themeContext ? themeContext.isDarkMode : false;
   
@@ -13,48 +15,14 @@ const GraphQLTest = () => {
     getUsers: {
       query: `query GetUsers {
   users {
-    id
-    name
-    email
-    posts {
+    data {
       id
-      title
+      name
+      email
     }
   }
 }`,
       variables: `{}`,
-      response: {
-        data: {
-          users: [
-            {
-              id: "1",
-              name: "John Smith",
-              email: "john@example.com",
-              posts: [
-                {
-                  id: "1",
-                  title: "Getting Started with GraphQL"
-                },
-                {
-                  id: "2",
-                  title: "Understanding Apollo Client"
-                }
-              ]
-            },
-            {
-              id: "2",
-              name: "Jane Doe",
-              email: "jane@example.com",
-              posts: [
-                {
-                  id: "3",
-                  title: "GraphQL vs REST API"
-                }
-              ]
-            }
-          ]
-        }
-      }
     },
     getUserById: {
       query: `query GetUser($id: ID!) {
@@ -63,44 +31,25 @@ const GraphQLTest = () => {
     name
     email
     posts {
-      id
-      title
-      content
+      data {
+        id
+        title
+        body
+      }
     }
   }
 }`,
       variables: `{
-  "id": "1"
+  "id": 1
 }`,
-      response: {
-        data: {
-          user: {
-            id: "1",
-            name: "John Smith",
-            email: "john@example.com",
-            posts: [
-              {
-                id: "1",
-                title: "Getting Started with GraphQL",
-                content: "GraphQL is a query language for APIs..."
-              },
-              {
-                id: "2",
-                title: "Understanding Apollo Client",
-                content: "Apollo Client is a comprehensive state management library..."
-              }
-            ]
-          }
-        }
-      }
     },
     createPost: {
-      query: `mutation CreatePost($input: PostInput!) {
+      query: `mutation CreatePost($input: CreatePostInput!) {
   createPost(input: $input) {
     id
     title
-    content
-    author {
+    body
+    user {
       id
       name
     }
@@ -108,77 +57,45 @@ const GraphQLTest = () => {
 }`,
       variables: `{
   "input": {
-    "title": "My New Post",
-    "content": "This is the content of my post",
-    "authorId": "1"
+    "title": "A New Post",
+    "body": "Some content."
   }
 }`,
-      response: {
-        data: {
-          createPost: {
-            id: "4",
-            title: "My New Post",
-            content: "This is the content of my post",
-            author: {
-              id: "1",
-              name: "John Smith"
-            }
-          }
-        }
-      }
     },
     updatePost: {
-      query: `mutation UpdatePost($id: ID!, $input: PostUpdateInput!) {
+      query: `mutation UpdatePost($id: ID!, $input: UpdatePostInput!) {
   updatePost(id: $id, input: $input) {
     id
     title
-    content
-    updatedAt
+    body
   }
 }`,
       variables: `{
-  "id": "1",
+  "id": 1,
   "input": {
-    "title": "Updated Title",
-    "content": "Updated content for the post"
+    "title": "An Updated Post",
+    "body": "Some updated content."
   }
 }`,
-      response: {
-        data: {
-          updatePost: {
-            id: "1",
-            title: "Updated Title",
-            content: "Updated content for the post",
-            updatedAt: new Date().toISOString()
-          }
-        }
-      }
     },
     deletePost: {
       query: `mutation DeletePost($id: ID!) {
-  deletePost(id: $id) {
-    success
-    message
-  }
+  deletePost(id: $id)
 }`,
       variables: `{
-  "id": "2"
+  "id": 1
 }`,
-      response: {
-        data: {
-          deletePost: {
-            success: true,
-            message: "Post deleted successfully"
-          }
-        }
-      }
     },
     fragmentExample: {
-      query: `query GetPostsWithComments {
+        query: `query GetPostsWithComments {
   posts {
-    ...PostFields
-    comments {
-      ...CommentFields
+    data {
+      ...PostFields
+      comments {
+        data {
+          ...CommentFields
+        }
+      }
     }
   }
 }
@@ -186,8 +103,8 @@ const GraphQLTest = () => {
 fragment PostFields on Post {
   id
   title
-  content
-  author {
+  body
+  user {
     id
     name
   }
@@ -195,53 +112,11 @@ fragment PostFields on Post {
 
 fragment CommentFields on Comment {
   id
-  text
-  user {
-    name
-  }
+  name
+  email
+  body
 }`,
-      variables: `{}`,
-      response: {
-        data: {
-          posts: [
-            {
-              id: "1",
-              title: "Getting Started with GraphQL",
-              content: "GraphQL is a query language for APIs...",
-              author: {
-                id: "1",
-                name: "John Smith"
-              },
-              comments: [
-                {
-                  id: "101",
-                  text: "Great introduction to GraphQL!",
-                  user: {
-                    name: "Alice Johnson"
-                  }
-                },
-                {
-                  id: "102",
-                  text: "This was very helpful, thanks!",
-                  user: {
-                    name: "Bob Williams"
-                  }
-                }
-              ]
-            },
-            {
-              id: "2",
-              title: "Understanding Apollo Client",
-              content: "Apollo Client is a comprehensive state management library...",
-              author: {
-                id: "1",
-                name: "John Smith"
-              },
-              comments: []
-            }
-          ]
-        }
-      }
+        variables: `{}`,
     }
   };
   
@@ -250,13 +125,37 @@ fragment CommentFields on Comment {
     const selectedQueryData = predefinedQueries[queryKey];
     setQuery(selectedQueryData.query);
     setVariables(selectedQueryData.variables);
+    setResponse(null);
+  };
+
+  const executeQuery = async () => {
+    setLoading(true);
+    setResponse(null);
+    try {
+      const res = await fetch('https://graphqlzero.almansi.me/api', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          query,
+          variables: JSON.parse(variables || '{}'),
+        }),
+      });
+      const data = await res.json();
+      setResponse(data);
+    } catch (error) {
+      setResponse({ error: error.message });
+    }
+    setLoading(false);
   };
 
   // Initialize with the first query
-  React.useEffect(() => {
+  useEffect(() => {
     const selectedQueryData = predefinedQueries[selectedQuery];
     setQuery(selectedQueryData.query);
     setVariables(selectedQueryData.variables);
+    setResponse(null);
   }, [selectedQuery]);
   
   return (
@@ -297,6 +196,9 @@ fragment CommentFields on Comment {
                 value={query} 
                 onChange={(e) => setQuery(e.target.value)}
               />
+              <button className="execute-btn" onClick={executeQuery} disabled={loading}>
+                Run Query
+              </button>
             </div>
             
             <div className="variables-container">
@@ -312,7 +214,9 @@ fragment CommentFields on Comment {
           <div className="response-panel">
             <h3>Response</h3>
             <div className="response-content">
-              <pre>{JSON.stringify(predefinedQueries[selectedQuery].response, null, 2)}</pre>
+            {response && (
+                <pre>{JSON.stringify(response, null, 2)}</pre>
+              )}
             </div>
           </div>
         </div>
