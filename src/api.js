@@ -6,7 +6,7 @@ const getBaseURL = () => {
     return 'http://localhost:5001/api';
   } else {
     // Replace with your actual Render backend URL
-    return 'https://w3automation.onrender.com//api';
+    return 'https://w3automation.onrender.com/api';
   }
 };
 
