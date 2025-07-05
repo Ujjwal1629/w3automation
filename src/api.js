@@ -2,10 +2,9 @@ import axios from 'axios';
 
 // Define the base URL based on environment
 const getBaseURL = () => {
-  if (process.env.NODE_ENV === 'development') {
+  if (import.meta.env.DEV) {
     return 'http://localhost:5001/api';
   } else {
-    // Replace with your actual Render backend URL
     return 'https://w3automation.onrender.com/api';
   }
 };

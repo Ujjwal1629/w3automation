@@ -50,7 +50,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "vercel-build": "npm install --legacy-peer-deps && vite build"
+    "preview": "vite preview"
   }
 }
