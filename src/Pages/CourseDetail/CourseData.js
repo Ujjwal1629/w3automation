@@ -21,13 +21,13 @@ const seleniumCourseData = {
     },
     schedule: {
         classTiming: {
-            indian: "07:30 AM IST",
-            us: "10:00 PM GMT",
-            uk: "03:00 AM GMT",
+            indian: "08:00 PM IST",
+            us: "09:30 AM GMT",
+            uk: "02:30 PM GMT",
         },
         demo: "First 2 sessions are free!",
-        date:'2nd May 2025',
-        classDate:'5th May 2025 Onwards',
+        date:'15th July 2025',
+        classDate:'16th July 2025 Onwards',
         days:'Monday to Thursday',
         features: [
             "Live Classes",
