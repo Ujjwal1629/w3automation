@@ -28,6 +28,7 @@
     "libphonenumber-js": "^1.12.4",
     "lru-cache": "^11.0.2",
     "lucide-react": "^0.454.0",
+    "mongoose": "^8.16.1",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-axios": "^2.0.6",

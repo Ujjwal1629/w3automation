@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 import { User, Sun, Moon, Menu, X } from 'lucide-react';
@@ -22,6 +22,30 @@ const DropdownPortal = ({ children, isOpen }) => {
   );
 };
 
+// Define practice tool categories
+const practiceTools = {
+  ui: [
+    { label: 'Form Test', path: '/practice/form' },
+    { label: 'Alert Box', path: '/practice/alert' },
+    { label: 'Image Context', path: '/practice/image' },
+    { label: 'Browser Tab Opener', path: '/practice/browser' },
+    { label: 'Links Testing', path: '/practice/links' },
+    { label: 'Authentication', path: '/practice/auth' },
+    { label: 'iFrame Testing', path: '/practice/iframe' },
+    { label: 'Slider', path: '/practice/slider' },
+    { label: 'Resizable', path: '/practice/resizable' },
+    { label: 'Drag Drop', path: '/practice/dragdrop' },
+    { label: 'Date Picker', path: '/practice/datepicker' },
+  ],
+  api: [
+    { label: 'REST API', path: '/practice/restapi' },
+    { label: 'GraphQL', path: '/practice/graphql' },
+  ],
+  ecommerce: [
+    { label: 'Ecommerce Store', path: '/practice/ecommerce' },
+  ]
+};
+
 export default function Navbar() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,6 +56,10 @@ export default function Navbar() {
   const themeContext = useTheme();
   const isDarkMode = themeContext ? themeContext.isDarkMode : false;
   const toggleDarkMode = themeContext ? themeContext.toggleDarkMode : () => {};
+  const practiceDropdownRef = useRef(null);
+  const dropdownCloseTimerRef = useRef(null);
+  const [activePracticeCategory, setActivePracticeCategory] = useState(localStorage.getItem('practiceCategory') || 'ui');
+
 
   // User state for auth
   const [user, setUser] = useState(null);
@@ -84,18 +112,20 @@ export default function Navbar() {
     navigate('/');
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isPracticeDropdownOpen && !event.target.closest('.dropdown-container')) {
-        setIsPracticeDropdownOpen(false);
-      }
-    };
+  // Handle dropdown opening and closing with delay
+  const handlePracticeDropdownEnter = () => {
+    if (dropdownCloseTimerRef.current) {
+      clearTimeout(dropdownCloseTimerRef.current);
+      dropdownCloseTimerRef.current = null;
+    }
+    setIsPracticeDropdownOpen(true);
+  };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [isPracticeDropdownOpen]);
+  const handlePracticeDropdownLeave = () => {
+    dropdownCloseTimerRef.current = setTimeout(() => {
+      setIsPracticeDropdownOpen(false);
+    }, 200); // 200ms delay before closing
+  };
 
   const togglePracticeDropdown = () => {
     setIsPracticeDropdownOpen(!isPracticeDropdownOpen);
@@ -105,6 +135,24 @@ export default function Navbar() {
   const toggleCoursesDropdown = () => {
     setIsCoursesDropdownOpen(!isCoursesDropdownOpen);
     setIsPracticeDropdownOpen(false);
+  };
+
+  const handleCategoryClick = (category) => {
+    setActivePracticeCategory(category);
+    // Store the category in localStorage so it persists across page navigations
+    localStorage.setItem('practiceCategory', category);
+    // Navigate to practice page
+    navigate('/practice');
+    // Close the dropdown
+    setIsPracticeDropdownOpen(false);
+    // We also need to dispatch a custom event to inform other components
+    const event = new CustomEvent('practiceCategoryChanged', { detail: category });
+    document.dispatchEvent(event);
+  };
+
+  // Get tools based on selected category
+  const getFilteredTools = () => {
+    return practiceTools[activePracticeCategory] || [];
   };
 
   const topics = [
@@ -630,7 +678,10 @@ export default function Navbar() {
               </a>
 
               {/* Practice Dropdown */}
-              <div className="dropdown-container" style={{ position: 'relative' }}>
+              <div 
+                className="dropdown-container" 
+                style={{ position: 'relative' }}
+              >
                 <a 
                   onClick={togglePracticeDropdown} 
                   style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer', fontSize: '1rem' }}
@@ -650,44 +701,65 @@ export default function Navbar() {
                       : '1px solid rgba(0, 0, 0, 0.1)',
                     borderRadius: '12px',
                     padding: '0.75rem',
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    columnGap: '1rem',
-                    rowGap: '0.4rem',
                     width: '95%',
-                    maxHeight: '350px',
-                    overflowY: 'auto',
+                    overflowY: 'visible',
                     marginTop: '0.5rem',
                   }}>
-                    {[
-                      { label: 'Form Test', path: '/practice/form' },
-                      { label: 'Alert Box', path: '/practice/alert' },
-                      { label: 'Image Context', path: '/practice/image' },
-                      { label: 'Browser Tab Opener', path: '/practice/browser' },
-                      { label: 'Links Testing', path: '/practice/links' },
-                      { label: 'Authentication', path: '/practice/auth' },
-                      // { label: 'API Testing', path: '/practice/api' },
-                      { label: 'iFrame Testing', path: '/practice/iframe' },
-                      { label: 'REST API', path: '/practice/restapi' },
-                      { label: 'GraphQL', path: '/practice/graphql' },
-                      { label: 'Slider', path: '/practice/slider' },
-                      { label: 'Resizable', path: '/practice/resizable' },
-                      { label: 'Drag Drop', path: '/practice/dragdrop' },
-                      { label: 'Date Picker', path: '/practice/datepicker' },
-                      { label: 'Ecommerce Store', path: '/practice/ecommerce' },
-                    ].map(({ label, path }) => (
-                      <a 
-                        key={path}
+                    <div style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.5rem',
+                      width: '100%',
+                    }}>
+                                          {['ui', 'api', 'ecommerce'].map((category) => (
+                      <button
+                        key={category}
                         onClick={() => {
-                          navigate(path);
-                          setIsPracticeDropdownOpen(false);
+                          handleCategoryClick(category);
                           setIsMenuOpen(false);
-                        }} 
-                        style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none', fontSize: '0.95rem' }}
-                      >
-                        {label}
-                      </a>
-                    ))}
+                        }}
+                          style={{
+                            background: activePracticeCategory === category
+                              ? 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)'
+                              : 'transparent',
+                            color: activePracticeCategory === category
+                              ? '#fff'
+                              : (isDarkMode ? '#fff' : '#2d3748'),
+                            border: 'none',
+                            padding: '0.7rem 1rem',
+                            borderRadius: '8px',
+                            cursor: 'pointer',
+                            fontWeight: activePracticeCategory === category ? '600' : '500',
+                            transition: 'all 0.2s ease',
+                            fontSize: '0.95rem',
+                            textAlign: 'left',
+                            width: '100%',
+                            boxShadow: activePracticeCategory === category 
+                              ? '0 4px 12px rgba(140, 82, 255, 0.2)' 
+                              : 'none',
+                            display: 'flex',
+                            alignItems: 'center',
+                          }}
+                        >
+                          {category === 'ui' ? (
+                            <>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '8px'}}><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                              UI Tools
+                            </>
+                          ) : category === 'api' ? (
+                            <>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '8px'}}><path d="M17 6.1H3"/><path d="M21 12.1H3"/><path d="M15.1 18H3"/></svg>
+                              API Tools
+                            </>
+                          ) : (
+                            <>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '8px'}}><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                              E-commerce Tools
+                            </>
+                          )}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -782,7 +854,12 @@ export default function Navbar() {
             </a>
 
             {/* Practice Dropdown */}
-            <div className="dropdown-container" style={{ position: 'relative' }}>
+            <div 
+              className="dropdown-container" 
+              style={{ position: 'relative' }}
+              onMouseEnter={handlePracticeDropdownEnter}
+              onMouseLeave={handlePracticeDropdownLeave}
+            >
               <a 
                 onClick={togglePracticeDropdown} 
                 style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}
@@ -790,58 +867,94 @@ export default function Navbar() {
                 PRACTICE SITE
               </a>
               <DropdownPortal isOpen={isPracticeDropdownOpen}>
-                <div className="dropdown-menu" style={{
-                  backgroundColor: isDarkMode 
-                    ? 'rgba(45, 55, 72, 0.95)'
-                    : 'rgba(255, 255, 255, 0.95)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
-                  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
-                  border: isDarkMode 
-                    ? '1px solid rgba(255, 255, 255, 0.1)'
-                    : '1px solid rgba(0, 0, 0, 0.1)',
-                  borderRadius: '12px',
-                  position: 'fixed',
-                  top: `${dropdownPosition.practice.top}px`,
-                  left: `${dropdownPosition.practice.left}px`,
-                  zIndex: 99999,
-                  padding: '0.75rem',
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  columnGap: '1rem',
-                  rowGap: '0.4rem',
-                  width: '360px',
-                  maxHeight: '400px',
-                  overflowY: 'auto'
-                }}>
-                  {[
-                    { label: 'Form Test', path: '/practice/form' },
-                    { label: 'Alert Box', path: '/practice/alert' },
-                    { label: 'Image Context', path: '/practice/image' },
-                    { label: 'Browser Tab Opener', path: '/practice/browser' },
-                    { label: 'Links Testing', path: '/practice/links' },
-                    { label: 'Authentication', path: '/practice/auth' },
-                    // { label: 'API Testing', path: '/practice/api' },
-                    { label: 'iFrame Testing', path: '/practice/iframe' },
-                    { label: 'REST API', path: '/practice/restapi' },
-                    { label: 'GraphQL', path: '/practice/graphql' },
-                    { label: 'Slider', path: '/practice/slider' },
-                    { label: 'Resizable', path: '/practice/resizable' },
-                    { label: 'Drag Drop', path: '/practice/dragdrop' },
-                    { label: 'Date Picker', path: '/practice/datepicker' },
-                    { label: 'Ecommerce Store', path: '/practice/ecommerce' },
-                  ].map(({ label, path }) => (
-                    <a 
-                      key={path}
-                      onClick={() => {
-                        navigate(path);
-                        setIsPracticeDropdownOpen(false);
-                      }} 
-                      style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none' }}
-                    >
-                      {label}
-                    </a>
-                  ))}
+                <div 
+                  className="dropdown-menu" 
+                  style={{
+                    backgroundColor: isDarkMode 
+                      ? 'rgba(45, 55, 72, 0.95)'
+                      : 'rgba(255, 255, 255, 0.95)',
+                    backdropFilter: 'blur(10px)',
+                    WebkitBackdropFilter: 'blur(10px)',
+                    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
+                    border: isDarkMode 
+                      ? '1px solid rgba(255, 255, 255, 0.1)'
+                      : '1px solid rgba(0, 0, 0, 0.1)',
+                    borderRadius: '12px',
+                    position: 'fixed',
+                    top: `${dropdownPosition.practice.top}px`,
+                    left: `${dropdownPosition.practice.left}px`,
+                    zIndex: 99999,
+                    padding: '0.75rem',
+                    width: '200px',
+                    overflowY: 'visible',
+                  }}
+                  ref={practiceDropdownRef}
+                  onMouseEnter={handlePracticeDropdownEnter}
+                  onMouseLeave={handlePracticeDropdownLeave}
+                >
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.5rem',
+                  }}>
+                    {['ui', 'api', 'ecommerce'].map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => handleCategoryClick(category)}
+                        style={{
+                          background: activePracticeCategory === category
+                            ? 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)'
+                            : 'transparent',
+                          color: activePracticeCategory === category
+                            ? '#fff'
+                            : (isDarkMode ? '#fff' : '#2d3748'),
+                          border: 'none',
+                          padding: '0.7rem 1rem',
+                          borderRadius: '8px',
+                          cursor: 'pointer',
+                          fontWeight: activePracticeCategory === category ? '600' : '500',
+                          transition: 'all 0.2s ease',
+                          fontSize: '0.95rem',
+                          textAlign: 'left',
+                          width: '100%',
+                          boxShadow: activePracticeCategory === category 
+                            ? '0 4px 12px rgba(140, 82, 255, 0.2)' 
+                            : 'none',
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                        onMouseEnter={(e) => {
+                          if (activePracticeCategory !== category) {
+                            e.currentTarget.style.backgroundColor = isDarkMode 
+                              ? 'rgba(255, 255, 255, 0.1)' 
+                              : 'rgba(0, 0, 0, 0.05)';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (activePracticeCategory !== category) {
+                            e.currentTarget.style.backgroundColor = 'transparent';
+                          }
+                        }}
+                      >
+                        {category === 'ui' ? (
+                          <>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '8px'}}><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                            UI Tools
+                          </>
+                        ) : category === 'api' ? (
+                          <>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '8px'}}><path d="M17 6.1H3"/><path d="M21 12.1H3"/><path d="M15.1 18H3"/></svg>
+                            API Tools
+                          </>
+                        ) : (
+                          <>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '8px'}}><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                            E-commerce Tools
+                          </>
+                        )}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </DropdownPortal>
             </div>
