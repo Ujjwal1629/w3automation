@@ -228,8 +228,8 @@ const playwrightCourseData = {
     schedule: {
         classTiming: {
             indian: "08:00 PM IST",
-            us: "09:30 AM GMT",
-            uk: "02:30 PM GMT",
+            us: "10:30 AM GMT",
+            uk: "03:30 PM GMT",
         },
         demo: "First 2 sessions are free!",
         date:'5th & 6th July 2025',
