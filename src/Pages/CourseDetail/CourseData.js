@@ -23,7 +23,7 @@ const seleniumCourseData = {
         classTiming: {
             indian: "08:00 PM IST",
             us: "09:30 AM GMT",
-            uk: "02:30 PM GMT",
+            uk: "03:30 PM GMT",
         },
         demo: "First 2 sessions are free!",
         date:'15th July 2025',
@@ -233,7 +233,7 @@ const playwrightCourseData = {
         },
         demo: "First 2 sessions are free!",
         date:'5th & 6th July 2025',
-        classDate:'5th July 2025 Onwards',
+        classDate:'12th July 2025 Onwards',
         days:'Saturday and Sunday',
         features: [
             "Live Classes",
