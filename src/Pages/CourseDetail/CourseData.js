@@ -321,6 +321,17 @@ const playwrightCourseData = {
     ]
 },
 {
+    title: "BDD with Cucumber integration",
+    topics: [ 
+        "Introduction to BDD & Cucumber",
+         "Setting Up Cucumber with Playwright (JavaScript)",
+        "Writing Simple Feature Files (Gherkin)",
+        "Step Definitions with Playwright",
+        "Data Tables & Examples (Basic Parameterization)",
+        "Tags & Hooks", "Reporting"
+    ]
+},
+{
     title: "CI/CD Integration & Reporting",
     topics: [
         "Generating Reports: HTML, JSON, Allure",
