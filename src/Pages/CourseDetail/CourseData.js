@@ -21,13 +21,13 @@ const seleniumCourseData = {
     },
     schedule: {
         classTiming: {
-            indian: "07:30 AM IST",
-            us: "10:00 PM GMT",
-            uk: "03:00 AM GMT",
+            indian: "08:00 PM IST",
+            us: "09:30 AM GMT",
+            uk: "03:30 PM GMT",
         },
         demo: "First 2 sessions are free!",
-        date:'2nd May 2025',
-        classDate:'5th May 2025 Onwards',
+        date:'15th July 2025',
+        classDate:'16th July 2025 Onwards',
         days:'Monday to Thursday',
         features: [
             "Live Classes",
@@ -228,12 +228,12 @@ const playwrightCourseData = {
     schedule: {
         classTiming: {
             indian: "08:00 PM IST",
-            us: "09:30 AM GMT",
-            uk: "02:30 PM GMT",
+            us: "10:30 AM GMT",
+            uk: "03:30 PM GMT",
         },
         demo: "First 2 sessions are free!",
         date:'5th & 6th July 2025',
-        classDate:'5th July 2025 Onwards',
+        classDate:'12th July 2025 Onwards',
         days:'Saturday and Sunday',
         features: [
             "Live Classes",
@@ -318,6 +318,17 @@ const playwrightCourseData = {
         "Build Playwright Page Object Files in TypeScript and Enforce Typing Standards",
         "Create Utility Files in TypeScript with Typing Enforcement",
         "Refactor Playwright Tests into TypeScript-Compatible Code and Run E2E Tests"
+    ]
+},
+{
+    title: "BDD with Cucumber integration",
+    topics: [ 
+        "Introduction to BDD & Cucumber",
+         "Setting Up Cucumber with Playwright (JavaScript)",
+        "Writing Simple Feature Files (Gherkin)",
+        "Step Definitions with Playwright",
+        "Data Tables & Examples (Basic Parameterization)",
+        "Tags & Hooks", "Reporting"
     ]
 },
 {
