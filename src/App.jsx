@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
@@ -36,15 +36,48 @@ import SeleniumIDE from "./Pages/Selenium-Java/SeleniumIDE";
 import { ThemeProvider } from './context/ThemeContext';
 import { initGA, trackPageView } from './utils/analytics';
 import DriveAccessPage from "./Pages/GoogleDrive/DriveAccessPage.jsx";
+import ColdStartOverlay from './Components/ColdStartOverlay';
 
 initGA();
 
 function App() {
   const location = useLocation();
+  const [serverReady, setServerReady] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+
+  // Ping backend once on initial load
+  useEffect(() => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => setShowMessage(true), 3000); // show msg if takes >3s
+
+    const ping = async () => {
+      try {
+        const endpointUrl = import.meta.env.MODE === 'development'
+          ? 'http://localhost:5001/health'
+          : '/health';
+        await fetch(endpointUrl, { signal: controller.signal, cache: 'no-store' });
+      } catch (err) {
+        // ignore – overlay stays until it eventually succeeds or user refreshes
+      } finally {
+        clearTimeout(timeoutId);
+        setServerReady(true);
+      }
+    };
+
+    ping();
+
+    return () => {
+      controller.abort();
+    };
+  }, []);
 
   useEffect(() => {
     trackPageView(location.pathname + location.search);
   }, [location]);
+
+  if (!serverReady) {
+    return <ColdStartOverlay message={showMessage ? 'Waking up server… please hold on.' : ''} />;
+  }
 
   return (
     <div className="route">
