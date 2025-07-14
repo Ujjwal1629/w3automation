@@ -7,7 +7,6 @@ const GraphQLTest = () => {
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
   const [response, setResponse] = useState(null);
-  const [loading, setLoading] = useState(false);
   const themeContext = useTheme();
   const isDarkMode = themeContext ? themeContext.isDarkMode : false;
   
@@ -128,18 +127,21 @@ fragment CommentFields on Comment {
     setResponse(null);
   };
 
-  const executeQuery = async () => {
-    setLoading(true);
-    setResponse(null);
+  const executeQuery = async (customQuery = query, customVariables = variables) => {
+    if (!customQuery) return;
     try {
-      const res = await fetch('https://graphqlzero.almansi.me/api', {
+      const endpointUrl = import.meta.env.MODE === 'development'
+        ? 'http://localhost:5001/practice/graphql'
+        : '/practice/graphql';
+
+      const res = await fetch(endpointUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          query,
-          variables: JSON.parse(variables || '{}'),
+          query: customQuery,
+          variables: typeof customVariables === 'string' ? JSON.parse(customVariables || '{}') : customVariables,
         }),
       });
       const data = await res.json();
@@ -147,7 +149,6 @@ fragment CommentFields on Comment {
     } catch (error) {
       setResponse({ error: error.message });
     }
-    setLoading(false);
   };
 
   // Initialize with the first query
@@ -156,6 +157,9 @@ fragment CommentFields on Comment {
     setQuery(selectedQueryData.query);
     setVariables(selectedQueryData.variables);
     setResponse(null);
+    // Automatically execute the selected query
+    executeQuery(selectedQueryData.query, selectedQueryData.variables);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedQuery]);
   
   return (
@@ -196,7 +200,7 @@ fragment CommentFields on Comment {
                 value={query} 
                 onChange={(e) => setQuery(e.target.value)}
               />
-              <button className="execute-btn" onClick={executeQuery} disabled={loading}>
+              <button className="execute-btn" onClick={() => executeQuery()}>
                 Run Query
               </button>
             </div>

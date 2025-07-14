@@ -3,8 +3,11 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
+import { graphqlHTTP } from 'express-graphql';
+import graphqlSchema from './graphql/schema.js';
 
 import authRoutes from './routes/auth.js';
+import practiceRestApiRoutes from './routes/practiceRestApi.js';
 import { initializeAdminUser } from './utils/adminInit.js';
 
 // Load environment variables based on NODE_ENV
@@ -39,6 +42,11 @@ app.get('/health', (req, res) => {
 
 // API routes
 app.use('/api/auth', authRoutes);
+app.use('/practice/restapi', practiceRestApiRoutes);
+app.use('/practice/graphql', graphqlHTTP({
+  schema: graphqlSchema,
+  graphiql: process.env.NODE_ENV !== 'production',
+}));
 
 const PORT = process.env.PORT || 5001;
 
