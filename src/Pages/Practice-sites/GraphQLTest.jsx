@@ -130,9 +130,7 @@ fragment CommentFields on Comment {
   const executeQuery = async (customQuery = query, customVariables = variables) => {
     if (!customQuery) return;
     try {
-      const endpointUrl = import.meta.env.MODE === 'development'
-        ? 'http://localhost:5001/practice/graphql'
-        : '/practice/graphql';
+      const endpointUrl = 'https://www.journeytoautomation.org/practice/graphql';
 
       const res = await fetch(endpointUrl, {
         method: 'POST',
@@ -144,7 +142,15 @@ fragment CommentFields on Comment {
           variables: typeof customVariables === 'string' ? JSON.parse(customVariables || '{}') : customVariables,
         }),
       });
-      const data = await res.json();
+      
+      let data;
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await res.json();
+      } else {
+        data = { error: 'Received non-JSON response', content: await res.text() };
+      }
+
       setResponse(data);
     } catch (error) {
       setResponse({ error: error.message });

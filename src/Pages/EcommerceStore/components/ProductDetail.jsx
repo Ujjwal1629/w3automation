@@ -1,56 +1,101 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { FaStar, FaHeart, FaShoppingCart, FaMinus, FaPlus } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { FaStar, FaHeart, FaShoppingCart, FaMinus, FaPlus, FaChevronLeft } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
+import { products } from '../data/products';
 import './ProductDetail.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [selectedSize, setSelectedSize] = useState('');
+  const [selectedColor, setSelectedColor] = useState('');
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState('');
 
-  // Updated product data with real images
-  const product = {
-    id: parseInt(id),
-    name: "Sony WH-1000XM4 Wireless Headphones",
-    price: 349.99,
-    images: [
-      "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?ixlib=rb-4.0.3",
-      "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?ixlib=rb-4.0.3",
-      "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3",
-      "https://images.unsplash.com/photo-1487215078519-e21cc028cb29?ixlib=rb-4.0.3"
-    ],
-    rating: 4.8,
-    description: "Industry-leading noise cancellation with Dual Noise Sensor technology. Next-level music with Edge-AI, co-developed with Sony Music Studios Tokyo.",
-    features: [
-      "Industry-leading noise cancellation",
-      "Up to 30-hour battery life",
-      "Multipoint connection",
-      "Speak-to-chat technology",
-      "Touch sensor controls",
-      "Wearing detection"
-    ],
-    stock: 15,
-    specifications: {
-      "Brand": "Sony",
-      "Model": "WH-1000XM4",
-      "Color": "Midnight Black",
-      "Connectivity": "Bluetooth 5.0, NFC",
-      "Battery Life": "Up to 30 hours",
-      "Charging Time": "3 hours",
-      "Weight": "254g"
+  // Find the product from our centralized data
+  const product = products.find(p => p.id === parseInt(id));
+
+  // Set default size and color when product loads
+  useEffect(() => {
+    if (product) {
+      if (product.sizes && product.sizes.length > 0) {
+        setSelectedSize(product.sizes[0]);
+      }
+      
+      if (product.colors && product.colors.length > 0) {
+        setSelectedColor(product.colors[0]);
+      }
+    }
+  }, [product]);
+
+  // Handle case where product is not found
+  if (!product) {
+    return (
+      <div className="product-not-found">
+        <h2>Product Not Found</h2>
+        <p>Sorry, we couldn't find the product you're looking for.</p>
+        <button onClick={() => navigate('/ecommerce/products')}>
+          Return to Products
+        </button>
+      </div>
+    );
+  }
+
+  const handleAddToCart = () => {
+    const productToAdd = {
+      ...product,
+      selectedSize,
+      selectedColor,
+      quantity
+    };
+    
+    addToCart(productToAdd);
+    
+    // Show notification
+    setNotificationMessage(`${product.name} added to cart!`);
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 3000);
+    
+    // Use global toast if available
+    if (window.showToast) {
+      window.showToast(`${product.name} added to cart!`, 'success');
     }
   };
 
-  const handleAddToCart = () => {
-    addToCart({ ...product, quantity });
-    alert('Product added to cart!');
+  const toggleWishlist = () => {
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+      
+      // Use global toast if available
+      if (window.showToast) {
+        window.showToast(`${product.name} removed from wishlist`, 'info');
+      }
+    } else {
+      addToWishlist(product);
+      
+      // Use global toast if available
+      if (window.showToast) {
+        window.showToast(`${product.name} added to wishlist`, 'success');
+      }
+    }
   };
 
   return (
     <div className="product-detail-container">
+      <button 
+        className="back-button" 
+        onClick={() => navigate(-1)}
+        aria-label="Go back"
+      >
+        <FaChevronLeft /> Back
+      </button>
+      
       <div className="product-detail-grid">
         <div className="product-images">
           <div className="main-image-container">
@@ -94,8 +139,45 @@ const ProductDetail = () => {
           </div>
 
           <div className="description-section">
-            <p>{product.description}</p>
+            <p>{product.longDescription || product.description}</p>
           </div>
+
+          {product.sizes && product.sizes.length > 0 && (
+            <div className="size-section">
+              <h3>Select Size</h3>
+              <div className="size-options">
+                {product.sizes.map(size => (
+                  <button
+                    key={size}
+                    className={`size-btn ${selectedSize === size ? 'selected' : ''}`}
+                    onClick={() => setSelectedSize(size)}
+                    data-testid={`size-${size}`}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {product.colors && product.colors.length > 0 && (
+            <div className="color-section">
+              <h3>Select Color</h3>
+              <div className="color-options">
+                {product.colors.map(color => (
+                  <button
+                    key={color}
+                    className={`color-btn ${selectedColor === color ? 'selected' : ''}`}
+                    style={{ backgroundColor: color }}
+                    onClick={() => setSelectedColor(color)}
+                    data-testid={`color-${color}`}
+                  >
+                    <span className="sr-only">{color}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="features-list">
             <h3>Key Features</h3>
@@ -112,6 +194,7 @@ const ProductDetail = () => {
                 className="quantity-btn"
                 onClick={() => setQuantity(q => Math.max(1, q - 1))}
                 disabled={quantity === 1}
+                data-testid="decrease-quantity"
               >
                 <FaMinus />
               </button>
@@ -121,45 +204,53 @@ const ProductDetail = () => {
                 onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
                 min="1"
                 max={product.stock}
+                data-testid="quantity-input"
               />
               <button 
                 className="quantity-btn"
                 onClick={() => setQuantity(q => Math.min(product.stock, q + 1))}
                 disabled={quantity === product.stock}
+                data-testid="increase-quantity"
               >
                 <FaPlus />
               </button>
             </div>
 
             <div className="buttons-wrapper">
-              <button className="add-to-cart-btn" onClick={handleAddToCart}>
+              <button 
+                className="add-to-cart-btn" 
+                onClick={handleAddToCart}
+                data-testid="add-to-cart-button"
+              >
                 <FaShoppingCart /> Add to Cart
               </button>
               
               <button 
-                className={`wishlist-btn ${isWishlisted ? 'active' : ''}`}
-                onClick={() => setIsWishlisted(!isWishlisted)}
+                className={`wishlist-btn ${isInWishlist(product.id) ? 'active' : ''}`}
+                onClick={toggleWishlist}
+                data-testid="wishlist-button"
               >
                 <FaHeart />
               </button>
             </div>
           </div>
 
-          <div className="specifications">
-            <h3>Specifications</h3>
-            <table>
-              <tbody>
-                {Object.entries(product.specifications).map(([key, value]) => (
-                  <tr key={key}>
-                    <td>{key}</td>
-                    <td>{value}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          {product.brand && (
+            <div className="product-meta">
+              <p><strong>Brand:</strong> {product.brand}</p>
+              <p><strong>Category:</strong> {product.category}</p>
+              {product.subcategory && <p><strong>Type:</strong> {product.subcategory}</p>}
           </div>
+          )}
         </div>
       </div>
+
+      {/* Notification Toast */}
+      {showNotification && (
+        <div className="notification fade-in" data-testid="notification-toast">
+          {notificationMessage}
+        </div>
+      )}
     </div>
   );
 };

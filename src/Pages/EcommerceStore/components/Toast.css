@@ -1,0 +1,117 @@
+/* Toast.css */
+
+.toast-manager {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--secondary-bg, white);
+  color: var(--text-color, #333);
+  border-radius: 6px;
+  padding: 12px 16px;
+  min-width: 300px;
+  max-width: 400px;
+  box-shadow: 0 4px 12px var(--shadow-color, rgba(0, 0, 0, 0.15));
+  pointer-events: auto;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.toast-container.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.toast-container.hidden {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.toast-icon {
+  font-size: 1.2rem;
+}
+
+.toast-icon.success {
+  color: var(--success-color, #4CAF50);
+}
+
+.toast-icon.error {
+  color: var(--error-color, #e53935);
+}
+
+.toast-icon.info {
+  color: var(--accent-color, #2196F3);
+}
+
+.toast-message {
+  font-size: 0.95rem;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: var(--text-light, #666);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.toast-close:hover {
+  color: var(--text-color, #333);
+}
+
+/* Toast Types */
+.toast-container.success {
+  border-left: 4px solid var(--success-color, #4CAF50);
+}
+
+.toast-container.error {
+  border-left: 4px solid var(--error-color, #e53935);
+}
+
+.toast-container.info {
+  border-left: 4px solid var(--accent-color, #2196F3);
+}
+
+/* Dark Mode */
+.dark-mode .toast-container {
+  background-color: var(--secondary-bg, #1e1e1e);
+  color: var(--text-color, #f5f5f5);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .toast-container {
+    min-width: auto;
+    width: calc(100vw - 40px);
+    max-width: none;
+  }
+  
+  .toast-manager {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    align-items: center;
+  }
+} 

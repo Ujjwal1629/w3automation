@@ -26,7 +26,6 @@ import Authentication from "./Pages/Practice-sites/Authentication.jsx";
 import Practice from "./Pages/Practice.jsx";
 import GetCertificate from "./Pages/GetCertificate/GetCertificate.jsx"
 import Template from "./Template/CertificateTemplate.jsx"
-// import EcommerceTesting from "./Pages/Practice-sites/pages/EcommerceTesting.jsx";
 import EcommerceStore from "./Pages/EcommerceStore/EcommerceStore";
 import SliderTest from "./Pages/Practice-sites/SliderTest.jsx";
 import ResizableDiv from "./Pages/Practice-sites/Resizable.jsx";
@@ -37,6 +36,9 @@ import { ThemeProvider } from './context/ThemeContext';
 import { initGA, trackPageView } from './utils/analytics';
 import DriveAccessPage from "./Pages/GoogleDrive/DriveAccessPage.jsx";
 import ColdStartOverlay from './Components/ColdStartOverlay';
+import IframeTest from "./Pages/Practice-sites/IframeTest";
+import GraphQLTest from "./Pages/Practice-sites/GraphQLTest";
+import RestApiTest from "./Pages/Practice-sites/RestApiTest";
 
 initGA();
 
@@ -115,10 +117,16 @@ function App() {
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/getCertificate" element={<GetCertificate />} />
         <Route path="/template" element={<Template />} />
-        <Route path="/ecommerce/*" element={<Navigate to="/practice/ecommerce" replace />} />
-        <Route path="practice/ecommerce/*" element={<EcommerceStore />} />
+        
+        {/* E-commerce routes */}
+        <Route path="/ecommerce/*" element={<EcommerceStore />} />
+        
+        {/* Other practice routes */}
         <Route path="/selenium-java" element={<SeleniumIDE />} />
         <Route path="/drivePage" element={<DriveAccessPage/>} />
+        <Route path="/practice/iframe" element={<IframeTest />} />
+        <Route path="/practice/graphql" element={<GraphQLTest />} />
+        <Route path="/practice/restapi" element={<RestApiTest />} />
       </Routes>
     </div>
   );

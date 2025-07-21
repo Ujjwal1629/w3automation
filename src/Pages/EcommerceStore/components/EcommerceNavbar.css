@@ -1,151 +1,236 @@
+/* EcommerceNavbar.css */
+
 .ecom-navbar {
-  width: 100%;
-  padding: 1rem;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: var(--secondary-bg, white);
+  box-shadow: 0 2px 8px var(--shadow-color, rgba(0, 0, 0, 0.1));
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s;
 }
 
 .ecom-navbar-content {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 15px 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
 }
-.home-btn-text{
-  margin-left: 0.5rem;
-}
+
 .ecom-logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
 }
 
 .ecom-logo h1 {
   margin: 0;
   font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color, #333);
+  transition: color 0.3s;
 }
 
 .home-btn {
-  padding: 0.5rem;
+  margin-right: 15px;
+  position: relative;
+}
+
+.home-btn-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.home-icon {
+  color: var(--text-color, #333);
+  transition: color 0.3s;
 }
 
 .ecom-search {
   flex: 1;
   max-width: 500px;
+  margin: 0 20px;
 }
 
 .search-box {
   position: relative;
-  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .search-icon {
   position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #666;
-  font-size: 1.2rem;
+  left: 12px;
+  color: #999;
 }
 
 .search-box input {
   width: 100%;
-  padding: 0.5rem 0.5rem 0.5rem 2rem;
-  border: 1px solid #ddd;
+  padding: 10px 10px 10px 35px;
+  border: 1px solid var(--border-color, #ddd);
   border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: var(--secondary-bg, white);
+  color: var(--text-color, #333);
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--accent-color, #333);
 }
 
 .ecom-nav-actions {
   display: flex;
-  gap: 1rem;
   align-items: center;
+  gap: 10px;
 }
 
 .icon-btn {
   background: none;
   border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  color: var(--text-color, #333);
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.cart-badge {
+.icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  background: #ff4444;
+  top: 0;
+  right: 0;
+  background-color: var(--accent-color, #333);
   color: white;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.home-icon {
-  /* This class can be removed since we're using the common icon styles */
-}
-
-.mobile-search-btn {
+.mobile-search-btn,
+.mobile-menu-btn {
   display: none;
 }
 
 .mobile-search {
-  display: none;
-  width: 100%;
-  padding: 0.5rem 1rem;
-  background: #fff;
-  border-top: 1px solid #eee;
+  padding: 10px 20px;
+  border-top: 1px solid var(--border-color, #eee);
+  background-color: var(--secondary-bg, white);
+  transition: background-color 0.3s;
 }
 
-/* Responsive styles */
+/* Mobile Menu */
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--secondary-bg, white);
+  box-shadow: 0 4px 8px var(--shadow-color, rgba(0, 0, 0, 0.1));
+  z-index: 101;
+  transition: background-color 0.3s;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.menu-items button {
+  background: none;
+  border: none;
+  padding: 15px 20px;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--text-color, #333);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-items button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .menu-items button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark Mode Styles */
+.dark-mode .ecom-navbar {
+  background-color: var(--secondary-bg, #1e1e1e);
+}
+
+.dark-mode .search-box input {
+  background-color: var(--secondary-bg, #1e1e1e);
+  color: var(--text-color, #f5f5f5);
+  border-color: var(--border-color, #333);
+}
+
+.dark-mode .search-box input::placeholder {
+  color: var(--text-light, #bbbbbb);
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
   .desktop-search {
     display: none;
   }
 
-  .mobile-search-btn {
-    display: block;
+  .mobile-search-btn,
+  .mobile-menu-btn {
+    display: flex;
   }
 
-  .mobile-search {
-    display: block;
-  }
-
-  .ecom-navbar-content {
-    justify-content: space-between;
-  }
-
-  .ecom-nav-actions {
-    gap: 0.5rem;
-  }
-
-  .icon-btn {
-    padding: 0.4rem;
-  }
-}
-
-@media (max-width: 480px) {
   .ecom-logo h1 {
     font-size: 1.2rem;
   }
 
-  .ecom-nav-actions {
-    gap: 0.3rem;
-  }
-
-  .mobile-search {
-    padding: 0.5rem;
+  .icon-btn {
+    width: 35px;
+    height: 35px;
   }
 }
 
-/* Common icon styles */
-.icon-btn svg {
-  color: #666;
-  font-size: 1.2rem;
+@media (max-width: 480px) {
+  .ecom-navbar-content {
+    padding: 10px 15px;
+  }
+
+  .home-btn {
+    margin-right: 10px;
+  }
+
+  .ecom-logo h1 {
+    font-size: 1rem;
+  }
+  
+  .icon-btn {
+    width: 30px;
+    height: 30px;
+}
 } 

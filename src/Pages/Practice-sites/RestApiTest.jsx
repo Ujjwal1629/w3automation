@@ -42,9 +42,43 @@ const RestApiTest = () => {
     const fetchApi = async () => {
       setResponse(null);
       const endpoint = getCurrentEndpoint();
-      const baseUrl = 'https://jsonplaceholder.typicode.com';
-      const url = baseUrl + endpoint.url;
       
+      // Prefer our own JourneyToAutomation practice API. Try multiple environments so the component works
+      // during local development, preview builds, and production hosting.
+      const candidateBaseUrls = import.meta.env.MODE === 'development'
+        ? [
+            // Same origin (e.g. `npm run dev` serving the SPA under /practice)
+            window.location.origin + '/practice/restapi',
+            // Typical Vite dev server default port
+            'http://localhost:5173/practice/restapi',
+            // Production site
+            'https://www.journeytoautomation.org/practice/restapi',
+          ]
+        : ['https://www.journeytoautomation.org/practice/restapi'];
+
+      // Probe each candidate until one yields a JSON (or 204) response.
+      let url;
+      let res;
+      for (const base of candidateBaseUrls) {
+        url = base + endpoint.url;
+        try {
+          const probeOptions = { method: endpoint.method };
+          res = await fetch(url, probeOptions);
+          const ct = res.headers.get('content-type') || '';
+          if (res.status === 204 || ct.includes('application/json')) {
+            break; // Found a working endpoint
+          }
+        } catch {
+          res = undefined;
+        }
+        res = undefined; // Force next iteration if response unacceptable
+      }
+
+      if (!res) {
+        setResponse({ status: 'Error', data: 'All API base URLs failed' });
+        return;
+      }
+
       const options = {
         method: endpoint.method,
         headers: {
@@ -58,7 +92,8 @@ const RestApiTest = () => {
       }
       
       try {
-        const res = await fetch(url, options);
+        // Perform the actual request with full headers/body (the earlier probe used minimal options).
+        res = await fetch(url, options);
         let data;
         if (res.status === 204) {
           data = "No Content";
@@ -68,6 +103,32 @@ const RestApiTest = () => {
           data = await res.text();
         }
         setResponse({ status: res.status, data: data });
+
+        // --- NEW: also open the response in a fresh browser tab ---
+        try {
+          if (endpoint.method === 'GET') {
+            // For simple GET requests just open the URL so the user sees the native JSON in the browser.
+            window.open(url, '_blank', 'noopener,noreferrer');
+          } else {
+            // For requests that include a body (POST, PUT, PATCH, DELETE) construct a blob so the user can inspect it.
+            const blobPayload = new Blob([
+              JSON.stringify(
+                {
+                  request: requestBody ?? undefined,
+                  response: data,
+                },
+                null,
+                2,
+              ),
+            ], { type: 'application/json' });
+            const blobUrl = URL.createObjectURL(blobPayload);
+            window.open(blobUrl, '_blank', 'noopener,noreferrer');
+          }
+        } catch (openErr) {
+          // Fail silently – opening a new tab is best-effort and should not block the main UI.
+          // eslint-disable-next-line no-console
+          console.error('Unable to open response in a new tab:', openErr);
+        }
       } catch (err) {
         setResponse({ status: 'Error', data: err.message });
       }
