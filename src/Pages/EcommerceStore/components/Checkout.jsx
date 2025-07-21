@@ -294,6 +294,7 @@ const Checkout = () => {
                   value={formData.cardNumber}
                   onChange={handleInputChange}
                   placeholder="1234 5678 9012 3456"
+                  maxLength="16"
                   className={formErrors.cardNumber ? 'error' : ''}
                   data-testid="checkout-cardnumber"
                 />
