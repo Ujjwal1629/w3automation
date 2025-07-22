@@ -1,5 +1,6 @@
 import bg2 from '../../assets/bg5B.jpg';
 import jsBg from '../../assets/js-background1.jpg';
+import sdetBg from '../../assets/sdet2.jpg';
 import instructorImg from '../../assets/profilePic.jpg';
 
 const seleniumCourseData = {
@@ -392,7 +393,150 @@ const playwrightCourseData = {
     ]
 };
 
+const SDETCourseData = {
+    title: "SDET/Automation Testing Interview Preparation Course",
+    description: "This course prepares you for SDET interviews by focusing on Java coding, automation frameworks, API testing, and CI/CD tools. It’s designed to build strong problem-solving skills and real-world test automation experience.",
+    enrolled: 120,
+    backgroundImage: sdetBg,
+    stats: {
+        lectures: 40,
+        duration: "2 Months",
+        Certification:'Yes',
+        Recordings:'Lifetime access',
+        'Mock Test':"Weekly",
+        'Skill Level': "All levels",
+        language: "English",
+        Placement: "Assistance",
+    },
+    schedule: {
+        classTiming: {
+            indian: "08:00 PM IST",
+            us: "10:30 AM GMT",
+            uk: "03:30 PM GMT",
+        },
+        demo: "First 3 sessions are free!",
+        date:'23rd July 2025',
+        classDate:'23rd July 2025 Onwards',
+        days:'Monday to Friday',
+        features: [
+            "Live Classes",
+            "Recorded Sessions",
+            "Resume Assistance",
+            "Interview Prep",
+        ]
+    },
+    syllabus: [
+        {
+        title: "Phase 1: Coding Rounds & Core Java (Weeks 1-3)",
+        objective: "Strengthen problem-solving, algorithmic thinking, and Java fluency for initial SDET coding interviews.",
+        topics: [
+            { header: "Java Language Essentials", content: "Data types, variables, control flow, OOP fundamentals" },
+            { header: "Data Structures", content: "Arrays, Strings, Linked Lists, Stacks, Queues, HashMaps, Sets" },
+            { header: "Algorithms", content: "Sorting, searching, recursion, two-pointer, sliding window, basic dynamic programming" },
+            { header: "Popular Coding Problems:" },
+            { header: "Array", content: "Reverse, duplicates, subarray sum, max/min, merge intervals" },
+            { header: "String", content: "Palindrome, anagram, substring search, frequency count" },
+            { header: "Linked List", content: "Reverse, detect cycle, merge, find middle" },
+            { header: "Stack/Queue", content: "Evaluate expressions, balanced parentheses" },
+            { header: "Mock Coding Interviews", content: "Timed tests, Whiteboard rounds, One to one interview with Hemant, Peer code reviews" },
+            { header: "Sample Coding Session Plan", content: "15m Theory Recap, 40m Coding, 20m Discussion" }
+        ]
+        },
+        {
+        title: "Phase 2: Test Automation Frameworks & Selenium (Weeks 4-5)",
+        objective: "Prepare for framework design and hands-on implementation interviews.",
+        topics: [
+            { header: "Selenium WebDriver Advanced Usage", content: "Locator strategies (XPath, CSS), waits, actions, handling pop-ups" },
+            { header: "Framework Patterns", content: "Page Object Model, Page Factory, DRY principle, data-driven tests" },
+            { header: "TestNG Integration", content: "Test structuring, annotations, grouping, parallel execution" },
+            { header: "Data Management", content: "Parameterization using Excel/CSV; Apache POI" },
+            { header: "Framework Enhancement", content: "Logging, reporting (Extent, Allure), config mgmt (properties, YAML)" },
+            { header: "Coding Task Practice", content: "Helpers, validators, POMs, utilities" }
+        ]
+        },
+        {
+        title: "Phase 3: API Testing & Backend Automation (Week 6)",
+        objective: "Demonstrate backend test skills with REST Assured and API automation.",
+        topics: [
+            { header: "REST Basics", content: "HTTP methods, status codes, headers, payload" },
+            { header: "REST Assured Setup", content: "Request/response handling, path parameters, JSON/XML assertions" },
+            { header: "Authentication & Authorization", content: "Basic, OAuth, token strategies" },
+            { header: "API Chaining and Data Driven Tests", content: "Data providers, response chaining" }
+        ]
+        },
+        {
+        title: "Phase 4: CI/CD, Jenkins & DevOps Basics (Week 7)",
+        objective: "Showcase end-to-end automation and integration capabilities essential for SDET roles.",
+        topics: [
+            { header: "Jenkins Setup", content: "Job configuration, Git integration, triggering builds" },
+            { header: "Pipeline Basics", content: "Freestyle and scripted pipelines, integration of Selenium/API tests" },
+            { header: "Reporting", content: "Report publishing, notifications" },
+            { header: "Overview of Docker & Test Containerization" }
+        ]
+        },
+        {
+        title: "Phase 5: Comprehensive Mock Interviews & Soft Skills (Week 8)",
+        objective: "Build interview confidence for both technical and non-technical rounds.",
+        topics: [
+            { header: "Mock Technical Interviews", content: "Coding questions, debugging, code review discussions, Framework design scenarios, best practices dialogue" },
+            { header: "Behavioral/Situational Questions" },
+            { header: "Resume and Portfolio Review" }
+        ]
+        }
+    ],
+    pricing: {
+        price: {
+            indian: "8000 INR",
+            uk: "100 EUROS",
+            us: "120 USD"
+        },
+        contact: "+91 8810201221",
+        linkedin: "https://www.linkedin.com/in/hemant-gandhi254/"
+    },
+    instructor: {
+        name: "Hemant Gandhi",
+        title:'QA Automation Lead and Trainer',
+        bio: "With over 10 years of experience in the software testing industry. He has worked extensively with various automation testing tools and frameworks, specializing in delivering high-quality software solutions. His passion for quality assurance and automation drives him to share knowledge and help others excel in this field.",
+        students: '200',
+        ratings: '4.2',
+        image: instructorImg
+    }, 
+    testimonials: [
+        {
+            userName: "Supriya D",
+            userReview: "I recently completed Hemant Gandhi's automation testing class on Playwright and JavaScript, and it was outstanding. The instructor made complex topics easy to understand, and the hands-on exercises were incredibly valuable."
+        },
+        {
+            userName: "Srikanth chivukula",
+            userReview: "I really appreciate you for taking time from daily routines and providing training on Playwright and JavaScript. The topics covered are good and detailed. The support provided post sessions is also excellent.!"
+        },
+        {
+            userName: "Mayooran Thiruchselvam",
+            userReview: "The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand."
+        }
+    ],
+    faqs: [
+            {
+                question: "Is this course suitable for beginners?",
+                answer: "Yes, this course starts with the basics and gradually moves to advanced topics."
+            },
+            {
+                question: "Will I get hands-on experience?",
+                answer: "Absolutely! The course includes multiple assignments and a real-world project."
+            },
+            {
+                question: "What if I miss a class?",
+                answer: "Recorded sessions will be available for all lectures with lifetime access."
+            },
+            {
+                question: "Do I need to install any software?",
+                answer: "Yes, you will need to install Node.js and Playwright. Detailed instructions will be provided in the class as well for both macOS and Windows."
+            }
+    ]
+};
+
 export const courseDetails = {
   selenium: seleniumCourseData,
-  playwright: playwrightCourseData
+  playwright: playwrightCourseData,
+  sdet: SDETCourseData
 };

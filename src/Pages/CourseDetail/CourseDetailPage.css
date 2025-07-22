@@ -49,6 +49,26 @@
   display: block;
 }
 
+.syllabus-objective {
+  margin: 10px 0;
+  font-style:normal;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.topic-header {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #1a1a1a;
+}
+
+.topic-content {
+  margin-left: 12px;
+  margin-bottom: 8px;
+  color: #444;
+}
+
 .course-desc {
   width: 75%;
   font-size: 1.2rem;

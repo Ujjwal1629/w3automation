@@ -804,6 +804,17 @@ export default function Navbar() {
                     >
                       Playwright with JavaScript
                     </a>
+                    <a 
+                      onClick={() => {
+                        navigate("/courseSDET");
+                        setIsCoursesDropdownOpen(false);
+                        setIsMenuOpen(false);
+                      }}
+                      className="dropdown-item"
+                      style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none', fontSize: '0.95rem' }}
+                    >
+                      SDET/Automation Testing Interview Prepration course
+                    </a>
                   </div>
                 )}
               </div>
@@ -1004,7 +1015,8 @@ export default function Navbar() {
                 >
                   {[
                     { label: "Java & Selenium", route: "/course/selenium" },
-                    { label: "Playwright with JavaScript", route: "/course/playwright" }
+                    { label: "Playwright with JavaScript", route: "/course/playwright" },
+                    { label: "SDET/Automation Testing Interview Prepration course", route: "/courseSDET" }
                   ].map(({ label, route }) => (
                     <a
                       key={route}
