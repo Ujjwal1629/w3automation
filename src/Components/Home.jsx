@@ -130,14 +130,14 @@ public class FirstTest {
     <div style={{
       minHeight: '100vh',
       backgroundColor: isDarkMode ? '#1a202c' : '#f7fafc',
-      paddingTop: '120px',
+      paddingTop: '80px', // Reduced from 120px to account for navbar height
       fontFamily: "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
       margin: 0,
       padding: 0,
       color: isDarkMode ? '#fff' : '#2d3748',
       overflowX: 'hidden',
     }}>
-      <Navbar />
+      
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0 }}
