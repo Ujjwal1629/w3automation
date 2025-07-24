@@ -782,7 +782,8 @@ export default function Navbar() {
                     minWidth: '160px',
                     marginTop: '0.5rem',
                   }}>
-                    <a 
+                    {/* Commenting out for now */}
+                    {/* <a 
                       onClick={() => {
                         navigate("/course/selenium");
                         setIsCoursesDropdownOpen(false);
@@ -792,7 +793,7 @@ export default function Navbar() {
                       style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none', fontSize: '0.95rem' }}
                     >
                       Java & Selenium
-                    </a>
+                    </a> */}
                     <a 
                       onClick={() => {
                         navigate("/course/playwright");
@@ -1014,7 +1015,7 @@ export default function Navbar() {
                   }}
                 >
                   {[
-                    { label: "Java & Selenium", route: "/course/selenium" },
+                    // { label: "Java & Selenium", route: "/course/selenium" }, // Commenting out for now
                     { label: "Playwright with JavaScript", route: "/course/playwright" },
                     { label: "SDET/Automation Testing Interview Prepration course", route: "/courseSDET" }
                   ].map(({ label, route }) => (
