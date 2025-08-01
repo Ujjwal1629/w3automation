@@ -640,7 +640,7 @@ export default function Navbar() {
               gap: '1rem',
               padding: '1rem 0',
             }}>
-              <a
+              {/* <a
                 onClick={() => {
                   navigate("/Selenium");
                   setIsMenuOpen(false);
@@ -675,7 +675,7 @@ export default function Navbar() {
                 style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer', fontSize: '1rem' }}
               >
                 BLOGS
-              </a>
+              </a> */}
 
               {/* Practice Dropdown */}
               <div 
@@ -840,7 +840,7 @@ export default function Navbar() {
             alignItems: 'center',
             gap: '1rem',
           }}>
-            <a
+            {/* <a
               onClick={() => navigate("/Selenium")}
               style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}
             >
@@ -863,7 +863,7 @@ export default function Navbar() {
               style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}
             >
               BLOGS
-            </a>
+            </a> */}
 
             {/* Practice Dropdown */}
             <div 
