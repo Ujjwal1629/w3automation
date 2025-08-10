@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
-import { graphqlHTTP } from 'express-graphql';
+import { createHandler } from 'graphql-http/lib/use/express';
 import graphqlSchema from './graphql/schema.js';
 
 import authRoutes from './routes/auth.js';
@@ -43,10 +43,7 @@ app.get('/health', (req, res) => {
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/practice/restapi', practiceRestApiRoutes);
-app.use('/practice/graphql', graphqlHTTP({
-  schema: graphqlSchema,
-  graphiql: process.env.NODE_ENV !== 'production',
-}));
+app.use('/practice/graphql', createHandler({ schema: graphqlSchema }));
 
 const PORT = process.env.PORT || 5001;
 

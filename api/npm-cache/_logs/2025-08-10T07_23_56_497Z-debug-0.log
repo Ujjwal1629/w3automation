@@ -1,0 +1,113 @@
+0 verbose cli /Users/hunnychahar/.nvm/versions/node/v16.20.2/bin/node /Users/hunnychahar/.nvm/versions/node/v16.20.2/bin/npm
+1 info using npm@8.19.4
+2 info using node@v16.20.2
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/Users/hunnychahar/.nvm/versions/node/v16.20.2/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 1ms
+7 timing config:load:cli Completed in 2ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/Users/hunnychahar/Desktop/w3automation/api/.npmrc Completed in 0ms
+10 timing config:load:project Completed in 3ms
+11 timing config:load:file:/Users/hunnychahar/.npmrc Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:/Users/hunnychahar/.nvm/versions/node/v16.20.2/etc/npmrc Completed in 0ms
+14 timing config:load:global Completed in 0ms
+15 timing config:load:validate Completed in 0ms
+16 timing config:load:credentials Completed in 0ms
+17 timing config:load:setEnvs Completed in 1ms
+18 timing config:load Completed in 8ms
+19 timing npm:load:configload Completed in 8ms
+20 timing npm:load:mkdirpcache Completed in 0ms
+21 timing npm:load:mkdirplogs Completed in 0ms
+22 verbose title npm install
+23 verbose argv "install" "--legacy-peer-deps"
+24 timing npm:load:setTitle Completed in 7ms
+25 timing config:load:flatten Completed in 1ms
+26 timing npm:load:display Completed in 1ms
+27 verbose logfile logs-max:10 dir:/Users/hunnychahar/Desktop/w3automation/api/npm-cache/_logs
+28 verbose logfile /Users/hunnychahar/Desktop/w3automation/api/npm-cache/_logs/2025-08-10T07_23_56_497Z-debug-0.log
+29 timing npm:load:logFile Completed in 3ms
+30 timing npm:load:timers Completed in 0ms
+31 timing npm:load:configScope Completed in 0ms
+32 timing npm:load Completed in 19ms
+33 timing arborist:ctor Completed in 0ms
+34 silly logfile done cleaning log files
+35 timing idealTree:init Completed in 43ms
+36 timing idealTree:userRequests Completed in 0ms
+37 silly idealTree buildDeps
+38 silly fetch manifest graphql@^16.7.1
+39 timing arborist:ctor Completed in 0ms
+40 http fetch GET 200 https://registry.npmjs.org/graphql 27ms (cache hit)
+41 silly fetch manifest express-graphql@^0.12.0
+42 http fetch GET 200 https://registry.npmjs.org/express-graphql 3ms (cache hit)
+43 silly placeDep ROOT express-graphql@0.12.0 OK for: w3automation-backend@1.0.0 want: ^0.12.0
+44 silly placeDep ROOT graphql@16.11.0 OK for: w3automation-backend@1.0.0 want: ^16.7.1
+45 silly fetch manifest http-errors@1.8.0
+46 http fetch GET 200 https://registry.npmjs.org/http-errors 188ms (cache miss)
+47 timing idealTree:#root Completed in 224ms
+48 silly placeDep node_modules/express-graphql http-errors@1.8.0 OK for: express-graphql@0.12.0 want: 1.8.0
+49 silly fetch manifest depd@~1.1.2
+50 silly fetch manifest statuses@>= 1.5.0 < 2
+51 silly fetch manifest toidentifier@1.0.0
+52 http fetch GET 200 https://registry.npmjs.org/depd 62ms (cache miss)
+53 http fetch GET 200 https://registry.npmjs.org/toidentifier 112ms (cache miss)
+54 http fetch GET 200 https://registry.npmjs.org/statuses 125ms (cache miss)
+55 timing idealTree:node_modules/express-graphql Completed in 128ms
+56 timing idealTree:node_modules/graphql Completed in 0ms
+57 silly placeDep node_modules/express-graphql depd@1.1.2 OK for: http-errors@1.8.0 want: ~1.1.2
+58 silly placeDep node_modules/express-graphql statuses@1.5.0 OK for: http-errors@1.8.0 want: >= 1.5.0 < 2
+59 silly placeDep node_modules/express-graphql toidentifier@1.0.0 OK for: http-errors@1.8.0 want: 1.0.0
+60 timing idealTree:node_modules/express-graphql/node_modules/http-errors Completed in 2ms
+61 timing idealTree:node_modules/express-graphql/node_modules/depd Completed in 0ms
+62 timing idealTree:node_modules/express-graphql/node_modules/statuses Completed in 0ms
+63 timing idealTree:node_modules/express-graphql/node_modules/toidentifier Completed in 0ms
+64 timing idealTree:buildDeps Completed in 354ms
+65 timing idealTree:fixDepFlags Completed in 1ms
+66 warn EBADENGINE Unsupported engine {
+66 warn EBADENGINE   package: 'tr46@5.1.1',
+66 warn EBADENGINE   required: { node: '>=18' },
+66 warn EBADENGINE   current: { node: 'v16.20.2', npm: '8.19.4' }
+66 warn EBADENGINE }
+67 warn EBADENGINE Unsupported engine {
+67 warn EBADENGINE   package: 'whatwg-url@14.2.0',
+67 warn EBADENGINE   required: { node: '>=18' },
+67 warn EBADENGINE   current: { node: 'v16.20.2', npm: '8.19.4' }
+67 warn EBADENGINE }
+68 timing idealTree Completed in 402ms
+69 timing reify:loadTrees Completed in 402ms
+70 timing reify:diffTrees Completed in 5ms
+71 silly reify moves {}
+72 timing reify:retireShallow Completed in 0ms
+73 timing reify:rollback:createSparse Completed in 0ms
+74 timing reify:rollback:retireShallow Completed in 0ms
+75 timing command:install Completed in 413ms
+76 verbose stack Error: EACCES: permission denied, mkdir '/Users/hunnychahar/Desktop/w3automation/api/node_modules/express-graphql'
+77 verbose cwd /Users/hunnychahar/Desktop/w3automation/api
+78 verbose Darwin 25.0.0
+79 verbose node v16.20.2
+80 verbose npm  v8.19.4
+81 error code EACCES
+82 error syscall mkdir
+83 error path /Users/hunnychahar/Desktop/w3automation/api/node_modules/express-graphql
+84 error errno -13
+85 error [Error: EACCES: permission denied, mkdir '/Users/hunnychahar/Desktop/w3automation/api/node_modules/express-graphql'] {
+85 error   errno: -13,
+85 error   code: 'EACCES',
+85 error   syscall: 'mkdir',
+85 error   path: '/Users/hunnychahar/Desktop/w3automation/api/node_modules/express-graphql'
+85 error }
+86 error
+86 error The operation was rejected by your operating system.
+86 error It is likely you do not have the permissions to access this file as the current user
+86 error
+86 error If you believe this might be a permissions issue, please double-check the
+86 error permissions of the file and its containing directories, or try running
+86 error the command again as root/Administrator.
+87 verbose exit -13
+88 timing npm Completed in 478ms
+89 verbose unfinished npm timer reify 1754810636563
+90 verbose unfinished npm timer reify:createSparse 1754810636972
+91 verbose code -13
+92 error A complete log of this run can be found in:
+92 error     /Users/hunnychahar/Desktop/w3automation/api/npm-cache/_logs/2025-08-10T07_23_56_497Z-debug-0.log

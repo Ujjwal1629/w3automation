@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-import { Trophy, Medal, Award, User, Crown, Star, TrendingUp, Calendar, Code } from 'lucide-react';
+import { Trophy, Medal, Award, User, Crown, Star, TrendingUp, Calendar, Code, RefreshCw } from 'lucide-react';
+import { challengeApi } from '../services/challengeApi';
 import Navbar from '../Components/Navbar';
 
 const Leaderboard = () => {
@@ -9,9 +10,100 @@ const Leaderboard = () => {
   const themeContext = useTheme();
   const isDarkMode = themeContext?.isDarkMode || false;
   const [selectedTimeframe, setSelectedTimeframe] = useState('all-time');
+  const [leaderboardData, setLeaderboardData] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(null);
+  const [autoRefresh, setAutoRefresh] = useState(true);
+  const [nextUpdate, setNextUpdate] = useState(null);
 
-  // Placeholder leaderboard data
-  const leaderboardData = {
+  // Fetch leaderboard data from API
+  const fetchLeaderboard = useCallback(async (timeframe) => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      const response = await challengeApi.getLeaderboard(timeframe);
+      if (response.success) {
+        setLeaderboardData(prev => ({
+          ...prev,
+          [timeframe]: response.data
+        }));
+        setLastUpdated(response.lastUpdated);
+      } else {
+        throw new Error('Failed to fetch leaderboard data');
+      }
+    } catch (err) {
+      console.error('Error fetching leaderboard:', err);
+      setError('Failed to load leaderboard data');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  // Fetch data on component mount and timeframe change
+  useEffect(() => {
+    fetchLeaderboard(selectedTimeframe);
+  }, [selectedTimeframe, fetchLeaderboard]);
+
+  // Auto-refresh functionality
+  useEffect(() => {
+    if (!autoRefresh) return;
+
+    const REFRESH_INTERVAL = 10000; // 10 seconds
+    
+    const updateCountdown = () => {
+      const now = Date.now();
+      const nextRefreshTime = now + REFRESH_INTERVAL;
+      setNextUpdate(nextRefreshTime);
+      
+      const countdownInterval = setInterval(() => {
+        const timeLeft = Math.max(0, Math.ceil((nextRefreshTime - Date.now()) / 1000));
+        if (timeLeft <= 0) {
+          clearInterval(countdownInterval);
+        }
+      }, 1000);
+      
+      return countdownInterval;
+    };
+
+    const refreshInterval = setInterval(() => {
+      if (!loading) { // Only refresh if not currently loading
+        fetchLeaderboard(selectedTimeframe);
+      }
+    }, REFRESH_INTERVAL);
+
+    // Start countdown
+    const countdownInterval = updateCountdown();
+
+    return () => {
+      clearInterval(refreshInterval);
+      clearInterval(countdownInterval);
+    };
+  }, [autoRefresh, selectedTimeframe, fetchLeaderboard, loading]);
+
+  // Listen for leaderboard update events (real-time updates)
+  useEffect(() => {
+    const handleLeaderboardUpdate = () => {
+      if (!loading) {
+        fetchLeaderboard(selectedTimeframe);
+      }
+    };
+
+    window.addEventListener('leaderboardUpdate', handleLeaderboardUpdate);
+    
+    return () => {
+      window.removeEventListener('leaderboardUpdate', handleLeaderboardUpdate);
+    };
+  }, [fetchLeaderboard, selectedTimeframe, loading]);
+
+  // Refresh leaderboard data
+  const refreshLeaderboard = () => {
+    fetchLeaderboard(selectedTimeframe);
+  };
+
+  // Legacy placeholder data for fallback (keeping original structure)
+  const fallbackLeaderboardData = {
     'all-time': [
       { 
         rank: 1, 
@@ -244,7 +336,7 @@ const Leaderboard = () => {
     ]
   };
 
-  const currentData = leaderboardData[selectedTimeframe];
+  const currentData = leaderboardData[selectedTimeframe] || [];
 
   const getRankIcon = (rank) => {
     switch(rank) {
@@ -495,14 +587,147 @@ const Leaderboard = () => {
             <Trophy size={48} style={{ color: '#FFD700' }} />
             Leaderboard
           </h1>
-          <p style={{
-            fontSize: '1.1rem',
-            color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)',
-            maxWidth: '600px',
-            margin: '0 auto'
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1rem'
           }}>
-            See how you rank against other coders. Solve more challenges to climb the leaderboard!
-          </p>
+            <p style={{
+              fontSize: '1.1rem',
+              color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)',
+              maxWidth: '600px',
+              margin: '0 auto'
+            }}>
+              See how you rank against other coders. Solve more challenges to climb the leaderboard!
+            </p>
+            
+            {/* Refresh Controls */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1rem',
+              flexWrap: 'wrap',
+              justifyContent: 'center'
+            }}>
+              <button
+                onClick={refreshLeaderboard}
+                disabled={loading}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  backgroundColor: 'transparent',
+                  border: '1.5px solid #8c52ff',
+                  color: loading ? '#999' : '#8c52ff',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '20px',
+                  fontWeight: '500',
+                  cursor: loading ? 'not-allowed' : 'pointer',
+                  fontSize: '0.9rem',
+                  transition: 'all 0.3s ease',
+                  opacity: loading ? 0.6 : 1
+                }}
+                onMouseEnter={(e) => {
+                  if (!loading) {
+                    e.currentTarget.style.backgroundColor = 'rgba(140, 82, 255, 0.1)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!loading) {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }
+                }}
+              >
+                <RefreshCw 
+                  size={16} 
+                  style={{
+                    animation: loading ? 'spin 1s linear infinite' : 'none'
+                  }}
+                />
+                {loading ? 'Refreshing...' : 'Refresh'}
+              </button>
+
+              {/* Auto-refresh Toggle */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                fontSize: '0.9rem',
+                color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)'
+              }}>
+                <input
+                  type="checkbox"
+                  id="auto-refresh"
+                  checked={autoRefresh}
+                  onChange={(e) => setAutoRefresh(e.target.checked)}
+                  style={{
+                    accentColor: '#8c52ff',
+                    transform: 'scale(1.2)'
+                  }}
+                />
+                <label 
+                  htmlFor="auto-refresh"
+                  style={{
+                    cursor: 'pointer',
+                    userSelect: 'none'
+                  }}
+                >
+                  Auto-refresh (10s)
+                </label>
+              </div>
+            </div>
+            
+            {/* Status Info */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '0.25rem',
+              fontSize: '0.8rem',
+              color: isDarkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)'
+            }}>
+              {lastUpdated && (
+                <div>
+                  Last updated: {new Date(lastUpdated).toLocaleTimeString()}
+                </div>
+              )}
+              
+              {/* Live Update Status */}
+              {autoRefresh && !loading && (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  <div style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    backgroundColor: '#4ade80',
+                    animation: 'pulse 2s infinite'
+                  }} />
+                  Live updates enabled
+                </div>
+              )}
+              
+              {!autoRefresh && (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  <div style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    backgroundColor: '#fbbf24'
+                  }} />
+                  Manual refresh mode
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Time Filter Tabs */}
@@ -633,16 +858,82 @@ const Leaderboard = () => {
           </div>
         </div>
 
-        {/* Leaderboard List */}
-        <div>
-          {currentData.map((user, index) => (
-            <LeaderboardRow 
-              key={user.username} 
-              user={user} 
-              isTopThree={user.rank <= 3}
+        {/* Error State */}
+        {error && (
+          <div style={{
+            backgroundColor: 'rgba(248, 113, 113, 0.1)',
+            borderLeft: '4px solid #f87171',
+            padding: '1rem',
+            borderRadius: '8px',
+            marginBottom: '2rem',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              color: isDarkMode ? '#fff' : '#2d3748',
+              fontSize: '1rem',
+              marginBottom: '0.5rem'
+            }}>
+              {error}
+            </div>
+            <button
+              onClick={refreshLeaderboard}
+              style={{
+                backgroundColor: '#f87171',
+                color: '#fff',
+                padding: '0.5rem 1rem',
+                borderRadius: '6px',
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: '0.9rem'
+              }}
+            >
+              Try Again
+            </button>
+          </div>
+        )}
+
+        {/* Loading State */}
+        {loading && (
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '3rem',
+            color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)'
+          }}>
+            <RefreshCw 
+              size={24} 
+              style={{
+                animation: 'spin 1s linear infinite',
+                marginRight: '0.75rem'
+              }}
             />
-          ))}
-        </div>
+            Loading leaderboard data...
+          </div>
+        )}
+
+        {/* Leaderboard List */}
+        {!loading && !error && (
+          <div>
+            {currentData.length > 0 ? (
+              currentData.map((user, index) => (
+                <LeaderboardRow 
+                  key={user.username + user.rank} 
+                  user={user} 
+                  isTopThree={user.rank <= 3}
+                />
+              ))
+            ) : (
+              <div style={{
+                textAlign: 'center',
+                padding: '3rem',
+                color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)'
+              }}>
+                No leaderboard data available for this timeframe.
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Call to Action */}
         <div style={{
@@ -683,5 +974,30 @@ const Leaderboard = () => {
     </>
   );
 };
+
+// Add the animations CSS
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.1);
+    }
+  }
+`;
+document.head.appendChild(style);
 
 export default Leaderboard;

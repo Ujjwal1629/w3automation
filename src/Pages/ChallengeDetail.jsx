@@ -20,6 +20,7 @@ const ChallengeDetail = () => {
   const [submissionResult, setSubmissionResult] = useState(null);
   const [showResults, setShowResults] = useState(false);
   const [progressResult, setProgressResult] = useState(null);
+  const [showAuthPrompt, setShowAuthPrompt] = useState(false);
   
   // Mock challenge data - in real app, fetch based on ID
   const challengeData = {
@@ -116,11 +117,6 @@ class Solution {
   };
 
   const handleSubmit = async () => {
-    if (!code.trim()) {
-      alert('Please write some code before submitting!');
-      return;
-    }
-
     setIsSubmitting(true);
     setSubmissionResult(null);
     setProgressResult(null);
@@ -136,29 +132,56 @@ class Solution {
         
         // Consider challenge "solved" if 80% or more tests pass
         if (testsPassedRatio >= 0.8) {
-          try {
-            const userId = userService.getCurrentUserId();
-            const progressData = await challengeApi.saveProgress(userId, id, 'solved');
-            setProgressResult(progressData);
-            
-            // Update submission result to include progress info
+          // Check if user is authenticated
+          const isAuthenticated = userService.isAuthenticated();
+          
+          if (!isAuthenticated) {
+            // Show authentication prompt
             setSubmissionResult({
               ...result,
               isSolved: true,
-              progressSaved: true,
-              pointsEarned: progressData.pointsEarned
+              requiresAuth: true,
+              message: 'Great job! You solved this challenge successfully.'
             });
-          } catch (progressError) {
-            console.error('Failed to save progress:', progressError);
-            // Don't fail the submission if progress saving fails
+            setShowAuthPrompt(true);
+          } else {
+            // Save progress for authenticated users
+            try {
+              const userId = userService.getCurrentUserId();
+              const progressData = await challengeApi.saveProgress(userId, id, 'solved');
+              setProgressResult(progressData);
+              
+              // Update submission result to include progress info
+              setSubmissionResult({
+                ...result,
+                isSolved: true,
+                progressSaved: true,
+                pointsEarned: progressData.pointsEarned
+              });
+              
+              // Notify leaderboard to refresh
+              challengeApi.notifyLeaderboardUpdate();
+            } catch (progressError) {
+              console.error('Failed to save progress:', progressError);
+              setSubmissionResult({
+                ...result,
+                isSolved: true,
+                progressSaved: false,
+                progressError: 'Failed to save progress, but challenge was solved!'
+              });
+            }
           }
         } else {
           // Challenge attempted but not fully solved
-          try {
-            const userId = userService.getCurrentUserId();
-            await challengeApi.saveProgress(userId, id, 'attempted');
-          } catch (progressError) {
-            console.error('Failed to save attempt progress:', progressError);
+          const isAuthenticated = userService.isAuthenticated();
+          
+          if (isAuthenticated) {
+            try {
+              const userId = userService.getCurrentUserId();
+              await challengeApi.saveProgress(userId, id, 'attempted');
+            } catch (progressError) {
+              console.error('Failed to save attempt progress:', progressError);
+            }
           }
         }
       }
@@ -178,11 +201,6 @@ class Solution {
   };
 
   const handleRunCode = async () => {
-    if (!code.trim()) {
-      alert('Please write some code before running tests!');
-      return;
-    }
-
     setIsRunning(true);
     setTestResults([]);
 
@@ -191,7 +209,14 @@ class Solution {
       setTestResults(result.results || []);
     } catch (error) {
       console.error('Test run failed:', error);
-      setTestResults([]);
+      setTestResults([{
+        testCase: 'Error',
+        status: 'failed',
+        input: 'N/A',
+        expected: 'N/A',
+        actual: 'Error: Failed to run tests',
+        executionTime: '0ms'
+      }]);
     } finally {
       setIsRunning(false);
     }
@@ -894,6 +919,92 @@ class Solution {
                   Progress saved! You earned {submissionResult.pointsEarned || 0} points.
                 </div>
               )}
+
+              {/* Progress error notification */}
+              {submissionResult.progressError && (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontSize: '0.9rem',
+                  color: isDarkMode ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.7)'
+                }}>
+                  <XCircle size={16} color="#f87171" />
+                  {submissionResult.progressError}
+                </div>
+              )}
+
+              {/* Authentication required notification */}
+              {submissionResult.requiresAuth && (
+                <div style={{
+                  backgroundColor: isDarkMode ? 'rgba(140, 82, 255, 0.1)' : 'rgba(140, 82, 255, 0.05)',
+                  borderLeft: '4px solid #8c52ff',
+                  padding: '1rem',
+                  borderRadius: '8px',
+                  marginTop: '1rem'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    fontSize: '0.9rem',
+                    color: isDarkMode ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.7)',
+                    marginBottom: '0.75rem'
+                  }}>
+                    <Star size={16} color="#8c52ff" />
+                    Log in to save your progress and earn points!
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    gap: '0.75rem'
+                  }}>
+                    <button
+                      onClick={() => navigate('/login')}
+                      style={{
+                        background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
+                        color: '#fff',
+                        padding: '0.5rem 1.25rem',
+                        borderRadius: '6px',
+                        border: 'none',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        fontSize: '0.9rem',
+                        transition: 'all 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.02)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                      }}
+                    >
+                      Log In
+                    </button>
+                    <button
+                      onClick={() => navigate('/register')}
+                      style={{
+                        backgroundColor: 'transparent',
+                        border: '1.5px solid #8c52ff',
+                        color: '#8c52ff',
+                        padding: '0.5rem 1.25rem',
+                        borderRadius: '6px',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        fontSize: '0.9rem',
+                        transition: 'all 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = 'rgba(140, 82, 255, 0.1)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'transparent';
+                      }}
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
 
             {submissionResult.success && submissionResult.results && (
@@ -906,98 +1017,159 @@ class Solution {
                 }}>
                   Test Results
                 </h4>
+                
+                {/* Test Results Summary */}
                 <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: '1rem',
+                  backgroundColor: isDarkMode ? 'rgba(74, 222, 128, 0.1)' : 'rgba(74, 222, 128, 0.05)',
+                  border: `2px solid ${submissionResult.results.testsPassed === submissionResult.results.totalTests ? '#4ade80' : '#fbbf24'}`,
+                  borderRadius: '12px',
+                  padding: '1.5rem',
+                  textAlign: 'center',
                   marginBottom: '1rem'
                 }}>
                   <div style={{
-                    backgroundColor: isDarkMode ? 'rgba(74, 222, 128, 0.1)' : 'rgba(74, 222, 128, 0.05)',
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    textAlign: 'center'
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.75rem',
+                    marginBottom: '0.5rem'
                   }}>
+                    {submissionResult.results.testsPassed === submissionResult.results.totalTests ? (
+                      <CheckCircle size={32} color="#4ade80" />
+                    ) : (
+                      <XCircle size={32} color="#fbbf24" />
+                    )}
                     <div style={{
-                      fontSize: '1.5rem',
-                      fontWeight: '700',
-                      color: '#4ade80',
-                      marginBottom: '0.25rem'
+                      fontSize: '2rem',
+                      fontWeight: '800',
+                      color: submissionResult.results.testsPassed === submissionResult.results.totalTests ? '#4ade80' : '#fbbf24'
                     }}>
                       {submissionResult.results.testsPassed}/{submissionResult.results.totalTests}
                     </div>
-                    <div style={{
-                      fontSize: '0.85rem',
-                      color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)'
-                    }}>
-                      Tests Passed
-                    </div>
                   </div>
                   <div style={{
-                    backgroundColor: isDarkMode ? 'rgba(140, 82, 255, 0.1)' : 'rgba(140, 82, 255, 0.05)',
-                    padding: '1rem',
-                    borderRadius: '8px',
-                    textAlign: 'center'
+                    fontSize: '1.1rem',
+                    fontWeight: '600',
+                    color: isDarkMode ? '#fff' : '#2d3748',
+                    marginBottom: '0.5rem'
                   }}>
-                    <div style={{
-                      fontSize: '1.5rem',
-                      fontWeight: '700',
-                      color: '#8c52ff',
-                      marginBottom: '0.25rem'
-                    }}>
-                      {submissionResult.results.executionTime}
-                    </div>
-                    <div style={{
-                      fontSize: '0.85rem',
-                      color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)'
-                    }}>
-                      Execution Time
-                    </div>
+                    {submissionResult.results.testsPassed === submissionResult.results.totalTests 
+                      ? 'All Tests Passed! 🎉' 
+                      : `${submissionResult.results.testsPassed} of ${submissionResult.results.totalTests} Tests Passed`}
+                  </div>
+                  <div style={{
+                    fontSize: '0.9rem',
+                    color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)'
+                  }}>
+                    {submissionResult.results.testsPassed === submissionResult.results.totalTests 
+                      ? 'Great job! Your solution is working correctly.'
+                      : 'Keep trying! You\'re on the right track.'}
                   </div>
                 </div>
-                <div style={{
-                  fontSize: '0.9rem',
-                  color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)',
-                  backgroundColor: isDarkMode ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0.05)',
-                  padding: '0.75rem',
-                  borderRadius: '6px',
-                  fontFamily: 'monospace'
-                }}>
-                  Submission ID: {submissionResult.submissionId}<br />
-                  Memory Usage: {submissionResult.results.memoryUsage}
-                </div>
+
+                {/* Performance Info (Optional, less prominent) */}
+                {submissionResult.results.executionTime && (
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    fontSize: '0.85rem',
+                    color: isDarkMode ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.5)',
+                    backgroundColor: isDarkMode ? 'rgba(0, 0, 0, 0.1)' : 'rgba(0, 0, 0, 0.03)',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '20px'
+                  }}>
+                    ⚡ Runtime: {submissionResult.results.executionTime}
+                  </div>
+                )}
               </div>
             )}
 
             <div style={{
               display: 'flex',
-              justifyContent: 'flex-end',
+              justifyContent: 'center',
               gap: '1rem'
             }}>
-              <button
-                onClick={() => setShowResults(false)}
-                style={{
-                  background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
-                  color: '#fff',
-                  padding: '0.75rem 2rem',
-                  borderRadius: '8px',
-                  border: 'none',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  fontSize: '0.95rem',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.02)';
-                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(140, 82, 255, 0.3)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
-                Continue Coding
-              </button>
+              {submissionResult.success && submissionResult.results && submissionResult.results.testsPassed === submissionResult.results.totalTests ? (
+                // All tests passed - show different options
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <button
+                    onClick={() => navigate('/live-practice')}
+                    style={{
+                      backgroundColor: 'transparent',
+                      border: '1.5px solid #8c52ff',
+                      color: '#8c52ff',
+                      padding: '0.75rem 1.5rem',
+                      borderRadius: '8px',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      fontSize: '0.95rem',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgba(140, 82, 255, 0.1)';
+                      e.currentTarget.style.transform = 'scale(1.02)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  >
+                    Next Challenge
+                  </button>
+                  <button
+                    onClick={() => setShowResults(false)}
+                    style={{
+                      background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
+                      color: '#fff',
+                      padding: '0.75rem 1.5rem',
+                      borderRadius: '8px',
+                      border: 'none',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      fontSize: '0.95rem',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.02)';
+                      e.currentTarget.style.boxShadow = '0 4px 16px rgba(140, 82, 255, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
+                  >
+                    Keep Practicing
+                  </button>
+                </div>
+              ) : (
+                // Some tests failed or error - single button to continue
+                <button
+                  onClick={() => setShowResults(false)}
+                  style={{
+                    background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
+                    color: '#fff',
+                    padding: '0.75rem 2rem',
+                    borderRadius: '8px',
+                    border: 'none',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    fontSize: '0.95rem',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.02)';
+                    e.currentTarget.style.boxShadow = '0 4px 16px rgba(140, 82, 255, 0.3)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  Try Again
+                </button>
+              )}
             </div>
           </div>
         </div>
