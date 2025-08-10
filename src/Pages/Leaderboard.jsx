@@ -473,7 +473,7 @@ const Leaderboard = () => {
       <div style={{
         maxWidth: '1400px',
         margin: '0 auto',
-        padding: '0 1.5rem'
+        padding: '1.5rem 1.5rem'
       }}>
         {/* Header */}
         <div style={{
