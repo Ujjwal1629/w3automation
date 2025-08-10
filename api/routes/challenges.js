@@ -13,8 +13,12 @@ const authenticateToken = (req, res, next) => {
     return res.status(401).json({ message: 'Access token required' });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.status(403).json({ message: 'Invalid or expired token' });
+  jwt.verify(token, process.env.JWT_SECRET || 'secret', (err, user) => {
+    if (err) {
+      console.log('JWT verification error:', err.message);
+      return res.status(403).json({ message: 'Invalid or expired token' });
+    }
+    console.log('JWT verified successfully for user:', user.userId);
     req.user = user;
     next();
   });
@@ -58,8 +62,23 @@ router.get('/leaderboard', optionalAuth, async (req, res) => {
     const users = await User.aggregate([
       {
         $match: {
-          totalSolved: { $gt: 0 }, // Only show users who have solved at least one problem
+          $or: [
+            { totalSolved: { $gt: 0 } }, // Users with solved problems
+            { points: { $gt: 0 } }       // Users with points (fallback)
+          ],
           ...dateFilter
+        }
+      },
+      {
+        $addFields: {
+          // Ensure all fields have default values
+          totalSolved: { $ifNull: ['$totalSolved', 0] },
+          easy: { $ifNull: ['$easy', 0] },
+          medium: { $ifNull: ['$medium', 0] },
+          hard: { $ifNull: ['$hard', 0] },
+          points: { $ifNull: ['$points', 0] },
+          streak: { $ifNull: ['$streak', 0] },
+          country: { $ifNull: ['$country', '🌍'] }
         }
       },
       {
@@ -142,7 +161,15 @@ router.get('/leaderboard', optionalAuth, async (req, res) => {
 router.post('/save-progress', authenticateToken, async (req, res) => {
   try {
     const { challengeId, status, difficulty = 'easy' } = req.body;
-    const userId = req.user.id;
+    const userId = req.user.userId || req.user.id; // Handle both userId and id
+    
+    console.log('🔍 Save progress request:', { 
+      challengeId, 
+      status, 
+      difficulty, 
+      userId, 
+      userFromToken: req.user 
+    });
 
     if (!challengeId || !status) {
       return res.status(400).json({ 
@@ -151,13 +178,58 @@ router.post('/save-progress', authenticateToken, async (req, res) => {
       });
     }
 
-    // Find the user
-    const user = await User.findById(userId);
+    // Find the user and initialize progress fields if missing
+    let user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ 
         success: false, 
-        message: 'User not found' 
+        message: 'User not found. Please log in again.' 
       });
+    }
+
+    // Initialize progress fields if they don't exist (migration for existing users)
+    let userUpdated = false;
+    if (user.totalSolved === undefined) {
+      user.totalSolved = 0;
+      userUpdated = true;
+    }
+    if (user.easy === undefined) {
+      user.easy = 0;
+      userUpdated = true;
+    }
+    if (user.medium === undefined) {
+      user.medium = 0;
+      userUpdated = true;
+    }
+    if (user.hard === undefined) {
+      user.hard = 0;
+      userUpdated = true;
+    }
+    if (user.points === undefined) {
+      user.points = 0;
+      userUpdated = true;
+    }
+    if (user.streak === undefined) {
+      user.streak = 0;
+      userUpdated = true;
+    }
+    if (user.solvedChallenges === undefined) {
+      user.solvedChallenges = [];
+      userUpdated = true;
+    }
+    if (user.country === undefined) {
+      user.country = '🌍';
+      userUpdated = true;
+    }
+    if (user.badge === undefined) {
+      user.badge = 'Beginner';
+      userUpdated = true;
+    }
+
+    // Save the user if we updated any fields
+    if (userUpdated) {
+      await user.save();
+      console.log(`✅ Migrated user ${user.username} with progress fields`);
     }
 
     // Check if challenge already solved
@@ -442,6 +514,115 @@ router.post('/run-tests', optionalAuth, async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to run tests',
+      error: error.message
+    });
+  }
+});
+
+// POST /api/migrate-users - Migrate all existing users to have progress fields
+router.post('/migrate-users', async (req, res) => {
+  try {
+    // Find all users without progress fields
+    const users = await User.find({});
+    let migratedCount = 0;
+
+    for (const user of users) {
+      let userUpdated = false;
+      
+      // Add missing fields with default values
+      if (user.totalSolved === undefined) {
+        user.totalSolved = 0;
+        userUpdated = true;
+      }
+      if (user.easy === undefined) {
+        user.easy = 0;
+        userUpdated = true;
+      }
+      if (user.medium === undefined) {
+        user.medium = 0;
+        userUpdated = true;
+      }
+      if (user.hard === undefined) {
+        user.hard = 0;
+        userUpdated = true;
+      }
+      if (user.points === undefined) {
+        user.points = 0;
+        userUpdated = true;
+      }
+      if (user.streak === undefined) {
+        user.streak = 0;
+        userUpdated = true;
+      }
+      if (user.lastSolvedDate === undefined) {
+        user.lastSolvedDate = null;
+        userUpdated = true;
+      }
+      if (!user.solvedChallenges || user.solvedChallenges.length === 0) {
+        user.solvedChallenges = [];
+        userUpdated = true;
+      }
+      if (user.country === undefined) {
+        user.country = '🌍';
+        userUpdated = true;
+      }
+      if (user.badge === undefined) {
+        user.badge = 'Beginner';
+        userUpdated = true;
+      }
+
+      if (userUpdated) {
+        await user.save();
+        migratedCount++;
+        console.log(`✅ Migrated user: ${user.username}`);
+      }
+    }
+
+    res.json({
+      success: true,
+      message: `Migration completed. Updated ${migratedCount} users.`,
+      totalUsers: users.length,
+      migratedUsers: migratedCount
+    });
+
+  } catch (error) {
+    console.error('Migration error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to migrate users',
+      error: error.message
+    });
+  }
+});
+
+// GET /api/debug-user/:userId - Debug user by ID
+router.get('/debug-user/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    console.log(`🔍 Looking for user with ID: ${userId}`);
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      console.log(`❌ User not found with ID: ${userId}`);
+      return res.status(404).json({ 
+        success: false, 
+        message: 'User not found',
+        userId 
+      });
+    }
+
+    console.log(`✅ Found user:`, user.username);
+    const { password, ...userInfo } = user.toObject();
+    res.json({
+      success: true,
+      user: userInfo
+    });
+
+  } catch (error) {
+    console.error('Debug user error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to debug user',
       error: error.message
     });
   }
