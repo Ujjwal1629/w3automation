@@ -63,7 +63,6 @@ const LivePractice = () => {
         cursor: 'pointer',
         position: 'relative',
         overflow: 'hidden',
-        marginTop: '5rem'
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-4px)';
