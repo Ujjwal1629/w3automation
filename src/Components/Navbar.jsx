@@ -764,6 +764,28 @@ export default function Navbar() {
                 )}
               </div>
 
+              {/* Live Practice Link */}
+              <a
+                onClick={() => {
+                  navigate("/live-practice");
+                  setIsMenuOpen(false);
+                }}
+                style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer', fontSize: '1rem' }}
+              >
+                LIVE PRACTICE
+              </a>
+
+              {/* Leaderboard Link */}
+              <a
+                onClick={() => {
+                  navigate("/leaderboard");
+                  setIsMenuOpen(false);
+                }}
+                style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer', fontSize: '1rem' }}
+              >
+                LEADERBOARD
+              </a>
+
               {/* Courses Dropdown */}
               <div className="dropdown-container courses-container" style={{ position: 'relative' }}>
                 <a 
@@ -970,6 +992,22 @@ export default function Navbar() {
                 </div>
               </DropdownPortal>
             </div>
+
+            {/* Live Practice Link */}
+            <a
+              onClick={() => navigate("/live-practice")}
+              style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}
+            >
+              LIVE PRACTICE
+            </a>
+
+            {/* Leaderboard Link */}
+            <a
+              onClick={() => navigate("/leaderboard")}
+              style={{ color: isDarkMode ? '#fff' : 'inherit', textDecoration: 'none', cursor: 'pointer' }}
+            >
+              LEADERBOARD
+            </a>
 
             {/* Courses Dropdown */}
             <div className="dropdown-container courses-container" style={{ position: 'relative' }}>

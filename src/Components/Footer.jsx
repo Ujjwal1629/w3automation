@@ -3,11 +3,13 @@ import { Mail, MapPin, Phone, ChevronRight, Send, ArrowUpRight } from 'lucide-re
 import { FaLinkedin, FaGithub, FaTwitter, FaYoutube } from "react-icons/fa";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 import "./Footer.css";
 
 export default function Footer() {
   const theme = useTheme();
   const isDarkMode = theme ? theme.isDarkMode : false;
+  const navigate = useNavigate();
   const [hoveredLink, setHoveredLink] = useState(null);
   const [isNewsletterFocused, setIsNewsletterFocused] = useState(false);
   
@@ -17,10 +19,12 @@ export default function Footer() {
 
   const footerLinks = {
     quickLinks: [
-      { text: 'Home', url: '/' },
-      { text: 'Courses', url: 'https://courses.journeytoautomation.org/store' },
-      { text: 'Tutorials', url: '/' },
-      { text: 'Contact', url: '/' }
+      { text: 'Home', url: '/', internal: true },
+      { text: 'Live Practice', url: '/live-practice', internal: true },
+      { text: 'Leaderboard', url: '/leaderboard', internal: true },
+      { text: 'Courses', url: 'https://courses.journeytoautomation.org/store', internal: false },
+      { text: 'Tutorials', url: '/', internal: true },
+      { text: 'Contact', url: '/', internal: true }
     ],
     courses: [
       { text: 'Selenium Master Course', url: '/selenium' },
@@ -278,8 +282,14 @@ export default function Footer() {
                   transition={{ delay: index * 0.1 }}
                   style={{ marginBottom: '1rem' }}
                 >
-                  <motion.a
-                    href={link.url}
+                  <motion.div
+                    onClick={() => {
+                      if (link.internal) {
+                        navigate(link.url);
+                      } else {
+                        window.open(link.url, '_blank');
+                      }
+                    }}
                     onHoverStart={() => setHoveredLink(`quick-${index}`)}
                     onHoverEnd={() => setHoveredLink(null)}
                     style={{
@@ -289,6 +299,7 @@ export default function Footer() {
                       alignItems: 'center',
                       gap: '0.5rem',
                       transition: 'all 0.3s ease',
+                      cursor: 'pointer',
                     }}
                   >
                     <motion.span
@@ -306,7 +317,7 @@ export default function Footer() {
                     >
                       <ArrowUpRight size={16} />
                     </motion.span>
-                  </motion.a>
+                  </motion.div>
                 </motion.li>
               ))}
             </ul>

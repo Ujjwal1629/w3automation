@@ -40,6 +40,9 @@ import IframeTest from "./Pages/Practice-sites/IframeTest";
 import GraphQLTest from "./Pages/Practice-sites/GraphQLTest";
 import RestApiTest from "./Pages/Practice-sites/RestApiTest";
 import CourseDetailPageSDET from "./Pages/CourseDetail/CourseDetailPageSDET.jsx";
+import LivePractice from "./Pages/LivePractice";
+import ChallengeDetail from "./Pages/ChallengeDetail";
+import Leaderboard from "./Pages/Leaderboard";
 import { motion } from 'framer-motion';
 import { Calendar, ExternalLink, X } from 'lucide-react';
 
@@ -312,6 +315,21 @@ function App() {
         <Route path="/practice/iframe" element={<IframeTest />} />
         <Route path="/practice/graphql" element={<GraphQLTest />} />
         <Route path="/practice/restapi" element={<RestApiTest />} />
+        <Route path="/live-practice" element={
+          <ThemeProvider>
+            <LivePractice />
+          </ThemeProvider>
+        } />
+        <Route path="/live-practice/:id" element={
+          <ThemeProvider>
+            <ChallengeDetail />
+          </ThemeProvider>
+        } />
+        <Route path="/leaderboard" element={
+          <ThemeProvider>
+            <Leaderboard />
+          </ThemeProvider>
+        } />
       </Routes>
     </div>
   );
