@@ -148,7 +148,10 @@ class Solution {
             // Save progress for authenticated users
             try {
               const userId = userService.getCurrentUserId();
-              const progressData = await challengeApi.saveProgress(userId, id, 'solved');
+              const difficulty = challenge.difficulty || 'easy'; // Get difficulty from challenge data
+              console.log('🚀 Attempting to save progress:', { userId, challengeId: id, status: 'solved', difficulty });
+              const progressData = await challengeApi.saveProgress(userId, id, 'solved', difficulty);
+              console.log('📊 Progress saved successfully:', progressData);
               setProgressResult(progressData);
               
               // Update submission result to include progress info
@@ -178,7 +181,8 @@ class Solution {
           if (isAuthenticated) {
             try {
               const userId = userService.getCurrentUserId();
-              await challengeApi.saveProgress(userId, id, 'attempted');
+              const difficulty = challenge.difficulty || 'easy';
+              await challengeApi.saveProgress(userId, id, 'attempted', difficulty);
             } catch (progressError) {
               console.error('Failed to save attempt progress:', progressError);
             }

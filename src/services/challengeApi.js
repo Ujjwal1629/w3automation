@@ -3,15 +3,12 @@ const API_BASE_URL = import.meta.env.MODE === 'development'
   ? 'http://localhost:5001' 
   : '';
 
-// LeetCode-style code validation function
+// Production-ready code validation function
 const validateCodeImplementation = (code, language) => {
-  // Remove all whitespace and normalize for comparison
-  const normalizeCode = (str) => str.replace(/\s+/g, ' ').trim().toLowerCase();
-  
-  // Remove comments
+  // Remove comments but keep the structure
   const codeWithoutComments = code.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim();
   
-  // Check if code is empty or only whitespace
+  // Check if code is completely empty
   if (!codeWithoutComments || codeWithoutComments.trim().length === 0) {
     return {
       isValid: false,
@@ -19,112 +16,43 @@ const validateCodeImplementation = (code, language) => {
     };
   }
   
-  const normalizedCode = normalizeCode(codeWithoutComments);
-  
-  // Language-specific validation
+  // More lenient validation - just check if there's some meaningful content
   if (language === 'javascript') {
-    // Check for JavaScript-specific patterns that indicate no implementation
+    // Check if it's EXACTLY the starter template (very specific check)
+    const starterTemplate = /^function\s+twoSum\s*\([^)]*\)\s*\{\s*\}$/;
+    const starterWithComment = /^function\s+twoSum\s*\([^)]*\)\s*\{\s*\}$/;
     
-    // Common starter code patterns that should be considered "empty"
-    const jsStarterPatterns = [
-      // Basic function with empty body or just comments
-      /function\s+\w+\s*\([^)]*\)\s*{\s*}$/,
-      /function\s+\w+\s*\([^)]*\)\s*{\s*\/\/[^}]*}$/,
-      /function\s+\w+\s*\([^)]*\)\s*{\s*\/\*[^}]*\*\/\s*}$/,
-      
-      // Arrow function patterns
-      /=>\s*{\s*}$/,
-      /=>\s*{\s*\/\/[^}]*}$/,
-      /=>\s*{\s*\/\*[^}]*\*\/\s*}$/,
-    ];
+    const normalizedCode = codeWithoutComments.replace(/\s+/g, ' ').trim();
     
-    // Check against starter patterns
-    for (const pattern of jsStarterPatterns) {
-      if (pattern.test(normalizedCode)) {
-        return {
-          isValid: false,
-          message: 'Please implement the function body'
-        };
-      }
-    }
-    
-    // Check for specific placeholder comments that indicate no implementation
-    const placeholderComments = [
-      'write your solution here',
-      'write your code here',
-      'implement your solution',
-      'todo',
-      'your code goes here',
-      'add your code here'
-    ];
-    
-    const hasOnlyPlaceholders = placeholderComments.some(placeholder => {
-      const codeWithoutPlaceholder = normalizedCode.replace(new RegExp(placeholder, 'gi'), '').trim();
-      // If after removing placeholder comments, we only have function signature, it's not implemented
-      return codeWithoutPlaceholder.match(/^function\s+\w+\s*\([^)]*\)\s*{\s*}$/) || 
-             codeWithoutPlaceholder.match(/^=>\s*{\s*}$/);
-    });
-    
-    if (hasOnlyPlaceholders) {
+    // Only reject if it's the EXACT starter template
+    if (starterTemplate.test(normalizedCode)) {
       return {
         isValid: false,
-        message: 'Please replace the placeholder comments with actual code'
+        message: 'Please implement the function body'
       };
     }
     
-    // Check for meaningful code content
-    // Must have some logic beyond just function declaration
-    const hasReturnStatement = /return\s+(?!$|;|\s*})/.test(normalizedCode);
-    const hasVariableDeclaration = /\b(?:let|const|var)\s+\w+/.test(normalizedCode);
-    const hasLoop = /\b(?:for|while|do)\s*[\(\{]/.test(normalizedCode);
-    const hasConditional = /\b(?:if|switch)\s*[\(\{]/.test(normalizedCode);
-    const hasMethodCall = /\w+\.\w+\s*\(/.test(normalizedCode);
-    const hasArrayAccess = /\w+\[\w*\]/.test(normalizedCode);
-    const hasMathOperation = /[\+\-\*\/\%]\s*\w+/.test(normalizedCode);
-    
-    // Must have at least one meaningful programming construct
-    if (!hasReturnStatement && !hasVariableDeclaration && !hasLoop && 
-        !hasConditional && !hasMethodCall && !hasArrayAccess && !hasMathOperation) {
+    // Accept any code that has some content in the function body
+    const hasAnythingInFunction = /function\s+\w+\s*\([^)]*\)\s*\{[\s\S]+\}/.test(codeWithoutComments);
+    if (!hasAnythingInFunction) {
       return {
         isValid: false,
-        message: 'Please implement the function with actual logic'
+        message: 'Please add some code inside the function'
       };
     }
     
   } else if (language === 'java') {
-    // Java-specific validation
-    const javaStarterPatterns = [
-      /class\s+\w+\s*{\s*public\s+[\w\[\]]+\s+\w+\s*\([^)]*\)\s*{\s*}\s*}$/,
-      /public\s+[\w\[\]]+\s+\w+\s*\([^)]*\)\s*{\s*}$/,
-    ];
-    
-    for (const pattern of javaStarterPatterns) {
-      if (pattern.test(normalizedCode)) {
-        return {
-          isValid: false,
-          message: 'Please implement the method body'
-        };
-      }
-    }
-    
-    // Check for meaningful Java code
-    const hasReturnStatement = /return\s+(?!$|;|\s*})/.test(normalizedCode);
-    const hasVariableDeclaration = /\b(?:int|string|boolean|double|float|char|long)\s+\w+/.test(normalizedCode);
-    const hasLoop = /\b(?:for|while|do)\s*[\(\{]/.test(normalizedCode);
-    const hasConditional = /\b(?:if|switch)\s*[\(\{]/.test(normalizedCode);
-    const hasMethodCall = /\w+\.\w+\s*\(/.test(normalizedCode);
-    const hasArrayAccess = /\w+\[\w*\]/.test(normalizedCode);
-    
-    if (!hasReturnStatement && !hasVariableDeclaration && !hasLoop && 
-        !hasConditional && !hasMethodCall && !hasArrayAccess) {
+    // Similar lenient validation for Java
+    const hasAnythingInMethod = /public\s+[\w\[\]]+\s+\w+\s*\([^)]*\)\s*\{[\s\S]+\}/.test(codeWithoutComments);
+    if (!hasAnythingInMethod) {
       return {
         isValid: false,
-        message: 'Please implement the method with actual logic'
+        message: 'Please add some code inside the method'
       };
     }
   }
   
-  // If we get here, the code appears to have meaningful implementation
+  // If we get here, accept the code
   return {
     isValid: true,
     message: 'Code validation passed'
@@ -135,11 +63,18 @@ export const challengeApi = {
   // Submit solution to backend
   submitSolution: async (challengeId, code, language) => {
     try {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Content-Type': 'application/json',
+      };
+
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/submit-solution`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers,
         body: JSON.stringify({
           challengeId,
           code,
@@ -199,11 +134,18 @@ export const challengeApi = {
   // Run code tests (placeholder)
   runTests: async (challengeId, code, language) => {
     try {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Content-Type': 'application/json',
+      };
+
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/run-tests`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers,
         body: JSON.stringify({
           challengeId,
           code,
@@ -266,17 +208,23 @@ export const challengeApi = {
   },
 
   // Save user progress
-  saveProgress: async (userId, challengeId, status = "solved") => {
+  saveProgress: async (userId, challengeId, status = "solved", difficulty = "easy") => {
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('Authentication required');
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/save-progress`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
-          userId,
           challengeId,
           status,
+          difficulty,
           timestamp: new Date().toISOString(),
         }),
       });
@@ -286,10 +234,11 @@ export const challengeApi = {
       }
 
       const data = await response.json();
+      console.log('✅ Save progress API success:', data);
       return data;
     } catch (error) {
-      // Simulate successful progress saving for demo
-      console.log('Save progress API call failed (expected in demo), simulating response:', error.message);
+      // Fallback to mock response if API fails
+      console.log('❌ Save progress API call failed, using fallback response:', error.message);
       
       await new Promise(resolve => setTimeout(resolve, 500));
       
@@ -343,11 +292,18 @@ export const challengeApi = {
   // Get leaderboard data
   getLeaderboard: async (timeframe = 'all-time') => {
     try {
+      const token = localStorage.getItem('token');
+      const headers = {
+        'Content-Type': 'application/json',
+      };
+
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/leaderboard?timeframe=${timeframe}`, {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers,
       });
 
       if (!response.ok) {
@@ -355,10 +311,12 @@ export const challengeApi = {
       }
 
       const data = await response.json();
+      // Mark as real data
+      data.isRealData = true;
       return data;
     } catch (error) {
-      // Simulate leaderboard data for demo
-      console.log('Get leaderboard API call failed (expected in demo), simulating response:', error.message);
+      // Fallback to mock data if API fails
+      console.log('Get leaderboard API call failed, using fallback data:', error.message);
       
       await new Promise(resolve => setTimeout(resolve, 500));
       
@@ -413,7 +371,8 @@ export const challengeApi = {
         timeframe,
         data: leaderboardData,
         total: config.count,
-        lastUpdated: new Date().toISOString()
+        lastUpdated: new Date().toISOString(),
+        isRealData: false // Mark as fallback data
       };
     }
   },

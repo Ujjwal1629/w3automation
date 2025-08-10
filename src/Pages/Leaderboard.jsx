@@ -16,6 +16,7 @@ const Leaderboard = () => {
   const [lastUpdated, setLastUpdated] = useState(null);
   const [autoRefresh, setAutoRefresh] = useState(true);
   const [nextUpdate, setNextUpdate] = useState(null);
+  const [isRealData, setIsRealData] = useState(false);
 
   // Fetch leaderboard data from API
   const fetchLeaderboard = useCallback(async (timeframe) => {
@@ -30,6 +31,7 @@ const Leaderboard = () => {
           [timeframe]: response.data
         }));
         setLastUpdated(response.lastUpdated);
+        setIsRealData(response.isRealData || false);
       } else {
         throw new Error('Failed to fetch leaderboard data');
       }
@@ -693,6 +695,22 @@ const Leaderboard = () => {
                 </div>
               )}
               
+              {/* Data Source Indicator */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                marginBottom: '0.25rem'
+              }}>
+                <div style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  backgroundColor: isRealData ? '#4ade80' : '#fbbf24'
+                }} />
+                {isRealData ? 'Connected to live database' : 'Using demo data'}
+              </div>
+              
               {/* Live Update Status */}
               {autoRefresh && !loading && (
                 <div style={{
@@ -707,7 +725,7 @@ const Leaderboard = () => {
                     backgroundColor: '#4ade80',
                     animation: 'pulse 2s infinite'
                   }} />
-                  Live updates enabled
+                  Auto-refresh enabled
                 </div>
               )}
               
@@ -929,7 +947,46 @@ const Leaderboard = () => {
                 padding: '3rem',
                 color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)'
               }}>
-                No leaderboard data available for this timeframe.
+                {isRealData ? (
+                  <div>
+                    <h3 style={{ 
+                      fontSize: '1.25rem', 
+                      marginBottom: '1rem',
+                      color: isDarkMode ? '#fff' : '#2d3748'
+                    }}>
+                      🏆 Be the First!
+                    </h3>
+                    <p style={{ marginBottom: '1.5rem' }}>
+                      No one has solved any challenges yet. Be the first to appear on the leaderboard!
+                    </p>
+                    <button
+                      onClick={() => navigate('/live-practice')}
+                      style={{
+                        background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
+                        color: '#fff',
+                        padding: '0.75rem 2rem',
+                        borderRadius: '25px',
+                        border: 'none',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        fontSize: '1rem',
+                        transition: 'all 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                        e.currentTarget.style.boxShadow = '0 8px 24px rgba(140, 82, 255, 0.3)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    >
+                      Start Solving Challenges
+                    </button>
+                  </div>
+                ) : (
+                  'No leaderboard data available for this timeframe.'
+                )}
               </div>
             )}
           </div>
