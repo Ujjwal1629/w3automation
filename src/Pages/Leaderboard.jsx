@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-import { Trophy, Medal, Award, User, Crown, Star, TrendingUp, Calendar, Code, RefreshCw } from 'lucide-react';
+import { Trophy, Medal, Award, User, Crown, Star, TrendingUp, Calendar, Code } from 'lucide-react';
 import { challengeApi } from '../services/challengeApi';
 import Navbar from '../Components/Navbar';
 
@@ -14,8 +14,6 @@ const Leaderboard = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(null);
-  const [autoRefresh, setAutoRefresh] = useState(true);
-  const [nextUpdate, setNextUpdate] = useState(null);
   const [isRealData, setIsRealData] = useState(false);
 
   // Fetch leaderboard data from API
@@ -47,296 +45,6 @@ const Leaderboard = () => {
   useEffect(() => {
     fetchLeaderboard(selectedTimeframe);
   }, [selectedTimeframe, fetchLeaderboard]);
-
-  // Auto-refresh functionality
-  useEffect(() => {
-    if (!autoRefresh) return;
-
-    const REFRESH_INTERVAL = 10000; // 10 seconds
-    
-    const updateCountdown = () => {
-      const now = Date.now();
-      const nextRefreshTime = now + REFRESH_INTERVAL;
-      setNextUpdate(nextRefreshTime);
-      
-      const countdownInterval = setInterval(() => {
-        const timeLeft = Math.max(0, Math.ceil((nextRefreshTime - Date.now()) / 1000));
-        if (timeLeft <= 0) {
-          clearInterval(countdownInterval);
-        }
-      }, 1000);
-      
-      return countdownInterval;
-    };
-
-    const refreshInterval = setInterval(() => {
-      if (!loading) { // Only refresh if not currently loading
-        fetchLeaderboard(selectedTimeframe);
-      }
-    }, REFRESH_INTERVAL);
-
-    // Start countdown
-    const countdownInterval = updateCountdown();
-
-    return () => {
-      clearInterval(refreshInterval);
-      clearInterval(countdownInterval);
-    };
-  }, [autoRefresh, selectedTimeframe, fetchLeaderboard, loading]);
-
-  // Listen for leaderboard update events (real-time updates)
-  useEffect(() => {
-    const handleLeaderboardUpdate = () => {
-      if (!loading) {
-        fetchLeaderboard(selectedTimeframe);
-      }
-    };
-
-    window.addEventListener('leaderboardUpdate', handleLeaderboardUpdate);
-    
-    return () => {
-      window.removeEventListener('leaderboardUpdate', handleLeaderboardUpdate);
-    };
-  }, [fetchLeaderboard, selectedTimeframe, loading]);
-
-  // Refresh leaderboard data
-  const refreshLeaderboard = () => {
-    fetchLeaderboard(selectedTimeframe);
-  };
-
-  // Legacy placeholder data for fallback (keeping original structure)
-  const fallbackLeaderboardData = {
-    'all-time': [
-      { 
-        rank: 1, 
-        username: 'CodeMaster2024', 
-        avatar: null,
-        totalSolved: 342, 
-        easy: 156, 
-        medium: 128, 
-        hard: 58,
-        points: 2840,
-        streak: 47,
-        joinDate: 'Jan 2023',
-        country: '🇺🇸',
-        badge: 'Grand Master'
-      },
-      { 
-        rank: 2, 
-        username: 'AlgorithmQueen', 
-        avatar: null,
-        totalSolved: 298, 
-        easy: 142, 
-        medium: 109, 
-        hard: 47,
-        points: 2456,
-        streak: 23,
-        joinDate: 'Mar 2023',
-        country: '🇨🇦',
-        badge: 'Expert'
-      },
-      { 
-        rank: 3, 
-        username: 'JavaNinja', 
-        avatar: null,
-        totalSolved: 267, 
-        easy: 134, 
-        medium: 95, 
-        hard: 38,
-        points: 2189,
-        streak: 15,
-        joinDate: 'Feb 2023',
-        country: '🇮🇳',
-        badge: 'Expert'
-      },
-      { 
-        rank: 4, 
-        username: 'PythonWizard', 
-        avatar: null,
-        totalSolved: 234, 
-        easy: 127, 
-        medium: 78, 
-        hard: 29,
-        points: 1876,
-        streak: 31,
-        joinDate: 'May 2023',
-        country: '🇩🇪',
-        badge: 'Advanced'
-      },
-      { 
-        rank: 5, 
-        username: 'ReactRocket', 
-        avatar: null,
-        totalSolved: 212, 
-        easy: 118, 
-        medium: 68, 
-        hard: 26,
-        points: 1698,
-        streak: 12,
-        joinDate: 'Apr 2023',
-        country: '🇬🇧',
-        badge: 'Advanced'
-      },
-      { 
-        rank: 6, 
-        username: 'DataStructureGuru', 
-        avatar: null,
-        totalSolved: 198, 
-        easy: 105, 
-        medium: 67, 
-        hard: 26,
-        points: 1592,
-        streak: 8,
-        joinDate: 'Jun 2023',
-        country: '🇫🇷',
-        badge: 'Advanced'
-      },
-      { 
-        rank: 7, 
-        username: 'BinarySearchPro', 
-        avatar: null,
-        totalSolved: 187, 
-        easy: 98, 
-        medium: 65, 
-        hard: 24,
-        points: 1498,
-        streak: 19,
-        joinDate: 'Jul 2023',
-        country: '🇯🇵',
-        badge: 'Intermediate'
-      },
-      { 
-        rank: 8, 
-        username: 'StackOverflowHero', 
-        avatar: null,
-        totalSolved: 165, 
-        easy: 89, 
-        medium: 56, 
-        hard: 20,
-        points: 1312,
-        streak: 5,
-        joinDate: 'Aug 2023',
-        country: '🇦🇺',
-        badge: 'Intermediate'
-      },
-      { 
-        rank: 9, 
-        username: 'DebugKnight', 
-        avatar: null,
-        totalSolved: 152, 
-        easy: 84, 
-        medium: 49, 
-        hard: 19,
-        points: 1203,
-        streak: 14,
-        joinDate: 'Sep 2023',
-        country: '🇰🇷',
-        badge: 'Intermediate'
-      },
-      { 
-        rank: 10, 
-        username: 'CodeCrusader', 
-        avatar: null,
-        totalSolved: 143, 
-        easy: 78, 
-        medium: 47, 
-        hard: 18,
-        points: 1134,
-        streak: 7,
-        joinDate: 'Oct 2023',
-        country: '🇧🇷',
-        badge: 'Intermediate'
-      }
-    ],
-    'monthly': [
-      { 
-        rank: 1, 
-        username: 'CodeMaster2024', 
-        avatar: null,
-        totalSolved: 45, 
-        easy: 20, 
-        medium: 18, 
-        hard: 7,
-        points: 380,
-        streak: 28,
-        joinDate: 'Jan 2023',
-        country: '🇺🇸',
-        badge: 'Grand Master'
-      },
-      { 
-        rank: 2, 
-        username: 'ReactRocket', 
-        avatar: null,
-        totalSolved: 38, 
-        easy: 19, 
-        medium: 14, 
-        hard: 5,
-        points: 304,
-        streak: 12,
-        joinDate: 'Apr 2023',
-        country: '🇬🇧',
-        badge: 'Advanced'
-      },
-      { 
-        rank: 3, 
-        username: 'PythonWizard', 
-        avatar: null,
-        totalSolved: 35, 
-        easy: 18, 
-        medium: 12, 
-        hard: 5,
-        points: 278,
-        streak: 31,
-        joinDate: 'May 2023',
-        country: '🇩🇪',
-        badge: 'Advanced'
-      }
-    ],
-    'weekly': [
-      { 
-        rank: 1, 
-        username: 'AlgorithmQueen', 
-        avatar: null,
-        totalSolved: 12, 
-        easy: 6, 
-        medium: 4, 
-        hard: 2,
-        points: 98,
-        streak: 7,
-        joinDate: 'Mar 2023',
-        country: '🇨🇦',
-        badge: 'Expert'
-      },
-      { 
-        rank: 2, 
-        username: 'JavaNinja', 
-        avatar: null,
-        totalSolved: 10, 
-        easy: 5, 
-        medium: 4, 
-        hard: 1,
-        points: 78,
-        streak: 5,
-        joinDate: 'Feb 2023',
-        country: '🇮🇳',
-        badge: 'Expert'
-      },
-      { 
-        rank: 3, 
-        username: 'DebugKnight', 
-        avatar: null,
-        totalSolved: 9, 
-        easy: 5, 
-        medium: 3, 
-        hard: 1,
-        points: 69,
-        streak: 14,
-        joinDate: 'Sep 2023',
-        country: '🇰🇷',
-        badge: 'Intermediate'
-      }
-    ]
-  };
 
   const currentData = leaderboardData[selectedTimeframe] || [];
 
@@ -422,7 +130,7 @@ const Leaderboard = () => {
             }}>
               {user.username}
             </h3>
-            <span style={{ fontSize: '1.2rem' }}>{user.country}</span>
+            <span style={{ fontSize: '1.2rem' }}>{user.country || '🌍'}</span>
             <div style={{
               backgroundColor: getBadgeColor(user.badge),
               color: '#fff',
@@ -431,7 +139,7 @@ const Leaderboard = () => {
               fontSize: '0.75rem',
               fontWeight: '600'
             }}>
-              {user.badge}
+              {user.badge || 'Coder'}
             </div>
           </div>
           <div style={{
@@ -443,21 +151,21 @@ const Leaderboard = () => {
           }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
               <Calendar size={14} />
-              Joined {user.joinDate}
+              Joined {user.joinDate || 'Recently'}
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
               <TrendingUp size={14} />
-              {user.streak} day streak
+              {user.streak || 0} day streak
             </span>
           </div>
         </div>
 
-        {/* Stats */}
+        {/* Stats - Only Total Solved */}
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           {/* Total Solved */}
           <div style={{ textAlign: 'center' }}>
             <div style={{
-              fontSize: '2rem',
+              fontSize: '2.5rem',
               fontWeight: '800',
               color: '#8c52ff',
               marginBottom: '0.25rem'
@@ -469,62 +177,7 @@ const Leaderboard = () => {
               color: isDarkMode ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
               fontWeight: '500'
             }}>
-              Total Solved
-            </div>
-          </div>
-
-          {/* Difficulty Breakdown */}
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{
-                fontSize: '1.5rem',
-                fontWeight: '700',
-                color: '#4ade80',
-                marginBottom: '0.25rem'
-              }}>
-                {user.easy}
-              </div>
-              <div style={{
-                fontSize: '0.75rem',
-                color: isDarkMode ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
-                fontWeight: '500'
-              }}>
-                Easy
-              </div>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{
-                fontSize: '1.5rem',
-                fontWeight: '700',
-                color: '#fbbf24',
-                marginBottom: '0.25rem'
-              }}>
-                {user.medium}
-              </div>
-              <div style={{
-                fontSize: '0.75rem',
-                color: isDarkMode ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
-                fontWeight: '500'
-              }}>
-                Medium
-              </div>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{
-                fontSize: '1.5rem',
-                fontWeight: '700',
-                color: '#f87171',
-                marginBottom: '0.25rem'
-              }}>
-                {user.hard}
-              </div>
-              <div style={{
-                fontSize: '0.75rem',
-                color: isDarkMode ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
-                fontWeight: '500'
-              }}>
-                Hard
-              </div>
+              Problems Solved
             </div>
           </div>
 
@@ -540,7 +193,7 @@ const Leaderboard = () => {
               gap: '0.25rem'
             }}>
               <Star size={16} color="#FFD700" />
-              {user.points.toLocaleString()}
+              {user.points ? user.points.toLocaleString() : '0'}
             </div>
             <div style={{
               fontSize: '0.75rem',
@@ -604,82 +257,6 @@ const Leaderboard = () => {
               See how you rank against other coders. Solve more challenges to climb the leaderboard!
             </p>
             
-            {/* Refresh Controls */}
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem',
-              flexWrap: 'wrap',
-              justifyContent: 'center'
-            }}>
-              <button
-                onClick={refreshLeaderboard}
-                disabled={loading}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  backgroundColor: 'transparent',
-                  border: '1.5px solid #8c52ff',
-                  color: loading ? '#999' : '#8c52ff',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '20px',
-                  fontWeight: '500',
-                  cursor: loading ? 'not-allowed' : 'pointer',
-                  fontSize: '0.9rem',
-                  transition: 'all 0.3s ease',
-                  opacity: loading ? 0.6 : 1
-                }}
-                onMouseEnter={(e) => {
-                  if (!loading) {
-                    e.currentTarget.style.backgroundColor = 'rgba(140, 82, 255, 0.1)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!loading) {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                  }
-                }}
-              >
-                <RefreshCw 
-                  size={16} 
-                  style={{
-                    animation: loading ? 'spin 1s linear infinite' : 'none'
-                  }}
-                />
-                {loading ? 'Refreshing...' : 'Refresh'}
-              </button>
-
-              {/* Auto-refresh Toggle */}
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                fontSize: '0.9rem',
-                color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)'
-              }}>
-                <input
-                  type="checkbox"
-                  id="auto-refresh"
-                  checked={autoRefresh}
-                  onChange={(e) => setAutoRefresh(e.target.checked)}
-                  style={{
-                    accentColor: '#8c52ff',
-                    transform: 'scale(1.2)'
-                  }}
-                />
-                <label 
-                  htmlFor="auto-refresh"
-                  style={{
-                    cursor: 'pointer',
-                    userSelect: 'none'
-                  }}
-                >
-                  Auto-refresh (10s)
-                </label>
-              </div>
-            </div>
-            
             {/* Status Info */}
             <div style={{
               display: 'flex',
@@ -708,42 +285,8 @@ const Leaderboard = () => {
                   borderRadius: '50%',
                   backgroundColor: isRealData ? '#4ade80' : '#fbbf24'
                 }} />
-                {isRealData ? 'Connected to live database' : 'Using demo data'}
+                {isRealData ? 'Connected to live database' : 'No users yet - be the first!'}
               </div>
-              
-              {/* Live Update Status */}
-              {autoRefresh && !loading && (
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}>
-                  <div style={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    backgroundColor: '#4ade80',
-                    animation: 'pulse 2s infinite'
-                  }} />
-                  Auto-refresh enabled
-                </div>
-              )}
-              
-              {!autoRefresh && (
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}>
-                  <div style={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    backgroundColor: '#fbbf24'
-                  }} />
-                  Manual refresh mode
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -840,7 +383,7 @@ const Leaderboard = () => {
               color: '#FFD700',
               marginBottom: '0.25rem'
             }}>
-              {currentData.reduce((sum, user) => sum + user.totalSolved, 0).toLocaleString()}
+              {currentData.reduce((sum, user) => sum + (user.totalSolved || 0), 0).toLocaleString()}
             </div>
             <div style={{
               fontSize: '0.9rem',
@@ -865,7 +408,7 @@ const Leaderboard = () => {
               color: '#4ade80',
               marginBottom: '0.25rem'
             }}>
-              {Math.max(...currentData.map(user => user.streak))}
+              {currentData.length > 0 ? Math.max(...currentData.map(user => user.streak || 0)) : 0}
             </div>
             <div style={{
               fontSize: '0.9rem',
@@ -894,7 +437,7 @@ const Leaderboard = () => {
               {error}
             </div>
             <button
-              onClick={refreshLeaderboard}
+              onClick={() => fetchLeaderboard(selectedTimeframe)}
               style={{
                 backgroundColor: '#f87171',
                 color: '#fff',
@@ -919,9 +462,13 @@ const Leaderboard = () => {
             padding: '3rem',
             color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)'
           }}>
-            <RefreshCw 
-              size={24} 
+            <div 
               style={{
+                width: '24px',
+                height: '24px',
+                border: '3px solid rgba(140, 82, 255, 0.3)',
+                borderTop: '3px solid #8c52ff',
+                borderRadius: '50%',
                 animation: 'spin 1s linear infinite',
                 marginRight: '0.75rem'
               }}
@@ -947,46 +494,42 @@ const Leaderboard = () => {
                 padding: '3rem',
                 color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)'
               }}>
-                {isRealData ? (
-                  <div>
-                    <h3 style={{ 
-                      fontSize: '1.25rem', 
-                      marginBottom: '1rem',
-                      color: isDarkMode ? '#fff' : '#2d3748'
-                    }}>
-                      🏆 Be the First!
-                    </h3>
-                    <p style={{ marginBottom: '1.5rem' }}>
-                      No one has solved any challenges yet. Be the first to appear on the leaderboard!
-                    </p>
-                    <button
-                      onClick={() => navigate('/live-practice')}
-                      style={{
-                        background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
-                        color: '#fff',
-                        padding: '0.75rem 2rem',
-                        borderRadius: '25px',
-                        border: 'none',
-                        fontWeight: '600',
-                        cursor: 'pointer',
-                        fontSize: '1rem',
-                        transition: 'all 0.3s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'scale(1.05)';
-                        e.currentTarget.style.boxShadow = '0 8px 24px rgba(140, 82, 255, 0.3)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'scale(1)';
-                        e.currentTarget.style.boxShadow = 'none';
-                      }}
-                    >
-                      Start Solving Challenges
-                    </button>
-                  </div>
-                ) : (
-                  'No leaderboard data available for this timeframe.'
-                )}
+                <div>
+                  <h3 style={{ 
+                    fontSize: '1.25rem', 
+                    marginBottom: '1rem',
+                    color: isDarkMode ? '#fff' : '#2d3748'
+                  }}>
+                    🏆 Be the First!
+                  </h3>
+                  <p style={{ marginBottom: '1.5rem' }}>
+                    No one has solved any challenges yet. Be the first to appear on the leaderboard!
+                  </p>
+                  <button
+                    onClick={() => navigate('/live-practice')}
+                    style={{
+                      background: 'linear-gradient(90deg, #ff5757 0%, #8c52ff 100%)',
+                      color: '#fff',
+                      padding: '0.75rem 2rem',
+                      borderRadius: '25px',
+                      border: 'none',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      fontSize: '1rem',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.05)';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(140, 82, 255, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
+                  >
+                    Start Solving Challenges
+                  </button>
+                </div>
               </div>
             )}
           </div>

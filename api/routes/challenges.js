@@ -1,6 +1,8 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
+import { executeCode } from '../services/codeExecutor.js';
+import { getProblemTestCases } from '../services/problemsData.js';
 
 const router = express.Router();
 
@@ -372,7 +374,7 @@ router.get('/user-progress/:userId', optionalAuth, async (req, res) => {
   }
 });
 
-// POST /api/submit-solution - Submit and test a solution
+// POST /api/submit-solution - Submit and test a solution with actual execution
 router.post('/submit-solution', optionalAuth, async (req, res) => {
   try {
     const { challengeId, code, language } = req.body;
@@ -384,41 +386,29 @@ router.post('/submit-solution', optionalAuth, async (req, res) => {
       });
     }
 
-    // Simple code evaluation for Two Sum problem
+    // Get test cases for the problem
+    const problemData = getProblemTestCases(challengeId);
+    const testCases = problemData.testCases;
+
+    // Execute the code with actual test cases
     let testResults;
-    const trimmedCode = code.trim();
-    
-    // Basic validation
-    if (!trimmedCode || trimmedCode.length < 20) {
+    try {
+      const executionResults = await executeCode(code, language, testCases, challengeId);
+      const passedCount = executionResults.filter(t => t.status === 'passed').length;
+      
+      testResults = {
+        testsPassed: passedCount,
+        totalTests: executionResults.length,
+        executionTime: executionResults.reduce((sum, t) => sum + parseInt(t.executionTime), 0) + 'ms',
+        memoryUsage: '12.3MB'
+      };
+    } catch (execError) {
+      // If code execution fails completely
       testResults = {
         testsPassed: 0,
-        totalTests: 5,
+        totalTests: testCases.length,
         executionTime: '0ms',
         memoryUsage: '0MB'
-      };
-    } else {
-      // Simulate realistic test results based on code quality
-      // Check for common solution patterns
-      const hasLoop = /for\s*\(/.test(code) || /while\s*\(/.test(code);
-      const hasReturn = /return\s+/.test(code);
-      const hasArrayAccess = /\[[^\]]+\]/.test(code);
-      const hasVariables = /(?:let|const|var)\s+\w+/.test(code);
-      
-      let passedTests = 0;
-      
-      // Award points for different coding patterns
-      if (hasReturn) passedTests += 2;
-      if (hasLoop || hasArrayAccess) passedTests += 2;
-      if (hasVariables) passedTests += 1;
-      
-      // Ensure minimum and maximum bounds
-      passedTests = Math.max(2, Math.min(5, passedTests));
-      
-      testResults = {
-        testsPassed: passedTests,
-        totalTests: 5,
-        executionTime: `${Math.floor(Math.random() * 50) + 20}ms`,
-        memoryUsage: `${Math.floor(Math.random() * 10) + 8}MB`
       };
     }
 
@@ -442,7 +432,7 @@ router.post('/submit-solution', optionalAuth, async (req, res) => {
   }
 });
 
-// POST /api/run-tests - Run code tests
+// POST /api/run-tests - Run code tests with actual execution
 router.post('/run-tests', optionalAuth, async (req, res) => {
   try {
     const { challengeId, code, language } = req.body;
@@ -454,18 +444,36 @@ router.post('/run-tests', optionalAuth, async (req, res) => {
       });
     }
 
-    // Deterministic test results based on code content
-    const trimmedCode = code.trim();
-    
-    if (!trimmedCode || trimmedCode.length < 20) {
-      // Empty or minimal code fails all tests
-      const failedResults = [
-        { testCase: 1, status: 'failed', input: 'nums = [2,7,11,15], target = 9', expected: '[0,1]', actual: 'Error: No implementation found', executionTime: '0ms' },
-        { testCase: 2, status: 'failed', input: 'nums = [3,2,4], target = 6', expected: '[1,2]', actual: 'Error: No implementation found', executionTime: '0ms' },
-        { testCase: 3, status: 'failed', input: 'nums = [3,3], target = 6', expected: '[0,1]', actual: 'Error: No implementation found', executionTime: '0ms' }
-      ];
+    // Get test cases for the problem
+    const problemData = getProblemTestCases(challengeId);
+    const testCases = problemData.testCases;
 
-      return res.json({
+    // Execute the code with actual test cases
+    try {
+      const testResults = await executeCode(code, language, testCases, challengeId);
+      
+      res.json({
+        success: true,
+        results: testResults,
+        summary: {
+          passed: testResults.filter(t => t.status === 'passed').length,
+          total: testResults.length,
+          executionTime: testResults.reduce((sum, t) => sum + parseInt(t.executionTime), 0) + 'ms',
+          memoryUsage: '12.3MB'
+        }
+      });
+    } catch (execError) {
+      // If code execution fails completely
+      const failedResults = testCases.map((_, index) => ({
+        testCase: index + 1,
+        status: 'failed',
+        input: 'Test Case ' + (index + 1),
+        expected: 'Expected Output',
+        actual: `Error: ${execError.message}`,
+        executionTime: '0ms'
+      }));
+
+      res.json({
         success: true,
         results: failedResults,
         summary: {
@@ -476,38 +484,6 @@ router.post('/run-tests', optionalAuth, async (req, res) => {
         }
       });
     }
-
-    // Analyze code for patterns
-    const hasLoop = /for\s*\(/.test(code) || /while\s*\(/.test(code);
-    const hasReturn = /return\s+/.test(code);
-    const hasArrayAccess = /\[[^\]]+\]/.test(code);
-    const hasVariables = /(?:let|const|var)\s+\w+/.test(code);
-    
-    // Determine test results based on code patterns
-    let passCount = 0;
-    if (hasReturn) passCount++;
-    if (hasLoop || hasArrayAccess) passCount += 2;
-    if (hasVariables) passCount++;
-    
-    // Ensure reasonable bounds
-    passCount = Math.max(1, Math.min(3, passCount));
-    
-    const testResults = [
-      { testCase: 1, status: passCount >= 1 ? 'passed' : 'failed', input: 'nums = [2,7,11,15], target = 9', expected: '[0,1]', actual: passCount >= 1 ? '[0,1]' : 'undefined', executionTime: '2ms' },
-      { testCase: 2, status: passCount >= 2 ? 'passed' : 'failed', input: 'nums = [3,2,4], target = 6', expected: '[1,2]', actual: passCount >= 2 ? '[1,2]' : 'undefined', executionTime: '1ms' },
-      { testCase: 3, status: passCount >= 3 ? 'passed' : 'failed', input: 'nums = [3,3], target = 6', expected: '[0,1]', actual: passCount >= 3 ? '[0,1]' : 'Wrong Answer', executionTime: '3ms' }
-    ];
-
-    res.json({
-      success: true,
-      results: testResults,
-      summary: {
-        passed: testResults.filter(t => t.status === 'passed').length,
-        total: testResults.length,
-        executionTime: '6ms',
-        memoryUsage: '12.3MB'
-      }
-    });
 
   } catch (error) {
     console.error('Run tests error:', error);
