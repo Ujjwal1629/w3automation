@@ -228,14 +228,15 @@ const playwrightCourseData = {
     },
     schedule: {
         classTiming: {
-            indian: "08:00 PM IST",
-            us: "10:30 AM GMT",
-            uk: "03:30 PM GMT",
+            indian: "08:00 AM IST",
+            us: "10:30 PM GMT",
+            uk: "02:30 AM GMT",
+
         },
         demo: "First 2 sessions are free!",
-        date:'5th & 6th July 2025',
-        classDate:'12th July 2025 Onwards',
-        days:'Saturday and Sunday',
+        date:'1st & 2nd September 2025',
+        classDate:'3rd September 2025 Onwards',
+        days:'Monday to Friday (Weekdays only)',
         features: [
             "Live Classes",
             "Recorded Sessions",
