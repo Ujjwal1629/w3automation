@@ -217,7 +217,7 @@ const playwrightCourseData = {
     stats: {
         'Live - Projects':'2',
         lectures: 36,
-        duration: "4 Months",
+        duration: "2.5 Months",
         Certification:'Yes',
         Recordings:'Lifetime access',
         'Mock Test':"Weekly",
@@ -228,9 +228,9 @@ const playwrightCourseData = {
     },
     schedule: {
         classTiming: {
-            indian: "08:00 AM IST",
-            us: "10:30 PM GMT",
-            uk: "02:30 AM GMT",
+            indian: "07:30 AM IST",
+            us: "10:00 PM GMT",
+            uk: "02:00 AM GMT",
 
         },
         demo: "First 2 sessions are free!",
