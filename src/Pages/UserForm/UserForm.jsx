@@ -76,8 +76,9 @@ const UserForm = () => {
     }
 
     try {
-      // Replace with your backend API endpoint
-      const response = await fetch('http://localhost:3001/api/saveUserGoogleSheet', {
+      // Use environment variable for API URL
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${apiUrl}/api/saveUserGoogleSheet`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
