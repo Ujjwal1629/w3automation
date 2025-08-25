@@ -78,6 +78,8 @@ const UserForm = () => {
     try {
       // Use environment variable for API URL
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      console.log('Submitting to:', `${apiUrl}/api/saveUserGoogleSheet`);
+      
       const response = await fetch(`${apiUrl}/api/saveUserGoogleSheet`, {
         method: 'POST',
         headers: {
@@ -86,7 +88,11 @@ const UserForm = () => {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
+      console.log('Response status:', response.status);
+      const data = await response.json();
+      console.log('Response data:', data);
+
+      if (response.ok && data.success) {
         
         toast.success('Thank you for registering! You will be added to a WhatsApp group for further information on the course.', {
           position: 'top-right',
@@ -108,11 +114,13 @@ const UserForm = () => {
           queries: '',
         });
       } else {
-        alert('Failed to submit form. Please try again.');
+        console.error('Server response not OK:', data);
+        alert(data.message || 'Failed to submit form. Please try again.');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('An error occurred while submitting the form.');
+      console.error('Error details:', error.message);
+      alert(`An error occurred while submitting the form: ${error.message}`);
     }
   };
 

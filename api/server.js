@@ -9,6 +9,7 @@ import graphqlSchema from './graphql/schema.js';
 import authRoutes from './routes/auth.js';
 import practiceRestApiRoutes from './routes/practiceRestApi.js';
 import challengeRoutes from './routes/challenges.js';
+import googleSheetsRoutes from './routes/googleSheets.js';
 import { initializeAdminUser } from './utils/adminInit.js';
 
 // Load environment variables based on NODE_ENV
@@ -44,6 +45,7 @@ app.get('/health', (req, res) => {
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api', challengeRoutes);
+app.use('/api', googleSheetsRoutes);
 app.use('/practice/restapi', practiceRestApiRoutes);
 app.use('/practice/graphql', createHandler({ schema: graphqlSchema }));
 
