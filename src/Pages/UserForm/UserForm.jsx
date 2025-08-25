@@ -77,7 +77,7 @@ const UserForm = () => {
 
     try {
       // Replace with your backend API endpoint
-      const response = await fetch('https://w3-backend-salvatores-projects-9d7f38e8.vercel.app/api/saveUserGoogleSheet', {
+      const response = await fetch('http://localhost:3001/api/saveUserGoogleSheet', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -138,10 +138,10 @@ const UserForm = () => {
       <div className="course-details">
         <h2>Selenium Java Automation Training</h2>
         <p>
-          <strong>Demo sessions:</strong> 18th and 19th March 2025 at 8 PM IST
+          <strong>Demo sessions:</strong> 1st and 2nd September 2025 at 7:30 AM IST
         </p>
         <p>
-          <strong>Batch Starting Date:</strong> 20th March 2025
+          <strong>Batch Starting Date:</strong> 3rd September 2025
         </p>
         <p>
           <strong>Course Content:</strong> Java, Selenium, TestNG, Page Object Model, Framework Types, Writing Automation
@@ -162,13 +162,13 @@ const UserForm = () => {
         </p>
         <ul>
           <li>✔ First 2 Sessions are Free (Demo Sessions)</li>
-          <li>✅ Course Duration: 2 months</li>
-          <li>✅ Monday to Thursday: 8:00 PM - 9:30 PM IST</li>
+          <li>✅ Course Duration: 2.5 months</li>
+          <li>✅ Monday to Thursday: 7:30 AM IST</li>
           <li>✅ Course Fees: INR 8000 / 100€ / 120 USD</li>
           <li>✅ Mode of Training: Online</li>
         </ul>
         <p>
-          Catch you all on Demo Classes on <strong>18th and 19th March 2025 at 8 PM IST</strong>.
+          Catch you all on Demo Classes on <strong>1st and 2nd September 2025 at 7:30 AM IST</strong>.
         </p>
         <p>
           <em>Thank You!</em>
