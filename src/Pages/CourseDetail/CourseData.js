@@ -395,8 +395,8 @@ const playwrightCourseData = {
 };
 
 const SDETCourseData = {
-    title: "SDET/Automation Testing Interview Preparation Course",
-    description: "This course prepares you for SDET interviews by focusing on Java coding, automation frameworks, API testing, and CI/CD tools. It’s designed to build strong problem-solving skills and real-world test automation experience.",
+    title: "Selenium With Java - Interview Preparation Course",
+    description: "This course prepares you for SDET interviews by focusing on Java coding, automation frameworks, API testing, and CI/CD tools. It's designed to build strong problem-solving skills and real-world test automation experience.",
     enrolled: 120,
     backgroundImage: sdetBg,
     stats: {
@@ -536,8 +536,170 @@ const SDETCourseData = {
     ]
 };
 
+const PlaywrightInterviewCourseData = {
+    title: "Playwright with JavaScript/TypeScript – Interview Prep Course",
+    description: "This comprehensive course prepares you for Playwright automation interviews by focusing on JavaScript/TypeScript coding, modern test automation frameworks, API testing, and CI/CD integration. Build strong problem-solving skills and real-world automation experience.",
+    enrolled: 95,
+    backgroundImage: jsBg,
+    stats: {
+        lectures: 38,
+        duration: "2 Months",
+        Certification:'Yes',
+        Recordings:'Lifetime access',
+        'Mock Test':"Weekly",
+        'Skill Level': "All levels",
+        language: "English",
+        Placement: "Assistance",
+    },
+    schedule: {
+        classTiming: {
+            indian: "07:30 PM IST",
+            us: "10:00 AM GMT",
+            uk: "02:00 PM GMT",
+        },
+        demo: "First 2 sessions are free!",
+        date:'1st & 2nd September 2025',
+        classDate:'3rd September 2025 Onwards',
+        days:'Monday to Friday (Weekdays only)',
+        features: [
+            "Live Classes",
+            "Recorded Sessions",
+            "Resume Assistance",
+            "Interview Prep",
+        ]
+    },
+    syllabus: [
+        {
+        title: "Phase 1: JavaScript/TypeScript Fundamentals & Coding Rounds (Weeks 1-2)",
+        objective: "Master JavaScript/TypeScript programming and algorithmic thinking for technical interviews.",
+        topics: [
+            { header: "JavaScript Core Concepts", content: "Variables, data types, functions, closures, promises, async/await" },
+            { header: "TypeScript Fundamentals", content: "Type annotations, interfaces, generics, decorators" },
+            { header: "Data Structures in JS/TS", content: "Arrays, Objects, Maps, Sets, implementation patterns" },
+            { header: "Algorithms & Problem Solving", content: "Sorting, searching, recursion, dynamic programming" },
+            { header: "Popular Coding Problems:" },
+            { header: "Array Manipulation", content: "Filter, map, reduce, find duplicates, merge arrays" },
+            { header: "String Operations", content: "Palindrome check, anagram detection, pattern matching" },
+            { header: "Object Handling", content: "Deep cloning, property manipulation, JSON operations" },
+            { header: "Async Programming", content: "Promise chains, error handling, concurrent operations" },
+            { header: "Mock Coding Interviews", content: "Live coding sessions, whiteboard problems, peer reviews" },
+            { header: "Best Practices", content: "Code quality, debugging techniques, performance optimization" }
+        ]
+        },
+        {
+        title: "Phase 2: Playwright Framework Mastery (Weeks 3-4)",
+        objective: "Build expertise in Playwright automation framework and testing patterns.",
+        topics: [
+            { header: "Playwright Essentials", content: "Playwright setup with JS/TS, Browsers: Chromium, Firefox, WebKit, Locators & Selectors: CSS, text, XPath, Handling UI elements: inputs, dropdowns, checkboxes, alerts" },
+            { header: "Smart Features", content: "Auto-wait & retry-ability (no explicit waits), Parallel test execution, Screenshots, videos, trace viewer" },
+            { header: "Test Runner & Assertions", content: "Playwright Test framework basics, Assertions & expect conditions, Test hooks & fixtures" },
+            // { header: "Test Data Management", content: "Fixtures, test data factories, environment configuration" },
+            // { header: "Advanced Interactions", content: "File uploads/downloads, drag-drop, keyboard/mouse events" },
+            // { header: "Visual Testing", content: "Screenshot comparison, visual regression testing" },
+            // { header: "Mobile & Cross-browser", content: "Device emulation, browser-specific testing" }
+        ]
+        },
+        {
+        title: "Phase 3: Framework Design & Best Practices (Week 5)",
+        // objective: "Master API testing and network interception with Playwright.",
+        topics: [
+            { header: "Scalable Framework Patterns", content: "Page Object Model (POM) with Playwright, Reusable utilities & helpers, Config management (env files, JSON, YAML)" },
+            { header: "Test Organization", content: "Test data-driven approach, Parametrization with JSON/Excel/CSV, Tags & grouping" },
+            { header: "Reporting & Debugging", content: "HTML reports (Allure, Playwright built-in), Logging strategies, Debug mode & inspector tool" },
+            // { header: "Authentication Testing", content: "JWT, OAuth, session management, security testing" },
+            // { header: "API Chaining", content: "Sequential API calls, data dependency management" },
+            // { header: "GraphQL Testing", content: "Queries, mutations, schema validation" }
+        ]
+        },
+        {
+            title: "Phase 4: API Testing with Playwright  (Week 6)",
+            // objective: "Implement comprehensive automation pipelines and DevOps practices.",
+            topics: [
+                { header: "API Basics", content: "HTTP methods, headers, payload, status codes, REST API automation with Playwright’s request context" },
+                { header: "Advanced API Testing", content: "Chaining requests & response validations, Authentication (basic, token-based, OAuth), Data-driven API testing" },
+                // { header: "Reporting & Analytics", content: "HTML reports, Allure integration, test metrics" },
+                // { header: "Pipeline Optimization", content: "Test parallelization, caching strategies, performance" },
+                // { header: "Environment Management", content: "Multi-environment testing, configuration management" }
+            ]
+            },
+        {
+        title: "Phase 5: CI/CD Integration & DevOps (Week 7)",
+        objective: "Implement comprehensive automation pipelines and DevOps practices.",
+        topics: [
+            { header: "GitHub Actions Setup", content: "Workflow configuration, matrix testing, parallel execution" },
+            { header: "Docker Integration", content: "Containerized testing, environment consistency" },
+            { header: "Reporting & Analytics", content: "HTML reports, Allure integration, test metrics" },
+            { header: "Pipeline Optimization", content: "Test parallelization, caching strategies, performance" },
+            { header: "Environment Management", content: "Multi-environment testing, configuration management" }
+        ]
+        },
+        {
+        title: "Phase 6: Interview Preparation & Advanced Topics (Week 8)",
+        objective: "Build confidence for technical interviews and advanced automation scenarios.",
+        topics: [
+            { header: "Technical Mock Interviews", content: "UI automation scenarios, Framework design discussions, Debugging & optimization questions" },
+            { header: "Interview Q&A", content: "Playwright-specific interview questions, JavaScript/TS coding interview practice" },
+            { header: "Career & Soft Skills", content: "Resume & LinkedIn optimization, HR & behavioral mock questions, How to present automation projects in interviews" },
+            // { header: "Mock Technical Interviews", content: "Live coding, framework design, best practices discussion" },
+            // { header: "Behavioral Interviews", content: "STAR method, technical leadership scenarios" },
+            // { header: "Portfolio Development", content: "GitHub projects, resume optimization, interview tips" }
+        ]
+        }
+    ],
+    pricing: {
+        price: {
+            indian: "8000 INR",
+            uk: "100 EUROS",
+            us: "120 USD"
+        },
+        contact: "+91 8810201221",
+        linkedin: "https://www.linkedin.com/in/hemant-gandhi254/"
+    },
+    instructor: {
+        name: "Hemant Gandhi",
+        title:'QA Automation Lead and Trainer',
+        bio: "With over 10 years of experience in the software testing industry. He has worked extensively with various automation testing tools and frameworks, specializing in delivering high-quality software solutions. His passion for quality assurance and automation drives him to share knowledge and help others excel in this field.",
+        students: '200',
+        ratings: '4.2',
+        image: instructorImg
+    }, 
+    testimonials: [
+        {
+            userName: "Priya Sharma",
+            userReview: "Hemant's Playwright interview prep course was game-changing! The combination of JavaScript fundamentals with real interview scenarios helped me land my dream SDET role. The mock interviews were incredibly realistic."
+        },
+        {
+            userName: "Rajesh Kumar",
+            userReview: "The course structure is perfect for interview preparation. Starting from JS/TS basics to advanced Playwright concepts - everything was covered in detail. The CI/CD integration module was particularly helpful."
+        },
+        {
+            userName: "Sarah Johnson",
+            userReview: "As someone transitioning to test automation, this course provided the perfect blend of theory and practical implementation. The live coding sessions and portfolio guidance were exceptional."
+        }
+    ],
+    faqs: [
+            {
+                question: "Is prior Playwright experience required?",
+                answer: "No, the course starts with fundamentals and builds up to advanced concepts. Basic JavaScript knowledge is helpful but not mandatory."
+            },
+            {
+                question: "Will this help with both JavaScript and TypeScript interviews?",
+                answer: "Yes! We cover both JavaScript and TypeScript extensively, including type systems, interfaces, and best practices for both languages."
+            },
+            {
+                question: "Are mock interviews included?",
+                answer: "Absolutely! The course includes multiple mock interview sessions, live coding challenges, and personalized feedback to build your confidence."
+            },
+            {
+                question: "What tools do I need to install?",
+                answer: "You'll need Node.js, VS Code, and Playwright. We provide detailed setup instructions for Windows, macOS, and Linux environments."
+            }
+    ]
+};
+
 export const courseDetails = {
   selenium: seleniumCourseData,
   playwright: playwrightCourseData,
-  sdet: SDETCourseData
+  sdet: SDETCourseData,
+  playwrightInterview: PlaywrightInterviewCourseData
 };

@@ -40,6 +40,7 @@ import IframeTest from "./Pages/Practice-sites/IframeTest";
 import GraphQLTest from "./Pages/Practice-sites/GraphQLTest";
 import RestApiTest from "./Pages/Practice-sites/RestApiTest";
 import CourseDetailPageSDET from "./Pages/CourseDetail/CourseDetailPageSDET.jsx";
+import CourseDetailPagePlaywrightInterview from "./Pages/CourseDetail/CourseDetailPagePlaywrightInterview.jsx";
 import LivePractice from "./Pages/LivePractice";
 import ChallengeDetail from "./Pages/ChallengeDetail";
 import Leaderboard from "./Pages/Leaderboard";
@@ -302,6 +303,7 @@ function App() {
         <Route path="/userForm" element={<UserForm/>} />
         <Route path="/course/:courseId" element={<CourseDetailPage/>} />
         <Route path="/courseSDET" element={<CourseDetailPageSDET/>} />
+        <Route path="/coursePlaywrightInterview" element={<CourseDetailPagePlaywrightInterview/>} />
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/getCertificate" element={<GetCertificate />} />
         <Route path="/template" element={<Template />} />
