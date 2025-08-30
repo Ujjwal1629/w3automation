@@ -626,11 +626,11 @@ const PlaywrightInterviewCourseData = {
         title: "Phase 5: CI/CD Integration & DevOps (Week 7)",
         objective: "Implement comprehensive automation pipelines and DevOps practices.",
         topics: [
-            { header: "GitHub Actions Setup", content: "Workflow configuration, matrix testing, parallel execution" },
-            { header: "Docker Integration", content: "Containerized testing, environment consistency" },
-            { header: "Reporting & Analytics", content: "HTML reports, Allure integration, test metrics" },
-            { header: "Pipeline Optimization", content: "Test parallelization, caching strategies, performance" },
-            { header: "Environment Management", content: "Multi-environment testing, configuration management" }
+            { header: "CI/CD Integration", content: "GitHub Actions / Jenkins with Playwright, Running tests in pipelines, Report publishing & notifications" },
+            { header: "Docker & Test Containers", content: "Docker basics for test execution, Running Playwright tests inside containers" },
+            // { header: "Reporting & Analytics", content: "HTML reports, Allure integration, test metrics" },
+            // { header: "Pipeline Optimization", content: "Test parallelization, caching strategies, performance" },
+            // { header: "Environment Management", content: "Multi-environment testing, configuration management" }
         ]
         },
         {
@@ -679,7 +679,7 @@ const PlaywrightInterviewCourseData = {
     ],
     faqs: [
             {
-                question: "Is prior Playwright experience required?",
+                question: "Is prior Coding experience required?",
                 answer: "No, the course starts with fundamentals and builds up to advanced concepts. Basic JavaScript knowledge is helpful but not mandatory."
             },
             {
@@ -692,7 +692,7 @@ const PlaywrightInterviewCourseData = {
             },
             {
                 question: "What tools do I need to install?",
-                answer: "You'll need Node.js, VS Code, and Playwright. We provide detailed setup instructions for Windows, macOS, and Linux environments."
+                answer: "You'll need Node.js, VS Code, and Playwright. We provide detailed setup instructions for Windows, macOS environments."
             }
     ]
 };
