@@ -553,14 +553,14 @@ const PlaywrightInterviewCourseData = {
     },
     schedule: {
         classTiming: {
-            indian: "07:30 PM IST",
-            us: "10:00 AM GMT",
-            uk: "02:00 PM GMT",
+            indian: "08:00 AM IST",
+            us: "10:30 PM GMT",
+            uk: "02:30 PM GMT",
         },
         demo: "First 2 sessions are free!",
         date:'1st & 2nd September 2025',
         classDate:'3rd September 2025 Onwards',
-        days:'Monday to Friday (Weekdays only)',
+        days:'Monday to Thursday',
         features: [
             "Live Classes",
             "Recorded Sessions",
