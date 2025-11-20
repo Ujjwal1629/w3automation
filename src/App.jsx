@@ -41,7 +41,6 @@ import GraphQLTest from "./Pages/Practice-sites/GraphQLTest";
 import RestApiTest from "./Pages/Practice-sites/RestApiTest";
 import CourseDetailPageSDET from "./Pages/CourseDetail/CourseDetailPageSDET.jsx";
 import CourseDetailPagePlaywrightInterview from "./Pages/CourseDetail/CourseDetailPagePlaywrightInterview.jsx";
-import CourseDetailPageAI from "./Pages/CourseDetail/CourseDetailPageAI.jsx";
 import LivePractice from "./Pages/LivePractice";
 import ChallengeDetail from "./Pages/ChallengeDetail";
 import Leaderboard from "./Pages/Leaderboard";
@@ -305,7 +304,6 @@ function App() {
         <Route path="/course/:courseId" element={<CourseDetailPage/>} />
         <Route path="/courseSDET" element={<CourseDetailPageSDET/>} />
         <Route path="/coursePlaywrightInterview" element={<CourseDetailPagePlaywrightInterview/>} />
-        <Route path="/coursePlaywrightInterviewAI" element={<CourseDetailPageAI/>} />
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/getCertificate" element={<GetCertificate />} />
         <Route path="/template" element={<Template />} />
