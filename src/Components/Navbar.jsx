@@ -859,7 +859,7 @@ Course
                       className="dropdown-item"
                       style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none', fontSize: '0.95rem' }}
                     >
-                      Playwright with TypeScript – The Right Way (AI + Strong Fundamentals)
+                      Playwright with TypeScript - The Right Way (AI + Strong Fundamentals)
                     </a>
                   </div>
                 )}
@@ -1080,7 +1080,7 @@ Course
                     // { label: "Playwright with JavaScript", route: "/course/playwright" },
                     // { label: "Selenium With Java - Interview Preparation Course", route: "/courseSDET" },
                     // { label: "Playwright with JavaScript/TypeScript – Interview Prep Course", route: "/coursePlaywrightInterview" },
-                    { label: "Playwright with TypeScript – The Right Way (AI + Strong Fundamentals)", route: "/coursePlaywrightInterviewAI" }
+                    { label: "Playwright with TypeScript - The Right Way (AI + Strong Fundamentals)", route: "/coursePlaywrightInterviewAI" }
                   ].map(({ label, route }) => (
                     <a
                       key={route}
