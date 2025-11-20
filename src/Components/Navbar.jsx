@@ -827,7 +827,7 @@ export default function Navbar() {
                     >
                       Playwright with JavaScript
                     </a> */}
-                    <a 
+                    {/* <a 
                       onClick={() => {
                         navigate("/courseSDET");
                         setIsCoursesDropdownOpen(false);
@@ -849,6 +849,17 @@ Course
                       style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none', fontSize: '0.95rem' }}
                     >
                       Playwright with JavaScript/TypeScript – Interview Prep Course
+                    </a> */}
+                    <a 
+                      onClick={() => {
+                        navigate("/coursePlaywrightInterviewAI");
+                        setIsCoursesDropdownOpen(false);
+                        setIsMenuOpen(false);
+                      }}
+                      className="dropdown-item"
+                      style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none', fontSize: '0.95rem' }}
+                    >
+                      Playwright with TypeScript – The Right Way (AI + Strong Fundamentals)
                     </a>
                   </div>
                 )}
@@ -1067,8 +1078,9 @@ Course
                   {[
                     // { label: "Java & Selenium", route: "/course/selenium" }, // Commenting out for now
                     // { label: "Playwright with JavaScript", route: "/course/playwright" },
-                    { label: "Selenium With Java - Interview Preparation Course", route: "/courseSDET" },
-                    { label: "Playwright with JavaScript/TypeScript – Interview Prep Course", route: "/coursePlaywrightInterview" }
+                    // { label: "Selenium With Java - Interview Preparation Course", route: "/courseSDET" },
+                    // { label: "Playwright with JavaScript/TypeScript – Interview Prep Course", route: "/coursePlaywrightInterview" },
+                    { label: "Playwright with TypeScript – The Right Way (AI + Strong Fundamentals)", route: "/coursePlaywrightInterviewAI" }
                   ].map(({ label, route }) => (
                     <a
                       key={route}
