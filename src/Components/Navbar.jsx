@@ -826,8 +826,8 @@ export default function Navbar() {
                       style={{ color: isDarkMode ? '#fff' : 'inherit', cursor: 'pointer', textDecoration: 'none', fontSize: '0.95rem' }}
                     >
                       Playwright with JavaScript
-                    </a> */}
-                    {/* <a 
+                    </a> 
+                    <a 
                       onClick={() => {
                         navigate("/courseSDET");
                         setIsCoursesDropdownOpen(false);
