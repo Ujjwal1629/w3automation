@@ -45,6 +45,7 @@ import CourseDetailPageAI from "./Pages/CourseDetail/CourseDetailPageAI.jsx";
 import LivePractice from "./Pages/LivePractice";
 import ChallengeDetail from "./Pages/ChallengeDetail";
 import Leaderboard from "./Pages/Leaderboard";
+import HomePageNew from "./Components/NewHomePage";
 import { motion } from 'framer-motion';
 import { Calendar, ExternalLink, X } from 'lucide-react';
 
@@ -319,6 +320,7 @@ function App() {
         <Route path="/practice/iframe" element={<IframeTest />} />
         <Route path="/practice/graphql" element={<GraphQLTest />} />
         <Route path="/practice/restapi" element={<RestApiTest />} />
+        <Route path="/homePageNew" element={<HomePageNew/>}/>
         <Route path="/live-practice" element={
           <ThemeProvider>
             <LivePractice />
