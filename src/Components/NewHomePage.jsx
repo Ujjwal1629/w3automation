@@ -1,5 +1,10 @@
 import React from 'react';
 import './NewHomePage.css';
+import courseImageDsa from '../assets/dsa-course image.jpeg';
+import courseImage1 from '../assets/course-img101.jpeg';
+import courseImage2 from '../assets/course-img102.jpeg';
+import profileImage from '../assets/profilePic.jpg';
+
 import { FaLinkedin, FaTwitter, FaYoutube, FaGithub, FaInstagram, FaMicrosoft, FaFacebookF } from 'react-icons/fa';
 import { BsClock, BsGoogle } from 'react-icons/bs';
 
@@ -135,6 +140,10 @@ const NewHomePage = () => {
                 <div className="course-image-container">
                   <img src={course.image} alt={course.title} className="course-image" />
                   {course.discount && <span className="discount-badge">{course.discount}</span>}
+                  <div className="course-hover-details">
+                    <p className="hover-description">{course.description}</p>
+                    <button className="hover-btn">View Details</button>
+                  </div>
                 </div>
                 <div className="course-content">
                   <h3 className="course-title">{course.title}</h3>
@@ -164,7 +173,7 @@ const NewHomePage = () => {
           <div className="about-image-column">
             <div className="about-image-container">
               <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                src={profileImage} 
                 alt="Instructor" 
                 className="about-image" 
               />
@@ -230,30 +239,6 @@ const NewHomePage = () => {
               <h3 className="stat-number">364+</h3>
               <p className="stat-label">High-quality teachers offering courses and videos.</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experts Section */}
-      <section className="experts-section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Meet our experts</h2>
-            <div className="title-underline"></div>
-          </div>
-          
-          <div className="experts-grid">
-            {experts.map((expert, index) => (
-              <div key={index} className="expert-card">
-                <div className="expert-image-container">
-                  <img src={expert.image} alt={expert.name} className="expert-image" />
-                </div>
-                <div className="expert-info">
-                  <h3 className="expert-name">{expert.name}</h3>
-                  <p className="expert-role">{expert.role}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -387,7 +372,8 @@ const courses = [
     students: "4,912",
     lessons: 37,
     price: "$79.00",
-    image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: courseImageDsa,
+    description: "Master the fundamentals of DSA with Java. Includes 300+ coding problems and live projects.",
   },
   {
     title: "Machine Learning Foundations",
@@ -396,7 +382,8 @@ const courses = [
     students: "3,866",
     lessons: 22,
     price: "$59.00",
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: courseImage1,
+    description: "Learn the basics of ML, including regression, classification, and clustering algorithms.",
   },
   {
     title: "Google Professional Certificate Data Analytics",
@@ -407,7 +394,8 @@ const courses = [
     price: "$29.00",
     originalPrice: "$39.00",
     discount: "20% OFF",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: courseImage1,
+    description: "Get professional training in Data Analytics from Google experts. No experience required.",
   },
   {
     title: "Supervised Machine Learning: Regression",
@@ -416,7 +404,8 @@ const courses = [
     students: "10,253",
     lessons: 78,
     price: "$79.00",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: courseImage2,
+    description: "Deep dive into supervised learning techniques with a focus on regression models.",
   },
   {
     title: "Fundamentos: dados, dados, em todos os lugares",
@@ -425,59 +414,36 @@ const courses = [
     students: "4,912",
     lessons: 37,
     price: "$79.00",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    title: "Data Analytics Basics: Data, Data Everywhere",
-    rating: 4.9,
-    reviews: 1425,
-    students: "3,866",
-    lessons: 22,
-    price: "$59.00",
-    discount: "25% OFF",
-    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    title: "Processing Data from Dirty to Clean",
-    rating: 4.9,
-    reviews: 3652,
-    students: "3,982",
-    lessons: 19,
-    price: "$29.00",
-    originalPrice: "$39.00",
-    image: "https://images.unsplash.com/photo-1558494949-ef526b0042a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    title: "Advanced Learning Algorithms",
-    rating: 4.9,
-    reviews: 1452,
-    students: "10,253",
-    lessons: 78,
-    price: "$79.00",
-    discount: "30% OFF",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-];
-
-const experts = [
-  {
-    name: "Cameron Williamson",
-    role: "Wordpress Developer",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "Devon Lane",
-    role: "UI Designer",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    name: "Ronald Richards",
-    role: "Frontend Developer",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: courseImage2,
+    description: "Understand the importance of data in today's world and how to leverage it for business.",
   },
 ];
 
 const reviews = [
+  {
+    text: "Eget aliquet sit at lacinia. Magna consequat consectetur maecenas amet sagittis mi. Mattis cursus dolor amet quam commodo amet in sed dui. Risus risus sed sed lectus.",
+    name: "Darrell Steward",
+    role: "Student",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  },
+  {
+    text: "Eget aliquet sit at lacinia. Magna consequat consectetur maecenas amet sagittis mi. Mattis cursus dolor amet quam commodo amet in sed dui. Risus risus sed sed lectus.",
+    name: "Courtney Henry",
+    role: "Student",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  },
+  {
+    text: "Eget aliquet sit at lacinia. Magna consequat consectetur maecenas amet sagittis mi. Mattis cursus dolor amet quam commodo amet in sed dui. Risus risus sed sed lectus.",
+    name: "Darrell Steward",
+    role: "Student",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  },
+  {
+    text: "Eget aliquet sit at lacinia. Magna consequat consectetur maecenas amet sagittis mi. Mattis cursus dolor amet quam commodo amet in sed dui. Risus risus sed sed lectus.",
+    name: "Courtney Henry",
+    role: "Student",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  },
   {
     text: "Eget aliquet sit at lacinia. Magna consequat consectetur maecenas amet sagittis mi. Mattis cursus dolor amet quam commodo amet in sed dui. Risus risus sed sed lectus.",
     name: "Darrell Steward",

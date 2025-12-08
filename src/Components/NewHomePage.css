@@ -439,7 +439,7 @@
 
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
@@ -801,6 +801,56 @@
   background-color: #f9fafb; /* Light gray background */
 }
 
+/* Course Hover Details */
+.course-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.course-hover-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.course-card:hover .course-hover-details {
+  opacity: 1;
+}
+
+.hover-description {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.hover-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.hover-btn:hover {
+  background: #2563eb;
+}
+
 .review-header {
   display: flex;
   justify-content: space-between;
@@ -834,7 +884,7 @@
 
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
