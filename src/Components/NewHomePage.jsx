@@ -4,6 +4,7 @@ import courseImageDsa from '../assets/dsa-course image.jpeg';
 import courseImage1 from '../assets/course-img101.jpeg';
 import courseImage2 from '../assets/course-img102.jpeg';
 import profileImage from '../assets/profilePic.jpg';
+import noPic from '../assets/no-img.webp';
 
 import { FaLinkedin, FaTwitter, FaYoutube, FaGithub, FaInstagram, FaMicrosoft, FaFacebookF } from 'react-icons/fa';
 import { BsClock, BsGoogle } from 'react-icons/bs';
@@ -421,40 +422,39 @@ const courses = [
 
 const reviews = [
   {
-    text: "Eget aliquet sit at lacinia. Magna consequat consectetur maecenas amet sagittis mi. Mattis cursus dolor amet quam commodo amet in sed dui. Risus risus sed sed lectus.",
-    name: "Darrell Steward",
+    text: "I recently completed Hemant Gandhi's automation testing class on Java and Selenium, and it was outstanding. The instructor made complex topics easy to understand, and the hands-on exercises were incredibly valuable.",
+    name: "Supriya D",
     role: "Student",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    image: noPic,
   },
   {
-    text: "Eget aliquet sit at lacinia. Magna consequat consectetur maecenas amet sagittis mi. Mattis cursus dolor amet quam commodo amet in sed dui. Risus risus sed sed lectus.",
+    text: "I really appreciate you for taking time from daily routines and providing training on Java and Selenium. The topics covered are good and detailed. The support provided post sessions is also excellent.!",
+    name: "Srikanth chivukula",
+    role: "Student",
+    image: noPic,
+  },{
+    text: "The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand.",
+    name: "Mayooran Thiruchselvam",
+    role: "Student",
+    image: noPic,
+  },
+  {
+    text: "The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand.",
+    name: "Ritu Bajaj",
+    role: "Manager",
+    image: noPic,
+  },
+  {
+    text: "The course was great and I learned a lot. The instructor was very knowledgeable and the material was well-organized.",
+    name: "Prachi Gupta",
+    role: "Automation Testing Engineer",
+    image: noPic,
+  },
+  {
+    text: "The course was great and I learned a lot. The instructor was very knowledgeable and the material was well-organized.",
     name: "Courtney Henry",
-    role: "Student",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    text: "Eget aliquet sit at lacinia. Magna consequat consectetur maecenas amet sagittis mi. Mattis cursus dolor amet quam commodo amet in sed dui. Risus risus sed sed lectus.",
-    name: "Darrell Steward",
-    role: "Student",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    text: "Eget aliquet sit at lacinia. Magna consequat consectetur maecenas amet sagittis mi. Mattis cursus dolor amet quam commodo amet in sed dui. Risus risus sed sed lectus.",
-    name: "Courtney Henry",
-    role: "Student",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    text: "Eget aliquet sit at lacinia. Magna consequat consectetur maecenas amet sagittis mi. Mattis cursus dolor amet quam commodo amet in sed dui. Risus risus sed sed lectus.",
-    name: "Darrell Steward",
-    role: "Student",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    text: "Eget aliquet sit at lacinia. Magna consequat consectetur maecenas amet sagittis mi. Mattis cursus dolor amet quam commodo amet in sed dui. Risus risus sed sed lectus.",
-    name: "Courtney Henry",
-    role: "Student",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    role: "Software Engineer",
+    image: noPic,
   },
 ];
 
