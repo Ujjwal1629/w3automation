@@ -5,11 +5,25 @@ import courseImage1 from '../assets/course-img101.jpeg';
 import courseImage2 from '../assets/course-img102.jpeg';
 import profileImage from '../assets/profilePic.jpg';
 import noPic from '../assets/no-img.webp';
+import heroSlide1 from '../assets/slide-img1.jpg';
+import heroSlide2 from '../assets/slide-img2.jpg';
+import heroSlide3 from '../assets/slide-img3.jpg';
+import { useState, useEffect } from 'react';
 
 import { FaLinkedin, FaTwitter, FaYoutube, FaGithub, FaInstagram, FaMicrosoft, FaFacebookF } from 'react-icons/fa';
 import { BsClock, BsGoogle } from 'react-icons/bs';
 
 const NewHomePage = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000); // 5 seconds per slide
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="new-home-page">
       <div className="container">
@@ -89,30 +103,57 @@ const NewHomePage = () => {
           </div>
 
           <div className="hero-image-column">
-            <div className="profile-card">
-              <div className="profile-bg-pattern"></div>
-              <div className="profile-image-container">
-                <img 
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" 
-                  alt="Olivia Smith" 
-                  className="profile-image" 
-                />
-              </div>
-              <div className="profile-info">
-                <div className="profile-details">
-                  <span className="profile-role">Program Director</span>
-                  <h3 className="profile-name">Olivia Smith</h3>
-                  <div className="profile-company">
-                    <span>Product Manager at</span>
-                    <FaMicrosoft className="microsoft-icon" />
-                    <span>Microsoft</span>
+            <div className="hero-slider">
+              {heroSlides.map((slide, index) => (
+                <div 
+                  key={index} 
+                  className={`slide ${index === currentSlide ? 'active' : ''}`}
+                  style={{ backgroundImage: `url(${slide.image})` }}
+                >
+                  <div className="slide-overlay">
+                    <div className="journey-container">
+                      {/* Left Box: Initial Role */}
+                      <div className="role-box initial">
+                        <span className="role-label">Started as</span>
+                        <h3 className="role-title">{slide.initialRole}</h3>
+                      </div>
+
+                      {/* Arrow */}
+                      <div className="arrow-container">
+                        <svg width="100" height="40" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="curvy-arrow">
+                          <path d="M5 35 C 30 35, 30 5, 55 5 C 80 5, 80 35, 95 35" stroke="white" strokeWidth="2" strokeLinecap="round" fill="none"/>
+                          <path d="M85 28 L 95 35 L 85 42" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                        </svg>
+                      </div>
+
+                      {/* Right Box: Current Role */}
+                      <div className="role-box current">
+                        <div className="role-header">
+                          <span className="role-label">Currently</span>
+                        </div>
+                        <h3 className="role-title">{slide.currentRole}</h3>
+                        <p className="company-name">{slide.currentCompany}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="person-name">
+                      <h3>{slide.name}</h3>
+                    </div>
                   </div>
                 </div>
-                <div className="clutch-review">
-                  <span className="clutch-logo">Clutch</span>
-                  <div className="stars">★★★★★</div>
-                  <span className="review-text">5 Star Reviews<br />on Clutch</span>
-                </div>
+              ))}
+              
+              <div className="slider-progress">
+                {heroSlides.map((_, index) => (
+                  <div key={index} className="progress-bar-container">
+                    <div 
+                      className={`progress-bar ${index === currentSlide ? 'active' : ''}`}
+                      style={{ 
+                        animationDuration: index === currentSlide ? '5s' : '0s' 
+                      }}
+                    ></div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -459,3 +500,30 @@ const reviews = [
 ];
 
 export default NewHomePage;
+
+const heroSlides = [
+  {
+    name: "Ankit kumar",
+    initialRole: "Conultant",
+    currentRole: "Senior QA",
+    currentCompany: "IBM",
+    image: heroSlide1,
+    badge: "Senior QA"
+  },
+  {
+    name: "Priya Sharma",
+    initialRole: "Associate Consultant",
+    currentRole: "Senior Quality Engineer",
+    currentCompany: "LTIMindtree",
+    image: heroSlide3,
+    badge: "Senior Quality Engineer"
+  },
+  {
+    name: "Rahul Verma",
+    initialRole: "Associate QA",
+    currentRole: "QA",
+    currentCompany: "Volkswagen Group",
+    image: heroSlide2,
+    badge: "QA"
+  }
+];

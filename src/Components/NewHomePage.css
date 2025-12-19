@@ -249,122 +249,174 @@
   justify-content: flex-end;
 }
 
-.profile-card {
+/* Hero Slider */
+.hero-slider {
   position: relative;
-  width: 400px;
-  background: white;
+  width: 480px;
+  height: 600px;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border: 1px solid #e5e7eb;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-.profile-bg-pattern {
+.slide {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 350px;
-  background: repeating-radial-gradient(
-    circle at 50% 60%,
-    #ffffff 0,
-    #ffffff 10px,
-    #7c3aed 10px,
-    #7c3aed 20px
-  );
-  opacity: 0.1; /* Adjust for visual match */
-  background: 
-    repeating-radial-gradient(
-      circle at 50% 60%,
-      transparent 0,
-      transparent 20px,
-      #7c3aed 20px,
-      #7c3aed 40px
-    );
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-/* Better approximation of the spiral/concentric circles */
-.profile-bg-pattern::before {
-  content: '';
+.slide.active {
+  opacity: 1;
+}
+
+.slide-overlay {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: repeating-radial-gradient(
-    circle at 50% 50%,
-    #ffffff 0,
-    #ffffff 15px,
-    #8b5cf6 15px,
-    #8b5cf6 30px
-  );
-  z-index: -1;
-}
-
-.profile-image-container {
-  position: relative;
-  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
   display: flex;
-  justify-content: center;
-  padding-top: 2rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
-.profile-image {
-  width: 280px;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 100px 100px 0 0; /* Arch shape */
-  border: 4px solid white;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.profile-info {
+.journey-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
   position: relative;
   z-index: 2;
-  background: white;
-  padding: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-top: 1px solid #f3f4f6;
 }
 
-.profile-role {
-  font-size: 0.75rem;
-  color: #6b7280;
+.role-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.role-box.initial {
+  margin-right: 0.5rem;
+}
+
+.role-box.current {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  margin-left: 0.5rem;
+}
+
+.role-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
   display: block;
   margin-bottom: 0.25rem;
 }
 
-.profile-name {
-  font-size: 1.25rem;
+.role-title {
+  font-size: 0.6rem;
   font-weight: 700;
-  color: #1f2937;
-  margin: 0 0 0.5rem 0;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.profile-company {
+.role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.company-name {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0.25rem 0 0 0;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrow-container {
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+  opacity: 0.8;
+}
+
+.curvy-arrow {
+  width: 60px;
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.person-name {
+  position: absolute;
+  top: 4rem;
+  left: 2rem;
+  z-index: 2;
+}
+
+.person-name h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.slider-progress {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
   gap: 0.5rem;
-  font-size: 0.8rem;
-  color: #4b5563;
+  z-index: 10;
 }
 
-.microsoft-icon {
-  color: #00a4ef; /* Microsoft Blue */
+.progress-bar-container {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
 }
 
-.clutch-review {
-  text-align: right;
+.progress-bar {
+  height: 100%;
+  background: white;
+  width: 0;
 }
 
-.clutch-logo {
-  font-weight: 800;
-  font-size: 1rem;
-  color: #1f2937;
-  display: block;
+.progress-bar.active {
+  animation: progress linear forwards;
+}
+
+@keyframes progress {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 .stars {
