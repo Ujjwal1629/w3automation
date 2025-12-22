@@ -254,9 +254,13 @@
   position: relative;
   width: 480px;
   height: 600px;
-  border-radius: 24px;
+  border-radius: 32px;
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 20px 50px -10px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset; /* Inner subtle border */
+  border: 8px solid rgba(255, 255, 255, 0.2); /* Outer glass border */
+  backdrop-filter: blur(10px);
 }
 
 .slide {
@@ -268,11 +272,14 @@
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.05); /* Slight zoom for effect */
 }
 
 .slide.active {
   opacity: 1;
+  transform: scale(1);
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 6s ease-out;
 }
 
 .slide-overlay {
@@ -281,64 +288,77 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(
+    to top, 
+    rgba(0,0,0,0.9) 0%, 
+    rgba(0,0,0,0.5) 40%, 
+    rgba(0,0,0,0) 100%
+  );
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 2rem;
+  padding: 2.5rem;
   box-sizing: border-box;
 }
 
 .journey-container {
   display: flex;
-  align-items: center;
+  align-items: stretch; /* Stretch to match heights */
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   position: relative;
   z-index: 2;
+  gap: 1rem;
 }
 
 .role-box {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 1.25rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.role-box:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 .role-box.initial {
-  margin-right: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .role-box.current {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  margin-left: 0.5rem;
+  background: rgba(255, 255, 255, 0.15); /* Slightly more prominent */
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .role-label {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.7);
   display: block;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .role-title {
-  font-size: 0.6rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: white;
   margin: 0;
-  line-height: 1.2;
-  white-space: nowrap; /* Prevent wrapping */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.3;
+  /* Allow wrapping if needed, or keep ellipsis */
+  white-space: normal; 
 }
 
 .role-header {
@@ -349,41 +369,40 @@
 }
 
 .company-name {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.85rem;
+  color: #a5b4fc; /* Light indigo tint */
   margin: 0.25rem 0 0 0;
-  white-space: nowrap; /* Prevent wrapping */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 .arrow-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 0.5rem;
-  opacity: 0.8;
+  padding: 0;
+  opacity: 0.9;
+  width: 40px; /* Fixed width for stability */
 }
 
 .curvy-arrow {
-  width: 60px;
+  width: 100%;
   height: auto;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
 }
 
 .person-name {
-  position: absolute;
-  top: 4rem;
-  left: 2rem;
+  position: relative; /* Changed from absolute to flow naturally if needed, but keeping absolute logic for now */
   z-index: 2;
+  margin-top: 0;
 }
 
 .person-name h3 {
   color: white;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.75rem;
+  font-weight: 800;
   margin: 0;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  letter-spacing: -0.5px;
 }
 
 .slider-progress {
@@ -398,8 +417,8 @@
 
 .progress-bar-container {
   flex: 1;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.3);
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -408,6 +427,7 @@
   height: 100%;
   background: white;
   width: 0;
+  box-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
 
 .progress-bar.active {
@@ -946,6 +966,68 @@
   border-radius: 16px;
   border: 1px solid #e5e7eb;
   position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Reviewer Header (image + name at top) */
+.review-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Career Transition (Pre → Post) */
+.career-transition {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.career-box {
+  flex: 1;
+  text-align: center;
+}
+
+.career-box.highlight {
+  background: #eef2ff;
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+
+.career-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.career-company {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.career-arrow {
+  padding: 0 0.75rem;
+  font-size: 1.25rem;
+  color: #3b82f6;
 }
 
 .quote-icon {

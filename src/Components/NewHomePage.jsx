@@ -168,12 +168,11 @@ const NewHomePage = () => {
           </div>
 
           <div className="course-filters">
-            <button className="filter-btn active">Data Science</button>
-            <button className="filter-btn">Programming</button>
-            <button className="filter-btn">Artificial Intelligent</button>
-            <button className="filter-btn">Cloud Computing</button>
-            <button className="filter-btn">Cybersecurity</button>
             <button className="filter-btn view-all">View All Courses</button>
+            <button className="filter-btn active">Selenium</button>
+            <button className="filter-btn">Playwright</button>
+            <button className="filter-btn">AI Testing</button>
+            <button className="filter-btn">DevOps</button>
           </div>
 
           <div className="courses-grid">
@@ -290,28 +289,52 @@ const NewHomePage = () => {
         <div className="container">
           <div className="review-header">
             <div className="header-content">
-              <span className="section-subtitle">// Review</span>
-              <h2 className="section-title">What our students says</h2>
+              <span className="section-subtitle">// Reviews</span>
+              <h2 className="section-title">Success Stories from Our Students</h2>
               <div className="title-underline-left"></div>
             </div>
+
             <div className="review-nav">
-              <button className="nav-btn prev">←</button>
-              <button className="nav-btn next">→</button>
+              <button className="nav-btn prev">‹</button>
+              <button className="nav-btn next">›</button>
             </div>
           </div>
 
           <div className="reviews-grid">
             {reviews.map((review, index) => (
               <div key={index} className="review-card">
-                <div className="quote-icon">❝</div>
-                <p className="review-text">{review.text}</p>
-                <div className="reviewer-info">
-                  <img src={review.image} alt={review.name} className="reviewer-image" />
-                  <div className="reviewer-details">
+                {/* Header */}
+                <div className="review-card-header">
+                  <img
+                    src={review.image}
+                    alt={review.name}
+                    className="reviewer-image"
+                  />
+                  <div>
                     <h4 className="reviewer-name">{review.name}</h4>
                     <span className="reviewer-role">{review.role}</span>
                   </div>
                 </div>
+
+                {/* Pre → Post Section */}
+                <div className="career-transition">
+                  <div className="career-box">
+                    <span className="career-label">PRE BOSSCODER</span>
+                    <p className="career-company">{review.preCompany}</p>
+                  </div>
+
+                  <div className="career-arrow">
+                    <span>➜</span>
+                  </div>
+
+                  <div className="career-box highlight">
+                    <span className="career-label">POST BOSSCODER</span>
+                    <p className="career-company">{review.postCompany}</p>
+                  </div>
+                </div>
+
+                {/* Review Text */}
+                <p className="review-text">“{review.text}”</p>
               </div>
             ))}
           </div>
@@ -408,7 +431,7 @@ const NewHomePage = () => {
 
 const courses = [
   {
-    title: "Data Structures and Algorithms",
+    title: "Java and Selenium",
     rating: 4.9,
     reviews: 2023,
     students: "4,912",
@@ -418,7 +441,7 @@ const courses = [
     description: "Master the fundamentals of DSA with Java. Includes 300+ coding problems and live projects.",
   },
   {
-    title: "Machine Learning Foundations",
+    title: "Playwright with Typescript",
     rating: 4.9,
     reviews: 1425,
     students: "3,866",
@@ -428,7 +451,7 @@ const courses = [
     description: "Learn the basics of ML, including regression, classification, and clustering algorithms.",
   },
   {
-    title: "Google Professional Certificate Data Analytics",
+    title: "Devops for Automation Testing",
     rating: 4.9,
     reviews: 3652,
     students: "3,982",
@@ -440,24 +463,16 @@ const courses = [
     description: "Get professional training in Data Analytics from Google experts. No experience required.",
   },
   {
-    title: "Supervised Machine Learning: Regression",
+    title: "AI for Automation Testing",
     rating: 4.9,
-    reviews: 1452,
-    students: "10,253",
-    lessons: 78,
-    price: "$79.00",
-    image: courseImage2,
-    description: "Deep dive into supervised learning techniques with a focus on regression models.",
-  },
-  {
-    title: "Fundamentos: dados, dados, em todos os lugares",
-    rating: 4.9,
-    reviews: 2023,
-    students: "4,912",
-    lessons: 37,
-    price: "$79.00",
-    image: courseImage2,
-    description: "Understand the importance of data in today's world and how to leverage it for business.",
+    reviews: 3652,
+    students: "3,982",
+    lessons: 19,
+    price: "$29.00",
+    originalPrice: "$39.00",
+    discount: "20% OFF",
+    image: courseImage1,
+    description: "Get professional training in Data Analytics from Google experts. No experience required.",
   },
 ];
 
@@ -467,35 +482,47 @@ const reviews = [
     name: "Supriya D",
     role: "Student",
     image: noPic,
+    preCompany: "Cerner",
+    postCompany: "Airtel Payments Bank",
   },
   {
     text: "I really appreciate you for taking time from daily routines and providing training on Java and Selenium. The topics covered are good and detailed. The support provided post sessions is also excellent.!",
     name: "Srikanth chivukula",
     role: "Student",
-    image: noPic,
+    image: noPic,    
+    preCompany: "Infozech Software Pvt Ltd",
+    postCompany: "Google",
   },{
     text: "The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand.",
     name: "Mayooran Thiruchselvam",
     role: "Student",
     image: noPic,
+    preCompany: "Infozech Software Pvt Ltd",
+    postCompany: "Google",
   },
   {
     text: "The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand.",
     name: "Ritu Bajaj",
     role: "Manager",
     image: noPic,
+    preCompany: "Infozech Software Pvt Ltd",
+    postCompany: "Google",
   },
   {
     text: "The course was great and I learned a lot. The instructor was very knowledgeable and the material was well-organized.",
     name: "Prachi Gupta",
     role: "Automation Testing Engineer",
     image: noPic,
+    preCompany: "Infozech Software Pvt Ltd",
+    postCompany: "Google",
   },
   {
     text: "The course was great and I learned a lot. The instructor was very knowledgeable and the material was well-organized.",
     name: "Courtney Henry",
     role: "Software Engineer",
     image: noPic,
+    preCompany: "Infozech Software Pvt Ltd",
+    postCompany: "Google",
   },
 ];
 
