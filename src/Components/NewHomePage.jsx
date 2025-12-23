@@ -33,29 +33,6 @@ const NewHomePage = () => {
       <div className="container">
         {/* Top Bar */}
         <header className="top-bar">
-          <div className="logo-section">
-            <div className="logo-container">
-              <div className="logo-icon">
-                {/* Placeholder for the abstract logo */}
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-svg">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" />
-                  <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <div className="logo-text">
-                <span className="company-name">AI Innovation<br />Institute Ltd</span>
-                <span className="company-sub">Part of the<br />Karnavati Group<br />of Learning</span>
-              </div>
-            </div>
-            <div className="linkedin-badge">
-              <FaLinkedin className="linkedin-icon" />
-              <div className="badge-text">
-                <span className="badge-label">LinkedIn</span>
-                <span className="badge-title">Top Startup 2024</span>
-              </div>
-            </div>
-          </div>
           <nav className="social-nav">
             <a href="#" className="social-link">LinkedIn</a>
             <a href="#" className="social-link">X / Twitter</a>
@@ -68,9 +45,6 @@ const NewHomePage = () => {
         {/* Hero Section */}
         <main className="hero-section">
           <div className="hero-content">
-            <div className="workshop-badge">
-              <span className="ai-icon">🤖</span> GenAI 8.0 Workshop
-            </div>
             
             <h1 className="hero-title">
               Don't Let AI <span className="highlight-blue">Over-Power</span><br />
