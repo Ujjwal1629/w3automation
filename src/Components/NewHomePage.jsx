@@ -2,7 +2,6 @@ import React from 'react';
 import './NewHomePage.css';
 import courseImageDsa from '../assets/dsa-course image.jpeg';
 import courseImage1 from '../assets/course-img101.jpeg';
-import courseImage2 from '../assets/course-img102.jpeg';
 import profileImage from '../assets/profilePic.jpg';
 import noPic from '../assets/no-img.webp';
 import heroSlide1 from '../assets/slide-img1.jpg';
@@ -10,11 +9,16 @@ import heroSlide2 from '../assets/slide-img2.jpg';
 import heroSlide3 from '../assets/slide-img3.jpg';
 import { useState, useEffect } from 'react';
 
-import { FaLinkedin, FaTwitter, FaYoutube, FaGithub, FaInstagram, FaMicrosoft, FaFacebookF } from 'react-icons/fa';
+import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { BsClock, BsGoogle } from 'react-icons/bs';
 
 const NewHomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeFilter, setActiveFilter] = useState('View All Courses');
+
+  const filteredCourses = activeFilter === 'View All Courses'
+    ? courses
+    : courses.filter(course => course.category === activeFilter);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -162,21 +166,24 @@ const NewHomePage = () => {
         {/* Popular Courses Section */}
         <section className="popular-courses-section">
           <div className="section-header">
-            {/* <span className="section-subtitle">// Popular Courses</span> */}
             <h2 className="section-title">Find your perfect program.</h2>
             <div className="title-underline"></div>
           </div>
 
           <div className="course-filters">
-            <button className="filter-btn view-all">View All Courses</button>
-            <button className="filter-btn active">Selenium</button>
-            <button className="filter-btn">Playwright</button>
-            <button className="filter-btn">AI Testing</button>
-            <button className="filter-btn">DevOps</button>
+            {['View All Courses', 'Selenium', 'Playwright', 'AI Testing', 'DevOps'].map((filter) => (
+              <button 
+                key={filter}
+                className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
+                onClick={() => setActiveFilter(filter)}
+              >
+                {filter}
+              </button>
+            ))}
           </div>
 
           <div className="courses-grid">
-            {courses.map((course, index) => (
+            {filteredCourses.map((course, index) => (
               <div key={index} className="course-card">
                 <div className="course-image-container">
                   <img src={course.image} alt={course.title} className="course-image" />
@@ -438,6 +445,7 @@ const courses = [
     lessons: 37,
     price: "$79.00",
     image: courseImageDsa,
+    category: "Selenium",
     description: "Master the fundamentals of DSA with Java. Includes 300+ coding problems and live projects.",
   },
   {
@@ -448,6 +456,7 @@ const courses = [
     lessons: 22,
     price: "$59.00",
     image: courseImage1,
+    category: "Playwright",
     description: "Learn the basics of ML, including regression, classification, and clustering algorithms.",
   },
   {
@@ -460,6 +469,7 @@ const courses = [
     originalPrice: "$39.00",
     discount: "20% OFF",
     image: courseImage1,
+    category: "DevOps",
     description: "Get professional training in Data Analytics from Google experts. No experience required.",
   },
   {
@@ -472,6 +482,7 @@ const courses = [
     originalPrice: "$39.00",
     discount: "20% OFF",
     image: courseImage1,
+    category: "AI Testing",
     description: "Get professional training in Data Analytics from Google experts. No experience required.",
   },
 ];
