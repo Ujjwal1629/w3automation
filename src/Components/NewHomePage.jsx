@@ -326,7 +326,6 @@ const NewHomePage = () => {
                 {/* Pre → Post Section */}
                 <div className="career-transition">
                   <div className="career-box">
-                    <span className="career-label">PRE BOSSCODER</span>
                     <p className="career-company">{review.preCompany}</p>
                   </div>
 
@@ -335,7 +334,6 @@ const NewHomePage = () => {
                   </div>
 
                   <div className="career-box highlight">
-                    <span className="career-label">POST BOSSCODER</span>
                     <p className="career-company">{review.postCompany}</p>
                   </div>
                 </div>
@@ -377,7 +375,7 @@ const NewHomePage = () => {
                     <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <span className="footer-brand-name">eCoach</span>
+                <span className="footer-brand-name">Journey To Automation</span>
               </div>
               <p className="footer-description">
                 Start, switch, or advance your career with more than 5,400 courses, Professional Certificates, and degrees from world-class universities and companies.
@@ -413,7 +411,7 @@ const NewHomePage = () => {
                 </li>
                 <li className="contact-item">
                   <span className="contact-icon">✉️</span>
-                  <span>info@ecoach.com.au</span>
+                  <span>info@JourneyToAutomation.com.au</span>
                 </li>
                 <li className="contact-item">
                   <span className="contact-icon">📞</span>
@@ -424,7 +422,7 @@ const NewHomePage = () => {
           </div>
 
           <div className="footer-bottom">
-            <span className="copyright">© 2023 eCoach @ Devignedge</span>
+            <span className="copyright">© 2023 Journey To Automation @ Devignedge</span>
             <div className="footer-legal">
               <a href="#">Terms of Service</a>
               <a href="#">Privacy Policy</a>
