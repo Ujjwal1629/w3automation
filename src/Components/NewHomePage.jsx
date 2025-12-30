@@ -10,7 +10,7 @@ import heroSlide3 from '../assets/slide-img3.jpg';
 import { useState, useEffect } from 'react';
 
 import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF } from 'react-icons/fa';
-import { BsClock, BsGoogle } from 'react-icons/bs';
+import { BsClock, BsGoogle, BsPerson, BsFileText, BsArrowRight } from 'react-icons/bs';
 
 const NewHomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -159,32 +159,55 @@ const NewHomePage = () => {
           <div className="courses-grid">
             {filteredCourses.map((course, index) => (
               <div key={index} className="course-card">
-                <div className="course-image-container">
+                
+                {/* Image Section */}
+                <div className="course-image-wrapper">
                   <img src={course.image} alt={course.title} className="course-image" />
-                  {course.discount && <span className="discount-badge">{course.discount}</span>}
-                  <div className="course-hover-details">
-                    <p className="hover-description">{course.description}</p>
-                    <button className="hover-btn">View Details</button>
+                  
+                  <div className="badge-container">
+                    {course.discount && <span className="discount-badge">{course.discount}</span>}
+                    <span className="category-badge">{course.category}</span>
+                  </div>
+
+                  {/* Hover Overlay */}
+                  <div className="card-overlay">
+                    <p className="overlay-text">{course.description}</p>
+                    <button className="view-details-btn">View Details</button>
                   </div>
                 </div>
+
+                {/* Content Section */}
                 <div className="course-content">
-                  <h3 className="course-title">{course.title}</h3>
-                  <div className="course-rating">
+                  <div className="rating-row">
                     <span className="stars">★★★★★</span>
-                    <span className="rating-value">{course.rating}</span>
-                    <span className="review-count">({course.reviews})</span>
+                    <span className="rating-number">{course.rating}</span>
+                    <span className="review-text">({course.reviews} reviews)</span>
                   </div>
-                  <div className="course-meta">
-                    <span className="student-count">👤 {course.students}</span>
-                    <span className="lesson-count">📄 {course.lessons} Lessons</span>
+
+                  <h3 className="course-title">{course.title}</h3>
+
+                  <div className="meta-row">
+                    <div className="meta-item">
+                      <BsPerson className="meta-icon" />
+                      <span>{course.students}</span>
+                    </div>
+                    <div className="meta-item">
+                      <BsFileText className="meta-icon" />
+                      <span>{course.lessons} lessons</span>
+                    </div>
                   </div>
-                  <div className="course-footer">
-                    <div className="price-container">
+
+                  <div className="card-footer">
+                    <div className="price-box">
                       <span className="current-price">{course.price}</span>
                       {course.originalPrice && <span className="original-price">{course.originalPrice}</span>}
                     </div>
+                    <button className="enroll-arrow">
+                      <BsArrowRight />
+                    </button>
                   </div>
                 </div>
+
               </div>
             ))}
           </div>
@@ -207,7 +230,7 @@ const NewHomePage = () => {
                   </svg>
                 </div>
                 <div className="success-text">
-                  <span className="success-percent">85%</span>
+                  <span className="success-percent">89%</span>
                   <span className="success-label">Success Rate</span>
                 </div>
               </div>
