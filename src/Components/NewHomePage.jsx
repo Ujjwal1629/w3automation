@@ -375,7 +375,7 @@ const NewHomePage = () => {
                 <span className="footer-brand-name">Journey To Automation</span>
               </div>
               <p className="footer-description">
-                Start, switch, or advance your career with more than 5,400 courses, Professional Certificates, and degrees from world-class universities and companies.
+                Learn Automation Testing with industry-standard tools and real-world projects.
               </p>
               <div className="footer-socials">
                 <a href="#" className="social-icon"><FaFacebookF /></a>
@@ -403,23 +403,19 @@ const NewHomePage = () => {
               <h3 className="footer-heading">Contact Info</h3>
               <ul className="contact-list">
                 <li className="contact-item">
-                  <span className="contact-icon">📍</span>
-                  <span>4823 Losh Lane, Pittsburgh Pennsylvania, 9100</span>
-                </li>
-                <li className="contact-item">
                   <span className="contact-icon">✉️</span>
-                  <span>info@JourneyToAutomation.com.au</span>
+                  <span>journeytoautomation@gmail.com</span>
                 </li>
                 <li className="contact-item">
                   <span className="contact-icon">📞</span>
-                  <span>412-774-3054</span>
+                  <span>+91 XXX XXX XXXX</span>
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="footer-bottom">
-            <span className="copyright">© 2023 Journey To Automation @ Devignedge</span>
+            <span className="copyright">© 2025 JourneyToAutomation. All rights reserved.</span>
             <div className="footer-legal">
               <a href="#">Terms of Service</a>
               <a href="#">Privacy Policy</a>
@@ -441,7 +437,7 @@ const courses = [
     price: "$79.00",
     image: courseImageDsa,
     category: "Selenium",
-    description: "Master the fundamentals of DSA with Java. Includes 300+ coding problems and live projects.",
+    description: "Master web automation testing using Selenium. Learn to build reliable test scripts and real-world automation frameworks.",
   },
   {
     title: "Playwright with Typescript",
@@ -452,7 +448,7 @@ const courses = [
     price: "$59.00",
     image: courseImage1,
     category: "Playwright",
-    description: "Learn the basics of ML, including regression, classification, and clustering algorithms.",
+    description: "Master end-to-end web automation using Playwright with TypeScript. Build fast, reliable tests with real-world projects.",
   },
   {
     title: "Devops for Automation Testing",
@@ -465,10 +461,10 @@ const courses = [
     discount: "20% OFF",
     image: courseImage1,
     category: "DevOps",
-    description: "Get professional training in Data Analytics from Google experts. No experience required.",
+    description: "Master DevOps fundamentals for test automation. Automate builds, tests, and deployments with real-world workflows.",
   },
   {
-    title: "AI for Automation Testing",
+    title: "`AI for Automation Testing`",
     rating: 4.9,
     reviews: 3652,
     students: "3,982",
@@ -478,7 +474,7 @@ const courses = [
     discount: "20% OFF",
     image: courseImage1,
     category: "AI Testing",
-    description: "Get professional training in Data Analytics from Google experts. No experience required.",
+    description: "End-to-end AI for automation testing. Covers intelligent test design, maintenance, and real-world use cases.",
   },
 ];
 
