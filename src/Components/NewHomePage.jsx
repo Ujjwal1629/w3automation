@@ -1,7 +1,10 @@
 import React from 'react';
 import './NewHomePage.css';
-import courseImageDsa from '../assets/dsa-course image.jpeg';
-import courseImage1 from '../assets/course-img101.jpeg';
+import courseImageJavaSel from '../assets/javaSel.png';
+import courseImagePlayTs from '../assets/playTs.jpeg';
+import courseImageDevOps from '../assets/devOps.webp';
+import courseImageAI from '../assets/AiTest.webp';
+import logoImage from '../assets/logo-edit.png';
 import profileImage from '../assets/profilePic.jpg';
 import noPic from '../assets/no-img.webp';
 import heroSlide1 from '../assets/slide-img1.jpg';
@@ -366,11 +369,11 @@ const NewHomePage = () => {
             <div className="footer-column brand-column">
               <div className="footer-logo">
                 <div className="logo-icon-small">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-svg-small">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" />
-                    <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  <img
+                    src={logoImage}
+                    alt="Logo"
+                    className="logo-image-small"
+                  />
                 </div>
                 <span className="footer-brand-name">Journey To Automation</span>
               </div>
@@ -435,7 +438,7 @@ const courses = [
     students: "4,912",
     lessons: 37,
     price: "$79.00",
-    image: courseImageDsa,
+    image: courseImageJavaSel,
     category: "Selenium",
     description: "Master web automation testing using Selenium. Learn to build reliable test scripts and real-world automation frameworks.",
   },
@@ -446,7 +449,7 @@ const courses = [
     students: "3,866",
     lessons: 22,
     price: "$59.00",
-    image: courseImage1,
+    image: courseImagePlayTs,
     category: "Playwright",
     description: "Master end-to-end web automation using Playwright with TypeScript. Build fast, reliable tests with real-world projects.",
   },
@@ -459,12 +462,12 @@ const courses = [
     price: "$29.00",
     originalPrice: "$39.00",
     discount: "20% OFF",
-    image: courseImage1,
+    image: courseImageDevOps,
     category: "DevOps",
     description: "Master DevOps fundamentals for test automation. Automate builds, tests, and deployments with real-world workflows.",
   },
   {
-    title: "`AI for Automation Testing`",
+    title: "AI for Automation Testing",
     rating: 4.9,
     reviews: 3652,
     students: "3,982",
@@ -472,7 +475,7 @@ const courses = [
     price: "$29.00",
     originalPrice: "$39.00",
     discount: "20% OFF",
-    image: courseImage1,
+    image: courseImageAI,
     category: "AI Testing",
     description: "End-to-end AI for automation testing. Covers intelligent test design, maintenance, and real-world use cases.",
   },
@@ -532,12 +535,12 @@ export default NewHomePage;
 
 const heroSlides = [
   {
-    name: "Ankit kumar",
-    initialRole: "Conultant",
-    currentRole: "Senior QA",
-    currentCompany: "IBM",
-    image: heroSlide1,
-    badge: "Senior QA"
+    name: "Rahul Verma",
+    initialRole: "Associate QA",
+    currentRole: "QA",
+    currentCompany: "Volkswagen Group",
+    image: heroSlide2,
+    badge: "QA"
   },
   {
     name: "Priya Sharma",
@@ -548,11 +551,11 @@ const heroSlides = [
     badge: "Senior Quality Engineer"
   },
   {
-    name: "Rahul Verma",
-    initialRole: "Associate QA",
-    currentRole: "QA",
-    currentCompany: "Volkswagen Group",
-    image: heroSlide2,
-    badge: "QA"
-  }
+    name: "Ankit kumar",
+    initialRole: "Conultant",
+    currentRole: "Senior QA",
+    currentCompany: "IBM",
+    image: heroSlide1,
+    badge: "Senior QA"
+  },
 ];
