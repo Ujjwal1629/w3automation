@@ -307,6 +307,7 @@ function App() {
         <Route path="/courseSDET" element={<CourseDetailPageSDET/>} />
         <Route path="/coursePlaywrightInterview" element={<CourseDetailPagePlaywrightInterview/>} />
         <Route path="/coursePlaywrightInterviewAI" element={<CourseDetailPageAI/>} />
+        <Route path="/courseAI" element={<CourseDetailPageAI/>} />
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/getCertificate" element={<GetCertificate />} />
         <Route path="/template" element={<Template />} />

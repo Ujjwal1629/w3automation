@@ -233,7 +233,7 @@ const NewHomePage = () => {
                   </svg>
                 </div>
                 <div className="success-text">
-                  <span className="success-percent">89%</span>
+                  <span className="success-percent">91%</span>
                   <span className="success-label">Success Rate</span>
                 </div>
               </div>

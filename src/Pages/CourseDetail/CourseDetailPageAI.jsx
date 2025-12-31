@@ -1,466 +1,238 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { FaUser, FaLink, FaLinkedin, FaStar } from 'react-icons/fa';
-import './CourseDetailPage.css';
-import { courseDetails } from './CourseData';
-// import bg2 from '../../assets/bg5B.jpg'
-// import instructorImg from '../../assets/profilePic.jpg';
+import { FaCheck, FaPlay, FaChevronDown, FaChevronUp, FaVideo, FaFileAlt } from 'react-icons/fa';
+import './CourseDetailPageAI.css';
+// import bgImage from '../../assets/ai-bg.jpg'; // Assuming generic or reusing
+import certImage from '../../assets/logo-edit.png'; // Placeholder or reuse
+import previewImage from '../../assets/logo-edit.png'
 
 const CourseDetailPageAI = () => {
-  const navigate = useNavigate();
-  const [expandedSyllabus, setExpandedSyllabus] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [expandedChapter, setExpandedChapter] = useState(0);
 
-  // Sample dynamic data (this could come from an API)
-  // const courseData = {
-  //   title: "SELENIUM WITH JAVA 2025 COURSE DETAILS",
-  //   description: "This course is designed to provide students with a comprehensive understanding of Selenium WebDriver using Java. By the end of the course, students will be able to automate web applications, write robust test scripts, and implement test automation frameworks.",
-  //   enrolled: 150,
-  //   backgroundImage: bg2,
-  //   stats: {
-  //     'Live - Projects':'2',
-  //     lectures: 32,
-  //     duration: "2.5 Months",
-  //     Certification:'Yes',
-  //     Recordings:'Lifetime access',
-  //     'Mock Test':"Weekly",
-  //     'Skill Level': "All levels",
-  //     language: "English",
-  //     Placement: "Assistance",
-  //     assessments: "Yes"
-  //   },
-  //   schedule: {
-  //     classTiming: {
-  //       indian: "07:30 AM IST",
-  //       us: "10:00 PM GMT",
-  //       uk: "03:00 AM GMT",
-  //     },
-  //     demo: "First 2 sessions are free!",
-  //     date:'2nd May 2025',
-  //     classDate:'5th May 2025 Onwards',
-  //     days:'Monday to Thursday',
-  //     features: [
-  //       "Live Classes",
-  //       "Recorded Sessions",
-  //       "Resume Assistance",
-  //       "Interview Prep",
-  //     ]
-  //   },
-  //   syllabus: [
-  //     {
-  //       title: "Core Java Topics Covered in Course",
-  //       topics: [
-  //         "Installing Java, History and Features Of Java",
-  //         "Classes and Objects",
-  //         "Data Types, Variables, Operators",
-  //         "Strings",
-  //         "Methods - Introduction",
-  //         "Predefined Method - MathRandom Class",
-  //         "Methods - Static and Non Static",
-  //         "If and Else Statements",
-  //         "For Loops",
-  //         "Nested Loops",
-  //         "Break and Continue",
-  //         "Switch cases",
-  //         "Do While Loops",
-  //         "Arrays 2D and 3D",
-  //         "Java Keywords - this, static, super and final",
-  //         "OOPS - Static and Non Static",
-  //         "Exception Handling",
-  //         "Packages and Access Modifiers",
-  //         "Java Collections - ArrayList, HashMap, HashSet"
-  //       ]
-  //     },
-  //     {
-  //       title: "Introduction to Selenium",
-  //       topics: [
-  //         "What is Test Automation?",
-  //         "Why Test Automation?",
-  //         "Types of Testing Tools",
-  //         "Effective Use of Tools - potential benefits and risks",
-  //         "Difference between manual and Automation.",
-  //         "The automated Testing process"
-  //       ]
-  //     },
-  //     {
-  //       title: "Locators",
-  //       topics: [
-  //         "Locating elements using ID, Name, link and Xpath, Relative locators in Selenium 4.0",
-  //         "Understanding of SelectorsHub browser extension"
-  //       ]
-  //     },
-  //     {
-  //       title: "Selenium Webdriver",
-  //       topics: [
-  //         "WebDriver Introduction",
-  //         "Selenium Webdriver Basics and Architecture",
-  //         "WebElement, Explicit and Implicit Wait",
-  //         "Handling MouseOvers, drag and drop and other gestures",
-  //         "Alerts and Actions",
-  //         "Iframes, tabs and popups handling",
-  //         "Handling CheckBoxes and Alerts",
-  //         "Xpath vs CSS, Actions",
-  //         "Window Handling, JavaScriptExecutor, Properties"
-  //       ]
-  //     },
-  //     {
-  //       title: "Advance Selenium Webdriver",
-  //       topics: [
-  //         "Handling JavaScript alerts and Keyboard Events",
-  //         "Maven, DB Connectivity and TestNG",
-  //         "POI JARS",
-  //         "Log4j API",
-  //         "TestNG - Parameterization, groups, testsuites etc",
-  //         "ReportNG and Allure Reports",
-  //         "Page Object Model Design Pattern",
-  //         "Keyword Driven Framework",
-  //         "Data Driven Framework"
-  //       ]
-  //     },
-  //     {
-  //       title: "REST Assured API Automation",
-  //       topics: [
-  //         "Adding REST Libraries to the Maven Project",
-  //         "Sample Test Case Scripting",
-  //         "Performing POST Requests",
-  //         "Performing GET Requests",
-  //         "Performing DELETE Requests",
-  //         "Request and Response Spec Builder", 
-  //         "POJO Concepts",
-  //         "GraphQL Automation",
-  //         "End-to-End Scenarios using REST Assured",
-  //         "Parsing JSON and XML Responses using JSON Path and XML Path",
-  //         "Validating JSON Schema",
-  //         "BDD and Non-BDD Approaches",
-  //         "Serialization and Deserialization of Requests and Responses"
-  //       ]
-  //     },
-  //     {
-  //       title: "Basics of the Cucumber Framework",
-  //       topics: [
-  //         "Introduction to Cucumber",
-  //         "Creating a New Feature and File Syntax",
-  //         "Runner File and Creating Step Definitions",
-  //         "Combining TESTNG with Cucumber",
-  //         "Executing Cases using Runner File",
-  //         "Preparing the Scenario Name based on Tags",
-  //         "Scenario Outline, Scenario Templates, and Different Cucumber Tags and Annotations",
-  //         "Sharing Reports over the Cucumber Cloud",
-  //         "Data Tables",
-  //         "Parallel Testing"
-  //       ]
-  //     },
-      
-  //     {
-  //       title: "Version Control",
-  //       topics: [
-  //         "Git",
-  //         "GitHub",
-  //         "Github Desktop"
-  //       ]
-  //     },
-  //     {
-  //       title: "CI / CD - Jenkins Pipeline",
-  //       topics: [
-  //         "Continuous Integration using Jenkins and GIT on EC2 Instance",
-  //         "Configuring the CI CD Pipeline",
-  //         "Running the pipeline from Jenkins File"
-  //       ]
-  //     },
-  //   ],
-  //   pricing: {
-  //     price: {
-  //       indian: "8000 INR",
-  //       uk: "100 EUROS",
-  //       us: "120 USD"
-  //     },
-  //     contact: "+91 8810201221",
-  //     linkedin: "https://www.linkedin.com/in/hemant-gandhi254/"
-  //   },
-  //   instructor: {
-  //     name: "Hemant Gandhi",
-  //     title:'QA Automation Lead and Trainer',
-  //     bio: "With over 10 years of experience in the software testing industry. He has worked extensively with various automation testing tools and frameworks, specializing in delivering high-quality software solutions. His passion for quality assurance and automation drives him to share knowledge and help others excel in this field.",
-  //     students: '200',
-  //     ratings: '4.2',
-  //     image: instructorImg
-  //   }, 
-  //   testimonials: [
-  //     {
-  //     userName: "Supriya D",
-  //     userReview: "I recently completed Hemant Gandhi's automation testing class on Java and Selenium, and it was outstanding. The instructor made complex topics easy to understand, and the hands-on exercises were incredibly valuable."
-  //     },
-  //     {
-  //     userName: "Srikanth chivukula",
-  //     userReview: "I really appreciate you for taking time from daily routines and providing training on Java and Selenium. The topics covered are good and detailed. The support provided post sessions is also excellent.!"
-  //     },
-  //     {
-  //     userName: "Mayooran Thiruchselvam",
-  //     userReview: "The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand."
-  //     }
-  //   ],
-  //   faqs: [
-  //       {
-  //         question: "Is this course suitable for beginners?",
-  //         answer: "Yes, this course starts with the basics and gradually moves to advanced topics."
-  //       },
-  //       {
-  //         question: "Will I get hands-on experience?",
-  //         answer: "Absolutely! The course includes multiple assignments and a real-world project."
-  //       },
-  //       {
-  //         question: "What if I miss a class?",
-  //         answer: "Recorded sessions will be available for all lectures with lifetime access."
-  //       },
-  //       {
-  //         question: "Do I need to install any software?",
-  //         answer: "Yes, you will need to install Java, Eclipse, and Selenium WebDriver. Detailed instructions will be provided in the class as well for both macOS and Windows."
-  //       }
-  //   ]
-  // };
-
-  const courseData = courseDetails["playwrightAI"]; // Hardcoded
-  
-  if (!courseData) {
-    return <div>Course not found.</div>;
-  }
-
-  const navigateToEnroll = () => {
-    window.open('https://zoom.us/meeting/register/Dd-iekBnQ3CrAJcR50CKAQ', '_blank', 'noopener,noreferrer');
+  const toggleChapter = (index) => {
+    setExpandedChapter(expandedChapter === index ? null : index);
   };
 
-  const toggleFAQ = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
+  const courseContent = [
+    {
+      title: "Introduction to AI Testing",
+      desc: "Overview of AI in software testing, benefits, and tools.",
+      lessons: [
+        { title: "Course Introduction", duration: "05:20", type: "video" },
+        { title: "Why AI Testing?", duration: "08:15", type: "video" },
+        { title: "Tools Overview", duration: "12:10", type: "video" },
+      ]
+    },
+    {
+      title: "Setting Up Environment",
+      desc: "Configuring your system for AI-driven automation testing.",
+      lessons: [
+        { title: "Installing Python/Java", duration: "10:00", type: "video" },
+        { title: "Setting up IDE", duration: "06:45", type: "video" },
+        { title: "Installing Dependencies", duration: "04:30", type: "doc" },
+      ]
+    },
+    {
+      title: "AI Test Generation",
+      desc: "Generating test cases automatically using AI models.",
+      lessons: [
+        { title: "Understanding Generative AI", duration: "15:20", type: "video" },
+        { title: "Auto-generating Test Scripts", duration: "18:45", type: "video" },
+        { title: "Optimizing Generated Code", duration: "11:10", type: "video" },
+      ]
+    },
+    {
+      title: "Self-Healing Tests",
+      desc: "Implementing self-healing mechanisms for robust automation.",
+      lessons: [
+        { title: "What is Self-Healing?", duration: "09:30", type: "video" },
+        { title: "Handling Locator Changes", duration: "14:15", type: "video" },
+        { title: "Practice: Fixing Broken Tests", duration: "20:00", type: "video" },
+      ]
+    },
+  ];
 
   return (
-    <div className="course-detail-page">
+    <div className="ai-course-page">
+      
+      {/* Hero Section */}
+      <section className="ai-hero-section">
+        <div className="ai-container">
+          <div className="ai-hero-content">
+            <span className="ai-badge">Mostly Popular</span>
+            <h1 className="ai-hero-title">AI Testing Mastery</h1>
+            <p className="ai-hero-subtitle">The No.1 Course to Master AI-Powered Automation Testing</p>
+            
+            <div className="ai-stats-row">
+              <div className="ai-stat-item">
+                <FaVideo className="ai-stat-icon" />
+                <span className="ai-stat-value">42</span>
+                <span className="ai-stat-label">Lessons</span>
+              </div>
+              <div className="ai-stat-item">
+                <FaFileAlt className="ai-stat-icon" />
+                <span className="ai-stat-value">12</span>
+                <span className="ai-stat-label">Exercises</span>
+              </div>
+              <div className="ai-stat-item">
+                <FaCheck className="ai-stat-icon" />
+                <span className="ai-stat-value">8+</span>
+                <span className="ai-stat-label">Projects</span>
+              </div>
+            </div>
 
-      {/* Header Section  */}
-      <header className="course-header" style={{ backgroundImage: `url(${courseData.backgroundImage})` }}>
-        <div className="header-content">
-          <h1 className="course-title">
-            {courseData.title.split(" ").slice(0, 4).join(" ")}{" "}
-            <span>{courseData.title.split(" ").slice(4).join(" ")}</span>
-          </h1>
-          <p className="course-desc">{courseData.description}</p>
-          <p className="instructor-name-header"><strong>Instructor</strong>: {courseData.instructor.name}</p>
+            <div className="ai-hero-actions">
+              <button className="ai-btn-primary" onClick={() => document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})}>
+                <FaPlay size={12} /> Start Learning
+              </button>
+              <button className="ai-btn-outline">Download Syllabus</button>
+            </div>
+          </div>
+
+          <div className="ai-hero-media">
+            <div className="ai-media-wrapper">
+              <img src={previewImage} alt="Course Preview" className="ai-preview-img" />
+              <div className="ai-play-overlay">
+                <FaPlay color="white" size={24} style={{marginLeft: '4px'}} />
+              </div>
+            </div>
+          </div>
         </div>
-      </header>
+      </section>
 
-      {/* Middle Section */}
-      <section className="course-middle">
-        <div className="middle-content">
-          
-          {/* Course Stats */}
-          <div className="stats-grid">
-            {Object.entries(courseData.stats).map(([key, value]) => (
-              <div key={key} className="stat-card card-3d">
-                <span className="stat-label">{key}</span>
-                <span className="stat-value">{value}</span>
+      {/* What You'll Learn */}
+      <section className="ai-section">
+        <div className="ai-container" style={{display: 'block'}}>
+          <h2 className="ai-section-title">What you'll learn</h2>
+          <div className="ai-learn-grid">
+            {[
+              "Fundamentals of AI-driven testing and its advantages over traditional methods",
+              "How to set up and configure AI testing tools for your projects",
+              "Generating test cases automatically using machine learning models",
+              "Implementing self-healing tests to reduce maintenance overhead",
+              "Visual regression testing using AI-powered tools",
+              "Integrating AI testing into CI/CD pipelines for continuous delivery",
+              "Best practices for training and fine-tuning AI models for testing",
+              "Real-world case studies of successful AI testing implementations"
+            ].map((item, index) => (
+              <div className="ai-learn-item" key={index}>
+                <div className="ai-check-icon"><FaCheck /></div>
+                <p className="ai-learn-text">{item}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Syllabus Section */}
-          <div className="syllabus-section">
-            <h2>Course Syllabus</h2>
-            {courseData.syllabus.map((item, index) => (
-              <div key={index} className="syllabus-item card-3d">
-                <div 
-                  className="syllabus-header"
-                  onClick={() => setExpandedSyllabus(
-                    expandedSyllabus === item.title ? null : item.title
-                  )}
-                >
-                  <h3>{item.title}</h3>
-                  <span className="expand-btn">
-                    {expandedSyllabus === item.title ? '-' : '+'}
-                  </span>
+      {/* Course Content Accordion */}
+      <section className="ai-content-section">
+        <div className="ai-container" style={{display: 'block'}}>
+          <h2 className="ai-section-title">Course Content</h2>
+          <div className="ai-accordion">
+            {courseContent.map((chapter, index) => (
+              <div className="ai-accordion-item" key={index}>
+                <div className="ai-accordion-header" onClick={() => toggleChapter(index)}>
+                  <span className="ai-chapter-num">{String(index + 1).padStart(2, '0')}</span>
+                  <div className="ai-chapter-info">
+                    <h3 className="ai-chapter-title">{chapter.title}</h3>
+                    <p className="ai-chapter-desc">{chapter.desc}</p>
+                  </div>
+                  <div className="ai-chapter-meta">
+                    <span className="ai-chapter-badge">Free Preview</span>
+                    {expandedChapter === index ? <FaChevronUp style={{marginLeft: '1rem', color: '#94a3b8'}} /> : <FaChevronDown style={{marginLeft: '1rem', color: '#94a3b8'}} />}
+                  </div>
                 </div>
-                {expandedSyllabus === item.title && (
-                  <ul className="syllabus-topics">
-                    {item.topics.map((topic, idx) => (
-                      <li key={idx}>{topic}</li>
+                
+                {expandedChapter === index && (
+                  <div className="ai-lesson-list">
+                    {chapter.lessons.map((lesson, idx) => (
+                      <div className="ai-lesson-item" key={idx}>
+                        <div className="ai-lesson-icon">
+                          {lesson.type === 'video' ? <FaPlay size={12} /> : <FaFileAlt size={12} />}
+                        </div>
+                        <span>{lesson.title}</span>
+                        <span className="ai-lesson-duration">{lesson.duration}</span>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 )}
               </div>
             ))}
           </div>
         </div>
-
-        <aside className="pricing-sidebar card-3d">
-          {/* Schedule Card */}
-          <div className="schedule-card">
-            <h3 className='schedule-title-class' style={{paddingLeft: '20px'}}>Timings & Features</h3>
-            <div className="schedule-content">
-              {/* Demo Sessions Section */}
-              <p className="demo-session">
-                <strong className="demo-session-label">Demo Sessions:</strong>
-                <span className="demo-session-value">{courseData.schedule.demo}</span>
-              </p>
-
-              {/* Demo Schedule Section */}
-              <div className="timings">
-                <p className="schedule-heading">
-                  <strong>Demo Schedule:</strong>
-                  <span className="schedule-date">{courseData.schedule.date}</span>
-                </p>
-
-                  {/* US Special Demo Schedule */}
-                  <p className="schedule-heading">
-                    <strong>Demo Schedule (US Only):</strong>
-                    <span className="schedule-date">{courseData.schedule.dateUS}</span>
-                  </p>
-
-                {/* Time Zones Section */}
-                <div className="timezone-wrapper">
-                  <h3 className="timezone-heading">Time Zones</h3>
-                  <div className="timezone-grid">
-                    {Object.entries(courseData.schedule.classTiming).map(([key, value]) => (
-                      <p className="timezone-item" key={key}>
-                        <span className="timezone-label">{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
-                        <span className="timezone-value">{value}</span>
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Class Schedule Section */}
-              <div className="timings">
-                <p className="schedule-heading">
-                  <strong>Class Schedule:</strong>
-                  <span className="schedule-date">{courseData.schedule.classDate}</span>
-                  <span className="schedule-days">{courseData.schedule.days}</span>
-                </p>
-
-                <p className="schedule-heading">
-                  <strong>Class Schedule (US only):</strong>
-                  <span className="schedule-date">{courseData.schedule.classDateUS}</span>
-                  <span className="schedule-days">{courseData.schedule.daysUS}</span>
-                </p>
-
-                <div className="timezone-wrapper">
-                <h3 className="timezone-heading">Time Zones</h3>
-                <div className="timezone-grid">
-                  {Object.entries(courseData.schedule.classTiming).map(([key, value]) => (
-                    <p className="timezone-item" key={key}>
-                      <span className="timezone-label">{key.toUpperCase()}:</span>
-                      <span className="timezone-value">{value}</span>
-                    </p>
-                  ))}
-                </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Pricing Card */}
-          <div className="pricing-card">
-            <h3>Course Pricing</h3>
-            <div className="pricing-content">
-              <div className="prices">
-                <p className="price"><strong>INDIA</strong>: {courseData.pricing.price.indian}</p>
-                <p className="price"><strong>USA:</strong> {courseData.pricing.price.us}</p>
-                <p className="price"><strong>AUS:</strong> {courseData.pricing.price.aus}</p>
-              </div>
-              <p style={{display:'grid'}}><strong style={{marginBottom:7}}>For Payment Or Any Other Query Whatsapp on:</strong> {courseData.pricing.contact}</p>
-              <button className="enroll-btn" onClick={navigateToEnroll}>Enroll Now</button>
-            </div>
-          </div>
-        </aside>
       </section>
 
-      <section className="instructor-section">
-      <h2 className="section-title">About Instructor</h2>
-      <div className="instructor-container">
-        <div className="instructor-img">
-          <img src={courseData.instructor.image} alt={courseData.instructor.name} className="instructor-img" />
-          <div className="img-circle"></div> {/* Placeholder for circular border */}
-        </div>
-        <div className="instructor-info">
-          <h3 className="instructor-name">{courseData.instructor.name}</h3>
-          <p className="instructor-title">{courseData.instructor.title}</p>
-          <p className="instructor-bio">{courseData.instructor.bio}</p>
-          <div className="ratings">
-        {/* Rating */}
-        <div className="rating-item">
-          <div className="tooltip-wrapper">
-            <FaStar 
-              size={24} 
-              color="#ffc107" 
-              className="icon"
-            />
-            <span className="tooltip-text">Rating</span>
+      {/* Certificate Section */}
+      <section className="ai-cert-section">
+        <div className="ai-cert-container">
+          <div className="ai-cert-text">
+            <h2 className="ai-section-title" style={{textAlign: 'left', marginBottom: '1rem'}}>
+              What you'll get
+            </h2>
+            <p className="ai-intro-text">
+              Earn a Certificate of Completion from JourneyToAutomation upon completing the course.
+            </p>
+            <div className="ai-cert-highlights">
+              <div className="ai-highlight-item">
+                <FaCheck className="ai-blue-check" />
+                <span>Professional certification to showcase your skills</span>
+              </div>
+              <div className="ai-highlight-item">
+                <FaCheck className="ai-blue-check" />
+                <span>Downloadable PDF to share in social networks</span>
+              </div>
+              <div className="ai-highlight-item">
+                <FaCheck className="ai-blue-check" />
+                <span>Verifiable with a unique certificate ID</span>
+              </div>
+            </div>
+            
+            <button className="ai-btn-primary" style={{marginTop: '2rem'}}>Buy Now</button>
           </div>
-          <span className="rating-number">{courseData.instructor.ratings}</span>
-        </div>
-
-        {/* Students */}
-        <div className="rating-item">
-          <div className="tooltip-wrapper">
-            <FaUser 
-              size={24} 
-              color="#ffc107" 
-              className="icon"
-            />
-            <span className="tooltip-text">Students Trained</span>
+          <div className="ai-cert-preview">
+            {/* Using a placeholder or the uploaded image if accessible, but for now a simple styled div or generic image */}
+            <img src={certImage} alt="Certificate Preview" className="ai-certificate-img" onError={(e) => {e.target.onerror = null; e.target.src='https://via.placeholder.com/600x400?text=Certificate+Preview'}} />
           </div>
-          <span className="student-number">{courseData.instructor.students}</span>
         </div>
-
-        {/* LinkedIn */}
-        <div className="linkedin-wrapper">
-          <a href={courseData.pricing.linkedin} target="_blank" rel="noopener noreferrer">
-            <FaLinkedin size={24} color="#0e76a8" />
-            <span className="tooltip-text">View LinkedIn Profile</span>
-          </a>
-        </div>
-      </div>
-        </div>
-      </div>
       </section>
 
-      <section className="testimonials-section-coursePage">
-      <h2 className="testimonials-heading-coursePage">What Our Students Say</h2>
-      <div className="testimonials-container-coursePage">
-        {courseData.testimonials.map((testimonial, index) => (
-          <div className="testimonial-card-coursePage" key={index}>
-            <h3 className="username-coursePage">{testimonial.userName}</h3>
-            <p className="user-review-coursePage">{testimonial.userReview}</p>
+      {/* Pricing Section */}
+      <section className="ai-pricing-section" id="pricing">
+        <h2 className="ai-pricing-title">Start Learning <span className="ai-span-blue">Today</span></h2>
+        
+        <div className="ai-pricing-grid">
+          {/* Box 1 */}
+          <div className="ai-price-card">
+            <div className="ai-card-header">
+              <h3>Lectures</h3>
+              <p className="ai-price">$139 <span>USD</span></p>
+              <p className="ai-access-text">One-time. Lifetime access.</p>
+            </div>
+            <button className="ai-buy-btn">Buy Now</button>
+            <div className="ai-features-list">
+              <div className="ai-feature-item"><FaCheck className="ai-check" /> Access to all 42 lessons</div>
+              <div className="ai-feature-item"><FaCheck className="ai-check" /> Private course channel</div>
+              <div className="ai-feature-item"><FaCheck className="ai-check" /> LIVE instructor support</div>
+            </div>
           </div>
-        ))}
-      </div>
-    </section>
 
-    <section className="faq-section">
-      <h2 className="faq-title">
-        <span className="faq-highlight">Got Questions?</span> We've Got Answers!
-      </h2>
-      <div className="faq-container">
-        {courseData.faqs.map((faq, index) => (
-          <div 
-            key={index} 
-            className={`faq-item ${activeIndex === index ? 'active' : ''}`}
-          >
-            <div 
-              className="faq-question" 
-              onClick={() => toggleFAQ(index)}
-            >
-              <span>{faq.question}</span>
-              <span className="faq-icon">
-                {activeIndex === index ? '−' : '+'}
-              </span>
+          {/* Box 2 */}
+          <div className="ai-price-card recommended">
+            <div className="ai-rec-badge">Recommended</div>
+            <div className="ai-card-header" style={{marginTop: '1rem'}}>
+              <h3>Lectures + Practice</h3>
+              <p className="ai-price">$499 <span>USD</span></p>
+              <p className="ai-access-text">One-time. Lifetime access.</p>
             </div>
-            <div className="faq-answer">
-              <p>{faq.answer}</p>
+            <button className="ai-buy-btn">Buy Now</button>
+            <div className="ai-features-list">
+              <div className="ai-feature-item"><FaCheck className="ai-check" /> Everything in "Lectures" plus:</div>
+              <div className="ai-feature-item"><FaCheck className="ai-check" /> 12 test case coding assignments</div>
+              <div className="ai-feature-item"><FaCheck className="ai-check" /> 6 code review sessions</div>
+              <div className="ai-feature-item"><FaCheck className="ai-check" /> Personal portfolio project</div>
             </div>
           </div>
-        ))}
-      </div>
-    </section>
+        </div>
+      </section>
 
     </div>
   );
