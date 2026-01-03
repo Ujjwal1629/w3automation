@@ -9,7 +9,7 @@ import profileImage from '../assets/profilePic.jpg';
 import noPic from '../assets/no-img.webp';
 import heroSlide1 from '../assets/slide-img1.jpg';
 import heroSlide2 from '../assets/slide-img2.jpg';
-import heroSlide3 from '../assets/slide-img3.jpg';
+import heroSlide3 from '../assets/slide-img4.jpg';
 import { useState, useEffect } from 'react';
 
 import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF } from 'react-icons/fa';
@@ -52,20 +52,15 @@ const NewHomePage = () => {
             <h1 className="hero-title">
               Don't Let AI <span className="highlight-blue">Over-Power</span><br />
               <span className="highlight-purple">You!</span> Become an AI-Powered<br />
-              Professional
+              Test Engineer
             </h1>
-            
-            <p className="hero-subtitle">
-              Learn Groundbreaking Secrets to Save 1000s of Dollars, Streamline<br />
-              Work Processes & Supercharge Your Growth in 2024
-            </p>
 
             <div className="info-cards">
               <div className="info-card">
                 <BsClock className="info-icon" />
                 <div className="info-text">
-                  <span className="info-label">Application Deadline</span>
-                  <span className="info-value">6th April, Sunday | 11:00 AM IST</span>
+                  <span className="info-label">Demo Session</span>
+                  <span className="info-value">25th January, Sunday | 09:00 PM IST</span>
                 </div>
               </div>
               <div className="info-card">
@@ -78,8 +73,7 @@ const NewHomePage = () => {
             </div>
 
             <div className="cta-group">
-              <button className="register-btn">Register now for $ 25.00 USD</button>
-              <a href="#" className="discount-link">click here to get team discount</a>
+              <button className="register-btn">Register now</button>
             </div>
           </div>
 
@@ -297,7 +291,7 @@ const NewHomePage = () => {
           <div className="review-header">
             <div className="header-content">
               <span className="section-subtitle">// Reviews</span>
-              <h2 className="section-title">Success Stories from Our Students</h2>
+              <h2 className="section-title">Feedback from Our Students</h2>
               <div className="title-underline-left"></div>
             </div>
 
@@ -320,21 +314,6 @@ const NewHomePage = () => {
                   <div>
                     <h4 className="reviewer-name">{review.name}</h4>
                     <span className="reviewer-role">{review.role}</span>
-                  </div>
-                </div>
-
-                {/* Pre → Post Section */}
-                <div className="career-transition">
-                  <div className="career-box">
-                    <p className="career-company">{review.preCompany}</p>
-                  </div>
-
-                  <div className="career-arrow">
-                    <span>➜</span>
-                  </div>
-
-                  <div className="career-box highlight">
-                    <p className="career-company">{review.postCompany}</p>
                   </div>
                 </div>
 
@@ -483,9 +462,9 @@ const courses = [
 
 const reviews = [
   {
-    text: "I recently completed Hemant Gandhi's automation testing class on Java and Selenium, and it was outstanding. The instructor made complex topics easy to understand, and the hands-on exercises were incredibly valuable.",
-    name: "Supriya D",
-    role: "Student",
+    text: "The trainer's expertise in Java and Selenium shone through, and his patience in addressing our queries was impressive. I feel confident applying these skills in real-world scenarios. Kudos to Hemanth for an outstanding learning experience.",
+    name: "Veerabhadra Sarma Kunapuli",
+    role: "QA Manager",
     image: noPic,
     preCompany: "Cerner",
     postCompany: "Airtel Payments Bank",
@@ -493,38 +472,38 @@ const reviews = [
   {
     text: "I really appreciate you for taking time from daily routines and providing training on Java and Selenium. The topics covered are good and detailed. The support provided post sessions is also excellent.!",
     name: "Srikanth chivukula",
-    role: "Student",
+    role: "Senior Test Specialist",
     image: noPic,    
     preCompany: "Infozech Software Pvt Ltd",
     postCompany: "Google",
   },{
     text: "The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand.",
     name: "Mayooran Thiruchselvam",
-    role: "Student",
+    role: "Associate QA Engineer",
     image: noPic,
     preCompany: "Infozech Software Pvt Ltd",
     postCompany: "Google",
   },
   {
-    text: "Hemant's Playwright interview prep course was game-changing! The combination of JavaScript fundamentals with real interview scenarios helped me land my dream SDET role. The mock interviews were incredibly realistic.",
-    name: "Priya Sharma",
-    role: "Manager",
+    text: "Its been a wonderful journey of going through your course and recently landed a job and the programming questions were helpful to Crack the interviews . Focus on the core fundamentals was the key which helped me. I have landed a job in Landmark group as an SDET.",
+    name: "Sai Rahul PALUVAI",
+    role: "SDET Manager",
     image: noPic,
     preCompany: "Infozech Software Pvt Ltd",
     postCompany: "Google",
   },
   {
-    text: "The course structure is perfect for interview preparation. Starting from JS/TS basics to advanced Playwright concepts - everything was covered in detail. The CI/CD integration module was particularly helpful.",
-    name: "Rajesh Kumar",
-    role: "Automation Testing Engineer",
+    text: "I am truly grateful to share my appreciation for Hemant Gandhi and his outstanding Playwright Automation Testing course. Hemant’s course helped me refine my understanding, strengthen my foundation, and elevate my technical approach to a much more polished level.",
+    name: "Anik Roychoudhury",
+    role: "Test Lead",
     image: noPic,
     preCompany: "Infozech Software Pvt Ltd",
     postCompany: "Google",
   },
   {
-    text: "As someone transitioning to test automation, this course provided the perfect blend of theory and practical implementation. The live coding sessions and portfolio guidance were exceptional.",
-    name: "Sarah Johnson",
-    role: "Software Engineer",
+    text: "I have enrolled in Automation testing class on Java and Selenium and Hemant  is outstanding 👌  made complex topics easy to understand.. and topics  are covered in details.",
+    name: "Faiyaz Bagwan",
+    role: "Sr. QA Engineer",
     image: noPic,
     preCompany: "Infozech Software Pvt Ltd",
     postCompany: "Google",
@@ -535,7 +514,7 @@ export default NewHomePage;
 
 const heroSlides = [
   {
-    name: "Rahul Verma",
+    name: "Rahul Bharadwaj",
     initialRole: "Associate QA",
     currentRole: "QA",
     currentCompany: "Volkswagen Group",
@@ -543,7 +522,15 @@ const heroSlides = [
     badge: "QA"
   },
   {
-    name: "Priya Sharma",
+    name: "Anik Roychoudhury",
+    initialRole: "Associate QA",
+    currentRole: "Senior Specialist - QA",
+    currentCompany: "LTIMindtree",
+    image: heroSlide2,
+    badge: "QA"
+  },
+  {
+    name: "Medha pallavi",
     initialRole: "Associate Consultant",
     currentRole: "Senior Quality Engineer",
     currentCompany: "LTIMindtree",
@@ -551,8 +538,8 @@ const heroSlides = [
     badge: "Senior Quality Engineer"
   },
   {
-    name: "Ankit kumar",
-    initialRole: "Conultant",
+    name: "Hyder Ali",
+    initialRole: "Conultant QA",
     currentRole: "Senior QA",
     currentCompany: "IBM",
     image: heroSlide1,

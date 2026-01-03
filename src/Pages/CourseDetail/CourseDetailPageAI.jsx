@@ -6,49 +6,125 @@ import certImage from '../../assets/logo-edit.png'; // Placeholder or reuse
 import previewImage from '../../assets/logo-edit.png'
 
 const CourseDetailPageAI = () => {
-  const [expandedChapter, setExpandedChapter] = useState(0);
+  // State to manage expanded chapters (all expanded by default)
+  const [expandedChapters, setExpandedChapters] = useState([0, 1, 2]);
 
   const toggleChapter = (index) => {
-    setExpandedChapter(expandedChapter === index ? null : index);
+    setExpandedChapters(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index) 
+        : [...prev, index]
+    );
   };
+
+  const whatYouWillLearn = [
+    "Fundamentals of AI-driven testing and its advantages over traditional methods",
+    "How to set up and configure AI testing tools for your projects",
+    "Generating test cases automatically using machine learning models",
+    "Implementing self-healing tests to reduce maintenance overhead",
+    "Visual regression testing using AI-powered tools",
+    "Integrating AI testing into CI/CD pipelines for continuous delivery",
+    "Best practices for training and fine-tuning AI models for testing",
+    "Real-world case studies of successful AI testing implementations"
+  ];
 
   const courseContent = [
     {
-      title: "Introduction to AI Testing",
-      desc: "Overview of AI in software testing, benefits, and tools.",
-      lessons: [
-        { title: "Course Introduction", duration: "05:20", type: "video" },
-        { title: "Why AI Testing?", duration: "08:15", type: "video" },
-        { title: "Tools Overview", duration: "12:10", type: "video" },
+      title: "Week 1: AI Testing Paradigm Shift & Data Testing",
+      desc: "Mindset transformation and data quality fundamentals.",
+      sections: [
+        {
+          title: "Mindset Transformation",
+          items: [
+            "Traditional vs AI testing: The fundamental differences",
+            "Probabilistic thinking for testers",
+            "New quality dimensions: Reliability, confidence, risk",
+            "Activity: Rewrite traditional test cases for AI systems"
+          ]
+        },
+        {
+          title: "Data Testing Fundamentals",
+          items: [
+            "Data as the new source code",
+            "Data quality dimensions (completeness, consistency, bias)",
+            "Bias detection techniques",
+            "Hands-on: Data profiling and bias hunting exercise",
+            "Deliverable: Data quality assessment report"
+          ]
+        },
+        {
+          title: "Track-Specific Focus",
+          items: [
+            "Manual: Exploratory data testing techniques",
+            "Automation: Automated data validation scripts"
+          ]
+        }
       ]
     },
     {
-      title: "Setting Up Environment",
-      desc: "Configuring your system for AI-driven automation testing.",
-      lessons: [
-        { title: "Installing Python/Java", duration: "10:00", type: "video" },
-        { title: "Setting up IDE", duration: "06:45", type: "video" },
-        { title: "Installing Dependencies", duration: "04:30", type: "doc" },
+      title: "Week 2: Model Testing & Statistics",
+      desc: "Black-box testing for models and statistical validation.",
+      sections: [
+        {
+          title: "Black-Box Model Testing",
+          items: [
+            "Functional behavior testing for models",
+            "Sensitivity and stability analysis",
+            "Overfitting/underfitting detection",
+            "Hands-on: Test pre-trained models (sentiment, classification)"
+          ]
+        },
+        {
+          title: "Statistics for Testers",
+          items: [
+            "Confusion matrix as your truth table",
+            "Precision, recall, F1-score - business implications",
+            "Metric selection based on risk",
+            "Activity: Analyze model performance reports",
+            "Deliverable: Model evaluation cheat sheet"
+          ]
+        },
+        {
+          title: "Track-Specific Focus",
+          items: [
+            "Manual: Metric interpretation and reporting",
+            "Automation: Statistical validation in test automation"
+          ]
+        }
       ]
     },
     {
-      title: "AI Test Generation",
-      desc: "Generating test cases automatically using AI models.",
-      lessons: [
-        { title: "Understanding Generative AI", duration: "15:20", type: "video" },
-        { title: "Auto-generating Test Scripts", duration: "18:45", type: "video" },
-        { title: "Optimizing Generated Code", duration: "11:10", type: "video" },
+      title: "Week 3: AI API & Integration Testing",
+      desc: "Testing AI APIs, integration workflows, and performance.",
+      sections: [
+        {
+          title: "Testing AI APIs",
+          items: [
+            "Probabilistic API testing strategies",
+            "Input/output validation for AI endpoints",
+            "Confidence score testing",
+            "Hands-on: REST API testing for AI services"
+          ]
+        },
+        {
+          title: "Integration & Performance Testing",
+          items: [
+            "End-to-end AI workflow testing",
+            "Performance testing for inference latency",
+            "Cost testing (token economics for LLMs)",
+            "Activity: Build comprehensive API test suite",
+            "Deliverable: API testing framework/checklist"
+          ]
+        },
+        {
+          title: "Track-Specific Focus",
+          items: [
+            "Manual: Exploratory API testing",
+            "Automation: Performance test automation"
+          ]
+        }
       ]
-    },
-    {
-      title: "Self-Healing Tests",
-      desc: "Implementing self-healing mechanisms for robust automation.",
-      lessons: [
-        { title: "What is Self-Healing?", duration: "09:30", type: "video" },
-        { title: "Handling Locator Changes", duration: "14:15", type: "video" },
-        { title: "Practice: Fixing Broken Tests", duration: "20:00", type: "video" },
-      ]
-    },
+    }
   ];
 
   return (
@@ -104,16 +180,7 @@ const CourseDetailPageAI = () => {
         <div className="ai-container" style={{display: 'block'}}>
           <h2 className="ai-section-title">What you'll learn</h2>
           <div className="ai-learn-grid">
-            {[
-              "Fundamentals of AI-driven testing and its advantages over traditional methods",
-              "How to set up and configure AI testing tools for your projects",
-              "Generating test cases automatically using machine learning models",
-              "Implementing self-healing tests to reduce maintenance overhead",
-              "Visual regression testing using AI-powered tools",
-              "Integrating AI testing into CI/CD pipelines for continuous delivery",
-              "Best practices for training and fine-tuning AI models for testing",
-              "Real-world case studies of successful AI testing implementations"
-            ].map((item, index) => (
+            {whatYouWillLearn.map((item, index) => (
               <div className="ai-learn-item" key={index}>
                 <div className="ai-check-icon"><FaCheck /></div>
                 <p className="ai-learn-text">{item}</p>
@@ -128,29 +195,39 @@ const CourseDetailPageAI = () => {
         <div className="ai-container" style={{display: 'block'}}>
           <h2 className="ai-section-title">Course Content</h2>
           <div className="ai-accordion">
-            {courseContent.map((chapter, index) => (
+            {courseContent.map((week, index) => (
               <div className="ai-accordion-item" key={index}>
                 <div className="ai-accordion-header" onClick={() => toggleChapter(index)}>
                   <span className="ai-chapter-num">{String(index + 1).padStart(2, '0')}</span>
                   <div className="ai-chapter-info">
-                    <h3 className="ai-chapter-title">{chapter.title}</h3>
-                    <p className="ai-chapter-desc">{chapter.desc}</p>
+                    <h3 className="ai-chapter-title">{week.title}</h3>
+                    <p className="ai-chapter-desc">{week.desc}</p>
                   </div>
                   <div className="ai-chapter-meta">
                     <span className="ai-chapter-badge">Free Preview</span>
-                    {expandedChapter === index ? <FaChevronUp style={{marginLeft: '1rem', color: '#94a3b8'}} /> : <FaChevronDown style={{marginLeft: '1rem', color: '#94a3b8'}} />}
+                    {expandedChapters.includes(index) ? <FaChevronUp style={{marginLeft: '1rem', color: '#94a3b8'}} /> : <FaChevronDown style={{marginLeft: '1rem', color: '#94a3b8'}} />}
                   </div>
                 </div>
                 
-                {expandedChapter === index && (
-                  <div className="ai-lesson-list">
-                    {chapter.lessons.map((lesson, idx) => (
-                      <div className="ai-lesson-item" key={idx}>
-                        <div className="ai-lesson-icon">
-                          {lesson.type === 'video' ? <FaPlay size={12} /> : <FaFileAlt size={12} />}
-                        </div>
-                        <span>{lesson.title}</span>
-                        <span className="ai-lesson-duration">{lesson.duration}</span>
+                {expandedChapters.includes(index) && (
+                  <div className="ai-lesson-list" style={{padding: '1.5rem'}}>
+                    {week.sections.map((section, sIdx) => (
+                      <div key={sIdx} className="ai-syllabus-section" style={{marginBottom: '1.5rem'}}>
+                        <h4 style={{fontSize: '1.1rem', fontWeight: '600', color: '#e2e8f0', marginBottom: '0.75rem'}}>
+                          {section.title}
+                        </h4>
+                        <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#94a3b8'}}>
+                          {section.items.map((item, iIdx) => (
+                            <li key={iIdx} style={{marginBottom: '0.5rem', lineHeight: '1.6'}}>
+                              {item.includes(':') ? (
+                                <span>
+                                  <strong style={{color: '#cbd5e1'}}>{item.split(':')[0]}:</strong>
+                                  {item.substring(item.indexOf(':') + 1)}
+                                </span>
+                              ) : item}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     ))}
                   </div>
@@ -186,7 +263,7 @@ const CourseDetailPageAI = () => {
               </div>
             </div>
             
-            <button className="ai-btn-primary" style={{marginTop: '2rem'}}>Buy Now</button>
+            <button className="ai-btn-primary" style={{marginTop: '2rem'}}>Interested</button>
           </div>
           <div className="ai-cert-preview">
             {/* Using a placeholder or the uploaded image if accessible, but for now a simple styled div or generic image */}

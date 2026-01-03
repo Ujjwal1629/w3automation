@@ -145,13 +145,6 @@
   color: #9333ea;
 }
 
-.hero-subtitle {
-  font-size: 1.1rem;
-  color: #4b5563;
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
-}
-
 .info-cards {
   display: flex;
   gap: 1.5rem;
@@ -213,12 +206,6 @@
 
 .register-btn:hover {
   opacity: 0.9;
-}
-
-.discount-link {
-  color: #4b5563;
-  text-decoration: underline;
-  font-size: 0.9rem;
 }
 
 /* Profile Card */
