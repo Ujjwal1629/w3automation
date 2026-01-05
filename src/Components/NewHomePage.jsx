@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './NewHomePage.css';
 import courseImageJavaSel from '../assets/javaSel.png';
 import courseImagePlayTs from '../assets/playTs.jpeg';
@@ -16,6 +17,7 @@ import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF } from 'reac
 import { BsClock, BsGoogle, BsPerson, BsFileText, BsArrowRight } from 'react-icons/bs';
 
 const NewHomePage = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeFilter, setActiveFilter] = useState('View All Courses');
 
@@ -196,10 +198,18 @@ const NewHomePage = () => {
 
                   <div className="card-footer">
                     <div className="price-box">
-                      <span className="current-price">{course.price}</span>
-                      {course.originalPrice && <span className="original-price">{course.originalPrice}</span>}
+                      <button 
+                        className="current-price" 
+                        onClick={() => navigate(course.link)}
+                        style={{ cursor: 'pointer', background: 'none', border: 'none', padding: 0, font: 'inherit' }}
+                      >
+                        know more
+                      </button>
                     </div>
-                    <button className="enroll-arrow">
+                    <button 
+                      className="enroll-arrow"
+                      onClick={() => navigate(course.link)}
+                    >
                       <BsArrowRight />
                     </button>
                   </div>
@@ -420,6 +430,7 @@ const courses = [
     image: courseImageJavaSel,
     category: "Selenium",
     description: "Master web automation testing using Selenium. Learn to build reliable test scripts and real-world automation frameworks.",
+    link: "/courseSDET"
   },
   {
     title: "Playwright with Typescript",
@@ -431,6 +442,7 @@ const courses = [
     image: courseImagePlayTs,
     category: "Playwright",
     description: "Master end-to-end web automation using Playwright with TypeScript. Build fast, reliable tests with real-world projects.",
+    link: "/coursePlaywrightInterview"
   },
   {
     title: "Devops for Automation Testing",
@@ -444,6 +456,7 @@ const courses = [
     image: courseImageDevOps,
     category: "DevOps",
     description: "Master DevOps fundamentals for test automation. Automate builds, tests, and deployments with real-world workflows.",
+    link: "/course/devops"
   },
   {
     title: "AI for Automation Testing",
@@ -457,6 +470,7 @@ const courses = [
     image: courseImageAI,
     category: "AI Testing",
     description: "End-to-end AI for automation testing. Covers intelligent test design, maintenance, and real-world use cases.",
+    link: "/coursePlaywrightInterviewAI"
   },
 ];
 
