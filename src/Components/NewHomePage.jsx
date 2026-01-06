@@ -14,8 +14,8 @@ import heroSlide3 from '../assets/slide-img4.jpg';
 import heroSlide4 from '../assets/slide-img6.jpg';
 import { useState, useEffect } from 'react';
 
-import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF, FaCheck, FaStar } from 'react-icons/fa';
-import { BsClock, BsGoogle, BsPerson, BsFileText, BsArrowRight } from 'react-icons/bs';
+import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF, FaCheck, FaStar,  } from 'react-icons/fa';
+import { BsClock, BsGoogle, BsPerson, BsFileText, BsArrowRight, BsCameraVideo} from 'react-icons/bs';
 
 const NewHomePage = () => {
   const navigate = useNavigate();
@@ -66,13 +66,13 @@ const NewHomePage = () => {
                   <span className="info-value">25th January, Sunday | 09:00 PM IST</span>
                 </div>
               </div>
-              <div className="info-card">
-                <BsGoogle className="info-icon google-icon" />
-                <div className="info-text">
-                  <span className="info-label">Online Platform</span>
-                  <span className="info-value">Google Meet</span>
-                </div>
-              </div>
+          <div className="info-card">
+            <BsCameraVideo className="info-icon zoom-icon" />
+            <div className="info-text">
+              <span className="info-label">Online Platform</span>
+              <span className="info-value">Zoom</span>
+            </div>
+          </div>
             </div>
 
           <div className="cta-group">
