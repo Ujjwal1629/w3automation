@@ -479,7 +479,7 @@ const courses = [
     image: courseImageDevOps,
     category: "DevOps",
     description: "Master DevOps fundamentals for test automation. Automate builds, tests, and deployments with real-world workflows.",
-    link: "/course/devops"
+    link: "/coursePlaywrightInterviewAI"
   },
   {
     title: "AI for Automation Testing",

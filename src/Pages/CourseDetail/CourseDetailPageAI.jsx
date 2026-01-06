@@ -425,7 +425,15 @@ const CourseDetailPageAI = () => {
             </div>
 
             <div className="ai-hero-actions">
-              <button className="ai-btn-primary" onClick={() => document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})}>
+              <button
+                className="ai-btn-primary"
+                onClick={() =>
+                  window.open(
+                    "https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw",
+                    "_blank"
+                  )
+                }
+              >
                 <FaPlay size={12} /> Start Learning
               </button>
             </div>
@@ -524,7 +532,18 @@ const CourseDetailPageAI = () => {
               </div>
             </div>
             
-            <button className="ai-btn-primary" style={{marginTop: '2rem'}}>Interested</button>
+            <button
+              className="ai-btn-primary"
+              style={{ marginTop: '2rem' }}
+              onClick={() =>
+                window.open(
+                  "https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw",
+                  "_blank"
+                )
+              }
+            >
+              Interested
+            </button>
           </div>
           <div className="ai-cert-preview">
             {/* Using a placeholder or the uploaded image if accessible, but for now a simple styled div or generic image */}

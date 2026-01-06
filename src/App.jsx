@@ -276,7 +276,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           <ThemeProvider>
-            <HomePage />
+            <HomePageNew />
           </ThemeProvider>
         } />
         <Route path="/register" element={<Register />} />
