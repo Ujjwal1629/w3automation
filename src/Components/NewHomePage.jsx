@@ -358,7 +358,17 @@ const NewHomePage = () => {
                 It is important to consider various factors such as your interests, skills, academic background, and future aspirations. Researching the different options available and seeking advice.
               </p>
             </div>
-            <button className="cta-button">Get Started Now →</button>
+            <button
+              className="cta-button"
+              onClick={() =>
+                window.open(
+                  "https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw",
+                  "_blank"
+                )
+              }
+            >
+              Get Started Now →
+            </button>
           </div>
         </div>
       </section>
