@@ -9,11 +9,11 @@ import logoImage from '../assets/logo-edit.png';
 import profileImage from '../assets/profilePic.jpg';
 import noPic from '../assets/no-img.webp';
 import heroSlide1 from '../assets/slide-img1.jpg';
-import heroSlide2 from '../assets/slide-img2.jpg';
+import heroSlide2 from '../assets/slide-img5.jpg';
 import heroSlide3 from '../assets/slide-img4.jpg';
 import { useState, useEffect } from 'react';
 
-import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF } from 'react-icons/fa';
+import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF, FaCheck, FaStar } from 'react-icons/fa';
 import { BsClock, BsGoogle, BsPerson, BsFileText, BsArrowRight } from 'react-icons/bs';
 
 const NewHomePage = () => {
@@ -220,54 +220,52 @@ const NewHomePage = () => {
           </div>
         </section>
 
-        {/* About Section */}
+        {/* Meet Your Instructor Section */}
         <section className="about-section">
           <div className="about-image-column">
             <div className="about-image-container">
               <img 
                 src={profileImage} 
-                alt="Instructor" 
+                alt="Hemant Gandhi" 
                 className="about-image" 
               />
               <div className="success-rate-card">
                 <div className="success-icon-box">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18455 2.99721 7.13631 4.40179 5.49706C5.80637 3.8578 7.71001 2.71537 9.83297 2.23759C11.9559 1.75981 14.1852 1.97279 16.19 2.83" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M22 4L12 14.01L9 11.01" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  <FaStar style={{color: 'white', fontSize: '1.5rem'}} />
                 </div>
                 <div className="success-text">
-                  <span className="success-percent">91%</span>
-                  <span className="success-label">Success Rate</span>
+                  <span className="success-percent">10+</span>
+                  <span className="success-label">Years Experience</span>
                 </div>
               </div>
             </div>
           </div>
           <div className="about-content-column">
-            <span className="about-subtitle">// About Us</span>
-            <h2 className="about-title">Ways we can help</h2>
+            <span className="about-subtitle">MEET YOUR INSTRUCTOR</span>
+            <h2 className="about-title">Hemant <span className="highlight-blue">Gandhi</span></h2>
+            <h3 className="instructor-role">QA Automation Lead and Trainer</h3>
             <div className="title-underline-left"></div>
             
             <p className="about-description">
-              Our eLearning platform is a dynamic and innovative online education hub designed to meet the needs of students, educators, and lifelong learners. We believe that learning should be accessible to everyone.
+              With over 10 years of experience in the software testing industry. He has worked extensively with various automation testing tools and frameworks, specializing in delivering high-quality software solutions. His passion for quality assurance and automation drives him to share knowledge and help others excel in this field.
             </p>
 
             <ul className="benefits-list">
               <li className="benefit-item">
-                <span className="check-icon">✓</span>
-                Personalised learning experiences
+                <span className="check-icon"><FaCheck /></span>
+                10+ Years Industry Experience
               </li>
               <li className="benefit-item">
-                <span className="check-icon">✓</span>
-                Access to a wide range of resources
+                <span className="check-icon"><FaCheck /></span>
+                Hands-on Training Approach
               </li>
               <li className="benefit-item">
-                <span className="check-icon">✓</span>
-                Flexibility and convenience
+                <span className="check-icon"><FaCheck /></span>
+                Expert Mentorship
               </li>
             </ul>
 
-            <button className="explore-btn">Explore Course →</button>
+            <button className="explore-btn" onClick={() => navigate('/courseSDET')}>View Courses</button>
           </div>
         </section>
       </div>
