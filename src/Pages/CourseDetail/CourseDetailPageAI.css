@@ -111,22 +111,6 @@
   transform: translateY(-2px);
 }
 
-.ai-btn-outline {
-  background-color: transparent;
-  color: white;
-  padding: 0.8rem 1.6rem;
-  border-radius: 8px;
-  font-weight: 600;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.ai-btn-outline:hover {
-  border-color: white;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
 .ai-hero-media {
   flex: 1;
   max-width: 500px;
@@ -219,7 +203,7 @@
 /* --- Course Content --- */
 .ai-content-section {
   background-color: #f8fafc;
-  padding: 5rem 0;
+  padding: 6rem 0;
 }
 
 .ai-accordion {
@@ -227,23 +211,29 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .ai-accordion-item {
   background: white;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.ai-accordion-item:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
 }
 
 .ai-accordion-header {
-  padding: 1.5rem 2rem;
+  padding: 1.75rem 2rem;
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: flex-start;
   cursor: pointer;
+  background-color: white;
   transition: background-color 0.2s;
 }
 
@@ -254,8 +244,10 @@
 .ai-chapter-num {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #1f2937;
-  opacity: 0.8;
+  color: #cbd5e1; /* Lighter, more subtle */
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.05em;
+  min-width: 2.5rem;
 }
 
 .ai-chapter-info {
@@ -265,15 +257,18 @@
 .ai-chapter-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #111827;
+  color: #1e293b;
   margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 }
 
 .ai-chapter-desc {
   color: #64748b;
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
+  font-weight: 400;
 }
 
 .ai-chapter-meta {
@@ -294,31 +289,71 @@
 
 .ai-lesson-list {
   border-top: 1px solid #e2e8f0;
-  background-color: #fdfdfd;
+  background-color: #f8fafc; /* Subtle grey bg for content */
+  padding: 2rem 2.5rem;
 }
 
-.ai-lesson-item {
-  padding: 1rem 2rem 1rem 5.5rem; /* Indented to align with text */
+.ai-syllabus-section {
+  margin-bottom: 2rem;
+}
+
+.ai-syllabus-section:last-child {
+  margin-bottom: 0;
+}
+
+.ai-syllabus-section h4 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  border-bottom: 1px solid #f1f5f9;
+  gap: 0.5rem;
+}
+
+.ai-syllabus-section h4::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  background-color: #3b82f6;
+  border-radius: 50%;
+}
+
+.ai-syllabus-section ul {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ai-syllabus-section li {
   font-size: 0.95rem;
-  color: #4b5563;
+  color: #334155;
+  line-height: 1.6;
+  padding-left: 1.5rem;
+  position: relative;
+  background: white;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  /* box-shadow: 0 1px 2px rgba(0,0,0,0.02); */
 }
 
-.ai-lesson-item:last-child {
-  border-bottom: none;
+.ai-syllabus-section li::before {
+  content: "•";
+  color: #cbd5e1;
+  position: absolute;
+  left: 0.5rem;
+  font-weight: bold;
+  display: none; /* Hiding bullet for card style */
 }
 
-.ai-lesson-icon {
-  color: #94a3b8;
-}
-
-.ai-lesson-duration {
-  margin-left: auto;
-  font-size: 0.85rem;
-  color: #94a3b8;
+.ai-syllabus-section li strong {
+  color: #0f172a;
+  font-weight: 600;
 }
 
 /* --- Certificate Section --- */

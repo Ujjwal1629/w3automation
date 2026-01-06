@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { FaCheck, FaPlay, FaChevronDown, FaChevronUp, FaVideo, FaFileAlt } from 'react-icons/fa';
+import { FaCheck, FaPlay, FaChevronDown, FaChevronUp, FaVideo, FaFileAlt, FaCalendarAlt, FaLaptopCode, FaRocket, FaProjectDiagram } from 'react-icons/fa';
 import './CourseDetailPageAI.css';
-// import bgImage from '../../assets/ai-bg.jpg'; // Assuming generic or reusing
-import certImage from '../../assets/logo-edit.png'; // Placeholder or reuse
+import certImage from '../../assets/certificate.png'; 
 import previewImage from '../../assets/logo-edit.png'
 
 const CourseDetailPageAI = () => {
   // State to manage expanded chapters (all expanded by default)
-  const [expandedChapters, setExpandedChapters] = useState([0, 1, 2]);
+  const [expandedChapters, setExpandedChapters] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
 
   const toggleChapter = (index) => {
     setExpandedChapters(prev => 
@@ -18,14 +17,14 @@ const CourseDetailPageAI = () => {
   };
 
   const whatYouWillLearn = [
-    "Fundamentals of AI-driven testing and its advantages over traditional methods",
-    "How to set up and configure AI testing tools for your projects",
-    "Generating test cases automatically using machine learning models",
-    "Implementing self-healing tests to reduce maintenance overhead",
-    "Visual regression testing using AI-powered tools",
-    "Integrating AI testing into CI/CD pipelines for continuous delivery",
-    "Best practices for training and fine-tuning AI models for testing",
-    "Real-world case studies of successful AI testing implementations"
+    "AI Testing Mindset: Move from traditional testing to probabilistic, risk-based AI quality thinking.",
+    "Data-Centric Testing: Validate data quality, detect bias, and treat data as source code.",
+    "Model Testing & Metrics: Test model behavior, detect overfitting, and interpret evaluation metrics.",
+    "AI API & Workflow Testing: Test probabilistic APIs, integrations, performance, and cost efficiency.",
+    "LLM & GenAI Testing: Test prompts, handle non-determinism, detect hallucinations, and ensure safety.",
+    "RAG System Validation: Test retrieval accuracy, grounding, vector databases, and source attribution.",
+    "NLP & Computer Vision Testing: Validate chatbots, intent recognition, image classification, and detection.",
+    "Ethical AI & MLOps: Test fairness, compliance, CI/CD pipelines, drift detection, and production monitoring."
   ];
 
   const courseContent = [
@@ -124,6 +123,265 @@ const CourseDetailPageAI = () => {
           ]
         }
       ]
+    },
+    {
+      title: "Week 4: LLM & Generative AI Testing",
+      desc: "Methodologies for testing non-deterministic LLM and GenAI systems.",
+      sections: [
+        {
+          title: "LLM Testing Fundamentals",
+          items: [
+            "Non-determinism challenge in GenAI",
+            "Prompt testing methodology",
+            "Prompt equivalence classes and regression",
+            "Hands-on: Test ChatGPT-like interfaces"
+          ]
+        },
+        {
+          title: "Hallucination & Safety Testing",
+          items: [
+            "Hallucination detection techniques",
+            "Safety testing for harmful content",
+            "Creative output validation",
+            "Activity: Create hallucination detection test suite",
+            "Deliverable: Prompt testing strategy document"
+          ]
+        },
+        {
+          title: "Track-Specific Focus",
+          items: [
+            "Manual: Manual verification of LLM outputs",
+            "Automation: Automated prompt testing framework"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Week 5: RAG (Retrieval-Augmented Generation) Testing",
+      desc: "Testing strategies for RAG architectures and knowledge retrieval.",
+      sections: [
+        {
+          title: "RAG Architecture & Testing",
+          items: [
+            "Understanding RAG components (retriever, generator)",
+            "Common RAG failure patterns",
+            "Grounding validation techniques",
+            "Hands-on: Test a RAG system end-to-end"
+          ]
+        },
+        {
+          title: "Knowledge Base & Source Testing",
+          items: [
+            "Vector database testing",
+            "Source attribution validation",
+            "Missing retrieval detection",
+            "Activity: Build RAG test scenarios",
+            "Deliverable: RAG testing checklist"
+          ]
+        },
+        {
+          title: "Track-Specific Focus",
+          items: [
+            "Manual: Source relevance verification",
+            "Automation: Automated retrieval accuracy testing"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Week 6: NLP & Computer Vision Testing",
+      desc: "Validation techniques for specialized AI domains: NLP and CV.",
+      sections: [
+        {
+          title: "NLP System Testing",
+          items: [
+            "Ambiguity and context testing",
+            "Intent recognition validation",
+            "Conversational AI testing",
+            "Hands-on: Test chatbot systems"
+          ]
+        },
+        {
+          title: "Computer Vision Testing",
+          items: [
+            "Image classification testing",
+            "Object detection validation",
+            "Adversarial testing for CV systems",
+            "Activity: Test image recognition APIs",
+            "Deliverable: AI modality testing guide"
+          ]
+        },
+        {
+          title: "Track-Specific Focus",
+          items: [
+            "Manual: Visual verification of CV outputs",
+            "Automation: Automated image testing pipelines"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Week 7: Ethical AI & Responsible Testing",
+      desc: "Ensuring fairness, explainability, and regulatory compliance.",
+      sections: [
+        {
+          title: "Live Sessions",
+          items: ["Tuesday & Thursday, 7-9 PM EST"]
+        },
+        {
+          title: "Fairness & Bias Testing",
+          items: [
+            "Comprehensive fairness testing methodologies",
+            "Group comparison techniques",
+            "Intersectional bias detection",
+            "Hands-on: Conduct bias audit on sample system"
+          ]
+        },
+        {
+          title: "Explainability & Compliance",
+          items: [
+            "Testing model explanations",
+            "Feature importance validation",
+            "Regulatory compliance (GDPR, EU AI Act)",
+            "Activity: Create compliance checklist",
+            "Deliverable: Ethical AI testing report"
+          ]
+        },
+        {
+          title: "Track-Specific Focus",
+          items: [
+            "Manual: Ethical review processes",
+            "Automation: Automated fairness monitoring"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Week 8: AI Test Automation & MLOps",
+      desc: "Strategies for automating AI tests and integrating into CI/CD pipelines.",
+      sections: [
+        {
+          title: "Automation Strategy",
+          items: [
+            "What to automate vs what to keep manual",
+            "Flaky test management for probabilistic systems",
+            "Probabilistic assertions in automation",
+            "Activity: Design automation strategy for AI system"
+          ]
+        },
+        {
+          title: "CI/CD for AI (MLOps)",
+          items: [
+            "Model version testing in pipelines",
+            "Automated deployment validation",
+            "Canary releases for AI systems",
+            "Hands-on: Build CI pipeline for model testing",
+            "Deliverable: CI/CD pipeline design"
+          ]
+        },
+        {
+          title: "Track-Specific Focus",
+          items: [
+            "Manual: Manual approval gates in automation",
+            "Automation: Complete automation framework"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Week 9: Monitoring & Production Testing",
+      desc: "Detecting drift and monitoring AI models in production.",
+      sections: [
+        {
+          title: "Drift Detection & Management",
+          items: [
+            "Data drift vs concept drift",
+            "Statistical detection methods",
+            "Alerting strategies",
+            "Hands-on: Set up drift detection for sample model"
+          ]
+        },
+        {
+          title: "Production Monitoring Strategy",
+          items: [
+            "Key metrics to monitor in production",
+            "Human-in-the-loop systems",
+            "Feedback loop testing",
+            "Activity: Design monitoring dashboard",
+            "Deliverable: Production monitoring plan"
+          ]
+        },
+        {
+          title: "Track-Specific Focus",
+          items: [
+            "Manual: Human review workflow design",
+            "Automation: Automated monitoring implementation"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Week 10: AI Testing Strategy & Real Project Planning",
+      desc: "Planning for the capstone project and defining risk-based strategies.",
+      sections: [
+        {
+          title: "Risk-Based Test Strategy",
+          items: [
+            "AI-specific risk assessment techniques",
+            "Test coverage dimensions for AI",
+            "Resource allocation for AI testing",
+            "Activity: Create test strategy for complex AI system"
+          ]
+        },
+        {
+          title: "Real Project Kickoff",
+          items: [
+            "Team formation (mixed manual/automation)",
+            "Project selection and scope definition",
+            "Success criteria and timeline",
+            "Deliverable: Real project proposal"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Week 11: Real Project Execution",
+      desc: "Execution of the QoDeBench real-world AI testing project.",
+      sections: [
+        {
+          title: "QoDeBench Project",
+          items: [
+            "Pipeline-based ML-enhanced Code Analysis Benchmarking System",
+            "Testing focus: Pipeline integrity and data flow",
+            "Component accuracy validation",
+            "Scoring validity analysis",
+            "Performance at scale (real workloads)",
+            "Comparison fairness (unbiased benchmarking)"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Week 12: Capstone Completion & Career Transition",
+      desc: "Finalizing projects and preparing for an AI testing career.",
+      sections: [
+        {
+          title: "Finalize AI Real Projects",
+          items: [
+            "Complete testing execution",
+            "Analyze results",
+            "Prepare final reports",
+            "Activity: Peer review of projects"
+          ]
+        },
+        {
+          title: "Portfolio & Career Development",
+          items: [
+            "Building AI testing portfolio",
+            "Resume transformation for AI roles"
+          ]
+        }
+      ]
     }
   ];
 
@@ -140,19 +398,29 @@ const CourseDetailPageAI = () => {
             
             <div className="ai-stats-row">
               <div className="ai-stat-item">
+                <FaCalendarAlt className="ai-stat-icon" />
+                <span className="ai-stat-value">12</span>
+                <span className="ai-stat-label">Weeks</span>
+              </div>
+              <div className="ai-stat-item">
                 <FaVideo className="ai-stat-icon" />
-                <span className="ai-stat-value">42</span>
+                <span className="ai-stat-value">40+</span>
                 <span className="ai-stat-label">Lessons</span>
               </div>
               <div className="ai-stat-item">
-                <FaFileAlt className="ai-stat-icon" />
-                <span className="ai-stat-value">12</span>
+                <FaLaptopCode className="ai-stat-icon" />
+                <span className="ai-stat-value">20+</span>
                 <span className="ai-stat-label">Exercises</span>
               </div>
               <div className="ai-stat-item">
-                <FaCheck className="ai-stat-icon" />
+                <FaProjectDiagram className="ai-stat-icon" />
                 <span className="ai-stat-value">8+</span>
-                <span className="ai-stat-label">Projects</span>
+                <span className="ai-stat-label">Mini-Projects</span>
+              </div>
+              <div className="ai-stat-item">
+                <FaRocket className="ai-stat-icon" />
+                <span className="ai-stat-value">1</span>
+                <span className="ai-stat-label">Capstone</span>
               </div>
             </div>
 
@@ -160,7 +428,6 @@ const CourseDetailPageAI = () => {
               <button className="ai-btn-primary" onClick={() => document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})}>
                 <FaPlay size={12} /> Start Learning
               </button>
-              <button className="ai-btn-outline">Download Syllabus</button>
             </div>
           </div>
 
@@ -210,18 +477,16 @@ const CourseDetailPageAI = () => {
                 </div>
                 
                 {expandedChapters.includes(index) && (
-                  <div className="ai-lesson-list" style={{padding: '1.5rem'}}>
+                  <div className="ai-lesson-list">
                     {week.sections.map((section, sIdx) => (
-                      <div key={sIdx} className="ai-syllabus-section" style={{marginBottom: '1.5rem'}}>
-                        <h4 style={{fontSize: '1.1rem', fontWeight: '600', color: '#e2e8f0', marginBottom: '0.75rem'}}>
-                          {section.title}
-                        </h4>
-                        <ul style={{listStyle: 'disc', paddingLeft: '1.5rem', color: '#94a3b8'}}>
+                      <div key={sIdx} className="ai-syllabus-section">
+                        <h4>{section.title}</h4>
+                        <ul>
                           {section.items.map((item, iIdx) => (
-                            <li key={iIdx} style={{marginBottom: '0.5rem', lineHeight: '1.6'}}>
+                            <li key={iIdx}>
                               {item.includes(':') ? (
                                 <span>
-                                  <strong style={{color: '#cbd5e1'}}>{item.split(':')[0]}:</strong>
+                                  <strong>{item.split(':')[0]}:</strong>
                                   {item.substring(item.indexOf(':') + 1)}
                                 </span>
                               ) : item}
@@ -257,10 +522,6 @@ const CourseDetailPageAI = () => {
                 <FaCheck className="ai-blue-check" />
                 <span>Downloadable PDF to share in social networks</span>
               </div>
-              <div className="ai-highlight-item">
-                <FaCheck className="ai-blue-check" />
-                <span>Verifiable with a unique certificate ID</span>
-              </div>
             </div>
             
             <button className="ai-btn-primary" style={{marginTop: '2rem'}}>Interested</button>
@@ -271,46 +532,6 @@ const CourseDetailPageAI = () => {
           </div>
         </div>
       </section>
-
-      {/* Pricing Section */}
-      <section className="ai-pricing-section" id="pricing">
-        <h2 className="ai-pricing-title">Start Learning <span className="ai-span-blue">Today</span></h2>
-        
-        <div className="ai-pricing-grid">
-          {/* Box 1 */}
-          <div className="ai-price-card">
-            <div className="ai-card-header">
-              <h3>Lectures</h3>
-              <p className="ai-price">$139 <span>USD</span></p>
-              <p className="ai-access-text">One-time. Lifetime access.</p>
-            </div>
-            <button className="ai-buy-btn">Buy Now</button>
-            <div className="ai-features-list">
-              <div className="ai-feature-item"><FaCheck className="ai-check" /> Access to all 42 lessons</div>
-              <div className="ai-feature-item"><FaCheck className="ai-check" /> Private course channel</div>
-              <div className="ai-feature-item"><FaCheck className="ai-check" /> LIVE instructor support</div>
-            </div>
-          </div>
-
-          {/* Box 2 */}
-          <div className="ai-price-card recommended">
-            <div className="ai-rec-badge">Recommended</div>
-            <div className="ai-card-header" style={{marginTop: '1rem'}}>
-              <h3>Lectures + Practice</h3>
-              <p className="ai-price">$499 <span>USD</span></p>
-              <p className="ai-access-text">One-time. Lifetime access.</p>
-            </div>
-            <button className="ai-buy-btn">Buy Now</button>
-            <div className="ai-features-list">
-              <div className="ai-feature-item"><FaCheck className="ai-check" /> Everything in "Lectures" plus:</div>
-              <div className="ai-feature-item"><FaCheck className="ai-check" /> 12 test case coding assignments</div>
-              <div className="ai-feature-item"><FaCheck className="ai-check" /> 6 code review sessions</div>
-              <div className="ai-feature-item"><FaCheck className="ai-check" /> Personal portfolio project</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 };
