@@ -11,6 +11,7 @@ import noPic from '../assets/no-img.webp';
 import heroSlide1 from '../assets/slide-img1.jpg';
 import heroSlide2 from '../assets/slide-img5.jpg';
 import heroSlide3 from '../assets/slide-img4.jpg';
+import heroSlide4 from '../assets/slide-img6.jpg';
 import { useState, useEffect } from 'react';
 
 import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF, FaCheck, FaStar } from 'react-icons/fa';
@@ -74,10 +75,18 @@ const NewHomePage = () => {
               </div>
             </div>
 
-            <div className="cta-group">
-              <button className="register-btn">Register now</button>
-            </div>
+          <div className="cta-group">
+            <button
+              className="register-btn"
+              onClick={() => window.open(
+                "https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw",
+                "_blank"
+              )}
+            >
+              Register now
+            </button>
           </div>
+        </div>
 
           <div className="hero-image-column">
             <div className="hero-slider">
@@ -234,39 +243,45 @@ const NewHomePage = () => {
                   <FaStar style={{color: 'white', fontSize: '1.5rem'}} />
                 </div>
                 <div className="success-text">
-                  <span className="success-percent">10+</span>
+                  <span className="success-percent">11+</span>
                   <span className="success-label">Years Experience</span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="about-content-column">
-            <span className="about-subtitle">MEET YOUR INSTRUCTOR</span>
-            <h2 className="about-title">Hemant <span className="highlight-blue">Gandhi</span></h2>
-            <h3 className="instructor-role">QA Automation Lead and Trainer</h3>
-            <div className="title-underline-left"></div>
-            
-            <p className="about-description">
-              With over 10 years of experience in the software testing industry. He has worked extensively with various automation testing tools and frameworks, specializing in delivering high-quality software solutions. His passion for quality assurance and automation drives him to share knowledge and help others excel in this field.
-            </p>
+        <div className="about-content-column">
+                    <span className="about-subtitle">MEET YOUR INSTRUCTOR</span>
+                    <h2 className="about-title">
+                      Hemant <span className="highlight-blue">Gandhi</span>
+                    </h2>
+                    <h3 className="instructor-role">
+            Full Stack Automation Engineer, Trainer & Founder – JourneyToAutomation
+          </h3>
+          <div className="title-underline-left"></div>
 
-            <ul className="benefits-list">
-              <li className="benefit-item">
-                <span className="check-icon"><FaCheck /></span>
-                10+ Years Industry Experience
-              </li>
-              <li className="benefit-item">
-                <span className="check-icon"><FaCheck /></span>
-                Hands-on Training Approach
-              </li>
-              <li className="benefit-item">
-                <span className="check-icon"><FaCheck /></span>
-                Expert Mentorship
-              </li>
-            </ul>
+          <p className="about-description">
+            Hemant Gandhi is a seasoned QA Automation Specialist with 11+ years of industry experience.
+            He specializes in building scalable automation frameworks for Web, API, and Mobile testing
+            using modern tools and AI-driven automation strategies. His mission is to create confident,
+            industry-ready automation engineers who leverage AI to boost productivity, not just test.
+          </p>
 
-            <button className="explore-btn" onClick={() => navigate('/courseSDET')}>View Courses</button>
-          </div>
+          <ul className="benefits-list">
+            <li className="benefit-item">
+              <span className="check-icon"><FaCheck /></span>
+              11+ Years of Core Industry Experience
+            </li>
+            <li className="benefit-item">
+              <span className="check-icon"><FaCheck /></span>
+              Expert in Automation, AI & Framework Design
+            </li>
+            <li className="benefit-item">
+              <span className="check-icon"><FaCheck /></span>
+              Real-World, Project-Driven Mentorship
+            </li>
+          </ul>
+        </div>
+
         </section>
       </div>
 
@@ -538,7 +553,7 @@ const heroSlides = [
     initialRole: "Associate QA",
     currentRole: "Senior Specialist - QA",
     currentCompany: "LTIMindtree",
-    image: heroSlide2,
+    image: heroSlide4,
     badge: "QA"
   },
   {
