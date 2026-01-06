@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaCheck, FaPlay, FaChevronDown, FaChevronUp, FaVideo, FaFileAlt, FaCalendarAlt, FaLaptopCode, FaRocket, FaProjectDiagram } from 'react-icons/fa';
 import './CourseDetailPageAI.css';
 import certImage from '../../assets/certificate.png'; 
-import previewImage from '../../assets/logo-edit.png'
+import previewImage from '../../assets/sdet2.jpg'
 
 const CourseDetailPageAI = () => {
   // State to manage expanded chapters (all expanded by default)
