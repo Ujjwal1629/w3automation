@@ -35,27 +35,33 @@ const CourseDetailPageAI = () => {
         {
           title: "Mindset Transformation",
           items: [
-            "Traditional vs AI testing: The fundamental differences",
-            "Probabilistic thinking for testers",
-            "New quality dimensions: Reliability, confidence, risk",
-            "Activity: Rewrite traditional test cases for AI systems"
+            "Understand the differences between traditional testing and AI testing.",
+            "Embrace probabilistic thinking, new quality dimensions (reliability, confidence, risk), and the uncertainty inherent in AI.",
+            "Activity: Rewrite traditional test cases for AI systems.",
+            "Deliverable: Mindset reflection."
           ]
         },
         {
           title: "Data Testing Fundamentals",
           items: [
-            "Data as the new source code",
-            "Data quality dimensions (completeness, consistency, bias)",
-            "Bias detection techniques",
-            "Hands-on: Data profiling and bias hunting exercise",
-            "Deliverable: Data quality assessment report"
+            "Learn why data is the new source code and the foundation of AI systems.",
+            "Explore data quality dimensions: completeness, consistency, bias.",
+            "Bias detection techniques and practical applications across domains (healthcare, finance, retail).",
+            "Hands-on: Data profiling and bias hunting exercises using open datasets.",
+            "Deliverable: Data quality assessment report.",
           ]
         },
         {
           title: "Track-Specific Focus",
           items: [
-            "Manual: Exploratory data testing techniques",
-            "Automation: Automated data validation scripts"
+            "Manual: Exploratory data testing techniques.",
+            "Automation: Automated data validation scripts.",
+            "CT-AI Integration: Introduce AI-specific risk-based data testing.",
+            "CT-Gen AI Integration: Generate test cases from dataset specifications.",
+            "Multi-domain Examples:",
+            "Healthcare: Patient records with missing fields.",
+            "Finance: Credit scoring datasets for bias detection.",
+            "Retail: Customer purchase history for anomaly detection.",
           ]
         }
       ]
@@ -67,27 +73,29 @@ const CourseDetailPageAI = () => {
         {
           title: "Black-Box Model Testing",
           items: [
-            "Functional behavior testing for models",
-            "Sensitivity and stability analysis",
-            "Overfitting/underfitting detection",
-            "Hands-on: Test pre-trained models (sentiment, classification)"
+            "Functional behavior testing for AI models.",
+            "Sensitivity, stability, overfitting/underfitting detection.",
+            "Hands-on: Test pre-trained models (sentiment, classification, regression).",
+            "CT-AI Integration: Evaluate model performance in multiple domains using probabilistic risk scoring.",
           ]
         },
         {
           title: "Statistics for Testers",
           items: [
-            "Confusion matrix as your truth table",
-            "Precision, recall, F1-score - business implications",
-            "Metric selection based on risk",
-            "Activity: Analyze model performance reports",
-            "Deliverable: Model evaluation cheat sheet"
+            "Confusion matrix, precision, recall, F1-score — business implications across domains.",
+            "Activity: Analyze model performance reports and select metrics based on domain risk.",
+            "Deliverable: Model evaluation cheat sheet.",
           ]
         },
         {
           title: "Track-Specific Focus",
           items: [
-            "Manual: Metric interpretation and reporting",
-            "Automation: Statistical validation in test automation"
+            "Manual: Metric interpretation and reporting.",
+            "Automation: Statistical validation in test automation.",
+            "Multi-domain Examples:",
+            "Healthcare: Disease prediction model evaluation.",
+            "Finance: Fraud detection performance metrics.",
+            "Retail: Customer churn model testing.",
           ]
         }
       ]
@@ -99,27 +107,29 @@ const CourseDetailPageAI = () => {
         {
           title: "Testing AI APIs",
           items: [
-            "Probabilistic API testing strategies",
-            "Input/output validation for AI endpoints",
-            "Confidence score testing",
-            "Hands-on: REST API testing for AI services"
+            "Probabilistic API testing strategies, input/output validation, confidence score testing.",
+            "Hands-on: REST API testing for AI services.",
           ]
         },
         {
           title: "Integration & Performance Testing",
           items: [
-            "End-to-end AI workflow testing",
-            "Performance testing for inference latency",
-            "Cost testing (token economics for LLMs)",
-            "Activity: Build comprehensive API test suite",
-            "Deliverable: API testing framework/checklist"
+            "End-to-end workflow testing.",
+            "Performance testing (inference latency) and cost testing (LLM token economics).",
+            "Activity: Build comprehensive API test suite.",
+            "Deliverable: API testing framework/checklist.",
           ]
         },
         {
           title: "Track-Specific Focus",
           items: [
-            "Manual: Exploratory API testing",
-            "Automation: Performance test automation"
+            "Manual: Exploratory API testing.",
+            "Automation: Performance test automation.",
+            "AT SQA AI Integration: Use AI to automate API testing and implement self-healing scripts.",
+            "Multi-domain Examples:",
+            "Healthcare: Patient triage API.",
+            "Finance: Credit approval API.",
+            "Retail: Recommendation engine API.",
           ]
         }
       ]
@@ -131,27 +141,31 @@ const CourseDetailPageAI = () => {
         {
           title: "LLM Testing Fundamentals",
           items: [
-            "Non-determinism challenge in GenAI",
-            "Prompt testing methodology",
-            "Prompt equivalence classes and regression",
-            "Hands-on: Test ChatGPT-like interfaces"
+            "Challenges of non-determinism in generative AI.",
+            "Prompt testing methodology and regression using equivalence classes.",
+            "Hands-on: Test ChatGPT-like interfaces.",
           ]
         },
         {
           title: "Hallucination & Safety Testing",
           items: [
-            "Hallucination detection techniques",
-            "Safety testing for harmful content",
-            "Creative output validation",
-            "Activity: Create hallucination detection test suite",
-            "Deliverable: Prompt testing strategy document"
+            "Hallucination detection techniques.",
+            "Safety testing for harmful content.",
+            "Creative output validation.",
+            "Activity: Create hallucination detection test suite.",
+            "Deliverable: Prompt testing strategy document.",
           ]
         },
         {
           title: "Track-Specific Focus",
           items: [
-            "Manual: Manual verification of LLM outputs",
-            "Automation: Automated prompt testing framework"
+            "Manual: Manual verification of LLM outputs.",
+            "Automation: Automated prompt testing framework.",
+            "CT-Gen AI Integration: Generate prompts and expected outputs for automated verification.",
+            "Multi-domain Examples:",
+            "Customer support chatbot (retail).",
+            "Legal document summarization (law).",
+            "Clinical assistant for symptom triage (healthcare).",
           ]
         }
       ]
@@ -163,27 +177,31 @@ const CourseDetailPageAI = () => {
         {
           title: "RAG Architecture & Testing",
           items: [
-            "Understanding RAG components (retriever, generator)",
-            "Common RAG failure patterns",
-            "Grounding validation techniques",
-            "Hands-on: Test a RAG system end-to-end"
+            "Components: retriever, generator.",
+            "Common failure patterns, grounding validation techniques.",
+            "Hands-on: Test a RAG system end-to-end.",
           ]
         },
         {
           title: "Knowledge Base & Source Testing",
           items: [
-            "Vector database testing",
-            "Source attribution validation",
-            "Missing retrieval detection",
-            "Activity: Build RAG test scenarios",
-            "Deliverable: RAG testing checklist"
+            "Vector database testing.",
+            "Source attribution validation.",
+            "Missing retrieval detection.",
+            "Activity: Build RAG test scenarios.",
+            "Deliverable: RAG testing checklist.",
           ]
         },
         {
           title: "Track-Specific Focus",
           items: [
-            "Manual: Source relevance verification",
-            "Automation: Automated retrieval accuracy testing"
+            "Manual: Source relevance verification.",
+            "Automation: Automated retrieval accuracy testing.",
+            "CT-Gen AI Integration: Use AI to auto-generate retrieval test queries.",
+            "Multi-domain Examples:",
+            "Knowledge retrieval for customer support (retail).",
+            "Medical literature search (healthcare).",
+            "Legal precedents retrieval (law/finance).",
           ]
         }
       ]
@@ -195,27 +213,27 @@ const CourseDetailPageAI = () => {
         {
           title: "NLP System Testing",
           items: [
-            "Ambiguity and context testing",
-            "Intent recognition validation",
-            "Conversational AI testing",
-            "Hands-on: Test chatbot systems"
+            "Ambiguity, context testing, intent recognition, conversational AI testing.",
+            "Hands-on: Test chatbot systems.",
           ]
         },
         {
           title: "Computer Vision Testing",
           items: [
-            "Image classification testing",
-            "Object detection validation",
-            "Adversarial testing for CV systems",
-            "Activity: Test image recognition APIs",
-            "Deliverable: AI modality testing guide"
+            "Image classification, object detection, adversarial testing.",
+            "Hands-on: Test image recognition APIs.",
+            "Deliverable: AI modality testing guide.",
           ]
         },
         {
           title: "Track-Specific Focus",
           items: [
-            "Manual: Visual verification of CV outputs",
-            "Automation: Automated image testing pipelines"
+            "Manual: Visual verification of CV outputs.",
+            "Automation: Automated image testing pipelines.",
+            "AT SQA AI Integration: Automate NLP and CV pipelines with predictive failure alerts.",
+            "Multi-domain Examples:",
+            "NLP: Social media sentiment, medical notes, call center transcripts.",
+            "CV: Autonomous vehicles, retail shelf monitoring, medical imaging.",
           ]
         }
       ]
@@ -231,27 +249,29 @@ const CourseDetailPageAI = () => {
         {
           title: "Fairness & Bias Testing",
           items: [
-            "Comprehensive fairness testing methodologies",
-            "Group comparison techniques",
-            "Intersectional bias detection",
-            "Hands-on: Conduct bias audit on sample system"
+            "Group comparison techniques, intersectional bias detection.",
+            "Hands-on: Conduct bias audits.",
           ]
         },
         {
           title: "Explainability & Compliance",
           items: [
-            "Testing model explanations",
-            "Feature importance validation",
-            "Regulatory compliance (GDPR, EU AI Act)",
-            "Activity: Create compliance checklist",
-            "Deliverable: Ethical AI testing report"
+            "Model explanations, feature importance validation.",
+            "Regulatory compliance (GDPR, EU AI Act).",
+            "Activity: Create compliance checklist.",
+            "Deliverable: Ethical AI testing report.",
           ]
         },
         {
           title: "Track-Specific Focus",
           items: [
-            "Manual: Ethical review processes",
-            "Automation: Automated fairness monitoring"
+           "Manual: Ethical review processes.",
+            "Automation: Automated fairness monitoring.",
+            "CT-AI Integration: Apply AI-specific fairness, explainability, and compliance techniques.",
+            "Multi-domain Examples:",
+            "Hiring algorithms (HR).",
+            "Loan approval models (finance).",
+            "Disease prediction (healthcare)."
           ]
         }
       ]
@@ -263,10 +283,8 @@ const CourseDetailPageAI = () => {
         {
           title: "Automation Strategy",
           items: [
-            "What to automate vs what to keep manual",
-            "Flaky test management for probabilistic systems",
-            "Probabilistic assertions in automation",
-            "Activity: Design automation strategy for AI system"
+            "What to automate, flaky test management, probabilistic assertions.",
+            "Activity: Design automation strategy."
           ]
         },
         {
@@ -282,8 +300,11 @@ const CourseDetailPageAI = () => {
         {
           title: "Track-Specific Focus",
           items: [
-            "Manual: Manual approval gates in automation",
-            "Automation: Complete automation framework"
+           "Manual: Manual approval gates in automation.",
+           "Automation: Complete automation framework.",
+           "AT SQA AI Integration: Predictive defect detection, self-healing automation, pipeline monitoring.",
+           "Multi-domain Examples:",
+           "NLP pipelines, CV pipelines, recommendation engines across domains."
           ]
         }
       ]
@@ -295,90 +316,101 @@ const CourseDetailPageAI = () => {
         {
           title: "Drift Detection & Management",
           items: [
-            "Data drift vs concept drift",
-            "Statistical detection methods",
-            "Alerting strategies",
-            "Hands-on: Set up drift detection for sample model"
+            "Data drift vs concept drift.",
+            "Statistical detection and alerting strategies.",
+            "Hands-on: Set up drift detection."
           ]
         },
         {
           title: "Production Monitoring Strategy",
           items: [
-            "Key metrics to monitor in production",
-            "Human-in-the-loop systems",
-            "Feedback loop testing",
-            "Activity: Design monitoring dashboard",
-            "Deliverable: Production monitoring plan"
+            "Key metrics, human-in-the-loop systems, feedback loops.",
+            "Activity: Design monitoring dashboard.",
+            "Deliverable: Production monitoring plan."
           ]
         },
         {
           title: "Track-Specific Focus",
           items: [
-            "Manual: Human review workflow design",
-            "Automation: Automated monitoring implementation"
+           "Manual: Human review workflow.",
+           "Automation: Automated monitoring implementation.",
+           "CT-AI Integration: Detect drift in AI models using risk-prioritized strategies.",
+           "AT SQA AI Integration: Implement automated production monitoring pipelines.",
+           "Multi-domain Examples:",
+           "Retail recommender drift, financial fraud detection, clinical model drift."
           ]
         }
       ]
     },
     {
       title: "Week 10: AI Testing Strategy & Real Project Planning",
-      desc: "Planning for the capstone project and defining risk-based strategies.",
+      desc: "Risk-based strategy, project kickoff, and team formation.",
       sections: [
         {
           title: "Risk-Based Test Strategy",
           items: [
-            "AI-specific risk assessment techniques",
-            "Test coverage dimensions for AI",
-            "Resource allocation for AI testing",
-            "Activity: Create test strategy for complex AI system"
+            "AI-specific risk assessment, risk coverage, and resource allocation."
           ]
         },
         {
           title: "Real Project Kickoff",
           items: [
-            "Team formation (mixed manual/automation)",
-            "Project selection and scope definition",
-            "Success criteria and timeline",
-            "Deliverable: Real project proposal"
+            "Team formation, project selection, scope, and success criteria.",
+            "Deliverable: Real project proposal."
+          ]
+        },
+        {
+          title: "Integration & Examples",
+          items: [
+            "Incorporate CT-AI, CT-Gen AI, AT SQA AI principles into project design.",
+            "Multi-domain Examples: Projects spanning NLP, CV, healthcare, finance, or retail AI systems."
           ]
         }
       ]
     },
     {
       title: "Week 11: Real Project Execution",
-      desc: "Execution of the QoDeBench real-world AI testing project.",
+      desc: "Execution of real-world AI projects with focus on pipeline integrity and accuracy.",
       sections: [
         {
-          title: "QoDeBench Project",
+          title: "Execution Focus",
           items: [
-            "Pipeline-based ML-enhanced Code Analysis Benchmarking System",
-            "Testing focus: Pipeline integrity and data flow",
-            "Component accuracy validation",
-            "Scoring validity analysis",
-            "Performance at scale (real workloads)",
-            "Comparison fairness (unbiased benchmarking)"
+            "Pipeline integrity, component accuracy, and scoring validity.",
+            "Performance at scale and comparison fairness.",
+          ]
+        },
+        {
+          title: "Integration & Collaboration",
+          items: [
+            "Apply CT-AI, CT-Gen AI, AT SQA AI concepts in hands-on project work.",
+            "Peer review and collaboration across tracks."
+          ]
+        },
+        {
+          title: "Multi-domain Application",
+          items: [
+            "Students choose domains for their projects to apply learned principles."
           ]
         }
       ]
     },
     {
       title: "Week 12: Capstone Completion & Career Transition",
-      desc: "Finalizing projects and preparing for an AI testing career.",
+      desc: "Finalizing projects, peer reviews, and career preparation.",
       sections: [
         {
-          title: "Finalize AI Real Projects",
+          title: "Capstone Completion",
           items: [
-            "Complete testing execution",
-            "Analyze results",
-            "Prepare final reports",
-            "Activity: Peer review of projects"
+            "Finalize projects: Testing execution, analysis, and reporting.",
+            "Activity: Peer review of projects.",
+            "Deliverable: Final project report including documentation of CT-AI, CT-Gen AI, AT SQA AI techniques."
           ]
         },
         {
           title: "Portfolio & Career Development",
           items: [
-            "Building AI testing portfolio",
-            "Resume transformation for AI roles"
+            "Building AI testing portfolio and resume transformation.",
+            "Highlight learning across healthcare, finance, retail, and other AI applications."
           ]
         }
       ]
