@@ -277,16 +277,6 @@
   align-items: center;
 }
 
-.ai-chapter-badge {
-  background-color: #1e293b;
-  color: white;
-  font-size: 0.7rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
 .ai-lesson-list {
   border-top: 1px solid #e2e8f0;
   background-color: #f8fafc; /* Subtle grey bg for content */

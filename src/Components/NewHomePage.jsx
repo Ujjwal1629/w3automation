@@ -14,8 +14,8 @@ import heroSlide3 from '../assets/slide-img4.jpg';
 import heroSlide4 from '../assets/slide-img6.jpg';
 import { useState, useEffect } from 'react';
 
-import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF, FaCheck, FaStar,  } from 'react-icons/fa';
-import { BsClock, BsGoogle, BsPerson, BsFileText, BsArrowRight, BsCameraVideo} from 'react-icons/bs';
+import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF, FaCheck, FaStar, FaEnvelope } from 'react-icons/fa';
+import { BsClock, BsPerson, BsFileText, BsArrowRight, BsCameraVideo} from 'react-icons/bs';
 
 const NewHomePage = () => {
   const navigate = useNavigate();
@@ -40,11 +40,18 @@ const NewHomePage = () => {
         {/* Top Bar */}
         <header className="top-bar">
           <nav className="social-nav">
-            <a href="#" className="social-link">LinkedIn</a>
-            <a href="#" className="social-link">X / Twitter</a>
-            <a href="#" className="social-link">YouTube</a>
-            <a href="#" className="social-link">GitHub</a>
-            <a href="#" className="social-link">Instagram</a>
+            <a href="https://www.linkedin.com/in/hemant-gandhi254/" className="social-link linkedin" aria-label="LinkedIn">
+              <FaLinkedin />
+              <span className="tooltip">LinkedIn</span>
+            </a>
+            <a href="https://www.youtube.com/@hemantgandhi2708" className="social-link youtube" aria-label="YouTube">
+              <FaYoutube />
+              <span className="tooltip">YouTube</span>
+            </a>
+            <a href="mailto:gandhihemant10@gmail.com" className="social-link email" aria-label="Email">
+              <FaEnvelope />
+              <span className="tooltip">Email</span>
+            </a>
           </nav>
         </header>
 
@@ -62,7 +69,7 @@ const NewHomePage = () => {
               <div className="info-card">
                 <BsClock className="info-icon" />
                 <div className="info-text">
-                  <span className="info-label">Demo Session</span>
+                  <span className="info-label">AI and ML Course Demo Session</span>
                   <span className="info-value">25th January, Sunday | 09:00 PM IST</span>
                 </div>
               </div>
@@ -479,7 +486,7 @@ const courses = [
     image: courseImageDevOps,
     category: "DevOps",
     description: "Master DevOps fundamentals for test automation. Automate builds, tests, and deployments with real-world workflows.",
-    link: "/coursePlaywrightInterviewAI"
+    link: "/courseAIMLTesting"
   },
   {
     title: "AI for Automation Testing",
@@ -493,7 +500,7 @@ const courses = [
     image: courseImageAI,
     category: "AI Testing",
     description: "End-to-end AI for automation testing. Covers intelligent test design, maintenance, and real-world use cases.",
-    link: "/coursePlaywrightInterviewAI"
+    link: "/courseAIMLTesting"
   },
 ];
 
@@ -576,7 +583,7 @@ const heroSlides = [
   },
   {
     name: "Hyder Ali",
-    initialRole: "Conultant QA",
+    initialRole: "Consultant QA",
     currentRole: "Senior QA",
     currentCompany: "IBM",
     image: heroSlide1,

@@ -96,22 +96,81 @@
 
 .social-nav {
   display: flex;
-  gap: 2rem; /* Increased gap for better spacing */
+  gap: 1rem;
   align-items: center;
 }
 
 .social-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  color: #4b5563;
+  font-size: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
   text-decoration: none;
-  color: #374151;
-  font-weight: 500;
-  font-size: 0.9rem;
-  border-bottom: 1px solid #d1d5db;
-  padding-bottom: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .social-link:hover {
-  color: #6d28d9;
-  border-color: #6d28d9;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  color: white;
+  border-color: transparent;
+}
+
+.social-link.linkedin:hover {
+  background: #0077b5;
+}
+
+.social-link.youtube:hover {
+  background: #ff0000;
+}
+
+.social-link.email:hover {
+  background: #ea4335;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: rgba(17, 24, 39, 0.9);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent rgba(17, 24, 39, 0.9) transparent;
+}
+
+.social-link:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* Hero Section */

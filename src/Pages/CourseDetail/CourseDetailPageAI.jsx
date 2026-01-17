@@ -244,7 +244,7 @@ const CourseDetailPageAI = () => {
       sections: [
         {
           title: "Live Sessions",
-          items: ["Tuesday & Thursday, 7-9 PM EST"]
+          items: ["Flexible schedules to fit different time zones"]
         },
         {
           title: "Fairness & Bias Testing",
@@ -426,7 +426,7 @@ const CourseDetailPageAI = () => {
           <div className="ai-hero-content">
             <span className="ai-badge">Mostly Popular</span>
             <h1 className="ai-hero-title">AI Testing Mastery</h1>
-            <p className="ai-hero-subtitle">The No.1 Course to Master AI-Powered Automation Testing</p>
+            <p className="ai-hero-subtitle">The No.1 Course to Master AI ML Testing</p>
             
             <div className="ai-stats-row">
               <div className="ai-stat-item">
@@ -511,7 +511,6 @@ const CourseDetailPageAI = () => {
                     <p className="ai-chapter-desc">{week.desc}</p>
                   </div>
                   <div className="ai-chapter-meta">
-                    <span className="ai-chapter-badge">Free Preview</span>
                     {expandedChapters.includes(index) ? <FaChevronUp style={{marginLeft: '1rem', color: '#94a3b8'}} /> : <FaChevronDown style={{marginLeft: '1rem', color: '#94a3b8'}} />}
                   </div>
                 </div>
