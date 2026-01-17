@@ -399,20 +399,15 @@ const CourseDetailPageAI = () => {
       desc: "Finalizing projects, peer reviews, and career preparation.",
       sections: [
         {
-          title: "Capstone Completion",
+          title: "Capstone Completion and Career Transition",
           items: [
             "Finalize projects: Testing execution, analysis, and reporting.",
             "Activity: Peer review of projects.",
-            "Deliverable: Final project report including documentation of CT-AI, CT-Gen AI, AT SQA AI techniques."
+            "Portfolio & Career Development: Final project report including documentation of CT-AI, CT-Gen AI, AT SQA AI techniques.",
+            "Deliverable: Building AI testing portfolio and resume transformation.",
+            "Multi-domain Emphasis: Highlight learning across healthcare, finance, retail, and other AI applications."
           ]
         },
-        {
-          title: "Portfolio & Career Development",
-          items: [
-            "Building AI testing portfolio and resume transformation.",
-            "Highlight learning across healthcare, finance, retail, and other AI applications."
-          ]
-        }
       ]
     }
   ];
@@ -425,8 +420,8 @@ const CourseDetailPageAI = () => {
         <div className="ai-container">
           <div className="ai-hero-content">
             <span className="ai-badge">Mostly Popular</span>
-            <h1 className="ai-hero-title">AI Testing Mastery</h1>
-            <p className="ai-hero-subtitle">The No.1 Course to Master AI ML Testing</p>
+            <h1 className="ai-hero-title">AI and ML Testing Mastery</h1>
+            <p className="ai-hero-subtitle">This course is inspired from syllabus and content of CT-AI (AI Testing Specialist), CT-Gen AI (Generative AI for testing), and AT SQA AI (AI-driven QA and automation).</p>
             
             <div className="ai-stats-row">
               <div className="ai-stat-item">
@@ -436,7 +431,7 @@ const CourseDetailPageAI = () => {
               </div>
               <div className="ai-stat-item">
                 <FaVideo className="ai-stat-icon" />
-                <span className="ai-stat-value">40+</span>
+                <span className="ai-stat-value">48+</span>
                 <span className="ai-stat-label">Lessons</span>
               </div>
               <div className="ai-stat-item">

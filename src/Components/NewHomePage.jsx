@@ -14,13 +14,22 @@ import heroSlide3 from '../assets/slide-img4.jpg';
 import heroSlide4 from '../assets/slide-img6.jpg';
 import { useState, useEffect } from 'react';
 
-import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaFacebookF, FaCheck, FaStar, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaYoutube, FaCheck, FaStar, FaEnvelope, FaInfoCircle, FaTimes } from 'react-icons/fa';
 import { BsClock, BsPerson, BsFileText, BsArrowRight, BsCameraVideo} from 'react-icons/bs';
 
 const NewHomePage = () => {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeFilter, setActiveFilter] = useState('View All Courses');
+  const [showDevOpsPopup, setShowDevOpsPopup] = useState(false);
+
+  const handleCourseClick = (course) => {
+    if (course.title.toLowerCase().includes('devops')) {
+      setShowDevOpsPopup(true);
+    } else {
+      navigate(course.link);
+    }
+  };
 
   const filteredCourses = activeFilter === 'View All Courses'
     ? courses
@@ -48,7 +57,7 @@ const NewHomePage = () => {
               <FaYoutube />
               <span className="tooltip">YouTube</span>
             </a>
-            <a href="mailto:gandhihemant10@gmail.com" className="social-link email" aria-label="Email">
+            <a href="mailto:hemanttestengineer@gmail.com" className="social-link email" aria-label="Email">
               <FaEnvelope />
               <span className="tooltip">Email</span>
             </a>
@@ -60,9 +69,8 @@ const NewHomePage = () => {
           <div className="hero-content">
             
             <h1 className="hero-title">
-              Don't Let AI <span className="highlight-blue">Over-Power</span><br />
-              <span className="highlight-purple">You!</span> Become an AI-Powered<br />
-              Test Engineer
+              Don't Let AI <span className="highlight-blue">Over-Power You!</span><br />
+              <span className="highlight-purple"></span> Become an AI-Powered Test Engineer<br />
             </h1>
 
             <div className="info-cards">
@@ -187,7 +195,12 @@ const NewHomePage = () => {
                   {/* Hover Overlay */}
                   <div className="card-overlay">
                     <p className="overlay-text">{course.description}</p>
-                    <button className="view-details-btn">View Details</button>
+                    <button 
+                      className="view-details-btn"
+                      onClick={() => handleCourseClick(course)}
+                    >
+                      View Details
+                    </button>
                   </div>
                 </div>
 
@@ -216,7 +229,7 @@ const NewHomePage = () => {
                     <div className="price-box">
                       <button 
                         className="current-price" 
-                        onClick={() => navigate(course.link)}
+                        onClick={() => handleCourseClick(course)}
                         style={{ cursor: 'pointer', background: 'none', border: 'none', padding: 0, font: 'inherit' }}
                       >
                         know more
@@ -224,7 +237,7 @@ const NewHomePage = () => {
                     </div>
                     <button 
                       className="enroll-arrow"
-                      onClick={() => navigate(course.link)}
+                      onClick={() => handleCourseClick(course)}
                     >
                       <BsArrowRight />
                     </button>
@@ -257,7 +270,7 @@ const NewHomePage = () => {
             </div>
           </div>
         <div className="about-content-column">
-                    <span className="about-subtitle">MEET YOUR INSTRUCTOR</span>
+                    <span className="about-subtitle">// MEET YOUR INSTRUCTOR</span>
                     <h2 className="about-title">
                       Hemant <span className="highlight-blue">Gandhi</span>
                     </h2>
@@ -298,17 +311,17 @@ const NewHomePage = () => {
           <h2 className="stats-title">Building a lifelong learning community</h2>
           <div className="stats-grid">
             <div className="stat-item">
-              <h3 className="stat-number">1.5M</h3>
+              <h3 className="stat-number">300+</h3>
               <p className="stat-label">Learners available in this platform and more are counting daily.</p>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
-              <h3 className="stat-number">87%</h3>
+              <h3 className="stat-number">90%</h3>
               <p className="stat-label">Our students have the highest success rate in getting hired.</p>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
-              <h3 className="stat-number">364+</h3>
+              <h3 className="stat-number">4+</h3>
               <p className="stat-label">High-quality teachers offering courses and videos.</p>
             </div>
           </div>
@@ -400,11 +413,8 @@ const NewHomePage = () => {
                 Learn Automation Testing with industry-standard tools and real-world projects.
               </p>
               <div className="footer-socials">
-                <a href="#" className="social-icon"><FaFacebookF /></a>
-                <a href="#" className="social-icon"><FaYoutube /></a>
-                <a href="#" className="social-icon"><FaTwitter /></a>
-                <a href="#" className="social-icon"><FaInstagram /></a>
-                <a href="#" className="social-icon"><FaLinkedin /></a>
+                <a href="https://www.linkedin.com/in/hemant-gandhi254/s" className="social-icon"><FaLinkedin /></a>
+                <a href="https://www.youtube.com/@hemantgandhi2708" className="social-icon"><FaYoutube /></a>
               </div>
             </div>
 
@@ -426,11 +436,11 @@ const NewHomePage = () => {
               <ul className="contact-list">
                 <li className="contact-item">
                   <span className="contact-icon">✉️</span>
-                  <span>journeytoautomation@gmail.com</span>
+                  <span>hemanttestengineer@gmail.com</span>
                 </li>
                 <li className="contact-item">
                   <span className="contact-icon">📞</span>
-                  <span>+91 XXX XXX XXXX</span>
+                  <span>+91 8810201221</span>
                 </li>
               </ul>
             </div>
@@ -445,6 +455,27 @@ const NewHomePage = () => {
           </div>
         </div>
       </footer>
+      
+      {/* DevOps Popup */}
+      {showDevOpsPopup && (
+        <div className="popup-overlay" onClick={() => setShowDevOpsPopup(false)}>
+          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <button className="popup-close" onClick={() => setShowDevOpsPopup(false)}>
+              <FaTimes />
+            </button>
+            <div className="popup-icon-container">
+              <FaInfoCircle className="popup-icon" />
+            </div>
+            <h3 className="popup-title">Updates Coming Soon!</h3>
+            <p className="popup-message">
+              Please check back soon!
+            </p>
+            <button className="popup-btn" onClick={() => setShowDevOpsPopup(false)}>
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -452,9 +483,9 @@ const NewHomePage = () => {
 const courses = [
   {
     title: "Java and Selenium",
-    rating: 4.9,
-    reviews: 2023,
-    students: "4,912",
+    rating: 4.7,
+    reviews: 107,
+    students: "190",
     lessons: 37,
     price: "$79.00",
     image: courseImageJavaSel,
@@ -464,9 +495,9 @@ const courses = [
   },
   {
     title: "Playwright with Typescript",
-    rating: 4.9,
-    reviews: 1425,
-    students: "3,866",
+    rating: 4.3,
+    reviews: 95,
+    students: "186",
     lessons: 22,
     price: "$59.00",
     image: courseImagePlayTs,
@@ -476,9 +507,9 @@ const courses = [
   },
   {
     title: "Devops for Automation Testing",
-    rating: 4.9,
-    reviews: 3652,
-    students: "3,982",
+    rating: 4.1,
+    reviews: 112,
+    students: "150",
     lessons: 19,
     price: "$29.00",
     originalPrice: "$39.00",
@@ -491,8 +522,8 @@ const courses = [
   {
     title: "AI for Automation Testing",
     rating: 4.9,
-    reviews: 3652,
-    students: "3,982",
+    reviews: 125,
+    students: "175",
     lessons: 19,
     price: "$29.00",
     originalPrice: "$39.00",
