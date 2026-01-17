@@ -43,7 +43,7 @@
 }
 
 .ai-hero-title {
-  font-size: 3rem;
+  font-size: 2.75rem;
   font-weight: 800;
   margin: 0 0 1rem 0;
   line-height: 1.2;
@@ -275,16 +275,6 @@
   margin-left: auto;
   display: flex;
   align-items: center;
-}
-
-.ai-chapter-badge {
-  background-color: #1e293b;
-  color: white;
-  font-size: 0.7rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  text-transform: uppercase;
-  font-weight: 600;
 }
 
 .ai-lesson-list {
