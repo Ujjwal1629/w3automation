@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCheck, FaPlay, FaChevronDown, FaChevronUp, FaVideo, FaFileAlt, FaCalendarAlt, FaLaptopCode, FaRocket, FaProjectDiagram, FaUserTie, FaRobot, FaChartLine, FaSitemap, FaArrowRight } from 'react-icons/fa';
+import { FaCheck, FaPlay, FaChevronDown, FaChevronUp, FaVideo, FaCalendarAlt, FaLaptopCode, FaRocket, FaProjectDiagram, FaUserTie, FaRobot, FaChartLine, FaSitemap, FaArrowRight } from 'react-icons/fa';
 import './CourseDetailPageAI.css';
 import certImage from '../../assets/certificate.png'; 
 import previewImage from '../../assets/sdet2.jpg'
@@ -479,7 +479,7 @@ const CourseDetailPageAI = () => {
 
       {/* Career Transformation Paths Section */}
       <section className="ai-career-section">
-        <div className="ai-container" style={{display: 'block'}}>
+        <div className="ai-container">
           <h2 className="ai-section-title">Career Transformation Paths</h2>
           
           <div className="ai-career-grid">
@@ -588,7 +588,7 @@ const CourseDetailPageAI = () => {
 
       {/* What You'll Learn */}
       <section className="ai-section">
-        <div className="ai-container" style={{display: 'block'}}>
+        <div className="ai-container">
           <h2 className="ai-section-title">What you'll learn</h2>
           <div className="ai-learn-grid">
             {whatYouWillLearn.map((item, index) => (
@@ -603,7 +603,7 @@ const CourseDetailPageAI = () => {
 
       {/* Course Content Accordion */}
       <section className="ai-content-section">
-        <div className="ai-container" style={{display: 'block'}}>
+        <div className="ai-container">
           <h2 className="ai-section-title">Course Content</h2>
           <div className="ai-accordion">
             {courseContent.map((week, index) => (
