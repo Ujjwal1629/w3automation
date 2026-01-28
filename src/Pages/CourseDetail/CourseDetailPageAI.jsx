@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCheck, FaPlay, FaChevronDown, FaChevronUp, FaVideo, FaFileAlt, FaCalendarAlt, FaLaptopCode, FaRocket, FaProjectDiagram } from 'react-icons/fa';
+import { FaCheck, FaPlay, FaChevronDown, FaChevronUp, FaVideo, FaCalendarAlt, FaLaptopCode, FaRocket, FaProjectDiagram, FaUserTie, FaRobot, FaChartLine, FaSitemap, FaArrowRight } from 'react-icons/fa';
 import './CourseDetailPageAI.css';
 import certImage from '../../assets/certificate.png'; 
 import previewImage from '../../assets/sdet2.jpg'
@@ -477,9 +477,118 @@ const CourseDetailPageAI = () => {
         </div>
       </section>
 
+      {/* Career Transformation Paths Section */}
+      <section className="ai-career-section">
+        <div className="ai-container">
+          <h2 className="ai-section-title">Career Transformation Paths</h2>
+          
+          <div className="ai-career-grid">
+            {/* Manual Tester Path */}
+            <div className="ai-career-card">
+              <div className="ai-card-header-styled">
+                <div className="ai-icon-box">
+                  <FaUserTie />
+                </div>
+                <h3>Manual Tester Progression</h3>
+              </div>
+              <div className="ai-timeline">
+                <div className="ai-timeline-item">
+                  <span className="ai-dot"></span>
+                  <div className="ai-timeline-content">
+                    <h4>AI Test Analyst</h4>
+                    <p>AI Testing Fundamentals</p>
+                  </div>
+                </div>
+                <div className="ai-timeline-item">
+                  <span className="ai-dot"></span>
+                  <div className="ai-timeline-content">
+                    <h4>AI Test Specialist (NLP, Vision, etc.)</h4>
+                    <p>Specialized Testing</p>
+                  </div>
+                </div>
+                <div className="ai-timeline-item highlight">
+                  <span className="ai-dot pulse"></span>
+                  <div className="ai-timeline-content">
+                    <h4>AI Test Lead/Manager</h4>
+                    <p>Strategy & Governance</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Automation Tester Path */}
+            <div className="ai-career-card">
+              <div className="ai-card-header-styled">
+                <div className="ai-icon-box">
+                  <FaRobot />
+                </div>
+                <h3>Automation Tester Progression</h3>
+              </div>
+              <div className="ai-timeline">
+                <div className="ai-timeline-item">
+                  <span className="ai-dot"></span>
+                  <div className="ai-timeline-content">
+                    <h4>AI Automation Engineer</h4>
+                    <p>AI Automation Fundamentals</p>
+                  </div>
+                </div>
+                <div className="ai-timeline-item">
+                  <span className="ai-dot"></span>
+                  <div className="ai-timeline-content">
+                    <h4>AI Quality Engineer</h4>
+                    <p>MLOps & Pipeline</p>
+                  </div>
+                </div>
+                <div className="ai-timeline-item highlight">
+                  <span className="ai-dot pulse"></span>
+                  <div className="ai-timeline-content">
+                    <h4>AI Quality Architect</h4>
+                    <p>Architecture & Strategy</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Leadership Path */}
+            <div className="ai-career-card">
+              <div className="ai-card-header-styled">
+                <div className="ai-icon-box">
+                  <FaSitemap />
+                </div>
+                <h3>Common Leadership Path</h3>
+              </div>
+              <div className="ai-timeline">
+                <div className="ai-timeline-item">
+                  <span className="ai-dot"></span>
+                  <div className="ai-timeline-content">
+                    <h4>AI Test Manager</h4>
+                    <p>Resource & Risk Mgmt</p>
+                  </div>
+                </div>
+                <div className="ai-timeline-item">
+                  <span className="ai-dot"></span>
+                  <div className="ai-timeline-content">
+                    <h4>Head of AI Quality</h4>
+                    <p>Process & Standards</p>
+                  </div>
+                </div>
+                <div className="ai-timeline-item highlight">
+                  <span className="ai-dot pulse"></span>
+                  <div className="ai-timeline-content">
+                    <h4>Director of Responsible AI</h4>
+                    <p>Vision & Compliance</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* What You'll Learn */}
       <section className="ai-section">
-        <div className="ai-container" style={{display: 'block'}}>
+        <div className="ai-container">
           <h2 className="ai-section-title">What you'll learn</h2>
           <div className="ai-learn-grid">
             {whatYouWillLearn.map((item, index) => (
@@ -494,7 +603,7 @@ const CourseDetailPageAI = () => {
 
       {/* Course Content Accordion */}
       <section className="ai-content-section">
-        <div className="ai-container" style={{display: 'block'}}>
+        <div className="ai-container">
           <h2 className="ai-section-title">Course Content</h2>
           <div className="ai-accordion">
             {courseContent.map((week, index) => (
