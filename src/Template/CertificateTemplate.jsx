@@ -5,6 +5,7 @@ import imgSignature from '../assets/sig-edit.png';
 
 const CertificateTemplate = ({
   name = 'Unknown',
+  courseName = 'SELENIUM WITH JAVA AND DEVOPS',
   completionDate = 'N/A',
   issuedDate = 'N/A',
   certificateNumber = 'N/A',
@@ -68,7 +69,7 @@ const CertificateTemplate = ({
           <p className="subtitle">This is to certify that</p>
           <h2 className="name">{name}</h2>
           <p className="subtitle">has successfully completed the course</p>
-          <h3 className="course">SELENIUM WITH JAVA AND DEVOPS</h3>
+          <h3 className="course">{courseName}</h3>
           <p className="subtitle">Completed on</p>
           <p className="completion-date">{formatDate(completionDate)}</p>
         </div>

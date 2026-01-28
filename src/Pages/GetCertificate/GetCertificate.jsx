@@ -4,7 +4,7 @@ import './GetCertificate.css';
 import CertificateTemplate from '../../Template/CertificateTemplate';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
-import { FiDownload, FiCalendar, FiUser, FiHash } from 'react-icons/fi';
+import { FiDownload, FiCalendar, FiUser, FiHash, FiBook } from 'react-icons/fi';
 
 const GetCertificate = () => {
 
@@ -12,6 +12,7 @@ const GetCertificate = () => {
 
   const [formData, setFormData] = useState({
     name: '',
+    courseName: 'SELENIUM WITH JAVA AND DEVOPS',
     completionDate: '',
     issuedDate: '',
     certificateNumber: `JTA-${newDate.getFullYear()}-${String(newDate.getDate()).padStart(2, '0')}${String(newDate.getMonth() + 1).padStart(2, '0')}-`
@@ -37,6 +38,10 @@ const GetCertificate = () => {
     if (!formData.completionDate) {
       setError('Please select completion date');
       return false;
+    }
+    if (!formData.courseName) {
+        setError('Please select a course');
+        return false;
     }
     setError('');
     return true;
@@ -149,6 +154,23 @@ const GetCertificate = () => {
               placeholder="Enter full name"
               required
             />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="courseName">
+              <FiBook className="input-icon" />
+              Select Course
+            </label>
+            <select
+                id="courseName"
+                name="courseName"
+                value={formData.courseName}
+                onChange={handleChange}
+                required
+            >
+                <option value="SELENIUM WITH JAVA AND DEVOPS">Selenium with Java and DevOps</option>
+                <option value="PlAYWRIGHT WITH TYPESCRIPT">Playwright with Typescript</option>
+            </select>
           </div>
 
           <div className="input-row">
