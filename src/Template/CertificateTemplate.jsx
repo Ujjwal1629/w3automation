@@ -29,21 +29,19 @@ const CertificateTemplate = ({
         {/* Gold/Navy accent line */}
         <div className="accent-line" />
 
-        {/* SVG Corner Ornaments */}
-        <svg className="corner-ornament top-left" width="60" height="60" viewBox="0 0 24 24">
+        {/* SVG Corner Ornaments - Elegant Filigree */}
+        <svg className="corner-ornament top-left" width="100" height="100" viewBox="0 0 100 100">
           <path 
-            d="M12 2a10 10 0 0 1 10 10c0 2-1 4-3 6-2-2-4-3-6-3s-4 1-6 3c-2-2-3-4-3-6A10 10 0 0 1 12 2z" 
-            fill="none" 
-            stroke="#b08d57" 
-            strokeWidth="1.5"
+            d="M0,0 v40 c0,10 5,20 20,20 s20,-10 20,-30 c0,-15 10,-25 30,-25 h30 v-5 h-100 z M5,5 h90 c-20,0 -30,10 -30,25 c0,20 -5,35 -25,35 c-20,0 -35,-15 -35,-60 z" 
+            fill="#b08d57" 
+            opacity="0.8"
           />
         </svg>
-        <svg className="corner-ornament bottom-right" width="60" height="60" viewBox="0 0 24 24">
+        <svg className="corner-ornament bottom-right" width="100" height="100" viewBox="0 0 100 100">
           <path 
-            d="M12 2a10 10 0 0 1 10 10c0 2-1 4-3 6-2-2-4-3-6-3s-4 1-6 3c-2-2-3-4-3-6A10 10 0 0 1 12 2z" 
-            fill="none" 
-            stroke="#1a2a44" 
-            strokeWidth="1.5"
+            d="M100,100 v-40 c0,-10 -5,-20 -20,-20 s-20,10 -20,30 c0,15 -10,25 -30,25 h-30 v5 h100 z M95,95 h-90 c20,0 30,-10 30,-25 c0,-20 5,-35 25,-35 c20,0 35,15 35,60 z" 
+            fill="#1a2a44" 
+            opacity="0.8"
           />
         </svg>
 
