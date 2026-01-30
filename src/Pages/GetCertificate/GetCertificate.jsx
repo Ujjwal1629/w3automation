@@ -8,14 +8,33 @@ import { FiDownload, FiCalendar, FiUser, FiHash, FiBook } from 'react-icons/fi';
 
 const GetCertificate = () => {
 
-  const newDate = new Date();  
+  /* 
+     Initialize sequence logic:
+     Read 'lastCertificateSequence' from localStorage. If null, use 100.
+     Current sequence will be last + 1.
+  */
+  const getNextSequence = () => {
+    const stored = localStorage.getItem('lastCertificateSequence');
+    const lastSeq = stored ? parseInt(stored, 10) : 100;
+    return lastSeq + 1;
+  };
+
+  // Helper to generate formatted certificate number
+  const generateCertificateNumber = (seq) => {
+    const date = new Date();
+    // Format: JTA-YYYYMMDD-SEQUENCE
+    const dateStr = `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}`;
+    return `JTA-${dateStr}-${seq}`;
+  };
+
+  const [currentSequence, setCurrentSequence] = useState(getNextSequence());
 
   const [formData, setFormData] = useState({
     name: '',
     courseName: 'SELENIUM WITH JAVA AND DEVOPS',
     completionDate: '',
     issuedDate: '',
-    certificateNumber: `JTA-${newDate.getFullYear()}-${String(newDate.getDate()).padStart(2, '0')}${String(newDate.getMonth() + 1).padStart(2, '0')}-`
+    certificateNumber: generateCertificateNumber(currentSequence)
   });
 
   const [error, setError] = useState('');
@@ -84,7 +103,7 @@ const GetCertificate = () => {
       }
 
       const canvas = await html2canvas(certificateRef.current, {
-        scale: 4, //initially it was 3
+        scale: 4, // Higher quality
         logging: false,
         useCORS: true,
         backgroundColor: '#ffffff',
@@ -118,6 +137,20 @@ const GetCertificate = () => {
       
       const fileName = `${formData.name.replace(/[^a-z0-9]/gi, '_')}_Certificate.pdf`;
       pdf.save(fileName);
+
+      // On successful generation, commit the sequence number and prepare next
+      localStorage.setItem('lastCertificateSequence', currentSequence.toString());
+      
+      // Update state for next certificate
+      const nextSeq = currentSequence + 1;
+      setCurrentSequence(nextSeq);
+      setFormData(prev => ({
+        ...prev,
+        // Reset name for next entry if desired, or keep it. Often for bulk user might want to keep issued date etc.
+        // Let's decide to keep fields but update cert number.
+        // name: '', // Optional: clear name?
+        certificateNumber: generateCertificateNumber(nextSeq)
+      }));
 
     } catch (err) {
       console.error('PDF Generation Error:', err);
