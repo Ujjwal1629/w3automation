@@ -16,7 +16,7 @@
   height: 600px; /* Fixed height for PDF */
   background: #ffffff;
   position: relative;
-  padding: 25px;
+  padding: 0; /* Removed padding to allow ornaments to be flush with corners */
   box-sizing: border-box;
   background-image: linear-gradient(135deg, #f8f9fa, #ffffff);
   
@@ -39,26 +39,37 @@
 .logo-container {
   text-align: center;
   margin-bottom: 20px;
-  position: relative;
+  position: static; /* Changed to static so logo allows absolute relative to .certificate */
   width: 100%;
+  height: 60px; /* Reserve height for Org Name */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
+  position: absolute;
+  top: 15px; 
+  left: 15px;
   height: 45px; 
   width: auto;
-  max-width: 200px; /* Prevent stretching */
-  margin: 0 auto 10px;
+  max-width: 150px;
+  margin: 0;
   display: block;
+  z-index: 20; /* Higher than ornament (z-index: 2 for ornament but ornament is pointer-events none) */
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); /* White glow to separate from ornament */
 }
 
 .organization-name {
   font-family: 'Georgia', serif;
-  font-size: 24px;
+  font-size: 28px;
   color: #1a2a44;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin: 5px 0 0;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 10px 0 0;
   line-height: 1.2;
+  position: relative; 
+  z-index: 5;
 }
 
 /* Decorative Elements */
@@ -73,19 +84,19 @@
 
 .corner-ornament {
   position: absolute;
-  width: 60px;
-  height: 60px;
-  opacity: 0.3;
+  width: 100px;
+  height: 100px;
+  pointer-events: none; /* Ensure it doesn't block interactions */
 }
 
 .top-left {
-  top: 15px;
-  left: 15px;
+  top: 0;
+  left: 0;
 }
 
 .bottom-right {
-  bottom: 15px;
-  right: 15px;
+  bottom: 0;
+  right: 0;
 }
 
 /* Header Section - Fixed spacing */
