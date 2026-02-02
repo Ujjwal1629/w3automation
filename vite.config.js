@@ -12,6 +12,21 @@ export default defineConfig({
   server: {
     port: 5176,
     strictPort: true,
+    proxy: {
+        '^/api/': {
+            target: 'https://restful-booker.herokuapp.com',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/api/, ''),
+            configure: (proxy, _options) => {
+                proxy.on('proxyReq', (proxyReq, req, _res) => {
+                    const token = req.headers['x-auth-token'];
+                    if (token) {
+                        proxyReq.setHeader('Cookie', `token=${token}`);
+                    }
+                });
+            }
+        }
+    }
   },
   preview: {
     port: 5176,
