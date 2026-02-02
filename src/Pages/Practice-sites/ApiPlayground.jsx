@@ -203,13 +203,18 @@ const ApiPlayground = () => {
     setResponse(null);
 
     // Auto-auth if required
+    let activeToken = authToken;
     if (requiresAuth(selectedRequest)) {
-        const ok = await runAuthIfNeeded();
-        if (!ok) {
-            setLoading(false);
-            return;
+        // If we don't have a token, or want to ensure we have one, getting it fresh is safer
+        // but for now let's reuse if existing, or fetch if missing.
+        if (!activeToken) {
+            activeToken = await runAuthIfNeeded(); // Returns token string or null
+            if (!activeToken) {
+                setLoading(false);
+                return;
+            }
+        }
     }
-  }
 
     try {
         // 1. Construct URL with Path Params
@@ -234,9 +239,9 @@ const ApiPlayground = () => {
         });
 
         // 🔐 RESTFUL BOOKER AUTH
-        if (selectedRequest.requiresAuth && authToken) {
+        if (selectedRequest.requiresAuth && activeToken) {
             // Send as custom header, let Vite Proxy rewrite it to Cookie
-            headersInit['X-Auth-Token'] = authToken;
+            headersInit['X-Auth-Token'] = activeToken;
         }
 
         // 4. Prepare Options (Body)
@@ -305,7 +310,7 @@ const ApiPlayground = () => {
     };
 
     const runAuthIfNeeded = async () => {
-    if (authToken) return true;
+    if (authToken) return authToken;
 
     const authReq = API_COLLECTION
         .find(g => g.group === 'Auth')
@@ -324,10 +329,10 @@ const ApiPlayground = () => {
 
         setAuthToken(data.token);
         setIsAuthenticated(true);
-        return true;
+        return data.token;
     } catch (e) {
         setIsAuthenticated(false);
-        return false;
+        return null;
     }
     };
 
