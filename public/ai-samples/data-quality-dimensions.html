@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Quality Dimensions</title>
+    <style>
+        .dimension { 
+            margin: 20px 0; 
+            padding: 15px; 
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .dimension:hover { transform: translateX(10px); }
+        
+        .completeness { 
+            border-left: 5px solid #e74c3c;
+            background: #fddede;
+        }
+        .consistency { 
+            border-left: 5px solid #3498db;
+            background: #e3f2fd;
+        }
+        .bias { 
+            border-left: 5px solid #9b59b6;
+            background: #f3e5f5;
+        }
+        
+        .example-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        .example-table th, .example-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .example-table th { background: #f2f2f2; }
+        .bad-data { background: #ffebee; }
+        .good-data { background: #e8f5e9; }
+        
+        .checklist { margin: 10px 0; padding-left: 20px; }
+        .checklist li { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>Data Quality Dimensions</h1>
+    
+    <div class="dimension completeness">
+        <h2>📊 Completeness</h2>
+        <p><strong>Definition:</strong> Are all required data points present?</p>
+        
+        <table class="example-table">
+            <tr>
+                <th>Customer ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+            </tr>
+            <tr class="bad-data">
+                <td>C001</td>
+                <td>John Doe</td>
+                <td>john@email.com</td>
+                <td>NULL</td>
+                <td>Active</td>
+            </tr>
+            <tr class="bad-data">
+                <td>C002</td>
+                <td>Jane Smith</td>
+                <td>NULL</td>
+                <td>555-0123</td>
+                <td>Active</td>
+            </tr>
+            <tr class="good-data">
+                <td>C003</td>
+                <td>Bob Wilson</td>
+                <td>bob@email.com</td>
+                <td>555-0456</td>
+                <td>Active</td>
+            </tr>
+        </table>
+        
+        <div class="checklist">
+            <h4>Testing Checklist:</h4>
+            <ul>
+                <li>Count NULL/empty values per column</li>
+                <li>Check required fields in forms</li>
+                <li>Verify all records have primary keys</li>
+                <li>Check for default/placeholder values</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="dimension consistency">
+        <h2>🔄 Consistency</h2>
+        <p><strong>Definition:</strong> Is data uniformly formatted and following rules?</p>
+        
+        <table class="example-table">
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Currency</th>
+            </tr>
+            <tr class="bad-data">
+                <td>O1001</td>
+                <td>2024-03-15</td>
+                <td>150.00</td>
+                <td>USD</td>
+            </tr>
+            <tr class="bad-data">
+                <td>O1002</td>
+                <td>15/03/2024</td>
+                <td>$200.00</td>
+                <td>USD</td>
+            </tr>
+            <tr class="bad-data">
+                <td>O1003</td>
+                <td>March 15, 2024</td>
+                <td>300</td>
+                <td>usd</td>
+            </tr>
+        </table>
+        
+        <div class="checklist">
+            <h4>Testing Checklist:</h4>
+            <ul>
+                <li>Validate date formats (ISO 8601 preferred)</li>
+                <li>Check currency codes (ISO 4217)</li>
+                <li>Verify email format patterns</li>
+                <li>Ensure consistent capitalization</li>
+                <li>Check referential integrity between tables</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="dimension bias">
+        <h2>⚖️ Bias Detection</h2>
+        <p><strong>Definition:</strong> Systematic skew in data representation</p>
+        
+        <table class="example-table">
+            <tr>
+                <th>Applicant ID</th>
+                <th>Gender</th>
+                <th>Experience (years)</th>
+                <th>Education Level</th>
+                <th>Hired (Yes/No)</th>
+            </tr>
+            <tr>
+                <td>A001</td>
+                <td>Male</td>
+                <td>5</td>
+                <td>Masters</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>A002</td>
+                <td>Male</td>
+                <td>3</td>
+                <td>Bachelors</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>A003</td>
+                <td>Female</td>
+                <td>7</td>
+                <td>PhD</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>A004</td>
+                <td>Female</td>
+                <td>4</td>
+                <td>Masters</td>
+                <td>No</td>
+            </tr>
+        </table>
+        
+        <div class="checklist">
+            <h4>Bias Detection Metrics:</h4>
+            <ul>
+                <li><strong>Disparate Impact Ratio:</strong> (Female hire rate) / (Male hire rate)</li>
+                <li><strong>Statistical Parity:</strong> Equal selection rates across groups</li>
+                <li><strong>Representation Check:</strong> Does sample match population?</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

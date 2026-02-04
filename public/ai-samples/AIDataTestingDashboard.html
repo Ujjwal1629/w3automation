@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Data Testing Framework - Integrated Dashboard</title>
+    <style>
+        :root {
+            --manual-bg: #e0f2fe;
+            --manual-border: #0369a1;
+            --auto-bg: #dcfce7;
+            --auto-border: #16a34a;
+            --ct-ai-bg: #fef3c7;
+            --ct-ai-border: #d97706;
+            --gen-ai-bg: #fae8ff;
+            --gen-ai-border: #a855f7;
+            --card-bg: #ffffff;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #0369a1, #16a34a, #d97706, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .methodology-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border-top: 4px solid;
+        }
+        
+        .methodology-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .manual { border-color: var(--manual-border); }
+        .automation { border-color: var(--auto-border); }
+        .ct-ai { border-color: var(--ct-ai-border); }
+        .gen-ai { border-color: var(--gen-ai-border); }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .manual .icon { background: var(--manual-border); }
+        .automation .icon { background: var(--auto-border); }
+        .ct-ai .icon { background: var(--ct-ai-border); }
+        .gen-ai .icon { background: var(--gen-ai-border); }
+        
+        h2 {
+            font-size: 1.25rem;
+            color: var(--text);
+        }
+        
+        .card-content {
+            margin-bottom: 1.5rem;
+        }
+        
+        .techniques {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .manual .tech-tag { background: var(--manual-bg); color: var(--manual-border); }
+        .automation .tech-tag { background: var(--auto-bg); color: var(--auto-border); }
+        .ct-ai .tech-tag { background: var(--ct-ai-bg); color: var(--ct-ai-border); }
+        .gen-ai .tech-tag { background: var(--gen-ai-bg); color: var(--gen-ai-border); }
+        
+        .interactive-demo {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 3px solid;
+        }
+        
+        .demo-controls {
+            margin: 1rem 0;
+        }
+        
+        select, input, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            font-family: inherit;
+        }
+        
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            background: #3b82f6;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        button:hover {
+            background: #2563eb;
+        }
+        
+        .output {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 6px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .integration-view {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+        
+        .workflow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .workflow-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .workflow-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+        
+        .data-visualization {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .viz-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        
+        .metric {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .chart {
+            height: 200px;
+            background: linear-gradient(to top, #e0f2fe 0%, transparent 100%);
+            border-radius: 8px;
+            margin-top: 1rem;
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .workflow-step:not(:last-child)::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -20px;
+                transform: translateX(50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Data Testing Framework</h1>
+            <p class="subtitle">Integrated dashboard showcasing manual, automated, and AI-driven testing methodologies for comprehensive AI system validation</p>
+        </header>
+        
+        <div class="dashboard-grid">
+            <!-- Manual Testing Card -->
+            <div class="methodology-card manual">
+                <div class="card-header">
+                    <div class="icon">M</div>
+                    <h2>Manual: Exploratory Data Testing</h2>
+                </div>
+                <div class="card-content">
+                    <p>Human-led investigation of data quality, patterns, and anomalies through systematic exploration.</p>
+                    
+                    <div class="techniques">
+                        <span class="tech-tag">Data Profiling</span>
+                        <span class="tech-tag">Outlier Detection</span>
+                        <span class="tech-tag">Pattern Analysis</span>
+                        <span class="tech-tag">Boundary Testing</span>
+                        <span class="tech-tag">Statistical Sampling</span>
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <h4>Interactive Data Explorer</h4>
+                        <div class="demo-controls">
+                            <label>Select Dataset:</label>
+                            <select id="datasetSelect">
+                                <option value="healthcare">Healthcare Dataset</option>
+                                <option value="finance">Financial Transactions</option>
+                                <option value="customer">Customer Demographics</option>
+                                <option value="sensor">IoT Sensor Data</option>
+                            </select>
+                            
+                            <label>Testing Technique:</label>
+                            <select id="techniqueSelect">
+                                <option value="profile">Data Profiling</option>
+                                <option value="outlier">Outlier Detection</option>
+                                <option value="pattern">Pattern Analysis</option>
+                                <option value="boundary">Boundary Testing</option>
+                            </select>
+                            
+                            <button onclick="runExploratoryTest()">Run Exploratory Test</button>
+                        </div>
+                        
+                        <div id="manualOutput" class="output">
+                            <!-- Results will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Automation Testing Card -->
+            <div class="methodology-card automation">
+                <div class="card-header">
+                    <div class="icon">A</div>
+                    <h2>Automation: Data Validation Scripts</h2>
+                </div>
+                <div class="card-content">
+                    <p>Automated validation of data integrity, consistency, and quality through programmed checks.</p>
+                    
+                    <div class="techniques">
+                        <span class="tech-tag">Schema Validation</span>
+                        <span class="tech-tag">Data Type Checking</span>
+                        <span class="tech-tag">Constraint Validation</span>
+                        <span class="tech-tag">Cross-reference Testing</span>
+                        <span class="tech-tag">Quality Metrics</span>
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <h4>Automated Validation Suite</h4>
+                        <div class="demo-controls">
+                            <label>Validation Rules:</label>
+                            <textarea id="validationRules" rows="3">age: range(0, 120)
+income: positive_number
+email: valid_format
+zipcode: length(5)
+gender: in['Male','Female','Other']</textarea>
+                            
+                            <button onclick="runAutomatedValidation()">Execute Validation Script</button>
+                            <button onclick="scheduleValidation()" style="background: #6b7280; margin-left: 0.5rem;">Schedule Recurring</button>
+                        </div>
+                        
+                        <div id="autoOutput" class="output">
+                            <!-- Results will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CT-AI Integration Card -->
+            <div class="methodology-card ct-ai">
+                <div class="card-header">
+                    <div class="icon">CT</div>
+                    <h2>CT-AI: Risk-Based Data Testing</h2>
+                </div>
+                <div class="card-content">
+                    <p>AI-specific risk assessment and prioritized testing based on failure impact and probability.</p>
+                    
+                    <div class="techniques">
+                        <span class="tech-tag">Risk Assessment</span>
+                        <span class="tech-tag">Priority Scoring</span>
+                        <span class="tech-tag">Impact Analysis</span>
+                        <span class="tech-tag">Failure Prediction</span>
+                        <span class="tech-tag">Test Optimization</span>
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <h4>Risk Assessment Engine</h4>
+                        <div class="demo-controls">
+                            <label>Model Type:</label>
+                            <select id="modelType">
+                                <option value="classification">Classification</option>
+                                <option value="regression">Regression</option>
+                                <option value="nlp">NLP</option>
+                                <option value="cv">Computer Vision</option>
+                            </select>
+                            
+                            <label>Criticality Level:</label>
+                            <input type="range" id="criticality" min="1" max="10" value="5">
+                            <span id="criticalityValue">5/10</span>
+                            
+                            <button onclick="assessAIrisks()">Assess AI Risks</button>
+                        </div>
+                        
+                        <div id="ctaiOutput" class="output">
+                            <!-- Results will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gen-AI Integration Card -->
+            <div class="methodology-card gen-ai">
+                <div class="card-header">
+                    <div class="icon">G</div>
+                    <h2>CT-Gen AI: Test Case Generation</h2>
+                </div>
+                <div class="card-content">
+                    <p>AI-generated test cases from dataset specifications, requirements, and data characteristics.</p>
+                    
+                    <div class="techniques">
+                        <span class="tech-tag">Test Generation</span>
+                        <span class="tech-tag">Scenario Creation</span>
+                        <span class="tech-tag">Edge Case Discovery</span>
+                        <span class="tech-tag">Requirement Mapping</span>
+                        <span class="tech-tag">Coverage Analysis</span>
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <h4>AI Test Generator</h4>
+                        <div class="demo-controls">
+                            <label>Dataset Schema:</label>
+                            <textarea id="datasetSchema" rows="3">{
+  "age": "int, range: 18-100",
+  "income": "float, min: 0",
+  "education": "category: ['HS','College','Grad']",
+  "purchase_amount": "float, nullable"
+}</textarea>
+                            
+                            <button onclick="generateTestCases()">Generate Test Cases</button>
+                            <button onclick="analyzeCoverage()" style="background: #8b5cf6;">Analyze Coverage</button>
+                        </div>
+                        
+                        <div id="genaiOutput" class="output">
+                            <!-- Results will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Integrated Workflow View -->
+        <div class="integration-view">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #4b5563;">Integrated AI Testing Workflow</h2>
+            
+            <div class="workflow">
+                <div class="workflow-step manual">
+                    <h3>1. Manual Exploration</h3>
+                    <p>Initial data discovery and hypothesis formation</p>
+                    <div class="metric" id="manualMetric">0%</div>
+                </div>
+                
+                <div class="workflow-step automation">
+                    <h3>2. Automated Validation</h3>
+                    <p>Script-based consistency checking</p>
+                    <div class="metric" id="autoMetric">0%</div>
+                </div>
+                
+                <div class="workflow-step ct-ai">
+                    <h3>3. Risk Assessment</h3>
+                    <p>AI-specific risk prioritization</p>
+                    <div class="metric" id="ctaiMetric">0%</div>
+                </div>
+                
+                <div class="workflow-step gen-ai">
+                    <h3>4. Test Generation</h3>
+                    <p>AI-powered test creation</p>
+                    <div class="metric" id="genaiMetric">0%</div>
+                </div>
+            </div>
+            
+            <div class="data-visualization">
+                <div class="viz-card">
+                    <h4>Testing Coverage</h4>
+                    <div class="chart" id="coverageChart"></div>
+                    <p id="coverageText">Overall coverage: 0%</p>
+                </div>
+                
+                <div class="viz-card">
+                    <h4>Defects Found</h4>
+                    <div class="chart" id="defectsChart"></div>
+                    <p id="defectsText">Total defects: 0</p>
+                </div>
+                
+                <div class="viz-card">
+                    <h4>Testing Efficiency</h4>
+                    <div class="chart" id="efficiencyChart"></div>
+                    <p id="efficiencyText">Time saved: 0 hours</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button onclick="runCompletePipeline()" style="padding: 1rem 2rem; font-size: 1.1rem; background: linear-gradient(90deg, #0369a1, #a855f7);">
+                    🚀 Execute Complete Testing Pipeline
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize metrics
+        let metrics = {
+            manual: 0,
+            automation: 0,
+            ctai: 0,
+            genai: 0
+        };
+        
+        let defects = {
+            data_quality: 0,
+            schema_violations: 0,
+            bias_issues: 0,
+            edge_cases: 0
+        };
+        
+        // Manual Testing Functions
+        function runExploratoryTest() {
+            const dataset = document.getElementById('datasetSelect').value;
+            const technique = document.getElementById('techniqueSelect').value;
+            const output = document.getElementById('manualOutput');
+            
+            const techniques = {
+                profile: 'Data Profiling Analysis',
+                outlier: 'Outlier Detection',
+                pattern: 'Pattern Recognition',
+                boundary: 'Boundary Value Testing'
+            };
+            
+            const datasets = {
+                healthcare: 'Patient records with age, diagnosis, treatment',
+                finance: 'Transaction data with amounts, dates, categories',
+                customer: 'Demographic data with age, income, location',
+                sensor: 'IoT sensor readings with timestamps, values'
+            };
+            
+            const findings = [
+                "✓ Data distribution analysis complete",
+                "✓ Missing values detected in 3% of records",
+                "✓ Statistical summary generated",
+                "✓ Outliers identified: 12 records flagged",
+                "✓ Pattern correlation: 0.85 between features A and B",
+                "✓ Boundary conditions validated"
+            ];
+            
+            output.innerHTML = `
+                <strong>Dataset:</strong> ${datasets[dataset]}<br>
+                <strong>Technique:</strong> ${techniques[technique]}<br><br>
+                <strong>Findings:</strong><br>
+                ${findings.slice(0, 4).map(f => `<div style="margin: 0.25rem 0;">${f}</div>`).join('')}
+                <br>
+                <div style="color: #059669; font-weight: bold;">
+                    ✅ Manual exploration completed. 4 issues identified.
+                </div>
+            `;
+            
+            metrics.manual = 85;
+            updateMetrics();
+            updateVisualizations();
+        }
+        
+        // Automation Functions
+        function runAutomatedValidation() {
+            const rules = document.getElementById('validationRules').value;
+            const output = document.getElementById('autoOutput');
+            
+            const results = [
+                { rule: "age range", passed: 98, failed: 2 },
+                { rule: "income positive", passed: 99, failed: 1 },
+                { rule: "email format", passed: 96, failed: 4 },
+                { rule: "zipcode length", passed: 97, failed: 3 },
+                { rule: "gender values", passed: 100, failed: 0 }
+            ];
+            
+            const failedRecords = [
+                "Record #342: age=150 (out of range)",
+                "Record #521: income=-5000 (negative)",
+                "Record #789: email='invalid.email' (malformed)",
+                "Record #901: zipcode='123456' (too long)"
+            ];
+            
+            output.innerHTML = `
+                <strong>Validation Results:</strong><br>
+                ${results.map(r => `
+                    <div style="margin: 0.25rem 0;">
+                        ${r.rule}: ${r.passed}% passed, ${r.failed}% failed
+                        <div style="width: 100%; background: #e5e7eb; height: 4px; border-radius: 2px; margin-top: 2px;">
+                            <div style="width: ${r.passed}%; background: #10b981; height: 100%; border-radius: 2px;"></div>
+                        </div>
+                    </div>
+                `).join('')}
+                <br>
+                <strong>Failed Records:</strong><br>
+                ${failedRecords.map(f => `<div style="color: #dc2626; margin: 0.25rem 0;">${f}</div>`).join('')}
+                <br>
+                <div style="color: #059669; font-weight: bold;">
+                    ✅ Automated validation completed. 10 violations found.
+                </div>
+            `;
+            
+            metrics.automation = 90;
+            defects.schema_violations += 10;
+            updateMetrics();
+            updateVisualizations();
+        }
+        
+        function scheduleValidation() {
+            alert("✅ Validation scheduled to run daily at 2 AM");
+        }
+        
+        // CT-AI Functions
+        function assessAIrisks() {
+            const modelType = document.getElementById('modelType').value;
+            const criticality = document.getElementById('criticality').value;
+            const output = document.getElementById('ctaiOutput');
+            
+            const modelRisks = {
+                classification: ["Class imbalance", "Label noise", "Decision boundary shifts"],
+                regression: ["Outlier sensitivity", "Non-linearity", "Extrapolation errors"],
+                nlp: ["Bias in training data", "Context misunderstanding", "Ambiguity handling"],
+                cv: ["Adversarial attacks", "Lighting variations", "Occlusion handling"]
+            };
+            
+            const riskScore = Math.min(95, 30 + (criticality * 7));
+            
+            output.innerHTML = `
+                <strong>Model Type:</strong> ${modelType.toUpperCase()}<br>
+                <strong>Criticality:</strong> ${criticality}/10<br>
+                <strong>Risk Score:</strong> ${riskScore}/100<br><br>
+                
+                <strong>Top Risks Identified:</strong><br>
+                ${modelRisks[modelType].map(r => `<div style="margin: 0.25rem 0;">⚠️ ${r}</div>`).join('')}
+                <br>
+                <strong>Recommended Tests (Priority Order):</strong><br>
+                1. Boundary condition testing<br>
+                2. Adversarial example testing<br>
+                3. Data drift monitoring<br>
+                4. Fairness assessment<br>
+                <br>
+                <div style="color: #d97706; font-weight: bold;">
+                    🔍 High-risk areas identified. Prioritize boundary testing.
+                </div>
+            `;
+            
+            metrics.ctai = riskScore;
+            updateMetrics();
+        }
+        
+        // Gen-AI Functions
+        function generateTestCases() {
+            const schema = document.getElementById('datasetSchema').value;
+            const output = document.getElementById('genaiOutput');
+            
+            const testCases = [
+                "TC-001: Validate age accepts values 18-100",
+                "TC-002: Verify negative income rejected",
+                "TC-003: Test education categories: HS, College, Grad",
+                "TC-004: Validate null purchase_amount allowed",
+                "TC-005: Boundary test: age=17 (should fail)",
+                "TC-006: Boundary test: age=101 (should fail)",
+                "TC-007: Test data type: age as integer",
+                "TC-008: Test data type: income as float",
+                "TC-009: Verify education case sensitivity",
+                "TC-010: Test missing education field"
+            ];
+            
+            output.innerHTML = `
+                <strong>Generated from Schema:</strong><br>
+                <pre style="background: #f3f4f6; padding: 0.5rem; border-radius: 4px; margin: 0.5rem 0;">${schema}</pre>
+                
+                <strong>Generated Test Cases (10):</strong><br>
+                ${testCases.map(tc => `<div style="margin: 0.25rem 0; padding-left: 0.5rem; border-left: 2px solid #8b5cf6;">${tc}</div>`).join('')}
+                <br>
+                <div style="color: #8b5cf6; font-weight: bold;">
+                    ✨ 10 test cases generated from schema specification.
+                </div>
+            `;
+            
+            metrics.genai = 95;
+            updateMetrics();
+        }
+        
+        function analyzeCoverage() {
+            const coverage = Math.floor(Math.random() * 30) + 70;
+            document.getElementById('genaiOutput').innerHTML += `
+                <div style="margin-top: 1rem; padding: 0.75rem; background: #f5f3ff; border-radius: 6px;">
+                    <strong>Coverage Analysis:</strong><br>
+                    Requirement coverage: ${coverage}%<br>
+                    Edge case coverage: ${coverage - 15}%<br>
+                    Boundary coverage: ${coverage + 5}%<br>
+                    <div style="margin-top: 0.5rem; font-weight: bold;">
+                        📊 Overall test coverage: ${coverage}%
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Metrics and Visualization Updates
+        function updateMetrics() {
+            document.getElementById('manualMetric').textContent = metrics.manual + '%';
+            document.getElementById('autoMetric').textContent = metrics.automation + '%';
+            document.getElementById('ctaiMetric').textContent = metrics.ctai + '%';
+            document.getElementById('genaiMetric').textContent = metrics.genai + '%';
+        }
+        
+        function updateVisualizations() {
+            // Update coverage chart
+            const totalCoverage = (metrics.manual + metrics.automation + metrics.ctai + metrics.genai) / 4;
+            document.getElementById('coverageChart').innerHTML = `
+                <div style="position: absolute; bottom: 0; width: 100%;">
+                    <div style="height: ${totalCoverage}%; background: linear-gradient(to top, #3b82f6, #60a5fa); border-radius: 8px 8px 0 0;"></div>
+                </div>
+            `;
+            document.getElementById('coverageText').textContent = `Overall coverage: ${totalCoverage.toFixed(1)}%`;
+            
+            // Update defects chart
+            const totalDefects = Object.values(defects).reduce((a, b) => a + b, 0);
+            document.getElementById('defectsChart').innerHTML = `
+                <div style="position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-around; align-items: flex-end; height: 100%; padding: 0 10px;">
+                    ${Object.entries(defects).map(([key, value]) => `
+                        <div style="width: 20%; height: ${value * 5}%; background: ${getDefectColor(key)}; border-radius: 4px 4px 0 0;"></div>
+                    `).join('')}
+                </div>
+            `;
+            document.getElementById('defectsText').textContent = `Total defects: ${totalDefects}`;
+            
+            // Update efficiency
+            const timeSaved = totalDefects * 0.5; // Assuming 0.5 hours saved per defect
+            document.getElementById('efficiencyChart').innerHTML = `
+                <div style="position: absolute; bottom: 0; width: ${Math.min(100, timeSaved * 2)}%; height: 100%; background: linear-gradient(to right, #10b981, #34d399); border-radius: 8px;"></div>
+            `;
+            document.getElementById('efficiencyText').textContent = `Time saved: ${timeSaved.toFixed(1)} hours`;
+        }
+        
+        function getDefectColor(type) {
+            const colors = {
+                data_quality: '#ef4444',
+                schema_violations: '#f59e0b',
+                bias_issues: '#8b5cf6',
+                edge_cases: '#06b6d4'
+            };
+            return colors[type] || '#6b7280';
+        }
+        
+        // Complete Pipeline Execution
+        function runCompletePipeline() {
+            // Simulate running all methodologies
+            runExploratoryTest();
+            setTimeout(runAutomatedValidation, 500);
+            setTimeout(() => assessAIrisks(), 1000);
+            setTimeout(generateTestCases, 1500);
+            
+            setTimeout(() => {
+                alert("🚀 Complete testing pipeline executed successfully!\n\n" +
+                      "✓ Manual exploratory testing completed\n" +
+                      "✓ Automated validation scripts executed\n" +
+                      "✓ AI risk assessment performed\n" +
+                      "✓ Test cases generated from specifications\n\n" +
+                      "Total time saved: 12.5 hours\n" +
+                      "Defects identified: 25\n" +
+                      "Coverage achieved: 91.2%");
+            }, 2000);
+        }
+        
+        // Initialize criticality slider
+        document.getElementById('criticality').addEventListener('input', function() {
+            document.getElementById('criticalityValue').textContent = this.value + '/10';
+        });
+        
+        // Initialize visualizations
+        updateVisualizations();
+    </script>
+</body>
+</html>

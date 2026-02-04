@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Bias Detection Lab - Interactive Learning</title>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --secondary: #0f766e;
+            --danger: #dc2626;
+            --success: #16a34a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--border);
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary-light);
+        }
+        
+        .card-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 0.75rem;
+            font-weight: bold;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+        
+        .bias-type {
+            background-color: #eff6ff;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid var(--primary-light);
+        }
+        
+        .bias-type h4 {
+            margin-bottom: 0.25rem;
+            color: var(--primary);
+        }
+        
+        .bias-type p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+        
+        .simulator {
+            background-color: #f0f9ff;
+            padding: 1.25rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        
+        .controls {
+            margin: 1.5rem 0;
+        }
+        
+        .control-group {
+            margin-bottom: 1.25rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .slider {
+            flex: 1;
+            height: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #d1d5db;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .slider-value {
+            font-weight: bold;
+            min-width: 60px;
+            color: var(--primary);
+        }
+        
+        select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        
+        button:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .secondary-btn {
+            background-color: #f1f5f9;
+            color: var(--text);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #e2e8f0;
+        }
+        
+        .output {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #f8fafc;
+            border-left: 4px solid var(--primary);
+            display: none;
+        }
+        
+        .output.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        .bias-alert {
+            background-color: #fef2f2;
+            color: var(--danger);
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-top: 0.75rem;
+            border-left: 4px solid var(--danger);
+            font-weight: 600;
+        }
+        
+        .insight {
+            background-color: #f0fdf4;
+            color: var(--success);
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-top: 0.75rem;
+            border-left: 4px solid var(--success);
+        }
+        
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 0.5rem;
+            background-color: #f8fafc;
+        }
+        
+        .quiz-option:hover {
+            background-color: #e2e8f0;
+        }
+        
+        .correct {
+            background-color: #dcfce7 !important;
+            color: var(--success);
+            border-left: 4px solid var(--success);
+        }
+        
+        .wrong {
+            background-color: #fee2e2 !important;
+            color: var(--danger);
+            border-left: 4px solid var(--danger);
+        }
+        
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .quiz-feedback.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        .progress-container {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #e2e8f0;
+            border-radius: 5px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--success);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI Bias Detection & Testing Lab</h1>
+        <p class="subtitle">An interactive learning platform for understanding, detecting, and mitigating bias in AI systems</p>
+    </header>
+    
+    <div class="container">
+        <!-- Introduction Section -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">!</div>
+                <h2>Why AI Bias Matters</h2>
+            </div>
+            <p>Traditional software bugs cause system failures. AI bias causes <strong>human harm</strong> through unfair, discriminatory outcomes.</p>
+            
+            <div class="controls" style="margin-top: 1.5rem;">
+                <div class="bias-type">
+                    <h4>Healthcare AI</h4>
+                    <p>Misdiagnosis based on gender or ethnicity</p>
+                </div>
+                <div class="bias-type">
+                    <h4>Financial AI</h4>
+                    <p>Unfair loan denials based on zip code</p>
+                </div>
+                <div class="bias-type">
+                    <h4>Hiring AI</h4>
+                    <p>Resume screening that favors certain demographics</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bias Types Grid -->
+        <h2 style="margin: 2rem 0 1rem;">Types of AI Bias</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Data Bias</h3>
+                <p>Training data doesn't represent real-world diversity</p>
+                <div class="insight" style="margin-top: 1rem;">
+                    <strong>Example:</strong> Facial recognition trained primarily on light-skinned males
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Label Bias</h3>
+                <p>Human labelers inject their own biases into training data</p>
+                <div class="insight" style="margin-top: 1rem;">
+                    <strong>Example:</strong> Resumes with "ethnic" names rated lower
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Historical Bias</h3>
+                <p>Past discrimination patterns are learned and perpetuated</p>
+                <div class="insight" style="margin-top: 1rem;">
+                    <strong>Example:</strong> Loan approval models replicating redlining
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Feedback Loop Bias</h3>
+                <p>AI predictions influence future data, reinforcing bias</p>
+                <div class="insight" style="margin-top: 1rem;">
+                    <strong>Example:</strong> Recommendation systems creating filter bubbles
+                </div>
+            </div>
+        </div>
+        
+        <!-- Interactive Simulators Grid -->
+        <h2 style="margin: 2rem 0 1rem;">Bias Detection Simulators</h2>
+        <div class="grid">
+            <!-- Healthcare Simulator -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-number">1</div>
+                    <h2>Healthcare AI Simulator</h2>
+                </div>
+                <p>Explore how gender can affect risk prediction in medical AI.</p>
+                
+                <div class="simulator">
+                    <div class="control-group">
+                        <label for="age">Patient Age: <span id="ageValue" class="slider-value">50</span></label>
+                        <div class="slider-container">
+                            <input type="range" min="30" max="70" value="50" class="slider" id="age">
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="gender">Patient Gender:</label>
+                        <select id="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="nonbinary">Non-binary</option>
+                        </select>
+                    </div>
+                    
+                    <button onclick="runHealthSim()">Calculate Health Risk</button>
+                    
+                    <div id="healthOutput" class="output">
+                        <!-- Results will appear here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Finance Simulator -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-number">2</div>
+                    <h2>Finance AI Simulator</h2>
+                </div>
+                <p>Test how location and income affect loan approval algorithms.</p>
+                
+                <div class="simulator">
+                    <div class="control-group">
+                        <label for="income">Annual Income: <span id="incomeValue" class="slider-value">$50,000</span></label>
+                        <div class="slider-container">
+                            <input type="range" min="20000" max="100000" value="50000" step="5000" class="slider" id="income">
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="area">Residential Area:</label>
+                        <select id="area">
+                            <option value="urban">Urban</option>
+                            <option value="suburban">Suburban</option>
+                            <option value="rural">Rural</option>
+                        </select>
+                    </div>
+                    
+                    <button onclick="runFinanceSim()">Check Loan Eligibility</button>
+                    
+                    <div id="financeOutput" class="output">
+                        <!-- Results will appear here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Retail Simulator -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-number">3</div>
+                    <h2>Retail AI Simulator</h2>
+                </div>
+                <p>Discover how recommendation engines can perpetuate stereotypes.</p>
+                
+                <div class="simulator">
+                    <div class="control-group">
+                        <label for="rGender">Customer Gender:</label>
+                        <select id="rGender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other/Prefer not to say</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="budget">Shopping Budget: <span id="budgetValue" class="slider-value">$1,000</span></label>
+                        <div class="slider-container">
+                            <input type="range" min="100" max="5000" value="1000" step="100" class="slider" id="budget">
+                        </div>
+                    </div>
+                    
+                    <button onclick="runRetailSim()">Get Product Recommendations</button>
+                    
+                    <div id="retailOutput" class="output">
+                        <!-- Results will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bias Testing Strategies -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">4</div>
+                <h2>Bias Testing Strategies</h2>
+            </div>
+            <p>Select a test case to understand how to detect different types of bias:</p>
+            
+            <div class="control-group" style="margin-top: 1rem;">
+                <select id="testCase">
+                    <option value="gender">Same input, different gender</option>
+                    <option value="income">Same qualifications, different zip code</option>
+                    <option value="language">Same behavior, different language</option>
+                    <option value="race">Same symptoms, different race</option>
+                </select>
+            </div>
+            
+            <button onclick="explainTestCase()">Explain This Test Case</button>
+            
+            <div id="caseOutput" class="output">
+                <!-- Explanation will appear here -->
+            </div>
+        </div>
+        
+        <!-- Interactive Quiz -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">5</div>
+                <h2>AI Bias Knowledge Check</h2>
+            </div>
+            <p><strong>Question:</strong> What testing approach involves changing only sensitive attributes (like gender or race) while keeping all other inputs constant?</p>
+            
+            <div class="button-group">
+                <button class="quiz-option" onclick="checkQuizAnswer(this, 'wrong')">A/B Testing</button>
+                <button class="quiz-option" onclick="checkQuizAnswer(this, 'correct')">Counterfactual Testing</button>
+                <button class="quiz-option" onclick="checkQuizAnswer(this, 'wrong')">Load Testing</button>
+                <button class="quiz-option" onclick="checkQuizAnswer(this, 'wrong')">Integration Testing</button>
+            </div>
+            
+            <div id="quizOutput" class="quiz-feedback">
+                <!-- Quiz feedback will appear here -->
+            </div>
+        </div>
+        
+        <!-- Reflection Exercise -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">6</div>
+                <h2>Test Engineer Exercise</h2>
+            </div>
+            <p>Design bias test cases for a hiring AI that screens software engineer resumes:</p>
+            
+            <div class="control-group">
+                <textarea id="testCases" rows="4" placeholder="1. Test with identical resumes but different names (ethnic vs. non-ethnic)&#10;2. Test with same experience but different universities (prestigious vs. state schools)&#10;3. Test with..."></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button onclick="saveTestCases()">Save My Test Cases</button>
+                <button class="secondary-btn" onclick="clearTestCases()">Clear</button>
+            </div>
+            
+            <div id="exerciseOutput" class="output">
+                <!-- Exercise feedback will appear here -->
+            </div>
+        </div>
+        
+        <!-- Progress Tracker -->
+        <div class="progress-container">
+            <h3>Your Learning Progress</h3>
+            <p>Complete interactive sections to fill the progress bar</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="progressText" style="margin-top: 0.5rem; font-weight: 600;">0/6 sections completed</p>
+        </div>
+        
+        <!-- Reflection Questions -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-number">?</div>
+                <h2>Critical Reflection Questions</h2>
+            </div>
+            <ul style="padding-left: 1.5rem; margin-top: 1rem;">
+                <li style="margin-bottom: 0.75rem;">Which simulator showed the most concerning bias pattern?</li>
+                <li style="margin-bottom: 0.75rem;">How would you explain the risks of AI bias to a non-technical stakeholder?</li>
+                <li style="margin-bottom: 0.75rem;">What testing safeguards would you implement before deploying these AI systems?</li>
+                <li style="margin-bottom: 0.75rem;">How can we balance model accuracy with fairness in real-world AI applications?</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <p>AI Bias Detection Interactive Lab • Designed for AI Test Engineers</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Based on original concept by Hemant Gandhi</p>
+    </footer>
+
+    <script>
+        // Initialize sliders with values
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up slider value displays
+            const ageSlider = document.getElementById('age');
+            const ageValue = document.getElementById('ageValue');
+            ageSlider.addEventListener('input', function() {
+                ageValue.textContent = this.value;
+            });
+            
+            const incomeSlider = document.getElementById('income');
+            const incomeValue = document.getElementById('incomeValue');
+            incomeSlider.addEventListener('input', function() {
+                incomeValue.textContent = '$' + parseInt(this.value).toLocaleString();
+            });
+            
+            const budgetSlider = document.getElementById('budget');
+            const budgetValue = document.getElementById('budgetValue');
+            budgetSlider.addEventListener('input', function() {
+                budgetValue.textContent = '$' + parseInt(this.value).toLocaleString();
+            });
+            
+            updateProgress();
+        });
+        
+        // Track completed sections
+        let completedSections = new Set();
+        
+        // Update progress bar
+        function updateProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const progress = (completedSections.size / 6) * 100;
+            
+            progressFill.style.width = `${progress}%`;
+            progressText.textContent = `${completedSections.size}/6 sections completed`;
+        }
+        
+        // Healthcare simulator
+        function runHealthSim() {
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const output = document.getElementById('healthOutput');
+            
+            // Simulate biased risk calculation
+            let risk;
+            if (gender === 'male') {
+                risk = age * 0.01;
+            } else if (gender === 'female') {
+                risk = age * 0.006;
+            } else {
+                risk = age * 0.008; // Non-binary gets intermediate risk
+            }
+            
+            output.innerHTML = `
+                <h3>Health Risk Assessment</h3>
+                <p><strong>Patient Profile:</strong> ${age}-year-old ${gender}</p>
+                <p><strong>Predicted Risk Score:</strong> ${risk.toFixed(3)}</p>
+                <div class="bias-alert">
+                    ⚠️ Potential Gender Bias Detected
+                </div>
+                <p style="margin-top: 0.75rem;">This model assigns different risk scores based on gender, even with identical symptoms and medical history.</p>
+            `;
+            
+            output.classList.add('show');
+            completedSections.add('health');
+            updateProgress();
+        }
+        
+        // Finance simulator
+        function runFinanceSim() {
+            const income = document.getElementById('income').value;
+            const area = document.getElementById('area').value;
+            const output = document.getElementById('financeOutput');
+            
+            // Simulate biased loan approval
+            let approval;
+            let biasDetected = false;
+            
+            if (area === 'urban' && income > 40000) {
+                approval = 'APPROVED';
+            } else if (area === 'suburban' && income > 35000) {
+                approval = 'APPROVED';
+            } else if (area === 'rural' && income > 50000) {
+                approval = 'APPROVED';
+                biasDetected = true;
+            } else {
+                approval = 'DENIED';
+                biasDetected = true;
+            }
+            
+            output.innerHTML = `
+                <h3>Loan Application Result</h3>
+                <p><strong>Applicant Profile:</strong> $${parseInt(income).toLocaleString()} income, ${area} area</p>
+                <p><strong>Decision:</strong> <span style="font-weight: 800; font-size: 1.2rem;">${approval}</span></p>
+                ${biasDetected ? 
+                    `<div class="bias-alert">
+                        ⚠️ Location Bias Detected
+                    </div>
+                    <p style="margin-top: 0.75rem;">Rural applicants need significantly higher income for approval compared to urban applicants with similar financial profiles.</p>` 
+                    : 
+                    `<div class="insight">
+                        ✓ No obvious bias detected in this case
+                    </div>
+                    <p style="margin-top: 0.75rem;">This decision appears fair based on the simulated inputs.</p>`
+                }
+            `;
+            
+            output.classList.add('show');
+            completedSections.add('finance');
+            updateProgress();
+        }
+        
+        // Retail simulator
+        function runRetailSim() {
+            const gender = document.getElementById('rGender').value;
+            const budget = document.getElementById('budget').value;
+            const output = document.getElementById('retailOutput');
+            
+            // Simulate stereotyped recommendations
+            let recommendations;
+            let biasDetected = false;
+            
+            if (gender === 'male') {
+                recommendations = ['High-end headphones', 'Smartwatch', 'Power tools', 'Investment apps'];
+                biasDetected = true;
+            } else if (gender === 'female') {
+                recommendations = ['Skincare set', 'Yoga mat', 'Cookware', 'Fashion subscription'];
+                biasDetected = true;
+            } else {
+                recommendations = ['Tablet', 'Coffee maker', 'Fitness tracker', 'Books'];
+            }
+            
+            output.innerHTML = `
+                <h3>Personalized Recommendations</h3>
+                <p><strong>Customer Profile:</strong> ${gender} with $${parseInt(budget).toLocaleString()} budget</p>
+                <p><strong>Recommended Products:</strong></p>
+                <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                    ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                </ul>
+                ${biasDetected ? 
+                    `<div class="bias-alert">
+                        ⚠️ Stereotyping Bias Detected
+                    </div>
+                    <p style="margin-top: 0.75rem;">Recommendations are based on gender stereotypes rather than actual purchase history or preferences.</p>` 
+                    : 
+                    `<div class="insight">
+                        ✓ Gender-neutral recommendations
+                    </div>
+                    <p style="margin-top: 0.75rem;">These recommendations don't rely on gender stereotypes.</p>`
+                }
+            `;
+            
+            output.classList.add('show');
+            completedSections.add('retail');
+            updateProgress();
+        }
+        
+        // Explain test cases
+        function explainTestCase() {
+            const testCase = document.getElementById('testCase').value;
+            const output = document.getElementById('caseOutput');
+            
+            let explanation = '';
+            let title = '';
+            
+            switch(testCase) {
+                case 'gender':
+                    title = 'Same Input, Different Gender';
+                    explanation = 'This is <strong>counterfactual testing</strong>. You keep all inputs identical (symptoms, test results, medical history) and only change the gender field. If the AI outputs different risk scores or treatment recommendations, you\'ve detected gender bias.';
+                    break;
+                case 'income':
+                    title = 'Same Qualifications, Different Zip Code';
+                    explanation = 'This tests for <strong>geographic or socioeconomic bias</strong>. Submit identical loan applications or job candidates, but change only the zip code. Different outcomes suggest the model is using location as a proxy for race or income level.';
+                    break;
+                case 'language':
+                    title = 'Same Behavior, Different Language';
+                    explanation = 'This identifies <strong>linguistic or cultural bias</strong>. Have users express the same intent or sentiment in different languages or dialects. If the AI interprets them differently (e.g., positive in English but negative in Spanish), it has language bias.';
+                    break;
+                case 'race':
+                    title = 'Same Symptoms, Different Race';
+                    explanation = 'This tests for <strong>racial bias in medical AI</strong>. Present identical symptoms and vital signs but change the patient\'s race. Different diagnoses or risk assessments indicate the model has learned biased associations from training data.';
+                    break;
+            }
+            
+            output.innerHTML = `
+                <h3>${title}</h3>
+                <p>${explanation}</p>
+                <div class="insight" style="margin-top: 1rem;">
+                    <strong>Testing Tip:</strong> Always test multiple counterfactuals to distinguish between legitimate correlations and harmful biases.
+                </div>
+            `;
+            
+            output.classList.add('show');
+            completedSections.add('testcase');
+            updateProgress();
+        }
+        
+        // Quiz functionality
+        function checkQuizAnswer(button, correctness) {
+            const output = document.getElementById('quizOutput');
+            const allButtons = document.querySelectorAll('.quiz-option');
+            
+            // Reset all buttons
+            allButtons.forEach(btn => {
+                btn.classList.remove('correct', 'wrong');
+            });
+            
+            // Mark the clicked button
+            if (correctness === 'correct') {
+                button.classList.add('correct');
+                output.innerHTML = `<div class="insight">✓ Correct! Counterfactual testing is the gold standard for detecting bias in AI systems.</div>`;
+            } else {
+                button.classList.add('wrong');
+                output.innerHTML = `<div class="bias-alert">✗ Not quite. The correct answer is "Counterfactual Testing" - changing only sensitive attributes while keeping other inputs constant.</div>`;
+            }
+            
+            output.classList.add('show');
+            completedSections.add('quiz');
+            updateProgress();
+        }
+        
+        // Exercise functionality
+        function saveTestCases() {
+            const testCases = document.getElementById('testCases').value;
+            const output = document.getElementById('exerciseOutput');
+            
+            if (testCases.trim() === '') {
+                output.innerHTML = `<div class="bias-alert">Please write at least one test case before saving.</div>`;
+            } else {
+                // Count test cases (lines that start with a number)
+                const lines = testCases.split('\n').filter(line => line.trim() !== '');
+                const testCaseCount = lines.length;
+                
+                output.innerHTML = `
+                    <div class="insight">
+                        ✓ Saved ${testCaseCount} test case${testCaseCount !== 1 ? 's' : ''}!
+                    </div>
+                    <p style="margin-top: 0.75rem;"><strong>Peer Review Exercise:</strong> Exchange your test cases with another learner and provide feedback on:</p>
+                    <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Are the test cases specific enough to execute?</li>
+                        <li>Do they test for different types of bias?</li>
+                        <li>What edge cases might be missing?</li>
+                    </ul>
+                `;
+                
+                completedSections.add('exercise');
+                updateProgress();
+            }
+            
+            output.classList.add('show');
+        }
+        
+        function clearTestCases() {
+            document.getElementById('testCases').value = '';
+            document.getElementById('exerciseOutput').classList.remove('show');
+        }
+    </script>
+</body>
+</html>

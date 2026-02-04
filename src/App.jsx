@@ -43,6 +43,7 @@ import CourseDetailPageSDET from "./Pages/CourseDetail/CourseDetailPageSDET.jsx"
 import CourseDetailPagePlaywrightInterview from "./Pages/CourseDetail/CourseDetailPagePlaywrightInterview.jsx";
 import CourseDetailPageAI from "./Pages/CourseDetail/CourseDetailPageAI.jsx";
 import ApiPlayground from "./Pages/Practice-sites/ApiPlayground.jsx";
+import AiTestingSamples from "./Pages/Practice-sites/AiTestingSamples.jsx";
 import LivePractice from "./Pages/LivePractice";
 import ChallengeDetail from "./Pages/ChallengeDetail";
 import Leaderboard from "./Pages/Leaderboard";
@@ -323,6 +324,7 @@ function App() {
         <Route path="/practice/graphql" element={<GraphQLTest />} />
         <Route path="/practice/restapi" element={<RestApiTest />} />
         <Route path="/api-playground" element={<ApiPlayground />} />
+        <Route path="/practice/ai-testing-samples" element={<AiTestingSamples />} />
         <Route path="/homePageNew" element={<HomePageNew/>}/>
         <Route path="/live-practice" element={
           <ThemeProvider>
