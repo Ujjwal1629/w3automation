@@ -1,28 +1,77 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>BankBot - Hallucination Demo</title>
+    <script>
+        const sendHeight = () => {
+            parent.postMessage(
+                {
+                    type: "IFRAME_HEIGHT",
+                    height: document.documentElement.scrollHeight
+                },
+                "*"
+            );
+        };
+
+        window.addEventListener("load", sendHeight);
+        window.addEventListener("resize", sendHeight);
+        setTimeout(sendHeight, 500);
+    </script>
+
     <style>
-        body { font-family: Arial; max-width: 800px; margin: 40px auto; }
-        .chat-container { border: 1px solid #ccc; height: 300px; overflow-y: scroll; padding: 10px; margin: 20px 0; }
-        .user { color: blue; margin: 5px 0; }
-        .bot { color: green; margin: 5px 0; }
-        .warning { color: red; font-weight: bold; margin: 10px 0; }
-        input { width: 70%; padding: 8px; }
-        button { padding: 8px 15px; }
+        body {
+            font-family: Arial;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .chat-container {
+            border: 1px solid #ccc;
+            height: 300px;
+            overflow-y: scroll;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        .user {
+            color: blue;
+            margin: 5px 0;
+        }
+
+        .bot {
+            color: green;
+            margin: 5px 0;
+        }
+
+        .warning {
+            color: red;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        input {
+            width: 70%;
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px 15px;
+        }
     </style>
 </head>
+
 <body>
     <h2>🏦 BankBot Customer Service</h2>
     <div class="warning">⚠️ DEMO: This chatbot occasionally hallucinates false information</div>
-    
+
     <div class="chat-container" id="chat">
         <div class="bot">Hello! I'm BankBot, your virtual assistant for BankXYZ. How can I help you today?</div>
     </div>
-    
+
     <input type="text" id="userInput" placeholder="Ask about interest rates, fees, etc...">
     <button onclick="sendMessage()">Send</button>
-    
+
     <script>
         const hallucinationExamples = [
             "Our premium savings account currently offers 4.75% APY, which is 0.5% higher than competitors.",
@@ -30,32 +79,32 @@
             "The mortgage rate for first-time buyers is fixed at 3.25% for 5 years.",
             "Overdraft fees were reduced to $25 last quarter, down from $35."
         ];
-        
+
         const correctResponses = [
             "Our savings accounts offer competitive rates. Please visit our website for current rates.",
             "Standard foreign transaction fee is 3%. Check our travel card for lower fees.",
             "Mortgage rates vary. Please speak with a loan officer for current rates.",
             "Our standard overdraft fee is $35. Some accounts have fee-free overdraft protection."
         ];
-        
+
         let conversation = [];
-        
+
         function sendMessage() {
             const input = document.getElementById('userInput');
             const userText = input.value.trim();
             if (!userText) return;
-            
+
             // Add user message
             const chat = document.getElementById('chat');
             chat.innerHTML += `<div class="user"><strong>You:</strong> ${userText}</div>`;
-            
+
             // Simulate thinking
             setTimeout(() => {
                 let botResponse;
-                const isHallucinationTrigger = userText.toLowerCase().includes('rate') || 
-                                              userText.toLowerCase().includes('fee') ||
-                                              userText.toLowerCase().includes('promotion');
-                
+                const isHallucinationTrigger = userText.toLowerCase().includes('rate') ||
+                    userText.toLowerCase().includes('fee') ||
+                    userText.toLowerCase().includes('promotion');
+
                 // 30% chance of hallucination for specific queries
                 if (isHallucinationTrigger && Math.random() < 0.3) {
                     const randomHallucination = hallucinationExamples[Math.floor(Math.random() * hallucinationExamples.length)];
@@ -66,21 +115,21 @@
                     botResponse = randomCorrect;
                     chat.innerHTML += `<div class="bot"><strong>BankBot:</strong> ${botResponse}</div>`;
                 }
-                
+
                 chat.scrollTop = chat.scrollHeight;
-                conversation.push({user: userText, bot: botResponse});
-                
+                conversation.push({ user: userText, bot: botResponse });
+
             }, 500);
-            
+
             input.value = '';
         }
-        
+
         // Enter key support
-        document.getElementById('userInput').addEventListener('keypress', function(e) {
+        document.getElementById('userInput').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') sendMessage();
         });
     </script>
-    
+
     <div style="margin-top: 20px; font-size: 0.9em; color: #666;">
         <h4>Demo Instructions:</h4>
         <ol>
@@ -88,7 +137,9 @@
             <li>Ask <em>"What are your fees?"</em> - sometimes hallucinates promotions</li>
             <li>Ask <em>"Is there a mortgage promotion?"</em> - might invent specific rates</li>
         </ol>
-        <p>The bot has a 30% chance of generating <span style="color: red;">false information (hallucination)</span> when asked about rates/fees/promotions.</p>
+        <p>The bot has a 30% chance of generating <span style="color: red;">false information (hallucination)</span>
+            when asked about rates/fees/promotions.</p>
     </div>
 </body>
+
 </html>

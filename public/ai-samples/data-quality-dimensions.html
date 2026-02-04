@@ -1,54 +1,94 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Data Quality Dimensions</title>
+    <script>
+        const sendHeight = () => {
+            parent.postMessage(
+                {
+                    type: "IFRAME_HEIGHT",
+                    height: document.documentElement.scrollHeight
+                },
+                "*"
+            );
+        };
+
+        window.addEventListener("load", sendHeight);
+        window.addEventListener("resize", sendHeight);
+        setTimeout(sendHeight, 500);
+    </script>
+
     <style>
-        .dimension { 
-            margin: 20px 0; 
-            padding: 15px; 
+        .dimension {
+            margin: 20px 0;
+            padding: 15px;
             border-radius: 8px;
             transition: transform 0.3s;
         }
-        .dimension:hover { transform: translateX(10px); }
-        
-        .completeness { 
+
+        .dimension:hover {
+            transform: translateX(10px);
+        }
+
+        .completeness {
             border-left: 5px solid #e74c3c;
             background: #fddede;
         }
-        .consistency { 
+
+        .consistency {
             border-left: 5px solid #3498db;
             background: #e3f2fd;
         }
-        .bias { 
+
+        .bias {
             border-left: 5px solid #9b59b6;
             background: #f3e5f5;
         }
-        
+
         .example-table {
             width: 100%;
             border-collapse: collapse;
             margin: 10px 0;
         }
-        .example-table th, .example-table td {
+
+        .example-table th,
+        .example-table td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
-        .example-table th { background: #f2f2f2; }
-        .bad-data { background: #ffebee; }
-        .good-data { background: #e8f5e9; }
-        
-        .checklist { margin: 10px 0; padding-left: 20px; }
-        .checklist li { margin: 5px 0; }
+
+        .example-table th {
+            background: #f2f2f2;
+        }
+
+        .bad-data {
+            background: #ffebee;
+        }
+
+        .good-data {
+            background: #e8f5e9;
+        }
+
+        .checklist {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .checklist li {
+            margin: 5px 0;
+        }
     </style>
 </head>
+
 <body>
     <h1>Data Quality Dimensions</h1>
-    
+
     <div class="dimension completeness">
         <h2>📊 Completeness</h2>
         <p><strong>Definition:</strong> Are all required data points present?</p>
-        
+
         <table class="example-table">
             <tr>
                 <th>Customer ID</th>
@@ -79,7 +119,7 @@
                 <td>Active</td>
             </tr>
         </table>
-        
+
         <div class="checklist">
             <h4>Testing Checklist:</h4>
             <ul>
@@ -90,11 +130,11 @@
             </ul>
         </div>
     </div>
-    
+
     <div class="dimension consistency">
         <h2>🔄 Consistency</h2>
         <p><strong>Definition:</strong> Is data uniformly formatted and following rules?</p>
-        
+
         <table class="example-table">
             <tr>
                 <th>Order ID</th>
@@ -121,7 +161,7 @@
                 <td>usd</td>
             </tr>
         </table>
-        
+
         <div class="checklist">
             <h4>Testing Checklist:</h4>
             <ul>
@@ -133,11 +173,11 @@
             </ul>
         </div>
     </div>
-    
+
     <div class="dimension bias">
         <h2>⚖️ Bias Detection</h2>
         <p><strong>Definition:</strong> Systematic skew in data representation</p>
-        
+
         <table class="example-table">
             <tr>
                 <th>Applicant ID</th>
@@ -175,7 +215,7 @@
                 <td>No</td>
             </tr>
         </table>
-        
+
         <div class="checklist">
             <h4>Bias Detection Metrics:</h4>
             <ul>
@@ -186,4 +226,5 @@
         </div>
     </div>
 </body>
+
 </html>

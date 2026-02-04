@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Login System with Bias Detection</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js">
+
+        const sendHeight = () => {
+            parent.postMessage(
+                {
+                    type: "IFRAME_HEIGHT",
+                    height: document.documentElement.scrollHeight
+                },
+                "*"
+            );
+        };
+
+        window.addEventListener("load", sendHeight);
+        window.addEventListener("resize", sendHeight);
+        setTimeout(sendHeight, 500);
+
+    </script>
     <style>
         * {
             margin: 0;
@@ -355,7 +372,7 @@
                 flex-direction: column;
                 max-width: 700px;
             }
-            
+
             .charts-container {
                 grid-template-columns: 1fr;
             }
@@ -367,11 +384,12 @@
                 border-radius: 0;
                 min-height: 100vh;
             }
-            
-            .login-panel, .dashboard-panel {
+
+            .login-panel,
+            .dashboard-panel {
                 padding: 25px;
             }
-            
+
             .risk-indicator {
                 flex-direction: column;
                 gap: 20px;
@@ -380,9 +398,17 @@
 
         /* Animations */
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .pulse {
@@ -410,6 +436,7 @@
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <!-- Left Panel: Login Interface -->
@@ -430,7 +457,8 @@
 
                 <div class="form-group">
                     <label for="password"><i class="fas fa-lock"></i> Password</label>
-                    <input type="password" id="password" class="form-control" value="secure_pass_123" placeholder="Enter password">
+                    <input type="password" id="password" class="form-control" value="secure_pass_123"
+                        placeholder="Enter password">
                 </div>
 
                 <div class="simulation-controls">
@@ -439,9 +467,10 @@
                         <h3>Region Simulation</h3>
                     </div>
                     <p style="color: #666; margin-bottom: 15px; font-size: 0.95rem;">
-                        Select a region to simulate where the login is coming from. The AI model evaluates risk differently by region.
+                        Select a region to simulate where the login is coming from. The AI model evaluates risk
+                        differently by region.
                     </p>
-                    
+
                     <div class="region-selector">
                         <button class="region-btn active" data-region="US">
                             <i class="fas fa-flag-usa"></i> United States
@@ -468,10 +497,11 @@
                             <i class="fas fa-flag-brazil"></i> Brazil
                         </button>
                     </div>
-                    
+
                     <div style="margin-top: 15px; font-size: 0.9rem; color: #666;">
                         <i class="fas fa-info-circle"></i>
-                        <strong>Note:</strong> The AI model has <span style="color: #e74c3c; font-weight: 600;">hidden bias</span> against certain regions due to skewed training data.
+                        <strong>Note:</strong> The AI model has <span style="color: #e74c3c; font-weight: 600;">hidden
+                            bias</span> against certain regions due to skewed training data.
                     </div>
                 </div>
 
@@ -489,7 +519,8 @@
                 <div class="form-group">
                     <label for="time"><i class="fas fa-clock"></i> Time of Day</label>
                     <input type="range" id="time" class="form-control" min="0" max="23" value="14" style="padding: 0;">
-                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #666; margin-top: 5px;">
+                    <div
+                        style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #666; margin-top: 5px;">
                         <span>🌙 Night (0:00)</span>
                         <span id="time-display">🕑 14:00 (Afternoon)</span>
                         <span>🌞 Day (23:00)</span>
@@ -499,13 +530,15 @@
                 <button class="login-btn" id="loginButton">
                     <i class="fas fa-sign-in-alt"></i> Simulate Login & Analyze Risk
                 </button>
-                
-                <div style="margin-top: 25px; padding: 15px; background: #e8f4fd; border-radius: 10px; border-left: 4px solid #3498db;">
+
+                <div
+                    style="margin-top: 25px; padding: 15px; background: #e8f4fd; border-radius: 10px; border-left: 4px solid #3498db;">
                     <h4 style="color: #2c3e50; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
                         <i class="fas fa-lightbulb"></i> Testing Insight
                     </h4>
                     <p style="color: #34495e; font-size: 0.95rem;">
-                        This simulation demonstrates <strong>AI bias testing</strong>. Identical login behavior receives different risk scores based on the selected region, revealing hidden bias in the AI model.
+                        This simulation demonstrates <strong>AI bias testing</strong>. Identical login behavior receives
+                        different risk scores based on the selected region, revealing hidden bias in the AI model.
                     </p>
                 </div>
             </div>
@@ -523,12 +556,12 @@
                     <div class="score-value" id="riskScore">0.28</div>
                     <div class="score-label">AI Risk Score (0-1)</div>
                 </div>
-                
+
                 <div style="text-align: center;">
                     <div style="font-size: 1rem; color: #666; margin-bottom: 5px;">Login Decision</div>
                     <div class="decision-box decision-allow" id="decisionBox">ALLOW ACCESS</div>
                 </div>
-                
+
                 <div style="text-align: center;">
                     <div style="font-size: 1rem; color: #666; margin-bottom: 5px;">Confidence</div>
                     <div style="font-size: 1.8rem; font-weight: 700; color: #2ecc71;">92%</div>
@@ -547,7 +580,8 @@
                         </div>
                         <div class="alert-content">
                             <h4>Bias Detected!</h4>
-                            <p>Users from this region are <strong>3.2x more likely</strong> to face login challenges compared to users from the US.</p>
+                            <p>Users from this region are <strong>3.2x more likely</strong> to face login challenges
+                                compared to users from the US.</p>
                         </div>
                     </div>
                 </div>
@@ -565,9 +599,11 @@
                     <i class="fas fa-globe-americas"></i> False Positive Rate by Region
                 </div>
                 <canvas id="regionalChart"></canvas>
-                <div style="margin-top: 15px; font-size: 0.9rem; color: #666; display: flex; align-items: center; gap: 10px;">
+                <div
+                    style="margin-top: 15px; font-size: 0.9rem; color: #666; display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-info-circle"></i>
-                    <span>False Positive Rate (FPR) measures how often legitimate users are incorrectly flagged as risky.</span>
+                    <span>False Positive Rate (FPR) measures how often legitimate users are incorrectly flagged as
+                        risky.</span>
                 </div>
             </div>
 
@@ -587,7 +623,7 @@
         let biasChart, factorsChart, regionalChart;
         let currentRegion = 'US';
         let testHistory = [];
-        
+
         // Region bias data (simulating the biased AI model)
         const regionData = {
             'US': { baseRisk: 0.08, biasMultiplier: 1.0, fpr: 0.08, color: '#2ecc71' },
@@ -599,44 +635,44 @@
             'NG': { baseRisk: 0.35, biasMultiplier: 4.4, fpr: 0.40, color: '#c0392b' },
             'BR': { baseRisk: 0.22, biasMultiplier: 2.8, fpr: 0.25, color: '#d35400' }
         };
-        
+
         // Initialize the dashboard
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initializeRegionButtons();
             initializeTimeSlider();
             initializeCharts();
             simulateLogin(); // Run initial simulation
-            
+
             document.getElementById('loginButton').addEventListener('click', simulateLogin);
         });
-        
+
         function initializeRegionButtons() {
             const regionButtons = document.querySelectorAll('.region-btn');
             regionButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     // Remove active class from all buttons
                     regionButtons.forEach(b => b.classList.remove('active'));
-                    
+
                     // Add active class to clicked button
                     this.classList.add('active');
-                    
+
                     // Update current region
                     currentRegion = this.getAttribute('data-region');
-                    
+
                     // Update simulation
                     simulateLogin();
                 });
             });
         }
-        
+
         function initializeTimeSlider() {
             const timeSlider = document.getElementById('time');
             const timeDisplay = document.getElementById('time-display');
-            
-            timeSlider.addEventListener('input', function() {
+
+            timeSlider.addEventListener('input', function () {
                 const hour = parseInt(this.value);
                 let timeText = '';
-                
+
                 if (hour < 5) {
                     timeText = `🌙 ${hour}:00 (Late Night)`;
                 } else if (hour < 12) {
@@ -648,16 +684,16 @@
                 } else {
                     timeText = `🌃 ${hour}:00 (Night)`;
                 }
-                
+
                 timeDisplay.textContent = timeText;
-                
+
                 // Update simulation if user is interacting
                 if (timeSlider === document.activeElement) {
                     simulateLogin();
                 }
             });
         }
-        
+
         function initializeCharts() {
             // 1. Bias Chart (Regional Comparison)
             const biasCtx = document.getElementById('biasChart').getContext('2d');
@@ -680,7 +716,7 @@
                         legend: { display: false },
                         tooltip: {
                             callbacks: {
-                                label: function(context) {
+                                label: function (context) {
                                     return `Risk Score: ${context.raw}`;
                                 }
                             }
@@ -695,7 +731,7 @@
                                 text: 'Risk Score'
                             },
                             ticks: {
-                                callback: function(value) {
+                                callback: function (value) {
                                     return value.toFixed(2);
                                 }
                             }
@@ -703,7 +739,7 @@
                     }
                 }
             });
-            
+
             // 2. Factors Chart (Risk Breakdown)
             const factorsCtx = document.getElementById('factorsChart').getContext('2d');
             factorsChart = new Chart(factorsCtx, {
@@ -735,7 +771,7 @@
                         },
                         tooltip: {
                             callbacks: {
-                                label: function(context) {
+                                label: function (context) {
                                     return `${context.label}: ${context.raw}%`;
                                 }
                             }
@@ -743,7 +779,7 @@
                     }
                 }
             });
-            
+
             // 3. Regional Chart (FPR by Region)
             const regionalCtx = document.getElementById('regionalChart').getContext('2d');
             regionalChart = new Chart(regionalCtx, {
@@ -758,12 +794,12 @@
                         borderWidth: 3,
                         tension: 0.3,
                         fill: true,
-                        pointBackgroundColor: function(context) {
+                        pointBackgroundColor: function (context) {
                             const index = context.dataIndex;
                             const region = Object.keys(regionData)[index];
                             return region === currentRegion ? '#2c3e50' : '#e74c3c';
                         },
-                        pointRadius: function(context) {
+                        pointRadius: function (context) {
                             const index = context.dataIndex;
                             const region = Object.keys(regionData)[index];
                             return region === currentRegion ? 8 : 5;
@@ -778,10 +814,10 @@
                         legend: { display: false },
                         tooltip: {
                             callbacks: {
-                                label: function(context) {
+                                label: function (context) {
                                     return `FPR: ${context.raw.toFixed(1)}%`;
                                 },
-                                afterLabel: function(context) {
+                                afterLabel: function (context) {
                                     const region = Object.keys(regionData)[context.dataIndex];
                                     if (region === 'IN' || region === 'NG') {
                                         return '⚠️ High bias region';
@@ -802,7 +838,7 @@
                                 text: 'False Positive Rate (%)'
                             },
                             ticks: {
-                                callback: function(value) {
+                                callback: function (value) {
                                     return value + '%';
                                 }
                             }
@@ -817,27 +853,27 @@
                 }
             });
         }
-        
+
         function simulateLogin() {
             const region = currentRegion;
             const device = document.getElementById('device').value;
             const time = parseInt(document.getElementById('time').value);
-            
+
             // Calculate risk based on factors
             const regionInfo = regionData[region];
             let riskScore = regionInfo.baseRisk;
-            
+
             // Add device risk
             if (device !== 'iPhone') riskScore += 0.05;
             if (device === 'Unknown') riskScore += 0.15;
-            
+
             // Add time risk (unusual hours)
             if (time < 5 || time > 22) riskScore += 0.10;
-            
+
             // Add some randomness to make it realistic
             riskScore += (Math.random() * 0.1) - 0.05;
             riskScore = Math.max(0.05, Math.min(0.95, riskScore));
-            
+
             // Determine decision based on risk score
             let decision, decisionClass;
             if (riskScore < 0.3) {
@@ -850,52 +886,52 @@
                 decision = "BLOCK & ALERT";
                 decisionClass = "decision-block";
             }
-            
+
             // Update UI with results
             updateDashboard(riskScore, decision, decisionClass, region);
-            
+
             // Update charts to highlight current region
             updateCharts(region, riskScore);
-            
+
             // Add to test history
             addToHistory(region, riskScore, decision);
-            
+
             // Show/hide bias alert
             const biasAlert = document.getElementById('biasAlert');
             if (region === 'IN' || region === 'NG' || region === 'BR') {
                 biasAlert.classList.remove('hidden');
-                
+
                 let biasMessage = '';
                 if (region === 'IN') biasMessage = '3.2x more likely';
                 if (region === 'NG') biasMessage = '3.8x more likely';
                 if (region === 'BR') biasMessage = '2.5x more likely';
-                
-                biasAlert.querySelector('p').innerHTML = 
+
+                biasAlert.querySelector('p').innerHTML =
                     `Users from this region are <strong>${biasMessage}</strong> to face login challenges compared to users from the US.`;
             } else {
                 biasAlert.classList.add('hidden');
             }
-            
+
             // Add pulse animation to risk score
             const scoreElement = document.getElementById('riskScore');
             scoreElement.classList.remove('pulse');
             void scoreElement.offsetWidth; // Trigger reflow
             scoreElement.classList.add('pulse');
         }
-        
+
         function updateDashboard(riskScore, decision, decisionClass, region) {
             // Update risk score
             document.getElementById('riskScore').textContent = riskScore.toFixed(2);
-            
+
             // Update decision box
             const decisionBox = document.getElementById('decisionBox');
             decisionBox.textContent = decision;
             decisionBox.className = `decision-box ${decisionClass}`;
-            
+
             // Update factor breakdown based on region
             const regionFactor = regionData[region].biasMultiplier;
             const regionPercent = Math.min(70, Math.round(regionFactor * 15));
-            
+
             factorsChart.data.datasets[0].data = [
                 regionPercent, // Region bias
                 20 - (region === 'US' ? 10 : 0), // Unusual location
@@ -903,55 +939,55 @@
                 10, // Time anomaly
                 10  // Typing pattern
             ];
-            
+
             // Ensure total is 100
             const total = factorsChart.data.datasets[0].data.reduce((a, b) => a + b, 0);
             if (total !== 100) {
                 factorsChart.data.datasets[0].data[0] += (100 - total);
             }
-            
+
             factorsChart.update();
         }
-        
+
         function updateCharts(region, riskScore) {
             // Update bias chart to highlight current region
             const regionIndex = Object.keys(regionData).indexOf(region);
             if (regionIndex >= 0) {
                 // Update the data point for the current region in bias chart
                 const labels = ['United States', 'India', 'Nigeria', 'Singapore', 'Brazil'];
-                const regionIndexInChart = labels.findIndex(label => 
+                const regionIndexInChart = labels.findIndex(label =>
                     label.toLowerCase().includes(region.toLowerCase().substring(0, 3))
                 );
-                
+
                 if (regionIndexInChart >= 0) {
                     biasChart.data.datasets[0].data[regionIndexInChart] = riskScore;
                     biasChart.update();
                 }
             }
-            
+
             // Update regional chart to highlight current point
             regionalChart.update();
         }
-        
+
         function addToHistory(region, riskScore, decision) {
             const historyList = document.getElementById('historyList');
-            
+
             // Create history item
             const historyItem = document.createElement('div');
             historyItem.className = 'history-item';
-            
+
             // Format decision class
             let actionClass = '';
             if (decision.includes('ALLOW')) actionClass = 'decision-allow';
             if (decision.includes('VERIFICATION')) actionClass = 'decision-challenge';
             if (decision.includes('BLOCK')) actionClass = 'decision-block';
-            
+
             // Get current time
             const now = new Date();
-            const timeStr = now.getHours().toString().padStart(2, '0') + ':' + 
-                           now.getMinutes().toString().padStart(2, '0') + ':' +
-                           now.getSeconds().toString().padStart(2, '0');
-            
+            const timeStr = now.getHours().toString().padStart(2, '0') + ':' +
+                now.getMinutes().toString().padStart(2, '0') + ':' +
+                now.getSeconds().toString().padStart(2, '0');
+
             historyItem.innerHTML = `
                 <div>
                     <span class="history-region">${getRegionName(region)}</span>
@@ -962,16 +998,16 @@
                     <span class="history-action ${actionClass}">${decision.split(' ')[0]}</span>
                 </div>
             `;
-            
+
             // Add to beginning of list
             historyList.insertBefore(historyItem, historyList.firstChild);
-            
+
             // Limit to 10 items
             const items = historyList.getElementsByClassName('history-item');
             if (items.length > 10) {
                 historyList.removeChild(items[items.length - 1]);
             }
-            
+
             // Add to test history array
             testHistory.unshift({
                 region,
@@ -980,7 +1016,7 @@
                 time: timeStr
             });
         }
-        
+
         function getRegionName(code) {
             const names = {
                 'US': 'United States',
@@ -996,4 +1032,5 @@
         }
     </script>
 </body>
+
 </html>
