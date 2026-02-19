@@ -324,12 +324,12 @@ const courseContent = [
             <div className="ai-hero-actions">
               <button
                 className="ai-btn-primary"
-                onClick={() =>
-                  window.open(
-                    "https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw",
-                    "_blank"
-                  )
-                }
+                // onClick={() =>
+                //   window.open(
+                //     "https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw",
+                //     "_blank"
+                //   )
+                // }
               >
                 <FaPlay size={12} /> Start Learning
               </button>
