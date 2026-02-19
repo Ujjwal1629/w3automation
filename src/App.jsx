@@ -48,8 +48,7 @@ import LivePractice from "./Pages/LivePractice";
 import ChallengeDetail from "./Pages/ChallengeDetail";
 import Leaderboard from "./Pages/Leaderboard";
 import HomePageNew from "./Components/NewHomePage";
-import { motion } from 'framer-motion';
-import { Calendar, ExternalLink, X } from 'lucide-react';
+import CourseDetailPageJS from "./Pages/CourseDetail/CourseDetailPageJS.jsx";
 
 initGA();
 
@@ -326,6 +325,8 @@ function App() {
         <Route path="/api-playground" element={<ApiPlayground />} />
         <Route path="/practice/ai-testing-samples" element={<AiTestingSamples />} />
         <Route path="/homePageNew" element={<HomePageNew/>}/>
+        <Route path="/courseDetailJS" element={<CourseDetailPageJS/>} />
+
         <Route path="/live-practice" element={
           <ThemeProvider>
             <LivePractice />
