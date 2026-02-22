@@ -19,20 +19,19 @@
   padding: 0; /* Removed padding to allow ornaments to be flush with corners */
   box-sizing: border-box;
   background-image: linear-gradient(135deg, #f8f9fa, #ffffff);
-  
+
   /* Double border effect that will render well in PDF */
   border: 12px solid #ffffff;
   outline: 2px solid #b08d57;
-  box-shadow: 
+  box-shadow:
     0 0 0 10px #ffffff,
     0 0 0 12px #1a2a44;
-  
+
   /* Prevent any unexpected scaling */
   transform: scale(1);
   transform-origin: top left;
 
   overflow: hidden;
-
 }
 
 /* Logo Section - Fixed positioning */
@@ -49,15 +48,17 @@
 
 .logo {
   position: absolute;
-  top: 15px; 
+  top: 15px;
   left: 15px;
-  height: 45px; 
+  height: 45px;
   width: auto;
   max-width: 150px;
   margin: 0;
   display: block;
   z-index: 20; /* Higher than ornament (z-index: 2 for ornament but ornament is pointer-events none) */
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); /* White glow to separate from ornament */
+  filter: drop-shadow(
+    0 0 5px rgba(255, 255, 255, 0.8)
+  ); /* White glow to separate from ornament */
 }
 
 .organization-name {
@@ -68,7 +69,7 @@
   letter-spacing: 2px;
   margin: 10px 0 0;
   line-height: 1.2;
-  position: relative; 
+  position: relative;
   z-index: 5;
 }
 
@@ -256,7 +257,7 @@
     padding: 0;
     background: #fff;
   }
-  
+
   .certificate {
     box-shadow: none;
     border: none;
@@ -264,14 +265,14 @@
     page-break-after: always;
     page-break-inside: avoid;
   }
-  
+
   .certificate-container {
     height: 600px;
     width: 900px;
     margin: 0;
     padding: 0;
   }
-  
+
   /* Ensure all elements maintain their position */
   * {
     position: static !important;
@@ -287,16 +288,17 @@
     box-shadow: none;
     page-break-after: always;
   }
-  
+
   .certificate-container {
     height: 600px;
     width: 900px;
   }
-  
-  body, .certificate {
+
+  body,
+  .certificate {
     background: #fff !important;
   }
-  
+
   .signature-image {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -311,7 +313,10 @@ body {
 }
 
 /* Specific text elements */
-.title, .name, .course, .signature {
+.title,
+.name,
+.course,
+.signature {
   color: #000000 !important; /* pure black for critical text */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

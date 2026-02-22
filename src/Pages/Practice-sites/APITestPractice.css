@@ -344,7 +344,7 @@
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  
+
   .test-scenarios {
     height: auto;
   }
@@ -354,71 +354,71 @@
   .api-test-practice {
     padding: 16px 12px;
   }
-  
+
   .practice-container {
     gap: 16px;
   }
-  
+
   .test-scenarios,
   .request-builder {
     padding: 16px;
   }
-  
+
   .request-header {
     flex-direction: column;
   }
-  
+
   .method-select {
     width: 100%;
     margin-bottom: 8px;
   }
-  
+
   .header-row {
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .header-row input {
     width: 100% !important;
   }
-  
+
   .scenario-header h3 {
     overflow-wrap: break-word;
     font-size: 14px;
   }
-  
+
   .method-badge {
     font-size: 11px;
     padding: 3px 6px;
   }
-  
+
   .status-badge {
     font-size: 11px;
     padding: 3px 6px;
     overflow-wrap: break-word;
   }
-  
+
   .send-button {
     width: 100%;
     justify-content: center;
   }
-  
+
   .response-content code {
     font-size: 12px;
   }
-  
+
   .body-section textarea {
     font-size: 13px;
   }
-  
+
   .section-title h3 {
     font-size: 15px;
   }
-  
+
   .response-header h2 {
     font-size: 18px;
   }
-  
+
   .copy-button {
     padding: 5px 10px;
     font-size: 13px;
@@ -430,20 +430,20 @@
   .api-test-practice {
     padding: 12px 8px;
   }
-  
+
   .test-scenarios,
   .request-builder {
     padding: 12px;
   }
-  
+
   .scenario-card {
     padding: 12px;
   }
-  
+
   .endpoint-input {
     font-size: 13px;
   }
-  
+
   .method-select {
     font-size: 13px;
   }
@@ -453,11 +453,11 @@
   .api-test-practice {
     padding: 20px 12px;
   }
-  
+
   .request-header {
     flex-direction: column;
   }
-  
+
   .method-select {
     width: 100%;
   }

@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Send, Copy, Check, AlertCircle, ChevronDown, ChevronUp, RefreshCw } from 'lucide-react';
+import {
+  Send,
+  Copy,
+  Check,
+  AlertCircle,
+  ChevronDown,
+  ChevronUp,
+  RefreshCw,
+} from 'lucide-react';
 import './APITestPractice.css';
 import Navbar from '../../Components/Navbar';
 
@@ -20,7 +28,7 @@ const APITestPractice = () => {
       method: 'GET',
       endpoint: '/api/users',
       description: 'Returns a list of users with 200 status code',
-      expectedStatus: 200
+      expectedStatus: 200,
     },
     {
       id: 2,
@@ -28,7 +36,7 @@ const APITestPractice = () => {
       method: 'GET',
       endpoint: '/api/users/999',
       description: 'Returns 404 for non-existent user',
-      expectedStatus: 404
+      expectedStatus: 404,
     },
     {
       id: 3,
@@ -37,7 +45,7 @@ const APITestPractice = () => {
       endpoint: '/api/users',
       description: 'Returns 400 for invalid user data',
       body: '{"username": ""}',
-      expectedStatus: 400
+      expectedStatus: 400,
     },
     {
       id: 4,
@@ -45,7 +53,7 @@ const APITestPractice = () => {
       method: 'GET',
       endpoint: '/api/admin/users',
       description: 'Returns 401 for unauthorized access',
-      expectedStatus: 401
+      expectedStatus: 401,
     },
     {
       id: 5,
@@ -54,8 +62,8 @@ const APITestPractice = () => {
       endpoint: '/api/users',
       description: 'Creates a new user with 201 status code',
       body: '{\n  "username": "testuser",\n  "email": "test@example.com"\n}',
-      expectedStatus: 201
-    }
+      expectedStatus: 201,
+    },
   ];
 
   const addHeader = () => {
@@ -106,10 +114,12 @@ const APITestPractice = () => {
     setResponse(null);
 
     // Simulate API call with random delay
-    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000));
+    await new Promise((resolve) =>
+      setTimeout(resolve, 1000 + Math.random() * 1000)
+    );
 
     // Generate mock response based on the scenario
-    const scenario = testScenarios.find(s => s.id === selectedScenario);
+    const scenario = testScenarios.find((s) => s.id === selectedScenario);
     let mockResponse;
 
     if (scenario) {
@@ -119,31 +129,31 @@ const APITestPractice = () => {
             status: 200,
             data: {
               users: [
-                { id: 1, username: "user1", email: "user1@example.com" },
-                { id: 2, username: "user2", email: "user2@example.com" }
-              ]
-            }
+                { id: 1, username: 'user1', email: 'user1@example.com' },
+                { id: 2, username: 'user2', email: 'user2@example.com' },
+              ],
+            },
           };
           break;
         case 404:
           mockResponse = {
             status: 404,
-            error: "User not found"
+            error: 'User not found',
           };
           break;
         case 400:
           mockResponse = {
             status: 400,
-            error: "Validation failed",
+            error: 'Validation failed',
             details: {
-              username: ["Username is required"]
-            }
+              username: ['Username is required'],
+            },
           };
           break;
         case 401:
           mockResponse = {
             status: 401,
-            error: "Authentication required"
+            error: 'Authentication required',
           };
           break;
         case 201:
@@ -151,34 +161,35 @@ const APITestPractice = () => {
             status: 201,
             data: {
               id: Math.floor(Math.random() * 1000),
-              username: "testuser",
-              email: "test@example.com",
-              created_at: new Date().toISOString()
-            }
+              username: 'testuser',
+              email: 'test@example.com',
+              created_at: new Date().toISOString(),
+            },
           };
           break;
         default:
           mockResponse = {
             status: 500,
-            error: "Internal server error"
+            error: 'Internal server error',
           };
       }
     } else {
       // Random response for custom requests
       const statuses = [200, 201, 400, 401, 403, 404, 500];
-      const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-      
+      const randomStatus =
+        statuses[Math.floor(Math.random() * statuses.length)];
+
       mockResponse = {
         status: randomStatus,
         timestamp: new Date().toISOString(),
         path: endpoint,
-        method: method
+        method: method,
       };
 
       if (randomStatus >= 400) {
         mockResponse.error = `Mock ${randomStatus} error`;
       } else {
-        mockResponse.data = { message: "Mock success response" };
+        mockResponse.data = { message: 'Mock success response' };
       }
     }
 
@@ -195,13 +206,15 @@ const APITestPractice = () => {
             <h2>Test Scenarios</h2>
             <div className="scenarios-list">
               {testScenarios.map((scenario) => (
-                <div 
+                <div
                   key={scenario.id}
                   className={`scenario-card ${selectedScenario === scenario.id ? 'active' : ''}`}
                   onClick={() => loadScenario(scenario)}
                 >
                   <div className="scenario-header">
-                    <span className={`method-badge ${scenario.method.toLowerCase()}`}>
+                    <span
+                      className={`method-badge ${scenario.method.toLowerCase()}`}
+                    >
                       {scenario.method}
                     </span>
                     <h3>{scenario.name}</h3>
@@ -219,7 +232,7 @@ const APITestPractice = () => {
             <h2>Request Builder</h2>
             <form onSubmit={handleSubmit}>
               <div className="request-header">
-                <select 
+                <select
                   value={method}
                   onChange={(e) => setMethod(e.target.value)}
                   className="method-select"
@@ -242,7 +255,11 @@ const APITestPractice = () => {
               <div className="headers-section">
                 <div className="section-title">
                   <h3>Headers</h3>
-                  <button type="button" onClick={addHeader} className="add-header-btn">
+                  <button
+                    type="button"
+                    onClick={addHeader}
+                    className="add-header-btn"
+                  >
                     + Add Header
                   </button>
                 </div>
@@ -252,16 +269,20 @@ const APITestPractice = () => {
                       type="text"
                       placeholder="Key"
                       value={header.key}
-                      onChange={(e) => updateHeader(index, 'key', e.target.value)}
+                      onChange={(e) =>
+                        updateHeader(index, 'key', e.target.value)
+                      }
                     />
                     <input
                       type="text"
                       placeholder="Value"
                       value={header.value}
-                      onChange={(e) => updateHeader(index, 'value', e.target.value)}
+                      onChange={(e) =>
+                        updateHeader(index, 'value', e.target.value)
+                      }
                     />
-                    <button 
-                      type="button" 
+                    <button
+                      type="button"
                       onClick={() => removeHeader(index)}
                       className="remove-header-btn"
                     >
@@ -271,7 +292,9 @@ const APITestPractice = () => {
                 ))}
               </div>
 
-              {(method === 'POST' || method === 'PUT' || method === 'PATCH') && (
+              {(method === 'POST' ||
+                method === 'PUT' ||
+                method === 'PATCH') && (
                 <div className="body-section">
                   <h3>Request Body</h3>
                   <textarea
@@ -314,7 +337,9 @@ const APITestPractice = () => {
               ) : (
                 <div className="no-response">
                   <AlertCircle size={24} />
-                  <p>No response yet. Send a request to see the response here.</p>
+                  <p>
+                    No response yet. Send a request to see the response here.
+                  </p>
                 </div>
               )}
             </div>

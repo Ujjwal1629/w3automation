@@ -7,17 +7,17 @@
   --bg-light: #f4f4f4;
   --bg-sidebar: #e7e9eb;
   --code-color: #d6336c;
-  
+
   /* Typography */
-  --font-primary: "Open Sans", sans-serif;
-  --font-code: "Roboto Mono", monospace;
-  
+  --font-primary: 'Open Sans', sans-serif;
+  --font-code: 'Roboto Mono', monospace;
+
   /* Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
-  
+
   /* Border Radius */
   --radius-sm: 5px;
   --radius-md: 10px;
@@ -57,7 +57,8 @@ p {
 }
 
 /* Lists */
-ul, ol {
+ul,
+ol {
   margin: var(--spacing-md) 0;
   padding-left: var(--spacing-lg);
 }
@@ -111,22 +112,30 @@ code {
     --spacing-lg: 1.5rem;
     --spacing-md: 1rem;
   }
-  
+
   .content-container {
     padding: var(--spacing-md);
   }
-  
-  h1 { font-size: 1.75rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.25rem; }
-  p { font-size: 1rem; }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  p {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
   .content-container {
     padding: var(--spacing-sm);
   }
-} 
+}
 
 /* Font Imports */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');

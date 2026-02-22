@@ -1,54 +1,54 @@
-import "./App.css";
-import React, { useEffect, useState, useLayoutEffect } from "react";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-import Home from "./Components/Home";
-import Register from "./Components/Register";
-import Login from "./Components/Login";//using react hot toast to fetch conditions and display, stated inside authController
-import Dashboard from "./Components/Dashboard";
-import Selenium from "./Pages/Selenium";
-import Playwright from "./Pages/Playwright";
-import Footer from "./Components/Footer";
-import TestimonialSection from "./Components/TestimonialSection";
-import InterviewQuestions from "./Pages/InterviewQuestions";
+import './App.css';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import Navbar from './Components/Navbar';
+import Home from './Components/Home';
+import Register from './Components/Register';
+import Login from './Components/Login'; //using react hot toast to fetch conditions and display, stated inside authController
+import Dashboard from './Components/Dashboard';
+import Selenium from './Pages/Selenium';
+import Playwright from './Pages/Playwright';
+import Footer from './Components/Footer';
+import TestimonialSection from './Components/TestimonialSection';
+import InterviewQuestions from './Pages/InterviewQuestions';
 import AboutUs from './Pages/AboutUs';
-import ApiTesting from "./Pages/ApiTesting";
-import BlogPost from "./Pages/BlogPost";
-import TestPractice from "./Pages/Practice-sites/TestPractice";
-import APITestPractice from "./Pages/Practice-sites/APITestPractice";
+import ApiTesting from './Pages/ApiTesting';
+import BlogPost from './Pages/BlogPost';
+import TestPractice from './Pages/Practice-sites/TestPractice';
+import APITestPractice from './Pages/Practice-sites/APITestPractice';
 import AlertTest from './Pages/Practice-sites/AlertTest.jsx';
 import UserForm from './Pages/UserForm/UserForm.jsx';
-import CourseDetailPage from "./Pages/CourseDetail/CourseDetailPage.jsx";
-import ImageTest from "./Pages/Practice-sites/ImageTest.jsx";
-import BrowserWindowTabOpener from "./Pages/Practice-sites/BrowserWindowTabOpener.jsx";
-import LinksTesting from "./Pages/Practice-sites/LinksTesting.jsx";
-import Authentication from "./Pages/Practice-sites/Authentication.jsx";
-import Practice from "./Pages/Practice.jsx";
-import GetCertificate from "./Pages/GetCertificate/GetCertificate.jsx"
-import Template from "./Template/CertificateTemplate.jsx"
-import EcommerceStore from "./Pages/EcommerceStore/EcommerceStore";
-import SliderTest from "./Pages/Practice-sites/SliderTest.jsx";
-import ResizableDiv from "./Pages/Practice-sites/Resizable.jsx";
-import DragDropTest from "./Pages/Practice-sites/DragDropTest.jsx";
-import DatePickerDropdown from "./Pages/Practice-sites/DatePickerDropdown.jsx";
-import SeleniumIDE from "./Pages/Selenium-Java/SeleniumIDE";
+import CourseDetailPage from './Pages/CourseDetail/CourseDetailPage.jsx';
+import ImageTest from './Pages/Practice-sites/ImageTest.jsx';
+import BrowserWindowTabOpener from './Pages/Practice-sites/BrowserWindowTabOpener.jsx';
+import LinksTesting from './Pages/Practice-sites/LinksTesting.jsx';
+import Authentication from './Pages/Practice-sites/Authentication.jsx';
+import Practice from './Pages/Practice.jsx';
+import GetCertificate from './Pages/GetCertificate/GetCertificate.jsx';
+import Template from './Template/CertificateTemplate.jsx';
+import EcommerceStore from './Pages/EcommerceStore/EcommerceStore';
+import SliderTest from './Pages/Practice-sites/SliderTest.jsx';
+import ResizableDiv from './Pages/Practice-sites/Resizable.jsx';
+import DragDropTest from './Pages/Practice-sites/DragDropTest.jsx';
+import DatePickerDropdown from './Pages/Practice-sites/DatePickerDropdown.jsx';
+import SeleniumIDE from './Pages/Selenium-Java/SeleniumIDE';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { initGA, trackPageView } from './utils/analytics';
-import DriveAccessPage from "./Pages/GoogleDrive/DriveAccessPage.jsx";
+import DriveAccessPage from './Pages/GoogleDrive/DriveAccessPage.jsx';
 import ColdStartOverlay from './Components/ColdStartOverlay';
-import IframeTest from "./Pages/Practice-sites/IframeTest";
-import GraphQLTest from "./Pages/Practice-sites/GraphQLTest";
-import RestApiTest from "./Pages/Practice-sites/RestApiTest";
-import CourseDetailPageSDET from "./Pages/CourseDetail/CourseDetailPageSDET.jsx";
-import CourseDetailPagePlaywrightInterview from "./Pages/CourseDetail/CourseDetailPagePlaywrightInterview.jsx";
-import CourseDetailPageAI from "./Pages/CourseDetail/CourseDetailPageAI.jsx";
-import ApiPlayground from "./Pages/Practice-sites/ApiPlayground.jsx";
-import AiTestingSamples from "./Pages/Practice-sites/AiTestingSamples.jsx";
-import LivePractice from "./Pages/LivePractice";
-import ChallengeDetail from "./Pages/ChallengeDetail";
-import Leaderboard from "./Pages/Leaderboard";
-import HomePageNew from "./Components/NewHomePage";
-import CourseDetailPageJS from "./Pages/CourseDetail/CourseDetailPageJS.jsx";
+import IframeTest from './Pages/Practice-sites/IframeTest';
+import GraphQLTest from './Pages/Practice-sites/GraphQLTest';
+import RestApiTest from './Pages/Practice-sites/RestApiTest';
+import CourseDetailPageSDET from './Pages/CourseDetail/CourseDetailPageSDET.jsx';
+import CourseDetailPagePlaywrightInterview from './Pages/CourseDetail/CourseDetailPagePlaywrightInterview.jsx';
+import CourseDetailPageAI from './Pages/CourseDetail/CourseDetailPageAI.jsx';
+import ApiPlayground from './Pages/Practice-sites/ApiPlayground.jsx';
+import AiTestingSamples from './Pages/Practice-sites/AiTestingSamples.jsx';
+import LivePractice from './Pages/LivePractice';
+import ChallengeDetail from './Pages/ChallengeDetail';
+import Leaderboard from './Pages/Leaderboard';
+import HomePageNew from './Components/NewHomePage';
+import CourseDetailPageJS from './Pages/CourseDetail/CourseDetailPageJS.jsx';
 
 initGA();
 
@@ -59,7 +59,7 @@ initGA();
 //   };
 
 //   return (
-//     <motion.div 
+//     <motion.div
 //       initial={{ opacity: 0, y: -50 }}
 //       animate={{ opacity: 1, y: 0 }}
 //       exit={{ opacity: 0, y: -50 }}
@@ -101,11 +101,11 @@ initGA();
 //         animation: 'gradientAnimation 6s ease infinite',
 //         zIndex: 0,
 //       }} />
-      
-//       <div style={{ 
-//         display: 'flex', 
-//         alignItems: 'center', 
-//         zIndex: 1, 
+
+//       <div style={{
+//         display: 'flex',
+//         alignItems: 'center',
+//         zIndex: 1,
 //         flexGrow: 1,
 //         marginBottom: isMobile ? '8px' : '0',
 //         width: isMobile ? '100%' : 'auto',
@@ -122,14 +122,14 @@ initGA();
 //           animation: 'pulse 2s infinite ease-in-out',
 //           flexShrink: 0,
 //         }}>
-//           <Calendar 
-//             size={isMobile ? 18 : 24} 
-//             style={{ color: '#8c52ff' }} 
+//           <Calendar
+//             size={isMobile ? 18 : 24}
+//             style={{ color: '#8c52ff' }}
 //           />
 //         </div>
 //         <div style={{ maxWidth: isMobile ? '100%' : '500px' }}>
-//           <span style={{ 
-//             fontWeight: 700, 
+//           <span style={{
+//             fontWeight: 700,
 //             fontSize: isMobile ? '13px' : '16px',
 //             color: isDarkMode ? '#fff' : '#333',
 //             letterSpacing: '0.3px',
@@ -148,9 +148,9 @@ initGA();
 //           </span>
 //         </div>
 //       </div>
-      
-//       <div style={{ 
-//         display: 'flex', 
+
+//       <div style={{
+//         display: 'flex',
 //         alignItems: 'center',
 //         justifyContent: isMobile ? 'center' : 'flex-start',
 //         zIndex: 1,
@@ -176,7 +176,7 @@ initGA();
 //           background: 'linear-gradient(90deg, rgba(140, 82, 255, 1), rgba(162, 89, 255, 1))',
 //           zIndex: -1,
 //         }} />
-        
+
 //         {/* Button shine effect */}
 //         <div style={{
 //           position: 'absolute',
@@ -188,10 +188,10 @@ initGA();
 //           animation: 'shineEffect 3s infinite',
 //           zIndex: 0,
 //         }} />
-        
-//         <span style={{ 
-//           color: '#fff', 
-//           fontWeight: 600, 
+
+//         <span style={{
+//           color: '#fff',
+//           fontWeight: 600,
 //           marginRight: '8px',
 //           fontSize: isMobile ? '13px' : '14px',
 //           letterSpacing: '0.5px',
@@ -201,8 +201,8 @@ initGA();
 //         </span>
 //         <ExternalLink size={isMobile ? 14 : 16} color="#fff" style={{ zIndex: 1 }} />
 //       </div>
-      
-//       <motion.button 
+
+//       <motion.button
 //         whileHover={{ scale: 1.1, rotate: 90 }}
 //         whileTap={{ scale: 0.9 }}
 //         style={{
@@ -245,10 +245,14 @@ function App() {
 
     const ping = async () => {
       try {
-        const endpointUrl = import.meta.env.MODE === 'development'
-          ? 'http://localhost:5001/health'
-          : '/health';
-        await fetch(endpointUrl, { signal: controller.signal, cache: 'no-store' });
+        const endpointUrl =
+          import.meta.env.MODE === 'development'
+            ? 'http://localhost:5001/health'
+            : '/health';
+        await fetch(endpointUrl, {
+          signal: controller.signal,
+          cache: 'no-store',
+        });
       } catch (err) {
         // ignore – overlay stays until it eventually succeeds or user refreshes
       } finally {
@@ -269,17 +273,24 @@ function App() {
   }, [location]);
 
   if (!serverReady) {
-    return <ColdStartOverlay message={showMessage ? 'Waking up server… please hold on.' : ''} />;
+    return (
+      <ColdStartOverlay
+        message={showMessage ? 'Waking up server… please hold on.' : ''}
+      />
+    );
   }
 
   return (
     <div className="route">
       <Routes>
-        <Route path="/" element={
-          <ThemeProvider>
-            <HomePageNew />
-          </ThemeProvider>
-        } />
+        <Route
+          path="/"
+          element={
+            <ThemeProvider>
+              <HomePageNew />
+            </ThemeProvider>
+          }
+        />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -289,59 +300,107 @@ function App() {
         <Route path="/InterviewQuestions/*" element={<InterviewQuestions />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/Blogs" element={<BlogPost />} />
-        
+
         {/* Redirects for old URLs */}
-        <Route path="/AuthPractice" element={<Navigate to="/practice/form" replace />} />
-        <Route path="/APITestPractice" element={<Navigate to="/practice/api" replace />} />
-        <Route path="/AlertTest" element={<Navigate to="/practice/alert" replace />} />
-        <Route path="/ImageTest" element={<Navigate to="/practice/image" replace />} />
-        <Route path="/BrowserWindowTabOpener" element={<Navigate to="/practice/browser" replace />} />
-        <Route path="/LinksTesting" element={<Navigate to="/practice/links" replace />} />
-        <Route path="/Authentication" element={<Navigate to="/practice/auth" replace />} />
-        <Route path="/slider" element={<Navigate to="/practice/slider" replace />} />
-        <Route path="/resizable" element={<Navigate to="/practice/resizable" replace />} />
-        <Route path="/dragdrop" element={<Navigate to="/practice/dragdrop" replace />} />
-        <Route path="/datepicker" element={<Navigate to="/practice/datepicker" replace />} />
-        
-        <Route path="/userForm" element={<UserForm/>} />
-        <Route path="/course/:courseId" element={<CourseDetailPage/>} />
-        <Route path="/courseSDET" element={<CourseDetailPageSDET/>} />
-        <Route path="/coursePlaywrightInterview" element={<CourseDetailPagePlaywrightInterview/>} />
-        <Route path="/courseAIMLTesting" element={<CourseDetailPageAI/>} />
-        <Route path="/courseAI" element={<CourseDetailPageAI/>} />
+        <Route
+          path="/AuthPractice"
+          element={<Navigate to="/practice/form" replace />}
+        />
+        <Route
+          path="/APITestPractice"
+          element={<Navigate to="/practice/api" replace />}
+        />
+        <Route
+          path="/AlertTest"
+          element={<Navigate to="/practice/alert" replace />}
+        />
+        <Route
+          path="/ImageTest"
+          element={<Navigate to="/practice/image" replace />}
+        />
+        <Route
+          path="/BrowserWindowTabOpener"
+          element={<Navigate to="/practice/browser" replace />}
+        />
+        <Route
+          path="/LinksTesting"
+          element={<Navigate to="/practice/links" replace />}
+        />
+        <Route
+          path="/Authentication"
+          element={<Navigate to="/practice/auth" replace />}
+        />
+        <Route
+          path="/slider"
+          element={<Navigate to="/practice/slider" replace />}
+        />
+        <Route
+          path="/resizable"
+          element={<Navigate to="/practice/resizable" replace />}
+        />
+        <Route
+          path="/dragdrop"
+          element={<Navigate to="/practice/dragdrop" replace />}
+        />
+        <Route
+          path="/datepicker"
+          element={<Navigate to="/practice/datepicker" replace />}
+        />
+
+        <Route path="/userForm" element={<UserForm />} />
+        <Route path="/course/:courseId" element={<CourseDetailPage />} />
+        <Route path="/courseSDET" element={<CourseDetailPageSDET />} />
+        <Route
+          path="/coursePlaywrightInterview"
+          element={<CourseDetailPagePlaywrightInterview />}
+        />
+        <Route path="/courseAIMLTesting" element={<CourseDetailPageAI />} />
+        <Route path="/courseAI" element={<CourseDetailPageAI />} />
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/getCertificate" element={<GetCertificate />} />
         <Route path="/template" element={<Template />} />
-        
+
         {/* E-commerce routes */}
         <Route path="/ecommerce/*" element={<EcommerceStore />} />
-        
+
         {/* Other practice routes */}
         <Route path="/selenium-java" element={<SeleniumIDE />} />
-        <Route path="/drivePage" element={<DriveAccessPage/>} />
+        <Route path="/drivePage" element={<DriveAccessPage />} />
         <Route path="/practice/iframe" element={<IframeTest />} />
         <Route path="/practice/graphql" element={<GraphQLTest />} />
         <Route path="/practice/restapi" element={<RestApiTest />} />
         <Route path="/api-playground" element={<ApiPlayground />} />
-        <Route path="/practice/ai-testing-samples" element={<AiTestingSamples />} />
-        <Route path="/homePageNew" element={<HomePageNew/>}/>
-        <Route path="/courseDetailJS" element={<CourseDetailPageJS/>} />
+        <Route
+          path="/practice/ai-testing-samples"
+          element={<AiTestingSamples />}
+        />
+        <Route path="/homePageNew" element={<HomePageNew />} />
+        <Route path="/courseDetailJS" element={<CourseDetailPageJS />} />
 
-        <Route path="/live-practice" element={
-          <ThemeProvider>
-            <LivePractice />
-          </ThemeProvider>
-        } />
-        <Route path="/live-practice/:id" element={
-          <ThemeProvider>
-            <ChallengeDetail />
-          </ThemeProvider>
-        } />
-        <Route path="/leaderboard" element={
-          <ThemeProvider>
-            <Leaderboard />
-          </ThemeProvider>
-        } />
+        <Route
+          path="/live-practice"
+          element={
+            <ThemeProvider>
+              <LivePractice />
+            </ThemeProvider>
+          }
+        />
+        <Route
+          path="/live-practice/:id"
+          element={
+            <ThemeProvider>
+              <ChallengeDetail />
+            </ThemeProvider>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <ThemeProvider>
+              <Leaderboard />
+            </ThemeProvider>
+          }
+        />
       </Routes>
     </div>
   );
@@ -403,7 +462,7 @@ function HomePage() {
       {/* <div style={{ marginTop: showBanner ? `${bannerHeight}px` : '0', transition: 'margin-top 0.3s ease' }}> */}
       <div>
         <Navbar />
-      </div>     
+      </div>
       <Home />
       {/* <TestimonialSection /> */}
       <Footer />
