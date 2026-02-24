@@ -14,8 +14,22 @@ import heroSlide3 from '../assets/slide-img4.jpg';
 import heroSlide4 from '../assets/slide-img6.jpg';
 import { useState, useEffect } from 'react';
 
-import { FaLinkedin, FaYoutube, FaCheck, FaStar, FaEnvelope, FaInfoCircle, FaTimes } from 'react-icons/fa';
-import { BsClock, BsPerson, BsFileText, BsArrowRight, BsCameraVideo} from 'react-icons/bs';
+import {
+  FaLinkedin,
+  FaYoutube,
+  FaCheck,
+  FaStar,
+  FaEnvelope,
+  FaInfoCircle,
+  FaTimes,
+} from 'react-icons/fa';
+import {
+  BsClock,
+  BsPerson,
+  BsFileText,
+  BsArrowRight,
+  BsCameraVideo,
+} from 'react-icons/bs';
 
 const NewHomePage = () => {
   const navigate = useNavigate();
@@ -31,9 +45,10 @@ const NewHomePage = () => {
     }
   };
 
-  const filteredCourses = activeFilter === 'View All Courses'
-    ? courses
-    : courses.filter(course => course.category === activeFilter);
+  const filteredCourses =
+    activeFilter === 'View All Courses'
+      ? courses
+      : courses.filter((course) => course.category === activeFilter);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -49,15 +64,27 @@ const NewHomePage = () => {
         {/* Top Bar */}
         <header className="top-bar">
           <nav className="social-nav">
-            <a href="https://www.linkedin.com/in/hemant-gandhi254/" className="social-link linkedin" aria-label="LinkedIn">
+            <a
+              href="https://www.linkedin.com/in/hemant-gandhi254/"
+              className="social-link linkedin"
+              aria-label="LinkedIn"
+            >
               <FaLinkedin />
               <span className="tooltip">LinkedIn</span>
             </a>
-            <a href="https://www.youtube.com/@hemantgandhi2708" className="social-link youtube" aria-label="YouTube">
+            <a
+              href="https://www.youtube.com/@hemantgandhi2708"
+              className="social-link youtube"
+              aria-label="YouTube"
+            >
               <FaYoutube />
               <span className="tooltip">YouTube</span>
             </a>
-            <a href="mailto:hemanttestengineer@gmail.com" className="social-link email" aria-label="Email">
+            <a
+              href="mailto:hemanttestengineer@gmail.com"
+              className="social-link email"
+              aria-label="Email"
+            >
               <FaEnvelope />
               <span className="tooltip">Email</span>
             </a>
@@ -67,47 +94,56 @@ const NewHomePage = () => {
         {/* Hero Section */}
         <main className="hero-section">
           <div className="hero-content">
-            
             <h1 className="hero-title">
-              Don't Let AI <span className="highlight-blue">Over-Power You!</span><br />
-              <span className="highlight-purple"></span> Become an AI-Powered Test Engineer<br />
+              Don't Let AI{' '}
+              <span className="highlight-blue">Over-Power You!</span>
+              <br />
+              <span className="highlight-purple"></span> Become an AI-Powered
+              Test Engineer
+              <br />
             </h1>
 
             <div className="info-cards">
               <div className="info-card">
                 <BsClock className="info-icon" />
                 <div className="info-text">
-                  <span className="info-label">AI and ML Course Demo Session</span>
-                  <span className="info-value">25th January, Sunday | 09:00 PM IST</span>
+                  <span className="info-label">
+                    AI and ML Course Demo Session
+                  </span>
+                  <span className="info-value">
+                    25th January, Sunday | 09:00 PM IST
+                  </span>
                 </div>
               </div>
-          <div className="info-card">
-            <BsCameraVideo className="info-icon zoom-icon" />
-            <div className="info-text">
-              <span className="info-label">Online Platform</span>
-              <span className="info-value">Zoom</span>
-            </div>
-          </div>
+              <div className="info-card">
+                <BsCameraVideo className="info-icon zoom-icon" />
+                <div className="info-text">
+                  <span className="info-label">Online Platform</span>
+                  <span className="info-value">Zoom</span>
+                </div>
+              </div>
             </div>
 
-          <div className="cta-group">
-            <button
-              className="register-btn"
-              onClick={() => window.open(
-                "https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw",
-                "_blank"
-              )}
-            >
-              Register now
-            </button>
+            <div className="cta-group">
+              <button
+                className="register-btn"
+                onClick={() =>
+                  window.open(
+                    'https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw',
+                    '_blank'
+                  )
+                }
+              >
+                Register now
+              </button>
+            </div>
           </div>
-        </div>
 
           <div className="hero-image-column">
             <div className="hero-slider">
               {heroSlides.map((slide, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`slide ${index === currentSlide ? 'active' : ''}`}
                   style={{ backgroundImage: `url(${slide.image})` }}
                 >
@@ -121,9 +157,29 @@ const NewHomePage = () => {
 
                       {/* Arrow */}
                       <div className="arrow-container">
-                        <svg width="100" height="40" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="curvy-arrow">
-                          <path d="M5 35 C 30 35, 30 5, 55 5 C 80 5, 80 35, 95 35" stroke="white" strokeWidth="2" strokeLinecap="round" fill="none"/>
-                          <path d="M85 28 L 95 35 L 85 42" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                        <svg
+                          width="100"
+                          height="40"
+                          viewBox="0 0 100 40"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="curvy-arrow"
+                        >
+                          <path
+                            d="M5 35 C 30 35, 30 5, 55 5 C 80 5, 80 35, 95 35"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            fill="none"
+                          />
+                          <path
+                            d="M85 28 L 95 35 L 85 42"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            fill="none"
+                          />
                         </svg>
                       </div>
 
@@ -136,21 +192,21 @@ const NewHomePage = () => {
                         <p className="company-name">{slide.currentCompany}</p>
                       </div>
                     </div>
-                    
+
                     <div className="person-name">
                       <h3>{slide.name}</h3>
                     </div>
                   </div>
                 </div>
               ))}
-              
+
               <div className="slider-progress">
                 {heroSlides.map((_, index) => (
                   <div key={index} className="progress-bar-container">
-                    <div 
+                    <div
                       className={`progress-bar ${index === currentSlide ? 'active' : ''}`}
-                      style={{ 
-                        animationDuration: index === currentSlide ? '5s' : '0s' 
+                      style={{
+                        animationDuration: index === currentSlide ? '5s' : '0s',
                       }}
                     ></div>
                   </div>
@@ -168,8 +224,14 @@ const NewHomePage = () => {
           </div>
 
           <div className="course-filters">
-            {['View All Courses', 'Selenium', 'Playwright', 'AI Testing', 'DevOps'].map((filter) => (
-              <button 
+            {[
+              'View All Courses',
+              'Selenium',
+              'Playwright',
+              'AI Testing',
+              'DevOps',
+            ].map((filter) => (
+              <button
                 key={filter}
                 className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
                 onClick={() => setActiveFilter(filter)}
@@ -182,20 +244,25 @@ const NewHomePage = () => {
           <div className="courses-grid">
             {filteredCourses.map((course, index) => (
               <div key={index} className="course-card">
-                
                 {/* Image Section */}
                 <div className="course-image-wrapper">
-                  <img src={course.image} alt={course.title} className="course-image" />
-                  
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="course-image"
+                  />
+
                   <div className="badge-container">
-                    {course.discount && <span className="discount-badge">{course.discount}</span>}
+                    {course.discount && (
+                      <span className="discount-badge">{course.discount}</span>
+                    )}
                     <span className="category-badge">{course.category}</span>
                   </div>
 
                   {/* Hover Overlay */}
                   <div className="card-overlay">
                     <p className="overlay-text">{course.description}</p>
-                    <button 
+                    <button
                       className="view-details-btn"
                       onClick={() => handleCourseClick(course)}
                     >
@@ -209,7 +276,9 @@ const NewHomePage = () => {
                   <div className="rating-row">
                     <span className="stars">★★★★★</span>
                     <span className="rating-number">{course.rating}</span>
-                    <span className="review-text">({course.reviews} reviews)</span>
+                    <span className="review-text">
+                      ({course.reviews} reviews)
+                    </span>
                   </div>
 
                   <h3 className="course-title">{course.title}</h3>
@@ -227,15 +296,21 @@ const NewHomePage = () => {
 
                   <div className="card-footer">
                     <div className="price-box">
-                      <button 
-                        className="current-price" 
+                      <button
+                        className="current-price"
                         onClick={() => handleCourseClick(course)}
-                        style={{ cursor: 'pointer', background: 'none', border: 'none', padding: 0, font: 'inherit' }}
+                        style={{
+                          cursor: 'pointer',
+                          background: 'none',
+                          border: 'none',
+                          padding: 0,
+                          font: 'inherit',
+                        }}
                       >
                         know more
                       </button>
                     </div>
-                    <button 
+                    <button
                       className="enroll-arrow"
                       onClick={() => handleCourseClick(course)}
                     >
@@ -243,7 +318,6 @@ const NewHomePage = () => {
                     </button>
                   </div>
                 </div>
-
               </div>
             ))}
           </div>
@@ -253,14 +327,14 @@ const NewHomePage = () => {
         <section className="about-section">
           <div className="about-image-column">
             <div className="about-image-container">
-              <img 
-                src={profileImage} 
-                alt="Hemant Gandhi" 
-                className="about-image" 
+              <img
+                src={profileImage}
+                alt="Hemant Gandhi"
+                className="about-image"
               />
               <div className="success-rate-card">
                 <div className="success-icon-box">
-                  <FaStar style={{color: 'white', fontSize: '1.5rem'}} />
+                  <FaStar style={{ color: 'white', fontSize: '1.5rem' }} />
                 </div>
                 <div className="success-text">
                   <span className="success-percent">11+</span>
@@ -269,60 +343,76 @@ const NewHomePage = () => {
               </div>
             </div>
           </div>
-        <div className="about-content-column">
-                    <span className="about-subtitle">// MEET YOUR INSTRUCTOR</span>
-                    <h2 className="about-title">
-                      Hemant <span className="highlight-blue">Gandhi</span>
-                    </h2>
-                    <h3 className="instructor-role">
-            Full Stack Automation Engineer, Trainer & Founder – JourneyToAutomation
-          </h3>
-          <div className="title-underline-left"></div>
+          <div className="about-content-column">
+            <span className="about-subtitle">// MEET YOUR INSTRUCTOR</span>
+            <h2 className="about-title">
+              Hemant <span className="highlight-blue">Gandhi</span>
+            </h2>
+            <h3 className="instructor-role">
+              Full Stack Automation Engineer, Trainer & Founder –
+              JourneyToAutomation
+            </h3>
+            <div className="title-underline-left"></div>
 
-          <p className="about-description">
-            Hemant Gandhi is a seasoned QA Automation Specialist with 11+ years of industry experience.
-            He specializes in building scalable automation frameworks for Web, API, and Mobile testing
-            using modern tools and AI-driven automation strategies. His mission is to create confident,
-            industry-ready automation engineers who leverage AI to boost productivity, not just test.
-          </p>
+            <p className="about-description">
+              Hemant Gandhi is a seasoned QA Automation Specialist with 11+
+              years of industry experience. He specializes in building scalable
+              automation frameworks for Web, API, and Mobile testing using
+              modern tools and AI-driven automation strategies. His mission is
+              to create confident, industry-ready automation engineers who
+              leverage AI to boost productivity, not just test.
+            </p>
 
-          <ul className="benefits-list">
-            <li className="benefit-item">
-              <span className="check-icon"><FaCheck /></span>
-              11+ Years of Core Industry Experience
-            </li>
-            <li className="benefit-item">
-              <span className="check-icon"><FaCheck /></span>
-              Expert in Automation, AI & Framework Design
-            </li>
-            <li className="benefit-item">
-              <span className="check-icon"><FaCheck /></span>
-              Real-World, Project-Driven Mentorship
-            </li>
-          </ul>
-        </div>
-
+            <ul className="benefits-list">
+              <li className="benefit-item">
+                <span className="check-icon">
+                  <FaCheck />
+                </span>
+                11+ Years of Core Industry Experience
+              </li>
+              <li className="benefit-item">
+                <span className="check-icon">
+                  <FaCheck />
+                </span>
+                Expert in Automation, AI & Framework Design
+              </li>
+              <li className="benefit-item">
+                <span className="check-icon">
+                  <FaCheck />
+                </span>
+                Real-World, Project-Driven Mentorship
+              </li>
+            </ul>
+          </div>
         </section>
       </div>
 
       {/* Stats Section */}
       <section className="stats-section">
         <div className="container">
-          <h2 className="stats-title">Building a lifelong learning community</h2>
+          <h2 className="stats-title">
+            Building a lifelong learning community
+          </h2>
           <div className="stats-grid">
             <div className="stat-item">
               <h3 className="stat-number">300+</h3>
-              <p className="stat-label">Learners available in this platform and more are counting daily.</p>
+              <p className="stat-label">
+                Learners available in this platform and more are counting daily.
+              </p>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
               <h3 className="stat-number">90%</h3>
-              <p className="stat-label">Our students have the highest success rate in getting hired.</p>
+              <p className="stat-label">
+                Our students have the highest success rate in getting hired.
+              </p>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
               <h3 className="stat-number">4+</h3>
-              <p className="stat-label">High-quality teachers offering courses and videos.</p>
+              <p className="stat-label">
+                High-quality teachers offering courses and videos.
+              </p>
             </div>
           </div>
         </div>
@@ -375,15 +465,17 @@ const NewHomePage = () => {
             <div className="cta-text">
               <h2 className="cta-title">Finding Your Right Courses</h2>
               <p className="cta-description">
-                It is important to consider various factors such as your interests, skills, academic background, and future aspirations. Researching the different options available and seeking advice.
+                It is important to consider various factors such as your
+                interests, skills, academic background, and future aspirations.
+                Researching the different options available and seeking advice.
               </p>
             </div>
             <button
               className="cta-button"
               onClick={() =>
                 window.open(
-                  "https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw",
-                  "_blank"
+                  'https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw',
+                  '_blank'
                 )
               }
             >
@@ -410,11 +502,22 @@ const NewHomePage = () => {
                 <span className="footer-brand-name">Journey To Automation</span>
               </div>
               <p className="footer-description">
-                Learn Automation Testing with industry-standard tools and real-world projects.
+                Learn Automation Testing with industry-standard tools and
+                real-world projects.
               </p>
               <div className="footer-socials">
-                <a href="https://www.linkedin.com/in/hemant-gandhi254/s" className="social-icon"><FaLinkedin /></a>
-                <a href="https://www.youtube.com/@hemantgandhi2708" className="social-icon"><FaYoutube /></a>
+                <a
+                  href="https://www.linkedin.com/in/hemant-gandhi254/s"
+                  className="social-icon"
+                >
+                  <FaLinkedin />
+                </a>
+                <a
+                  href="https://www.youtube.com/@hemantgandhi2708"
+                  className="social-icon"
+                >
+                  <FaYoutube />
+                </a>
               </div>
             </div>
 
@@ -422,11 +525,21 @@ const NewHomePage = () => {
             <div className="footer-column">
               <h3 className="footer-heading">Explore</h3>
               <ul className="footer-links">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Categories</a></li>
-                <li><a href="#">Popular Courses</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">Reviews</a></li>
+                <li>
+                  <a href="#">About Us</a>
+                </li>
+                <li>
+                  <a href="#">Categories</a>
+                </li>
+                <li>
+                  <a href="#">Popular Courses</a>
+                </li>
+                <li>
+                  <a href="#">FAQs</a>
+                </li>
+                <li>
+                  <a href="#">Reviews</a>
+                </li>
               </ul>
             </div>
 
@@ -447,7 +560,9 @@ const NewHomePage = () => {
           </div>
 
           <div className="footer-bottom">
-            <span className="copyright">© 2025 JourneyToAutomation. All rights reserved.</span>
+            <span className="copyright">
+              © 2025 JourneyToAutomation. All rights reserved.
+            </span>
             <div className="footer-legal">
               <a href="#">Terms of Service</a>
               <a href="#">Privacy Policy</a>
@@ -455,22 +570,29 @@ const NewHomePage = () => {
           </div>
         </div>
       </footer>
-      
+
       {/* DevOps Popup */}
       {showDevOpsPopup && (
-        <div className="popup-overlay" onClick={() => setShowDevOpsPopup(false)}>
+        <div
+          className="popup-overlay"
+          onClick={() => setShowDevOpsPopup(false)}
+        >
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <button className="popup-close" onClick={() => setShowDevOpsPopup(false)}>
+            <button
+              className="popup-close"
+              onClick={() => setShowDevOpsPopup(false)}
+            >
               <FaTimes />
             </button>
             <div className="popup-icon-container">
               <FaInfoCircle className="popup-icon" />
             </div>
             <h3 className="popup-title">Updates Coming Soon!</h3>
-            <p className="popup-message">
-              Please check back soon!
-            </p>
-            <button className="popup-btn" onClick={() => setShowDevOpsPopup(false)}>
+            <p className="popup-message">Please check back soon!</p>
+            <button
+              className="popup-btn"
+              onClick={() => setShowDevOpsPopup(false)}
+            >
               Got it
             </button>
           </div>
@@ -482,106 +604,111 @@ const NewHomePage = () => {
 
 const courses = [
   {
-    title: "Java and Selenium",
+    title: 'Java and Selenium',
     rating: 4.7,
     reviews: 107,
-    students: "190",
+    students: '190',
     lessons: 37,
-    price: "$79.00",
+    price: '$79.00',
     image: courseImageJavaSel,
-    category: "Selenium",
-    description: "Master web automation testing using Selenium. Learn to build reliable test scripts and real-world automation frameworks.",
-    link: "/courseSDET"
+    category: 'Selenium',
+    description:
+      'Master web automation testing using Selenium. Learn to build reliable test scripts and real-world automation frameworks.',
+    link: '/courseSDET',
   },
   {
-    title: "Playwright with Typescript",
+    title: 'Playwright with Typescript',
     rating: 4.3,
     reviews: 95,
-    students: "186",
+    students: '186',
     lessons: 22,
-    price: "$59.00",
+    price: '$59.00',
     image: courseImagePlayTs,
-    category: "Playwright",
-    description: "Master end-to-end web automation using Playwright with TypeScript. Build fast, reliable tests with real-world projects.",
-    link: "/coursePlaywrightInterview"
+    category: 'Playwright',
+    description:
+      'Master end-to-end web automation using Playwright with TypeScript. Build fast, reliable tests with real-world projects.',
+    link: '/courseDetailJS',
   },
   {
-    title: "Devops for Automation Testing",
+    title: 'Devops for Automation Testing',
     rating: 4.1,
     reviews: 112,
-    students: "150",
+    students: '150',
     lessons: 19,
-    price: "$29.00",
-    originalPrice: "$39.00",
-    discount: "20% OFF",
+    price: '$29.00',
+    originalPrice: '$39.00',
+    discount: '20% OFF',
     image: courseImageDevOps,
-    category: "DevOps",
-    description: "Master DevOps fundamentals for test automation. Automate builds, tests, and deployments with real-world workflows.",
-    link: "/courseAIMLTesting"
+    category: 'DevOps',
+    description:
+      'Master DevOps fundamentals for test automation. Automate builds, tests, and deployments with real-world workflows.',
+    link: '/courseAIMLTesting',
   },
   {
-    title: "AI for Automation Testing",
+    title: 'AI for Automation Testing',
     rating: 4.9,
     reviews: 125,
-    students: "175",
+    students: '175',
     lessons: 19,
-    price: "$29.00",
-    originalPrice: "$39.00",
-    discount: "20% OFF",
+    price: '$29.00',
+    originalPrice: '$39.00',
+    discount: '20% OFF',
     image: courseImageAI,
-    category: "AI Testing",
-    description: "End-to-end AI for automation testing. Covers intelligent test design, maintenance, and real-world use cases.",
-    link: "/courseAIMLTesting"
+    category: 'AI Testing',
+    description:
+      'End-to-end AI for automation testing. Covers intelligent test design, maintenance, and real-world use cases.',
+    link: '/courseAIMLTesting',
   },
 ];
 
 const reviews = [
   {
     text: "The trainer's expertise in Java and Selenium shone through, and his patience in addressing our queries was impressive. I feel confident applying these skills in real-world scenarios. Kudos to Hemanth for an outstanding learning experience.",
-    name: "Veerabhadra Sarma Kunapuli",
-    role: "QA Manager",
+    name: 'Veerabhadra Sarma Kunapuli',
+    role: 'QA Manager',
     image: noPic,
-    preCompany: "Cerner",
-    postCompany: "Airtel Payments Bank",
+    preCompany: 'Cerner',
+    postCompany: 'Airtel Payments Bank',
   },
   {
-    text: "I really appreciate you for taking time from daily routines and providing training on Java and Selenium. The topics covered are good and detailed. The support provided post sessions is also excellent.!",
-    name: "Srikanth chivukula",
-    role: "Senior Test Specialist",
-    image: noPic,    
-    preCompany: "Infozech Software Pvt Ltd",
-    postCompany: "Google",
-  },{
-    text: "The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand.",
-    name: "Mayooran Thiruchselvam",
-    role: "Associate QA Engineer",
+    text: 'I really appreciate you for taking time from daily routines and providing training on Java and Selenium. The topics covered are good and detailed. The support provided post sessions is also excellent.!',
+    name: 'Srikanth chivukula',
+    role: 'Senior Test Specialist',
     image: noPic,
-    preCompany: "Infozech Software Pvt Ltd",
-    postCompany: "Google",
+    preCompany: 'Infozech Software Pvt Ltd',
+    postCompany: 'Google',
   },
   {
-    text: "Its been a wonderful journey of going through your course and recently landed a job and the programming questions were helpful to Crack the interviews . Focus on the core fundamentals was the key which helped me. I have landed a job in Landmark group as an SDET.",
-    name: "Sai Rahul PALUVAI",
-    role: "SDET Manager",
+    text: 'The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand.',
+    name: 'Mayooran Thiruchselvam',
+    role: 'Associate QA Engineer',
     image: noPic,
-    preCompany: "Infozech Software Pvt Ltd",
-    postCompany: "Google",
+    preCompany: 'Infozech Software Pvt Ltd',
+    postCompany: 'Google',
   },
   {
-    text: "I am truly grateful to share my appreciation for Hemant Gandhi and his outstanding Playwright Automation Testing course. Hemant’s course helped me refine my understanding, strengthen my foundation, and elevate my technical approach to a much more polished level.",
-    name: "Anik Roychoudhury",
-    role: "Test Lead",
+    text: 'Its been a wonderful journey of going through your course and recently landed a job and the programming questions were helpful to Crack the interviews . Focus on the core fundamentals was the key which helped me. I have landed a job in Landmark group as an SDET.',
+    name: 'Sai Rahul PALUVAI',
+    role: 'SDET Manager',
     image: noPic,
-    preCompany: "Infozech Software Pvt Ltd",
-    postCompany: "Google",
+    preCompany: 'Infozech Software Pvt Ltd',
+    postCompany: 'Google',
   },
   {
-    text: "I have enrolled in Automation testing class on Java and Selenium and Hemant  is outstanding 👌  made complex topics easy to understand.. and topics  are covered in details.",
-    name: "Faiyaz Bagwan",
-    role: "Sr. QA Engineer",
+    text: 'I am truly grateful to share my appreciation for Hemant Gandhi and his outstanding Playwright Automation Testing course. Hemant’s course helped me refine my understanding, strengthen my foundation, and elevate my technical approach to a much more polished level.',
+    name: 'Anik Roychoudhury',
+    role: 'Test Lead',
     image: noPic,
-    preCompany: "Infozech Software Pvt Ltd",
-    postCompany: "Google",
+    preCompany: 'Infozech Software Pvt Ltd',
+    postCompany: 'Google',
+  },
+  {
+    text: 'I have enrolled in Automation testing class on Java and Selenium and Hemant  is outstanding 👌  made complex topics easy to understand.. and topics  are covered in details.',
+    name: 'Faiyaz Bagwan',
+    role: 'Sr. QA Engineer',
+    image: noPic,
+    preCompany: 'Infozech Software Pvt Ltd',
+    postCompany: 'Google',
   },
 ];
 
@@ -589,35 +716,35 @@ export default NewHomePage;
 
 const heroSlides = [
   {
-    name: "Rahul Bharadwaj",
-    initialRole: "Associate QA",
-    currentRole: "QA",
-    currentCompany: "Volkswagen Group",
+    name: 'Rahul Bharadwaj',
+    initialRole: 'Associate QA',
+    currentRole: 'QA',
+    currentCompany: 'Volkswagen Group',
     image: heroSlide2,
-    badge: "QA"
+    badge: 'QA',
   },
   {
-    name: "Anik Roychoudhury",
-    initialRole: "Associate QA",
-    currentRole: "Senior Specialist - QA",
-    currentCompany: "LTIMindtree",
+    name: 'Anik Roychoudhury',
+    initialRole: 'Associate QA',
+    currentRole: 'Senior Specialist - QA',
+    currentCompany: 'LTIMindtree',
     image: heroSlide4,
-    badge: "QA"
+    badge: 'QA',
   },
   {
-    name: "Medha pallavi",
-    initialRole: "Associate Consultant",
-    currentRole: "Senior Quality Engineer",
-    currentCompany: "LTIMindtree",
+    name: 'Medha pallavi',
+    initialRole: 'Associate Consultant',
+    currentRole: 'Senior Quality Engineer',
+    currentCompany: 'LTIMindtree',
     image: heroSlide3,
-    badge: "Senior Quality Engineer"
+    badge: 'Senior Quality Engineer',
   },
   {
-    name: "Hyder Ali",
-    initialRole: "Consultant QA",
-    currentRole: "Senior QA",
-    currentCompany: "IBM",
+    name: 'Hyder Ali',
+    initialRole: 'Consultant QA',
+    currentRole: 'Senior QA',
+    currentCompany: 'IBM',
     image: heroSlide1,
-    badge: "Senior QA"
+    badge: 'Senior QA',
   },
 ];

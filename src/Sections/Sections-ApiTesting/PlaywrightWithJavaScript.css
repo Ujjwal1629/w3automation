@@ -2,7 +2,11 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   line-height: 1.6;
   color: #333;
 }
@@ -55,7 +59,7 @@
 }
 
 .PlaywrightDocs li::before {
-  content: "•";
+  content: '•';
   color: #4a90e2;
   font-weight: bold;
   position: absolute;
