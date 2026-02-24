@@ -627,7 +627,7 @@ const courses = [
     category: 'Playwright',
     description:
       'Master end-to-end web automation using Playwright with TypeScript. Build fast, reliable tests with real-world projects.',
-    link: '/coursePlaywrightInterview',
+    link: '/courseDetailJS',
   },
   {
     title: 'Devops for Automation Testing',
