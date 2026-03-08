@@ -2,11 +2,7 @@ import axios from 'axios';
 
 // Define the base URL based on environment
 const getBaseURL = () => {
-  if (import.meta.env.DEV) {
-    return 'http://localhost:5001/api';
-  } else {
-    return 'https://w3automation.onrender.com/api';
-  }
+  return 'https://w3-backend-salvatores-projects-9d7f38e8.vercel.app/api';
 };
 
 const api = axios.create({

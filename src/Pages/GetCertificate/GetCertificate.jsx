@@ -7,7 +7,6 @@ import { jsPDF } from 'jspdf';
 import { FiDownload, FiCalendar, FiUser, FiHash, FiBook } from 'react-icons/fi';
 
 const GetCertificate = () => {
-
   /* 
      Initialize sequence logic:
      Read 'lastCertificateSequence' from localStorage. If null, use 100.
@@ -34,7 +33,7 @@ const GetCertificate = () => {
     courseName: 'SELENIUM WITH JAVA AND DEVOPS',
     completionDate: '',
     issuedDate: '',
-    certificateNumber: generateCertificateNumber(currentSequence)
+    certificateNumber: generateCertificateNumber(currentSequence),
   });
 
   const [error, setError] = useState('');
@@ -43,9 +42,9 @@ const GetCertificate = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -59,8 +58,8 @@ const GetCertificate = () => {
       return false;
     }
     if (!formData.courseName) {
-        setError('Please select a course');
-        return false;
+      setError('Please select a course');
+      return false;
     }
     setError('');
     return true;
@@ -95,7 +94,7 @@ const GetCertificate = () => {
         </div>
       );
 
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // Waiting for fonts to fully load
       if (document.fonts && document.fonts.ready) {
@@ -113,14 +112,14 @@ const GetCertificate = () => {
         windowHeight: 600,
         letterRendering: true,
         allowTaint: true,
-        ignoreElements: (el) => el.classList.contains('no-print')
+        ignoreElements: (el) => el.classList.contains('no-print'),
       });
 
       const pdf = new jsPDF({
         orientation: 'landscape',
         unit: 'px',
         format: [900, 600],
-        hotfixes: ['px_scaling']
+        hotfixes: ['px_scaling'],
       });
 
       const imgData = canvas.toDataURL('image/png', 1.0);
@@ -132,26 +131,28 @@ const GetCertificate = () => {
         width: 900,
         height: 600,
         compression: 'FAST', // Balance quality and file size
-        quality: 1.0 // Set quality to maximum
+        quality: 1.0, // Set quality to maximum
       });
-      
+
       const fileName = `${formData.name.replace(/[^a-z0-9]/gi, '_')}_Certificate.pdf`;
       pdf.save(fileName);
 
       // On successful generation, commit the sequence number and prepare next
-      localStorage.setItem('lastCertificateSequence', currentSequence.toString());
-      
+      localStorage.setItem(
+        'lastCertificateSequence',
+        currentSequence.toString()
+      );
+
       // Update state for next certificate
       const nextSeq = currentSequence + 1;
       setCurrentSequence(nextSeq);
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         // Reset name for next entry if desired, or keep it. Often for bulk user might want to keep issued date etc.
         // Let's decide to keep fields but update cert number.
         // name: '', // Optional: clear name?
-        certificateNumber: generateCertificateNumber(nextSeq)
+        certificateNumber: generateCertificateNumber(nextSeq),
       }));
-
     } catch (err) {
       console.error('PDF Generation Error:', err);
       setError('Failed to generate certificate. Please try again.');
@@ -195,14 +196,18 @@ const GetCertificate = () => {
               Select Course
             </label>
             <select
-                id="courseName"
-                name="courseName"
-                value={formData.courseName}
-                onChange={handleChange}
-                required
+              id="courseName"
+              name="courseName"
+              value={formData.courseName}
+              onChange={handleChange}
+              required
             >
-                <option value="SELENIUM WITH JAVA AND DEVOPS">Selenium with Java and DevOps</option>
-                <option value="PlAYWRIGHT WITH TYPESCRIPT">Playwright with Typescript</option>
+              <option value="SELENIUM WITH JAVA AND DEVOPS">
+                Selenium with Java and DevOps
+              </option>
+              <option value="PLAYWRIGHT WITH TYPESCRIPT">
+                Playwright with Typescript
+              </option>
             </select>
           </div>
 
