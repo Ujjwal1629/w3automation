@@ -1,5 +1,7 @@
 import React from 'react';
+import useSWR from 'swr';
 import { useNavigate } from 'react-router-dom';
+import api from '../api';
 import './NewHomePage.css';
 import courseImageJavaSel from '../assets/javaSel.png';
 import courseImagePlayTs from '../assets/playTs.jpeg';
@@ -31,11 +33,36 @@ import {
   BsCameraVideo,
 } from 'react-icons/bs';
 
+const CACHE_KEY = 'demo_course_cache';
+const CACHE_TIME = 15 * 60 * 1000; // 15 minutes
+
+const fetcher = (url) => api.get(url).then((res) => res.data);
+
 const NewHomePage = () => {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeFilter, setActiveFilter] = useState('View All Courses');
   const [showDevOpsPopup, setShowDevOpsPopup] = useState(false);
+
+  const { data } = useSWR('/courses?course_id=HOMEPAGE-2026', fetcher, {
+    dedupingInterval: 300000, // 5 min: same request won't be repeated within 5 min
+    refreshInterval: 0, // no automatic polling
+    revalidateOnFocus: true, // fetch when tab is focused
+  });
+
+  // Optional: force a background refetch every 5 minutes
+  useEffect(() => {
+    const interval = setInterval(
+      () => {
+        mutate('/courses?course_id=HOMEPAGE-2026');
+      },
+      5 * 60 * 1000
+    ); // 5 minutes
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const demoCourse = data?.[0];
 
   const handleCourseClick = (course) => {
     if (course.title.toLowerCase().includes('devops')) {
@@ -108,10 +135,11 @@ const NewHomePage = () => {
                 <BsClock className="info-icon" />
                 <div className="info-text">
                   <span className="info-label">
-                    AI and ML Course Demo Session
+                    {demoCourse?.title || 'AI and ML Course Demo Session'}
                   </span>
                   <span className="info-value">
-                    25th January, Sunday | 09:00 PM IST
+                    {demoCourse?.start_date ||
+                      '25th January, Sunday | 09:00 PM IST'}
                   </span>
                 </div>
               </div>
@@ -129,7 +157,8 @@ const NewHomePage = () => {
                 className="register-btn"
                 onClick={() =>
                   window.open(
-                    'https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw',
+                    demoCourse?.zoom_link ||
+                      'https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw',
                     '_blank'
                   )
                 }
