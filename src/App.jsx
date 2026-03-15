@@ -49,7 +49,7 @@ import ChallengeDetail from './Pages/ChallengeDetail';
 import Leaderboard from './Pages/Leaderboard';
 import HomePageNew from './Components/NewHomePage';
 import CourseDetailPageJS from './Pages/CourseDetail/CourseDetailPageJS.jsx';
-import AdminDashboard from './Pages/Admin/AdminDashboard';
+import AdminDashboard from './Pages/Admin/AdminDashboard.jsx';
 
 initGA();
 
