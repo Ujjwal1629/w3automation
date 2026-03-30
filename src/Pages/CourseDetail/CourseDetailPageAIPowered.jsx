@@ -39,7 +39,7 @@ const CourseDetailPageAIPowered = () => {
     'Smart API Automation: Use AI to generate Postman collections, tests, documentation, and contract validations.',
     'Test Refactoring & CI/CD Debugging: Leverage AI to debug pipelines, refactor code, and maintain test suites efficiently.',
     'Low-Code/No-Code Tools: Explore codeless automation that abstracts logic through AI.',
-    'Advanced Agents & Orchestration: Understand the frontier of Autonomous Agents and risk management in AI adoption.',
+    'Advanced Agents & AI Workflows: Understand the frontier of Autonomous Agents and risk management in AI adoption.',
   ];
 
   const courseContent = [
@@ -197,9 +197,9 @@ const CourseDetailPageAIPowered = () => {
           ],
         },
         {
-          title: 'Session 18: Orchestration, Risks & Validation Strategies',
+          title: 'Session 18: AI Workflows, Risks & Validation Strategies',
           items: [
-            'Learning Objectives: Manage AI-generated code risks and orchestration.',
+            'Learning Objectives: Manage AI-generated code risks and AI Workflows.',
             'Topics Covered: Hallucinations, security risks (API keys), validation layers.'
           ],
         },
