@@ -49,6 +49,7 @@ import ChallengeDetail from './Pages/ChallengeDetail';
 import Leaderboard from './Pages/Leaderboard';
 import HomePageNew from './Components/NewHomePage';
 import CourseDetailPageJS from './Pages/CourseDetail/CourseDetailPageJS.jsx';
+import CourseDetailPageAIPowered from './Pages/CourseDetail/CourseDetailPageAIPowered.jsx';
 import AdminDashboard from './Pages/Admin/AdminDashboard.jsx';
 
 initGA();
@@ -356,6 +357,7 @@ function App() {
           element={<CourseDetailPagePlaywrightInterview />}
         />
         <Route path="/courseAIMLTesting" element={<CourseDetailPageAI />} />
+        <Route path="/courseAIPowered" element={<CourseDetailPageAIPowered />} />
         <Route path="/courseAI" element={<CourseDetailPageAI />} />
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/getCertificate" element={<GetCertificate />} />

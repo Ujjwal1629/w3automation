@@ -7,6 +7,7 @@ import courseImageJavaSel from '../assets/javaSel.png';
 import courseImagePlayTs from '../assets/playTs.jpeg';
 import courseImageDevOps from '../assets/devOps.webp';
 import courseImageAI from '../assets/AiTest.webp';
+import courseImageAIPowered from '../assets/ai_test_automation_cover.png';
 import logoImage from '../assets/logo-edit.png';
 import profileImage from '../assets/profilePic.jpg';
 import noPic from '../assets/no-img.webp';
@@ -158,7 +159,7 @@ const NewHomePage = () => {
                 onClick={() =>
                   window.open(
                     demoCourse?.zoom_link ||
-                      'https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw',
+                    'https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw',
                     '_blank'
                   )
                 }
@@ -687,6 +688,19 @@ const courses = [
     description:
       'End-to-end AI for automation testing. Covers intelligent test design, maintenance, and real-world use cases.',
     link: '/courseAIMLTesting',
+  },
+  {
+    title: 'AI powered test automation',
+    rating: 4.9,
+    reviews: 100,
+    students: '150',
+    lessons: 22,
+    price: '$170',
+    image: courseImageAIPowered,
+    category: 'AI Testing',
+    description:
+      'Master AI-powered test automation tools and techniques to accelerate your testing process.',
+    link: '/courseAIPowered',
   },
 ];
 
