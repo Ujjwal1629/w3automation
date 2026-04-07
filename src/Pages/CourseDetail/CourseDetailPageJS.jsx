@@ -467,12 +467,7 @@ const CourseDetailPageAI = () => {
             <button
               className="ai-btn-primary"
               style={{ marginTop: '2rem' }}
-              onClick={() =>
-                window.open(
-                  'https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw',
-                  '_blank'
-                )
-              }
+              onClick={() => window.open('/playwright-demo', '_self')}
             >
               Interested
             </button>

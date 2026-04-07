@@ -51,6 +51,7 @@ import HomePageNew from './Components/NewHomePage';
 import CourseDetailPageJS from './Pages/CourseDetail/CourseDetailPageJS.jsx';
 import CourseDetailPageAIPowered from './Pages/CourseDetail/CourseDetailPageAIPowered.jsx';
 import AdminDashboard from './Pages/Admin/AdminDashboard.jsx';
+import PlaywrightDemoRegister from './Pages/PlaywrightDemoRegister.jsx';
 
 initGA();
 
@@ -405,6 +406,7 @@ function App() {
           }
         />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/playwright-demo" element={<PlaywrightDemoRegister />} />
       </Routes>
     </div>
   );
