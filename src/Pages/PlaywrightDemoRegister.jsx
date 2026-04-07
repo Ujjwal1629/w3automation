@@ -12,8 +12,8 @@ const PlaywrightDemoRegister = () => {
     e.preventDefault();
     const sessionLabel =
       form.session === 'thursday'
-        ? 'Thursday at 8 PM IST to 9 PM IST'
-        : 'Friday at 5:30 AM IST to 6:30 AM IST';
+        ? 'Thursday, 9th April at 8 PM IST to 9 PM IST'
+        : 'Friday, 10th April at 5:30 AM IST to 6:30 AM IST';
     const message = `Hi Hemant, I am interested in attending your Playwright with TypeScript demo session on ${sessionLabel}.\nMy name is ${form.name}.\nMy email address is ${form.email}.`;
     const encoded = encodeURIComponent(message);
     setSubmitted(true);
@@ -37,12 +37,12 @@ const PlaywrightDemoRegister = () => {
 
         <div className="pdr-sessions">
           <div className="pdr-session-option">
-            <span className="pdr-session-day">Thursday</span>
+            <span className="pdr-session-day">Thursday, 9th April</span>
             <span className="pdr-session-time">8:00 PM – 9:00 PM IST</span>
           </div>
           <div className="pdr-session-divider">OR</div>
           <div className="pdr-session-option">
-            <span className="pdr-session-day">Friday</span>
+            <span className="pdr-session-day">Friday, 10th April</span>
             <span className="pdr-session-time">5:30 AM – 6:30 AM IST</span>
           </div>
         </div>
@@ -67,8 +67,8 @@ const PlaywrightDemoRegister = () => {
                 onChange={(e) => setForm({ ...form, session: e.target.value })}
               >
                 <option value="" disabled>Select a session</option>
-                <option value="thursday">Thursday — 8:00 PM to 9:00 PM IST</option>
-                <option value="friday">Friday — 5:30 AM to 6:30 AM IST</option>
+                <option value="thursday">Thursday, 9th April — 8:00 PM to 9:00 PM IST</option>
+                <option value="friday">Friday, 10th April — 5:30 AM to 6:30 AM IST</option>
               </select>
             </div>
             <div className="pdr-field">
