@@ -44,6 +44,8 @@ const NewHomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeFilter, setActiveFilter] = useState('View All Courses');
   const [showDevOpsPopup, setShowDevOpsPopup] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [registerForm, setRegisterForm] = useState({ name: '', session: '', email: '' });
 
   const { data } = useSWR('/courses?course_id=HOMEPAGE-2026', fetcher, {
     dedupingInterval: 300000, // 5 min: same request won't be repeated within 5 min
@@ -136,11 +138,10 @@ const NewHomePage = () => {
                 <BsClock className="info-icon" />
                 <div className="info-text">
                   <span className="info-label">
-                    {demoCourse?.title || 'AI and ML Course Demo Session'}
+                    Playwright with TypeScript Demo Session
                   </span>
                   <span className="info-value">
-                    {demoCourse?.start_date ||
-                      '25th January, Sunday | 09:00 PM IST'}
+                    Thursday 8:00 PM – 9:00 PM IST | Friday 5:30 AM – 6:30 AM IST
                   </span>
                 </div>
               </div>
@@ -156,13 +157,7 @@ const NewHomePage = () => {
             <div className="cta-group">
               <button
                 className="register-btn"
-                onClick={() =>
-                  window.open(
-                    demoCourse?.zoom_link ||
-                    'https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw',
-                    '_blank'
-                  )
-                }
+                onClick={() => setShowRegisterModal(true)}
               >
                 Register now
               </button>
@@ -600,6 +595,70 @@ const NewHomePage = () => {
           </div>
         </div>
       </footer>
+
+      {/* Register Modal */}
+      {showRegisterModal && (
+        <div className="popup-overlay" onClick={() => setShowRegisterModal(false)}>
+          <div className="popup-content register-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="popup-close" onClick={() => setShowRegisterModal(false)}>
+              <FaTimes />
+            </button>
+            <h2 className="register-modal-title">Register for Demo Session</h2>
+            <p className="register-modal-subtitle">Playwright with TypeScript</p>
+            <form
+              className="register-modal-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const sessionLabel =
+                  registerForm.session === 'thursday'
+                    ? 'Thursday at 8 PM IST to 9 PM IST'
+                    : 'Friday at 5:30 AM IST to 6:30 AM IST';
+                const message = `Hi Hemant, I am interested in attending your Playwright with TypeScript demo session on ${sessionLabel}.\nMy name is ${registerForm.name}.\nMy email address is ${registerForm.email}.`;
+                const encoded = encodeURIComponent(message);
+                window.open(`https://wa.me/918810201221?text=${encoded}`, '_blank');
+                setShowRegisterModal(false);
+                setRegisterForm({ name: '', session: '', email: '' });
+              }}
+            >
+              <div className="register-field">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  value={registerForm.name}
+                  required
+                  onChange={(e) => setRegisterForm({ ...registerForm, name: e.target.value })}
+                />
+              </div>
+              <div className="register-field">
+                <label>Preferred Session</label>
+                <select
+                  value={registerForm.session}
+                  required
+                  onChange={(e) => setRegisterForm({ ...registerForm, session: e.target.value })}
+                >
+                  <option value="" disabled>Select a session</option>
+                  <option value="thursday">Thursday — 8:00 PM to 9:00 PM IST</option>
+                  <option value="friday">Friday — 5:30 AM to 6:30 AM IST</option>
+                </select>
+              </div>
+              <div className="register-field">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={registerForm.email}
+                  required
+                  onChange={(e) => setRegisterForm({ ...registerForm, email: e.target.value })}
+                />
+              </div>
+              <button type="submit" className="register-btn register-modal-submit">
+                Register via WhatsApp
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* DevOps Popup */}
       {showDevOpsPopup && (

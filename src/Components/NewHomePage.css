@@ -1676,3 +1676,66 @@
     transform: scale(1);
   }
 }
+
+/* Register Modal */
+.register-modal {
+  max-width: 460px;
+  width: 90%;
+  padding: 2rem;
+}
+
+.register-modal-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.25rem;
+}
+
+.register-modal-subtitle {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.register-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.register-field label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.register-field input,
+.register-field select {
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #1a1a2e;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+
+.register-field input:focus,
+.register-field select:focus {
+  border-color: #7c3aed;
+}
+
+.register-modal-submit {
+  margin-top: 0.5rem;
+  width: 100%;
+  justify-content: center;
+  font-size: 1rem;
+}
+
