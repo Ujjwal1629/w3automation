@@ -60,7 +60,7 @@ const PlaywrightDemoRegister = () => {
               />
             </div>
             <div className="pdr-field">
-              <label>Preferred Session</label>
+              <label>Preferred Demo Session</label>
               <select
                 value={form.session}
                 required

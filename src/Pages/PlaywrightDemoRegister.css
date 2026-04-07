@@ -238,6 +238,6 @@
   }
 
   .pdr-session-divider {
-    transform: rotate(90deg);
+    transform: none;
   }
 }
