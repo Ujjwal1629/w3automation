@@ -283,6 +283,16 @@ const CourseDetailPageAI = () => {
             'Best practices for AI-assisted automation.',
           ],
         },
+        {
+          title: 'Agentic Testing Workflows',
+          items: [
+            'Using agents independently, sequentially, or as chained calls in the agentic loop.',
+            'Sequential agent runs to produce full test coverage for your product.',
+            'Planner agent: explores the app and produces a Markdown test plan.',
+            'Generator agent: transforms the Markdown plan into Playwright Test files.',
+            'Healer agent: executes the test suite and automatically repairs failing tests.',
+          ],
+        },
       ],
     },
   ];
