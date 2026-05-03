@@ -425,16 +425,209 @@ const playwrightAICourseData = {
   ],
 };
 
+// const playwrightCourseData = {
+//   title: 'PLAYWRIGHT WITH JAVASCRIPT 2025',
+//   description:
+//     'This course is designed to provide students with a comprehensive understanding of Playwright using JavaScript. By the end of the course, students will be able to automate web applications, write robust test scripts, and implement test automation frameworks using Playwright.',
+//   enrolled: 120,
+//   backgroundImage: jsBg,
+//   stats: {
+//     'Live - Projects': '2',
+//     lectures: 36,
+//     duration: '2.5 Months',
+//     Certification: 'Yes',
+//     Recordings: 'Lifetime access',
+//     'Mock Test': 'Weekly',
+//     'Skill Level': 'All levels',
+//     language: 'English',
+//     Placement: 'Assistance',
+//     assessments: 'Yes',
+//   },
+//   schedule: {
+//     classTiming: {
+//       indian: '07:30 AM IST',
+//       us: '10:00 PM GMT',
+//       uk: '02:00 AM GMT',
+//     },
+//     demo: 'First 2 sessions are free!',
+//     date: '1st & 2nd September 2025',
+//     classDate: '3rd September 2025 Onwards',
+//     days: 'Monday to Friday (Weekdays only)',
+//     features: [
+//       'Live Classes',
+//       'Recorded Sessions',
+//       'Resume Assistance',
+//       'Interview Prep',
+//     ],
+//   },
+//   syllabus: [
+//     {
+//       title: 'JavaScript Fundamentals for Test Automation',
+//       topics: [
+//         'Variables (var, let, const), data types, operators, string manipulation methods, and template literals',
+//         'Control flow structures like if/else, switch, and loops (for, while, do-while), including break and continue',
+//         'Functions and scope, including function declarations, arrow functions, the this keyword, closures, and callback functions',
+//         'Arrays and objects with methods like map, filter, reduce, object literals, destructuring, and the spread operator',
+//         'ES6+ features such as let/const, default parameters, rest/spread operators, optional chaining, template strings, and module imports/exports',
+//       ],
+//     },
+//     {
+//       title: 'Advanced JavaScript Concepts',
+//       topics: [
+//         'Promises & Async/Await: Callbacks, Promises (resolve, reject, then, catch), async/await, Promise.all(), Promise.race()',
+//         'JavaScript & Web Interactions: DOM access (querySelector, innerText), Events (click, change, keydown), Event Listeners, Local & Session Storage',
+//         'JavaScript & API Testing: fetch() API, JSON.stringify/parse, HTTP methods (GET, POST, PUT, DELETE), API error handling',
+//       ],
+//     },
+//     {
+//       title: 'Getting Started with Playwright & Setup',
+//       topics: [
+//         'What is Playwright and Why Use It?',
+//         'Installing Playwright and Node.js',
+//         'Setting Up VS Code for Playwright',
+//         'Creating Your First Playwright Test',
+//         'Understanding Core Features of Playwright',
+//       ],
+//     },
+//     {
+//       title: 'Locators & Element Interactions in Playwright',
+//       topics: [
+//         'Playwright Locators: locator(), getByRole(), getByText()',
+//         'Handling Clicks, Inputs, and Form Submissions',
+//         'Keyboard and Mouse Events',
+//         'Interacting with Dropdowns, Checkboxes, and Radio Buttons',
+//         'Handling Alerts, Modals, and Frames',
+//       ],
+//     },
+//     {
+//       title: 'Assertions, Hooks & Test Execution in Playwright',
+//       topics: [
+//         'Using Playwright Assertions (expect())',
+//         'Soft vs Hard Assertions',
+//         'Test Hooks: beforeAll, afterAll',
+//         'Debugging with Trace Viewer and Debug Mode',
+//         'Handling Dynamic Elements with Waits: waitForSelector, waitForTimeout',
+//       ],
+//     },
+//     {
+//       title: 'Playwright Advanced Features',
+//       topics: [
+//         'Mocking API Requests and Network Interception',
+//         'Handling File Uploads and Downloads',
+//         'Authentication Handling: JWT, Cookies, Session Storage',
+//         'Mobile Emulation and Responsive Testing',
+//         'Running Tests Across Multiple Browsers',
+//       ],
+//     },
+//     {
+//       title: 'Playwright Integration with JavaScript Frameworks',
+//       topics: [
+//         'Writing Reusable Test Functions',
+//         'Using Page Object Model (POM) with Playwright',
+//         'Data-Driven Testing with JSON and CSV',
+//         'Handling Configuration Files (playwright.config.js)',
+//       ],
+//     },
+//     {
+//       title: 'Using TypeScript in Playwright Automation',
+//       topics: [
+//         'Understand the Differences Between TypeScript and JavaScript',
+//         'Deep Dive into TypeScript Type Syntaxes and Their Usage',
+//         'Build Playwright Page Object Files in TypeScript and Enforce Typing Standards',
+//         'Create Utility Files in TypeScript with Typing Enforcement',
+//         'Refactor Playwright Tests into TypeScript-Compatible Code and Run E2E Tests',
+//       ],
+//     },
+//     {
+//       title: 'BDD with Cucumber integration',
+//       topics: [
+//         'Introduction to BDD & Cucumber',
+//         'Setting Up Cucumber with Playwright (JavaScript)',
+//         'Writing Simple Feature Files (Gherkin)',
+//         'Step Definitions with Playwright',
+//         'Data Tables & Examples (Basic Parameterization)',
+//         'Tags & Hooks',
+//         'Reporting',
+//       ],
+//     },
+//     {
+//       title: 'CI/CD Integration & Reporting',
+//       topics: [
+//         'Generating Reports: HTML, JSON, Allure',
+//         'Running Playwright Tests in CI/CD: GitHub Actions, Jenkins',
+//         'Running Playwright Tests in Docker',
+//         'Parallel Test Execution in CI/CD Pipelines',
+//       ],
+//     },
+//   ],
+//   pricing: {
+//     price: {
+//       indian: '8000 INR',
+//       uk: '100 EUROS',
+//       us: '120 USD',
+//     },
+//     contact: '+91 8810201221',
+//     linkedin: 'https://www.linkedin.com/in/hemant-gandhi254/',
+//   },
+//   instructor: {
+//     name: 'Hemant Gandhi',
+//     title: 'QA Automation Lead and Trainer',
+//     bio: 'With over 10 years of experience in the software testing industry. He has worked extensively with various automation testing tools and frameworks, specializing in delivering high-quality software solutions. His passion for quality assurance and automation drives him to share knowledge and help others excel in this field.',
+//     students: '200',
+//     ratings: '4.2',
+//     image: instructorImg,
+//   },
+//   testimonials: [
+//     {
+//       userName: 'Supriya D',
+//       userReview:
+//         "I recently completed Hemant Gandhi's automation testing class on Playwright and JavaScript, and it was outstanding. The instructor made complex topics easy to understand, and the hands-on exercises were incredibly valuable.",
+//     },
+//     {
+//       userName: 'Srikanth chivukula',
+//       userReview:
+//         'I really appreciate you for taking time from daily routines and providing training on Playwright and JavaScript. The topics covered are good and detailed. The support provided post sessions is also excellent.!',
+//     },
+//     {
+//       userName: 'Mayooran Thiruchselvam',
+//       userReview:
+//         'The session was highly engaging and insightful, providing a comprehensive understanding session. I particularly appreciated how the presentation was structured, making complex concepts easy to understand.',
+//     },
+//   ],
+//   faqs: [
+//     {
+//       question: 'Is this course suitable for beginners?',
+//       answer:
+//         'Yes, this course starts with the basics and gradually moves to advanced topics.',
+//     },
+//     {
+//       question: 'Will I get hands-on experience?',
+//       answer:
+//         'Absolutely! The course includes multiple assignments and a real-world project.',
+//     },
+//     {
+//       question: 'What if I miss a class?',
+//       answer:
+//         'Recorded sessions will be available for all lectures with lifetime access.',
+//     },
+//     {
+//       question: 'Do I need to install any software?',
+//       answer:
+//         'Yes, you will need to install Node.js and Playwright. Detailed instructions will be provided in the class as well for both macOS and Windows.',
+//     },
+//   ],
+// };
+
 const playwrightCourseData = {
-  title: 'PLAYWRIGHT WITH JAVASCRIPT 2025',
+  title: 'PLAYWRIGHT WITH AI',
   description:
-    'This course is designed to provide students with a comprehensive understanding of Playwright using JavaScript. By the end of the course, students will be able to automate web applications, write robust test scripts, and implement test automation frameworks using Playwright.',
+    'A modern, scalable and intelligent automation course covering Playwright with AI-powered testing, MCP agent integration, BDD with Cucumber, and end-to-end CI/CD pipelines. Build self-healing, future-ready test automation ecosystems using the latest AI tools and frameworks.',
   enrolled: 120,
   backgroundImage: jsBg,
   stats: {
     'Live - Projects': '2',
     lectures: 36,
-    duration: '2.5 Months',
+    duration: '3 Months',
     Certification: 'Yes',
     Recordings: 'Lifetime access',
     'Mock Test': 'Weekly',
@@ -445,14 +638,14 @@ const playwrightCourseData = {
   },
   schedule: {
     classTiming: {
-      indian: '07:30 AM IST',
+      indian: '08:00 PM IST (Weekend) / 07:15 AM IST (Weekday)',
       us: '10:00 PM GMT',
       uk: '02:00 AM GMT',
     },
     demo: 'First 2 sessions are free!',
-    date: '1st & 2nd September 2025',
-    classDate: '3rd September 2025 Onwards',
-    days: 'Monday to Friday (Weekdays only)',
+    date: 'Option A: Sat & Sun | Option B: Mon / Tue / Wed',
+    classDate: 'Upcoming Batch — Contact for dates',
+    days: 'Weekend (Sat & Sun) or Weekday (Mon–Wed)',
     features: [
       'Live Classes',
       'Recorded Sessions',
@@ -462,101 +655,89 @@ const playwrightCourseData = {
   },
   syllabus: [
     {
-      title: 'JavaScript Fundamentals for Test Automation',
+      title: 'Module 01 — TypeScript Fundamentals for Test Automation',
       topics: [
-        'Variables (var, let, const), data types, operators, string manipulation methods, and template literals',
-        'Control flow structures like if/else, switch, and loops (for, while, do-while), including break and continue',
-        'Functions and scope, including function declarations, arrow functions, the this keyword, closures, and callback functions',
-        'Arrays and objects with methods like map, filter, reduce, object literals, destructuring, and the spread operator',
-        'ES6+ features such as let/const, default parameters, rest/spread operators, optional chaining, template strings, and module imports/exports',
+        'Types, interfaces, enums & generics for clean, typed test code',
+        'Functions, arrow functions, async/await & Promises in TypeScript',
+        'Module patterns — import/export, tsconfig.json setup for Playwright',
+        'Typed page objects, step definitions & type-safe API clients',
+        'VS Code setup — ESLint, Prettier, Path aliases, Node.js project structure',
       ],
     },
     {
-      title: 'Advanced JavaScript Concepts',
+      title: 'Module 02 — Playwright Core — UI & API Testing',
       topics: [
-        'Promises & Async/Await: Callbacks, Promises (resolve, reject, then, catch), async/await, Promise.all(), Promise.race()',
-        'JavaScript & Web Interactions: DOM access (querySelector, innerText), Events (click, change, keydown), Event Listeners, Local & Session Storage',
-        'JavaScript & API Testing: fetch() API, JSON.stringify/parse, HTTP methods (GET, POST, PUT, DELETE), API error handling',
+        'Installation, project scaffold, browser contexts, pages, fixtures & hooks',
+        'playwright.config.ts deep dive — environments, retries, timeouts',
+        'Locators & selectors best practices — actions: click, fill, drag, upload, keyboard & mouse events',
+        'Assertions — expect(), soft assertions & auto-waiting; screenshots, videos & trace on failure',
+        'API testing — GET, POST, PUT, DELETE with schema validation & auth token injection',
+        'Cross-browser & mobile — Chromium, Firefox, WebKit, device emulation & responsive testing',
+        'Test organisation — tags, grep filters, parallel execution, sharding & retries',
       ],
     },
     {
-      title: 'Getting Started with Playwright & Setup',
+      title: 'Module 03 — BDD with Cucumber & Gherkin',
       topics: [
-        'What is Playwright and Why Use It?',
-        'Installing Playwright and Node.js',
-        'Setting Up VS Code for Playwright',
-        'Creating Your First Playwright Test',
-        'Understanding Core Features of Playwright',
+        'BDD foundations — business value of readable test scenarios, Gherkin syntax',
+        'Scenario Outline & Examples for data-driven BDD testing',
+        'cucumber-js setup with Playwright + TypeScript, writing Step Definitions',
+        'World object & shared state, Hooks — Before, After, BeforeAll, AfterAll',
+        'Tags & filtering — @smoke, @regression, @wip; Background steps & shared preconditions',
+        'DocString & DataTable usage; HTML + JSON report output from Cucumber',
       ],
     },
     {
-      title: 'Locators & Element Interactions in Playwright',
+      title: 'Module 04 — Page Object Model (POM) Architecture',
       topics: [
-        'Playwright Locators: locator(), getByRole(), getByText()',
-        'Handling Clicks, Inputs, and Form Submissions',
-        'Keyboard and Mouse Events',
-        'Interacting with Dropdowns, Checkboxes, and Radio Buttons',
-        'Handling Alerts, Modals, and Frames',
+        'BasePage class — shared methods, constructor patterns & lazy locator strategy',
+        'Page-specific classes, element encapsulation & avoiding anti-patterns',
+        'Reusable API request builder class with response schema validation',
+        'Auth token management, session handling & chaining API + UI in POM flows',
+        'Dependency injection via Playwright fixtures & environment config management',
+        'Clean folder structure enforcement & code review checklist for test architecture',
       ],
     },
     {
-      title: 'Assertions, Hooks & Test Execution in Playwright',
+      title: 'Module 05 — AI-Powered Test Intelligence',
       topics: [
-        'Using Playwright Assertions (expect())',
-        'Soft vs Hard Assertions',
-        'Test Hooks: beforeAll, afterAll',
-        'Debugging with Trace Viewer and Debug Mode',
-        'Handling Dynamic Elements with Waits: waitForSelector, waitForTimeout',
+        'AI-generated test data using LLMs (GPT-4o, Claude, Gemini) for dynamic edge cases',
+        'Seeding databases with AI-generated realistic datasets for robust test coverage',
+        'Self-healing tests — locator failure detection & LLM-powered auto-fix flow',
+        'GitHub PR auto-creation for healed test files — live flaky test fix demo',
+        'AI-powered failure log analysis & root cause summarisation in CI pipeline output',
+        'Auto-generate Gherkin scenarios from requirements docs & summarise test runs via LLM',
       ],
     },
     {
-      title: 'Playwright Advanced Features',
+      title: 'Module 06 — MCP Server + Playwright Agent',
       topics: [
-        'Mocking API Requests and Network Interception',
-        'Handling File Uploads and Downloads',
-        'Authentication Handling: JWT, Cookies, Session Storage',
-        'Mobile Emulation and Responsive Testing',
-        'Running Tests Across Multiple Browsers',
+        'What is MCP? Protocol & architecture — how AI connects to external tools',
+        '@playwright/mcp — official Playwright MCP server setup & configuration',
+        'Giving AI agents full browser control via Playwright — Claude, GPT-4o, Gemini as tool users',
+        'Natural language to browser action pipeline with prompt engineering',
+        'Connecting AI assistant to Playwright test suite with MCP + DB, Docs & API as data sources',
+        'Live agent demo — User prompt to AI to MCP to Browser to Result; self-correcting via MCP loop',
       ],
     },
     {
-      title: 'Playwright Integration with JavaScript Frameworks',
+      title: 'Module 07 — CI/CD Pipeline Integration',
       topics: [
-        'Writing Reusable Test Functions',
-        'Using Page Object Model (POM) with Playwright',
-        'Data-Driven Testing with JSON and CSV',
-        'Handling Configuration Files (playwright.config.js)',
+        'CI/CD fundamentals for QA — Code Commit > Build > Run Tests > Report > Quality Gate',
+        'Jenkins setup & Playwright pipeline config; GitHub Actions .yml workflows for Playwright + Cucumber',
+        'Matrix testing — multi-browser parallel execution & PR quality gate to block merge on failure',
+        'Allure setup with Playwright + Cucumber — rich HTML reports with trends, history & attachments',
+        'Publishing Allure reports in Jenkins & GitHub Actions; scheduled nightly regression runs',
       ],
     },
     {
-      title: 'Using TypeScript in Playwright Automation',
+      title: 'Module 08 — Capstone Project & Career Readiness',
       topics: [
-        'Understand the Differences Between TypeScript and JavaScript',
-        'Deep Dive into TypeScript Type Syntaxes and Their Usage',
-        'Build Playwright Page Object Files in TypeScript and Enforce Typing Standards',
-        'Create Utility Files in TypeScript with Typing Enforcement',
-        'Refactor Playwright Tests into TypeScript-Compatible Code and Run E2E Tests',
-      ],
-    },
-    {
-      title: 'BDD with Cucumber integration',
-      topics: [
-        'Introduction to BDD & Cucumber',
-        'Setting Up Cucumber with Playwright (JavaScript)',
-        'Writing Simple Feature Files (Gherkin)',
-        'Step Definitions with Playwright',
-        'Data Tables & Examples (Basic Parameterization)',
-        'Tags & Hooks',
-        'Reporting',
-      ],
-    },
-    {
-      title: 'CI/CD Integration & Reporting',
-      topics: [
-        'Generating Reports: HTML, JSON, Allure',
-        'Running Playwright Tests in CI/CD: GitHub Actions, Jenkins',
-        'Running Playwright Tests in Docker',
-        'Parallel Test Execution in CI/CD Pipelines',
+        'End-to-end automation framework build — Playwright + TypeScript + BDD + AI + CI/CD',
+        'Live project with real-world scenarios covering UI, API, database & cross-browser testing',
+        'Resume-ready GitHub portfolio with working automation framework',
+        'Mock technical interviews — coding challenges, framework walkthroughs & system design',
+        'Interview preparation — common SDET questions, best practices & career guidance',
       ],
     },
   ],
@@ -571,8 +752,8 @@ const playwrightCourseData = {
   },
   instructor: {
     name: 'Hemant Gandhi',
-    title: 'QA Automation Lead and Trainer',
-    bio: 'With over 10 years of experience in the software testing industry. He has worked extensively with various automation testing tools and frameworks, specializing in delivering high-quality software solutions. His passion for quality assurance and automation drives him to share knowledge and help others excel in this field.',
+    title: 'Lead Automation Engineer & Trainer (11+ Years)',
+    bio: 'With over 11 years of experience in software testing and automation, Hemant has built scalable frameworks across Playwright, Selenium, and AI-powered ecosystems. Founder of Journey to Automation | QodeBench, he is passionate about modern test engineering and helping QA professionals level up with cutting-edge tools and industry best practices.',
     students: '200',
     ratings: '4.2',
     image: instructorImg,
@@ -598,12 +779,12 @@ const playwrightCourseData = {
     {
       question: 'Is this course suitable for beginners?',
       answer:
-        'Yes, this course starts with the basics and gradually moves to advanced topics.',
+        'Yes, the course starts from TypeScript fundamentals and progressively builds up to advanced AI & MCP integration — suitable for all levels.',
     },
     {
       question: 'Will I get hands-on experience?',
       answer:
-        'Absolutely! The course includes multiple assignments and a real-world project.',
+        'Absolutely! Every module includes practical exercises, and the course ends with a full capstone project you can add to your GitHub portfolio.',
     },
     {
       question: 'What if I miss a class?',
@@ -613,7 +794,7 @@ const playwrightCourseData = {
     {
       question: 'Do I need to install any software?',
       answer:
-        'Yes, you will need to install Node.js and Playwright. Detailed instructions will be provided in the class as well for both macOS and Windows.',
+        'Yes, you will need Node.js, VS Code, and Playwright. Detailed setup instructions are provided for both macOS and Windows.',
     },
   ],
 };

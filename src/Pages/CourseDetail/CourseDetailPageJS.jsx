@@ -32,265 +32,277 @@ const CourseDetailPageAI = () => {
   };
 
   const whatYouWillLearn = [
-    'JavaScript & TypeScript Mastery: Build strong foundations with async/await, types, and modern ES6+.',
-    'Playwright Core Concepts: Master locators, assertions, fixtures, and test architecture.',
-    'Advanced UI Automation: Handle forms, frames, dialogs, multi-tabs, and complex workflows.',
-    'Scalable Framework Design: Implement POM and reusable fixtures for maintainable automation.',
-    'Data-Driven Testing: Use JSON/CSV, configuration management, and test tagging effectively.',
-    'API Automation: Test REST APIs with authentication and robust response validation.',
-    'Debugging & Reporting: Use Inspector, Trace Viewer, HTML & Allure reports confidently.',
-    'CI/CD & AI Integration: Integrate with GitHub Actions, Jenkins, and leverage AI-powered test generation.',
+    'TypeScript for Testers: Write clean, typed, scalable test code with interfaces, generics, and async/await.',
+    'Playwright Core: Master UI & API testing — locators, assertions, fixtures, cross-browser and mobile testing.',
+    'BDD with Cucumber: Bridge business requirements and code using Gherkin, step definitions, and data-driven scenarios.',
+    'POM Architecture: Build maintainable frameworks with BasePage patterns, fixtures, and clean folder structure.',
+    'AI-Powered Testing: Generate smart test data, auto-fix broken locators, and analyse failures using LLMs.',
+    'MCP & Playwright Agent: Give AI agents full browser control via @playwright/mcp — the future of test automation.',
+    'CI/CD Pipelines: Set up Jenkins & GitHub Actions with Allure reporting and quality gate enforcement.',
+    'Integrate AI to self-heal broken tests, generate smart test data & analyse failures automatically.',
   ];
 
   const courseContent = [
     {
-      title: 'Module 1: JavaScript & TypeScript Foundations',
-      desc: 'Strong programming fundamentals required for Playwright automation.',
+      title: 'Module 01: TypeScript Fundamentals for Test Automation',
+      desc: 'Write clean, typed, scalable test code from day one.',
       sections: [
         {
-          title: 'JavaScript Basics',
+          title: 'TS Basics',
           items: [
-            'Variables, data types, functions, and scope.',
-            'Modern JS syntax: arrow functions, destructuring, template literals.',
-            'Modules: ES6 imports/exports in Node.js.',
+            'Types, interfaces, enums & generics.',
+            'Functions, arrow functions, async/await & Promises.',
+            'Modules — import/export patterns.',
+            'tsconfig.json setup for Playwright projects.',
           ],
         },
         {
-          title: 'TypeScript Essentials',
+          title: 'TS for Testers',
           items: [
-            'Types, interfaces, and type annotations.',
-            'Writing strongly-typed automation scripts.',
-            'Best practices for scalable TypeScript projects.',
+            'Typed page objects & step definitions.',
+            'Type-safe API clients & response models.',
+            'Null safety & optional chaining in test code.',
           ],
         },
         {
-          title: 'Async Programming',
+          title: 'Dev Environment',
           items: [
-            'Promises and async/await fundamentals.',
-            'Error handling strategies.',
-            'Using async/await effectively in automation workflows.',
+            'VS Code setup — ESLint, Prettier, Path aliases.',
+            'Node.js & npm project structure.',
+            'Running your first TypeScript test.',
           ],
         },
       ],
     },
     {
-      title: 'Module 2: Playwright Fundamentals & Setup',
-      desc: 'Getting started with Playwright using TypeScript.',
+      title: 'Module 02: Playwright Core — UI & API Testing',
+      desc: 'Master end-to-end UI flows AND API validation in one framework.',
       sections: [
         {
-          title: 'Introduction & Setup',
+          title: 'Playwright Setup',
           items: [
-            'Introduction to Playwright with TypeScript.',
-            'Installation and project configuration.',
-            'Understanding Playwright architecture.',
+            'Installation, project scaffold & folder structure.',
+            'Browser contexts, pages, fixtures & hooks.',
+            'playwright.config.ts deep dive — envs, retries, timeouts.',
           ],
         },
         {
-          title: 'First Test & Core Concepts',
+          title: 'UI Testing',
           items: [
-            'Writing your first Playwright test.',
-            'Page fixtures deep dive.',
-            'Test structure and execution flow.',
+            'Locators & selectors — best practices & anti-patterns.',
+            'Actions: click, fill, drag, upload, keyboard & mouse events.',
+            'Assertions — expect(), soft assertions & auto-waiting.',
+            'Screenshots, videos & trace on failure.',
+          ],
+        },
+        {
+          title: 'API Testing',
+          items: [
+            'APIRequestContext — GET, POST, PUT, DELETE.',
+            'Request/response schema validation.',
+            'Auth token injection & header management.',
+            'Combining UI + API in a single test flow.',
+          ],
+        },
+        {
+          title: 'Cross-Browser & Mobile',
+          items: [
+            'Running tests on Chromium, Firefox & WebKit.',
+            'Mobile device emulation — viewport, touch, geolocation.',
+            'Playwright device descriptor library.',
+            'Responsive layout testing strategies.',
+          ],
+        },
+        {
+          title: 'Test Organisation',
+          items: [
+            'Tags, grep filters & test.describe blocks.',
+            'Before/After hooks — setup & teardown patterns.',
+            'Parallel execution, sharding & retries.',
           ],
         },
       ],
     },
     {
-      title: 'Module 3: Locators, Assertions & UI Interactions',
-      desc: 'Mastering element identification and user interactions.',
+      title: 'Module 03: BDD with Cucumber & Gherkin',
+      desc: 'Bridge the gap between business requirements and test code.',
       sections: [
         {
-          title: 'Locators & Assertions',
+          title: 'BDD Foundations',
           items: [
-            'CSS, XPath, text, ID locator strategies.',
-            'Advanced locators: has, hasText, hasNot.',
-            'getBy methods and best practices.',
-            'Assertions with expect().',
+            'Why BDD? Business value of readable test scenarios.',
+            'Gherkin syntax — Feature, Scenario, Given/When/Then/And.',
+            'Scenario Outline & Examples for data-driven BDD.',
           ],
         },
         {
-          title: 'UI Interactions',
+          title: 'Cucumber Setup',
           items: [
-            'Form handling and button actions.',
-            'Mouse hover, drag & drop, keyboard actions.',
-            'Radio buttons, checkboxes, dropdowns, file uploads.',
+            'cucumber-js setup with Playwright + TypeScript.',
+            'Writing Step Definitions — mapping Gherkin to actions.',
+            'World object & shared state across steps.',
+            'Hooks — Before, After, BeforeAll, AfterAll.',
+          ],
+        },
+        {
+          title: 'Advanced BDD',
+          items: [
+            'Tags & filtering — @smoke, @regression, @wip.',
+            'Background steps & shared preconditions.',
+            'DocString & DataTable usage in steps.',
+            'HTML + JSON report output from Cucumber.',
           ],
         },
       ],
     },
     {
-      title: 'Module 4: Advanced Browser Handling',
-      desc: 'Working with complex browser scenarios.',
+      title: 'Module 04: Page Object Model (POM) Architecture',
+      desc: 'Build maintainable, reusable & scalable test structure.',
       sections: [
         {
-          title: 'Dialogs & Frames',
+          title: 'POM Design',
           items: [
-            'Handling alerts, confirms, and prompts.',
-            'iFrame and frame interactions.',
+            'BasePage class — shared methods & constructor patterns.',
+            'Page-specific classes & locator strategy.',
+            'Lazy locator pattern & element encapsulation.',
+            'Avoiding anti-patterns — no logic in tests, no hardcoded selectors.',
           ],
         },
         {
-          title: 'Multi-Page Scenarios',
+          title: 'API Client Layer',
           items: [
-            'Tabs and child windows.',
-            'Managing multiple browser contexts.',
+            'Reusable API request builder class.',
+            'Response schema validation.',
+            'Auth token management & session handling.',
+            'Chaining API + UI in POM flows.',
+          ],
+        },
+        {
+          title: 'Clean Architecture',
+          items: [
+            'Enforcing folder structure across the team.',
+            'Dependency injection via Playwright fixtures.',
+            'Environment config management — .env + config files.',
+            'Code review checklist for test architecture.',
           ],
         },
       ],
     },
     {
-      title: 'Module 5: Framework Design & Test Architecture',
-      desc: 'Building scalable and maintainable automation frameworks.',
+      title: 'Module 05: AI-Powered Test Intelligence',
+      desc: 'Smart test data, self-healing locators & AI-driven defect insights.',
       sections: [
         {
-          title: 'Page Object Model (POM)',
+          title: 'Smart Test Data',
           items: [
-            'Designing scalable test frameworks.',
-            'Integrating POM with Playwright fixtures.',
+            'AI-generated test data using LLMs (GPT-4o, Claude, Gemini).',
+            'Dynamic edge case generation for boundary testing.',
+            'Seeding DB with AI-generated realistic datasets.',
           ],
         },
         {
-          title: 'Fixtures, Hooks & Organization',
+          title: 'Self-Healing Tests',
           items: [
-            'Custom fixtures for reusable setups.',
-            'beforeEach, afterEach, beforeAll, afterAll.',
-            'Test grouping with describe() and annotations.',
+            'Locator failure detection & LLM-powered auto-fix flow.',
+            'GitHub PR auto-creation for healed test files.',
+            'Live demo — real-world app flaky test fix.',
+          ],
+        },
+        {
+          title: 'Defect Insights',
+          items: [
+            'AI-powered failure log analysis & root cause summarisation.',
+            'Integrating AI analysis into CI pipeline output.',
+            'Auto-generate Gherkin scenarios from requirements doc.',
+            'Summarise test run results via LLM.',
           ],
         },
       ],
     },
     {
-      title: 'Module 6: Data-Driven Testing & Configuration',
-      desc: 'Managing test data and execution configuration effectively.',
+      title: 'Module 06: MCP Server + Playwright Agent',
+      desc: 'Connect AI to your tools, data & test actions — the future of automation.',
       sections: [
         {
-          title: 'Configuration Deep Dive',
+          title: 'MCP Fundamentals',
           items: [
-            'playwright.config.ts configuration.',
-            'Environment setup and test filtering.',
+            'What is MCP? Protocol & architecture explained.',
+            'How AI connects to external tools via MCP layer.',
+            'MCP vs traditional API integration — when to use what.',
           ],
         },
         {
-          title: 'Data-Driven Testing',
+          title: 'Playwright MCP Server',
           items: [
-            'Using JSON and CSV data sources.',
-            'Parameterized tests and data-driven fixtures.',
+            '@playwright/mcp — official Playwright MCP server setup.',
+            'Giving AI agents full browser control via Playwright.',
+            'Claude, GPT-4o, Gemini — any LLM using Playwright as a tool.',
+            'Natural language to browser action pipeline.',
+          ],
+        },
+        {
+          title: 'Building MCP Layers & Live Agent Demo',
+          items: [
+            'Connecting AI assistant to your Playwright test suite.',
+            'MCP + DB, Docs & API as intelligent data sources.',
+            'Prompt engineering for test execution actions.',
+            'End-to-end: User prompt → AI → MCP → Browser → Result.',
+            'AI agent generating & running tests automatically.',
+            'Analysing failures and self-correcting via MCP loop.',
           ],
         },
       ],
     },
     {
-      title: 'Module 7: Debugging & Developer Tools',
-      desc: 'Efficient debugging and AI-powered development tools.',
+      title: 'Module 07: CI/CD Pipeline Integration',
+      desc: 'Quality gates in every build — no broken code ships.',
       sections: [
         {
-          title: 'Debugging Tools',
+          title: 'Pipeline Concepts',
           items: [
-            'Playwright Inspector and Trace Viewer.',
-            'UI mode execution.',
-            'VS Code debugging with breakpoints.',
+            'CI/CD fundamentals for QA engineers.',
+            'Flow: Code Commit > Build > Run Tests > Report > Quality Gate.',
+            'Branching strategies & test trigger rules.',
           ],
         },
         {
-          title: 'Code Generation & AI Assistance',
+          title: 'Jenkins + GitHub Actions',
           items: [
-            'Codegen for recording tests.',
-            'Auto-locator features.',
-            'Using GitHub Copilot for AI-assisted test generation.',
+            'Jenkins setup & Playwright pipeline config.',
+            'GitHub Actions .yml workflows for Playwright + Cucumber.',
+            'Matrix testing — multi-browser in parallel.',
+            'PR quality gate — block merge on test failure.',
+          ],
+        },
+        {
+          title: 'Allure Reporting',
+          items: [
+            'Allure setup with Playwright + Cucumber output.',
+            'Rich HTML reports — trends, history & attachments.',
+            'Publishing Allure reports in Jenkins & GitHub Actions.',
+            'Scheduled nightly regression runs.',
           ],
         },
       ],
     },
     {
-      title: 'Module 8: API Testing with Playwright',
-      desc: 'Automating REST APIs using Playwright.',
+      title: 'Module 08: Capstone Project & Career Readiness',
+      desc: 'Bring it all together — build, present, and get hired.',
       sections: [
         {
-          title: 'API Fundamentals',
+          title: 'Capstone Project',
           items: [
-            'HTTP methods: GET, POST, PUT, PATCH, DELETE.',
-            'Request configuration and authentication.',
-            'Response validation and assertions.',
+            'End-to-end framework: Playwright + TypeScript + BDD + AI + CI/CD.',
+            'Live project with UI, API, database & cross-browser coverage.',
+            'Resume-ready GitHub portfolio with working automation framework.',
           ],
         },
         {
-          title: 'Advanced API Testing',
+          title: 'Interview Preparation',
           items: [
-            'BaseURL and headers management.',
-            'Token-based authentication.',
-            'Building reusable API test utilities.',
-          ],
-        },
-      ],
-    },
-    {
-      title: 'Module 9: Reporting & Test Execution',
-      desc: 'Test reporting, artifacts, and optimized execution.',
-      sections: [
-        {
-          title: 'Built-in Reporting',
-          items: [
-            'HTML, JSON, JUnit, list, dot reporters.',
-            'Screenshots, videos, and trace attachments.',
-          ],
-        },
-        {
-          title: 'Advanced Reporting',
-          items: [
-            'Allure reporting integration.',
-            'Authentication state reuse to skip login.',
-          ],
-        },
-      ],
-    },
-    {
-      title: 'Module 10: DevOps & CI/CD Integration',
-      desc: 'Integrating Playwright automation into CI/CD pipelines.',
-      sections: [
-        {
-          title: 'Version Control & Collaboration',
-          items: [
-            'Git basics: push, clone, pull requests.',
-            'GitHub repository management.',
-          ],
-        },
-        {
-          title: 'CI/CD Pipelines',
-          items: [
-            'GitHub Actions CI setup.',
-            'Jenkins integration.',
-            'Cross-browser execution in CI environments.',
-          ],
-        },
-      ],
-    },
-    {
-      title: 'Module 11: AI-Powered Testing with Playwright',
-      desc: 'Leveraging AI tools to enhance automation productivity.',
-      sections: [
-        {
-          title: 'AI Concepts in Automation',
-          items: [
-            'Understanding AI assistants in testing.',
-            'MCP servers and AI automation workflows.',
-          ],
-        },
-        {
-          title: 'Copilot + Playwright',
-          items: [
-            'Setting up GitHub Copilot.',
-            'Generating test cases using AI.',
-            'Best practices for AI-assisted automation.',
-          ],
-        },
-        {
-          title: 'Agentic Testing Workflows',
-          items: [
-            'Using agents independently, sequentially, or as chained calls in the agentic loop.',
-            'Sequential agent runs to produce full test coverage for your product.',
-            'Planner agent: explores the app and produces a Markdown test plan.',
-            'Generator agent: transforms the Markdown plan into Playwright Test files.',
-            'Healer agent: executes the test suite and automatically repairs failing tests.',
+            'Mock technical interviews — coding challenges & framework walkthroughs.',
+            'Common SDET interview questions & best practices.',
+            'Resume & LinkedIn profile guidance for automation roles.',
           ],
         },
       ],
@@ -303,23 +315,24 @@ const CourseDetailPageAI = () => {
       <section className="ai-hero-section">
         <div className="ai-container">
           <div className="ai-hero-content">
-            <span className="ai-badge">Mostly Popular</span>
-            <h1 className="ai-hero-title">Playwright with TypeScript</h1>
+            <span className="ai-badge">New Batch</span>
+            <h1 className="ai-hero-title">Playwright with AI</h1>
             <p className="ai-hero-subtitle">
-              Master Playwright with TypeScript, build scalable automation
-              frameworks, and integrate API, CI/CD, and AI-powered testing.
+              Build a modern, scalable & intelligent automation ecosystem with
+              Playwright, TypeScript, BDD, AI-powered self-healing tests, and
+              MCP agent integration.
             </p>
 
             <div className="ai-stats-row">
               <div className="ai-stat-item">
                 <FaCalendarAlt className="ai-stat-icon" />
-                <span className="ai-stat-value">2.5</span>
+                <span className="ai-stat-value">3</span>
                 <span className="ai-stat-label">Months</span>
               </div>
 
               <div className="ai-stat-item">
                 <FaVideo className="ai-stat-icon" />
-                <span className="ai-stat-value">32</span>
+                <span className="ai-stat-value">36+</span>
                 <span className="ai-stat-label">Lectures</span>
               </div>
 
@@ -331,14 +344,14 @@ const CourseDetailPageAI = () => {
 
               <div className="ai-stat-item">
                 <FaProjectDiagram className="ai-stat-icon" />
-                <span className="ai-stat-value">12+</span>
+                <span className="ai-stat-value">8</span>
                 <span className="ai-stat-label">Modules</span>
               </div>
 
               <div className="ai-stat-item">
                 <FaRocket className="ai-stat-icon" />
-                <span className="ai-stat-value">AI</span>
-                <span className="ai-stat-label">Powered Testing</span>
+                <span className="ai-stat-value">AI+MCP</span>
+                <span className="ai-stat-label">Powered</span>
               </div>
             </div>
 

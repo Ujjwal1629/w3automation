@@ -138,7 +138,7 @@ const NewHomePage = () => {
                 <BsClock className="info-icon" />
                 <div className="info-text">
                   <span className="info-label">
-                    Playwright with TypeScript Demo Session
+                    Playwright with AI Demo Session
                   </span>
                   <span className="info-value">
                     Thursday 8:00 PM – 9:00 PM IST | Friday 5:30 AM – 6:30 AM IST
@@ -706,16 +706,16 @@ const courses = [
     link: '/courseSDET',
   },
   {
-    title: 'Playwright with Typescript',
+    title: 'Playwright with AI',
     rating: 4.3,
     reviews: 95,
     students: '186',
-    lessons: 22,
-    price: '$59.00',
+    lessons: 36,
+    price: '$120.00',
     image: courseImagePlayTs,
     category: 'Playwright',
     description:
-      'Master end-to-end web automation using Playwright with TypeScript. Build fast, reliable tests with real-world projects.',
+      'Build a modern, intelligent automation ecosystem with Playwright, TypeScript, BDD, AI-powered self-healing tests, and MCP agent integration.',
     link: '/courseDetailJS',
   },
   {
