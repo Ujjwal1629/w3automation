@@ -16,7 +16,7 @@ import {
   FaArrowRight,
 } from 'react-icons/fa';
 import './CourseDetailPageAI.css';
-import certImage from '../../assets/certificate.png';
+import certImage from '../../assets/ChatGPT Image May 3, 2026, 12_46_33 PM.png';
 import previewImage from '../../assets/sdet2.jpg';
 
 const CourseDetailPageAI = () => {
