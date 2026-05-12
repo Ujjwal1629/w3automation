@@ -208,6 +208,9 @@ const GetCertificate = () => {
               <option value="PLAYWRIGHT WITH TYPESCRIPT">
                 Playwright with Typescript
               </option>
+              <option value="AI AND ML TESTING MASTERY">
+                AI and ML Testing Mastery
+              </option>
             </select>
           </div>
 
