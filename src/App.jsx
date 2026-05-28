@@ -50,6 +50,7 @@ import Leaderboard from './Pages/Leaderboard';
 import HomePageNew from './Components/NewHomePage';
 import CourseDetailPageJS from './Pages/CourseDetail/CourseDetailPageJS.jsx';
 import CourseDetailPageAIPowered from './Pages/CourseDetail/CourseDetailPageAIPowered.jsx';
+import CourseDetailPageAIML from './Pages/CourseDetail/CourseDetailPageAIML.jsx';
 import AdminDashboard from './Pages/Admin/AdminDashboard.jsx';
 import PlaywrightDemoRegister from './Pages/PlaywrightDemoRegister.jsx';
 
@@ -359,6 +360,7 @@ function App() {
         />
         <Route path="/courseAIMLTesting" element={<CourseDetailPageAI />} />
         <Route path="/courseAIPowered" element={<CourseDetailPageAIPowered />} />
+        <Route path="/courseAIMLTesting-phase1" element={<CourseDetailPageAIML />} />
         <Route path="/courseAI" element={<CourseDetailPageAI />} />
         <Route path="/practice/*" element={<Practice />} />
         <Route path="/getCertificate" element={<GetCertificate />} />

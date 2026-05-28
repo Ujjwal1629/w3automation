@@ -8,6 +8,7 @@ import courseImagePlayTs from '../assets/playTs.jpeg';
 import courseImageDevOps from '../assets/devOps.webp';
 import courseImageAI from '../assets/AiTest.webp';
 import courseImageAIPowered from '../assets/ai_test_automation_cover.png';
+import courseImageAIML from '../assets/AiTest.webp';
 import logoImage from '../assets/logo-edit.png';
 import profileImage from '../assets/profilePic.jpg';
 import noPic from '../assets/no-img.webp';
@@ -760,6 +761,19 @@ const courses = [
     description:
       'Master AI-powered test automation tools and techniques to accelerate your testing process.',
     link: '/courseAIPowered',
+  },
+  {
+    title: 'AI & ML Testing Professional Course',
+    rating: 4.9,
+    reviews: 20,
+    students: '0',
+    lessons: 25,
+    price: 'Contact Us',
+    image: courseImageAIML,
+    category: 'AI Testing',
+    description:
+      'Phase 1 — Foundations. Master LLM evaluation, red teaming, observability, and AI test pipelines using PromptFoo, DeepEval, Giskard, LangSmith & more.',
+    link: '/courseAIMLTesting-phase1',
   },
 ];
 
