@@ -19,7 +19,9 @@ import previewImage from '../../assets/AiTest.webp';
 const CourseDetailPageAIML = () => {
   const [expandedChapters, setExpandedChapters] = useState([
     0, 1, 2, 3, 4, 5, 6, 7,
+    'p2-0', 'p2-1', 'p2-2', 'p2-3', 'p2-4', 'p2-5', 'p2-6', 'p2-7', 'p2-8',
   ]);
+  const [activePhase, setActivePhase] = useState(1);
 
   const toggleChapter = (index) => {
     setExpandedChapters((prev) =>
@@ -158,11 +160,20 @@ const CourseDetailPageAIML = () => {
       ],
     },
     {
-      title: 'Module 4: LLM API & Automation Testing',
-      desc: 'Week 5 · 2 Sessions',
+      title: 'Module 4: RAG Basics, API & Automation Testing',
+      desc: 'Week 5 · 3 Sessions',
       sections: [
         {
-          title: 'Session 12: LLM API Testing — OpenAI, Anthropic, Gemini Endpoints',
+          title: 'Session 12: RAG Testing Fundamentals',
+          items: [
+            'Understand Retrieval-Augmented Generation (RAG) architecture: retriever, context, generator.',
+            'Test retrieval quality — precision, recall, and relevance of retrieved chunks.',
+            'Test end-to-end RAG pipelines: does the answer match the retrieved context?',
+            'Common RAG failure modes: hallucination, context mismatch, retrieval gaps.',
+          ],
+        },
+        {
+          title: 'Session 13: LLM API Testing — OpenAI, Anthropic, Gemini Endpoints',
           items: [
             'Test LLM APIs using Postman and Python requests: send prompts, validate responses.',
             'Test error handling, rate limits, timeout behavior.',
@@ -171,7 +182,7 @@ const CourseDetailPageAIML = () => {
           ],
         },
         {
-          title: 'Session 13: Chatbot UI Testing with Playwright',
+          title: 'Session 14: Chatbot UI Testing with Playwright',
           items: [
             'Build end-to-end tests for a chatbot interface using Playwright.',
             'Test: message sending, response rendering, streaming output, conversation history.',
@@ -186,7 +197,7 @@ const CourseDetailPageAIML = () => {
       desc: 'Week 6 · 2 Sessions',
       sections: [
         {
-          title: 'Session 14: LangChain Fundamentals & Testing Chains',
+          title: 'Session 15: LangChain Fundamentals & Testing Chains',
           items: [
             'Build a simple LangChain app (prompt → LLM → output parser).',
             'Test each component independently. Test the chain end-to-end.',
@@ -194,7 +205,7 @@ const CourseDetailPageAIML = () => {
           ],
         },
         {
-          title: 'Session 15: LangGraph Agent Testing & Tracing',
+          title: 'Session 16: LangGraph Agent Testing & Tracing',
           items: [
             'Build a multi-step LangGraph agent (tool-using agent that searches web + does calculations).',
             'Test agent decisions at each node. Use LangFuse for tracing.',
@@ -208,7 +219,7 @@ const CourseDetailPageAIML = () => {
       desc: 'Week 7 · 3 Sessions',
       sections: [
         {
-          title: 'Session 16: OWASP Top 10 for LLMs — Understanding AI Vulnerabilities',
+          title: 'Session 17: OWASP Top 10 for LLMs — Understanding AI Vulnerabilities',
           items: [
             'Walk through all 10 OWASP LLM risks with real-world examples.',
             'For each risk, identify: what it looks like, who\'s affected, and how to test for it.',
@@ -216,7 +227,7 @@ const CourseDetailPageAIML = () => {
           ],
         },
         {
-          title: 'Session 17: Red Teaming with PromptFoo & Giskard',
+          title: 'Session 18: Red Teaming with PromptFoo & Giskard',
           items: [
             'Run PromptFoo red teaming (npx promptfoo redteam run) on a chatbot.',
             'Run Giskard\'s 40+ automated attack probes. Compare results.',
@@ -224,7 +235,7 @@ const CourseDetailPageAIML = () => {
           ],
         },
         {
-          title: 'Session 18: Guardrails, Output Validation & Bias Testing',
+          title: 'Session 19: Guardrails, Output Validation & Bias Testing',
           items: [
             'Implement Guardrails AI for output validation. Test NeMo Guardrails for safety filtering.',
             'Run bias and toxicity tests using DeepEval metrics.',
@@ -238,7 +249,7 @@ const CourseDetailPageAIML = () => {
       desc: 'Week 8 · 3 Sessions',
       sections: [
         {
-          title: 'Session 19: AI Test Strategy & Planning',
+          title: 'Session 20: AI Test Strategy & Planning',
           items: [
             'Create a complete AI test plan for a real-world scenario (AI-powered customer support).',
             'Define: test scope, test types, tools, metrics, and risk assessment.',
@@ -246,7 +257,7 @@ const CourseDetailPageAIML = () => {
           ],
         },
         {
-          title: 'Session 20: AI Quality Metrics & Reporting',
+          title: 'Session 21: AI Quality Metrics & Reporting',
           items: [
             'Build a quality dashboard: hallucination rate, faithfulness score, latency P95, cost per session.',
             'Create executive-level reports from eval results.',
@@ -254,7 +265,7 @@ const CourseDetailPageAIML = () => {
           ],
         },
         {
-          title: 'Session 21: AI Observability & Production Monitoring',
+          title: 'Session 22: AI Observability & Production Monitoring',
           items: [
             'Set up Arize Phoenix for production monitoring.',
             'Build alerts for: hallucination spikes, cost anomalies, latency degradation, model drift.',
@@ -268,7 +279,7 @@ const CourseDetailPageAIML = () => {
       desc: 'Weeks 9–10 · 4 Sessions',
       sections: [
         {
-          title: 'Session 22: Project Setup — Build the AI App to Test',
+          title: 'Session 23: Project Setup — Build the AI App to Test',
           items: [
             'Build a customer support RAG chatbot using LangChain + ChromaDB.',
             'Load company FAQ documents. Deploy as an API.',
@@ -276,7 +287,7 @@ const CourseDetailPageAIML = () => {
           ],
         },
         {
-          title: 'Session 23: Project Execution — Full Test Pipeline',
+          title: 'Session 24: Project Execution — Full Test Pipeline',
           items: [
             'Write complete test suite: PromptFoo eval (20 test cases) + DeepEval hallucination tests.',
             'PromptFoo red teaming + Giskard vulnerability scan + Playwright UI tests.',
@@ -284,7 +295,7 @@ const CourseDetailPageAIML = () => {
           ],
         },
         {
-          title: 'Session 24: CI/CD Integration & Project Presentation',
+          title: 'Session 25: CI/CD Integration & Project Presentation',
           items: [
             'Integrate eval suite into GitHub Actions (run on every PR).',
             'Build a quality dashboard. Present your project: test results, vulnerabilities found, quality metrics.',
@@ -292,7 +303,7 @@ const CourseDetailPageAIML = () => {
           ],
         },
         {
-          title: 'Session 25: AI Testing Career Kit — Resume, Portfolio & Interviews',
+          title: 'Session 26: AI Testing Career Kit — Resume, Portfolio & Interviews',
           items: [
             'Build your AI testing resume: highlight capstone project, tools mastery, and metrics.',
             'Optimize LinkedIn profile for AI testing roles.',
@@ -312,43 +323,294 @@ const CourseDetailPageAIML = () => {
     'Red Team Analyst — AI Security',
   ];
 
+  const phase2ToolsData = [
+    { category: 'Advanced RAG Evaluation', tools: 'Ragas (advanced), DeepEval RAG metrics, Giskard RAGET', action: 'Advanced retrieval testing, chunking analysis, multi-doc reasoning' },
+    { category: 'Vector Databases', tools: 'ChromaDB, Qdrant, Pinecone', action: 'Store embeddings, test retrieval quality, benchmark search' },
+    { category: 'Synthetic Data', tools: 'DSPy, Giskard RAGET', action: 'Auto-generate test datasets from knowledge bases' },
+    { category: 'Multi-Modal', tools: 'GPT-4V, Claude Vision, Gemini Vision', action: 'Test image understanding, document parsing, OCR accuracy' },
+    { category: 'Agent Frameworks', tools: 'LangGraph, CrewAI, AutoGen', action: 'Test multi-agent systems, tool-calling agents' },
+    { category: 'Observability', tools: 'Arize Phoenix, LangFuse, Weights & Biases Weave', action: 'Production monitoring, drift detection, A/B testing' },
+    { category: 'Performance', tools: 'Locust, custom benchmarks', action: 'Load testing LLM endpoints, throughput analysis' },
+    { category: 'CI/CD', tools: 'GitHub Actions, GitLab CI, PromptFoo CI', action: 'Automated eval gates, quality thresholds, deployment checks' },
+  ];
+
+  const phase2Content = [
+    {
+      title: 'Module 1: Advanced RAG System Testing',
+      desc: 'Weeks 1–2 · 3 Sessions',
+      sections: [
+        {
+          title: 'Session 1: Advanced RAG Failure Modes — Breaking RAG Systems Systematically',
+          items: [
+            'Test advanced failure scenarios: contradictory documents in the knowledge base, near-duplicate docs confusing retrieval.',
+            'Multi-hop questions requiring info from 3+ documents, time-sensitive queries with outdated docs, cross-language retrieval.',
+            'Build targeted test cases for each failure mode.',
+            'Key concepts: contradictions, duplicates, multi-hop reasoning, staleness.',
+          ],
+        },
+        {
+          title: 'Session 2: Chunking & Embedding Strategy Testing',
+          items: [
+            'Test how chunking strategy affects quality: small chunks (100 tokens) vs large (500 tokens) vs overlap strategies.',
+            'Compare embedding models (OpenAI, Cohere, open-source). Measure which combination gives best retrieval precision.',
+            'Build a benchmark framework for systematic comparison.',
+            'Key concepts: cross-encoder re-ranking, embedding model benchmarking.',
+          ],
+        },
+        {
+          title: 'Session 3: RAG Test Automation at Scale — Synthetic Data & Regression',
+          items: [
+            'Use Giskard RAGET to auto-generate 200+ test questions from knowledge base with difficulty categories.',
+            'Build regression suite that runs on every knowledge base update.',
+            'Set up alerting: if faithfulness drops below threshold after a doc update, block the deployment.',
+            'Key concepts: synthetic test generation at scale, regression testing for knowledge base updates.',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Module 2: Vector Database Testing',
+      desc: 'Week 3 · 2 Sessions',
+      sections: [
+        {
+          title: 'Session 4: Vector DB Fundamentals — ChromaDB & Qdrant',
+          items: [
+            'Set up ChromaDB locally. Ingest 500+ documents. Query with different similarity metrics (cosine, euclidean, dot product).',
+            'Compare retrieval quality across metrics. Set up Qdrant and compare with ChromaDB.',
+            'Key concepts: embeddings, similarity metrics — cosine similarity, euclidean distance, dot product.',
+          ],
+        },
+        {
+          title: 'Session 5: Vector DB Testing — Quality, Performance & Edge Cases',
+          items: [
+            'Test retrieval accuracy at scale: near-duplicate documents, contradictory documents, multi-language documents, empty collections.',
+            'Load test: how many queries/second before quality degrades. Test index rebuild impact.',
+            'Key concepts: precision@k, recall@k, NDCG, MRR, data drift detection.',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Module 3: Chatbot & Virtual Assistant Testing',
+      desc: 'Week 4 · 2 Sessions',
+      sections: [
+        {
+          title: 'Session 6: Multi-Turn Conversation Testing',
+          items: [
+            'Build a customer support chatbot with conversation memory. Test: context retention across 10+ turns, topic switching, contradiction handling, conversation reset.',
+            'Use DeepEval ConversationCompletenessMetric and ConversationRelevancyMetric.',
+            'Key concepts: multi-turn conversation testing, context retention, memory management.',
+          ],
+        },
+        {
+          title: 'Session 7: Virtual Assistant Testing — Intent, Fallback & Handoff',
+          items: [
+            'Test intent classification accuracy: does the chatbot understand what the user wants?',
+            'Test fallback behavior: what happens when the chatbot doesn\'t understand? Test handoff to human agent.',
+            'Test multi-modal input (text + image). Key concepts: graceful degradation, conversation completeness, emotional intelligence testing.',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Module 4: AI Agent Testing',
+      desc: 'Week 5 · 3 Sessions',
+      sections: [
+        {
+          title: 'Session 8: Agent Architecture — Understanding What You\'re Testing',
+          items: [
+            'Build a LangGraph agent that can: search the web, query a database, perform calculations, and send emails.',
+            'Map the decision tree. Identify test points: tool selection, parameter passing, output handling, error recovery.',
+            'Key concepts: agent vs chatbot — fundamental testing differences.',
+          ],
+        },
+        {
+          title: 'Session 9: Agent Decision Testing — Did It Choose the Right Action?',
+          items: [
+            'Test agent tool selection: given 5 available tools, does the agent pick the right one for each query?',
+            'Test parameter accuracy, loop detection (does the agent get stuck?), and error recovery when a tool fails.',
+            'Key concepts: parameter extraction testing, multi-step workflow testing, loop detection, excessive agency.',
+          ],
+        },
+        {
+          title: 'Session 10: Multi-Agent Systems & End-to-End Agent Testing',
+          items: [
+            'Build a multi-agent system using CrewAI (researcher + writer + reviewer). Test agent collaboration.',
+            'Test end-to-end: does the final output meet quality standards? Test failure cascading.',
+            'Key concepts: multi-agent collaboration testing, communication, handoff, conflict resolution, cost and latency management.',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Module 5: Multi-Modal & Fine-Tuned Model Testing',
+      desc: 'Week 6 · 2 Sessions',
+      sections: [
+        {
+          title: 'Session 11: Multi-Modal Testing — Vision, Document & Image AI',
+          items: [
+            'Test GPT-4V and Claude Vision on: image understanding accuracy, OCR quality, chart reading, document parsing, handwriting recognition.',
+            'Build eval suite for a document processing pipeline. Test field extraction from invoices and medical reports.',
+            'Key concepts: vision model testing, document AI testing, OCR quality metrics, multi-modal hallucination.',
+          ],
+        },
+        {
+          title: 'Session 12: Fine-Tuned Model Testing — Validation & Regression',
+          items: [
+            'Take a fine-tuned model and test: did fine-tuning improve performance on the target task?',
+            'Test for catastrophic forgetting — did it lose general capabilities? Build a validation suite: target domain tests + general capability tests.',
+            'Key concepts: fine-tuning validation, catastrophic forgetting, comparing fine-tuned vs base model.',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Module 6: DSPy & Synthetic Data Generation',
+      desc: 'Week 6 (continued) · 1 Session',
+      sections: [
+        {
+          title: 'Session 13: Synthetic Test Data Generation — DSPy & Giskard RAGET',
+          items: [
+            'Use DSPy to programmatically optimize prompts and generate synthetic Q&A pairs from documents.',
+            'Use Giskard RAGET to auto-generate test questions from knowledge bases.',
+            'Build a pipeline: source documents → synthetic questions → verified answers → golden dataset. Quality-check generated data.',
+            'Key concepts: DSPy, synthetic data generation, golden dataset management, test data diversity.',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Module 7: Advanced Observability & Monitoring',
+      desc: 'Week 7 · 2 Sessions',
+      sections: [
+        {
+          title: 'Session 14: Production Observability — Arize Phoenix & LangFuse Deep Dive',
+          items: [
+            'Set up full production monitoring: instrument a RAG app with LangFuse traces. Set up Arize Phoenix for eval-in-production.',
+            'Build alerts for: hallucination rate spike, faithfulness drop below threshold, cost anomaly, latency P95 exceeding SLA.',
+            'Create executive dashboard. Key concepts: model drift detection, silent model updates detection.',
+          ],
+        },
+        {
+          title: 'Session 15: Model Drift, A/B Testing & Continuous Evaluation',
+          items: [
+            'Simulate model drift: gradually degrade model quality, see if monitoring catches it.',
+            'Set up A/B testing: route 50% traffic to GPT-4o and 50% to GPT-4o-mini, compare quality metrics.',
+            'Build continuous eval: sample 5% of production traffic, run eval metrics automatically. Key concepts: statistical significance, rollback triggers.',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Module 8: Benchmarking, Performance & CI/CD',
+      desc: 'Week 7 (continued) · 2 Sessions',
+      sections: [
+        {
+          title: 'Session 16: Performance & Load Testing for AI Systems',
+          items: [
+            'Load test an LLM endpoint using Locust: measure throughput, latency under load, error rates at scale.',
+            'Test rate limit handling. Benchmark: max QPS before quality degrades. Test concurrent users on a chatbot.',
+            'Key concepts: TTFT (time to first token), TPS (tokens per second), load testing AI endpoints, rate limit testing.',
+          ],
+        },
+        {
+          title: 'Session 17: CI/CD Eval Pipelines — Quality Gates for AI',
+          items: [
+            'Set up GitHub Actions pipeline: on every PR, automatically run PromptFoo eval suite, DeepEval hallucination checks, and cost threshold validation.',
+            'If hallucination rate > 5%, block the merge. Build quality gates: minimum faithfulness score, maximum cost per query, maximum latency.',
+            'Key concepts: eval-on-PR, PromptFoo CI integration, canary releases, blue-green for AI models.',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Module 9: Advanced End-to-End Capstone Project',
+      desc: 'Week 8 · 4 Sessions',
+      sections: [
+        {
+          title: 'Session 18: Project Setup — Build a Production RAG Application',
+          items: [
+            'Build a multi-source RAG application: company knowledge base + product documentation + FAQ database.',
+            'Add an AI agent layer: the chatbot can search docs, check order status (mock API), and escalate to human.',
+            'Deploy as a web app with conversation history.',
+          ],
+        },
+        {
+          title: 'Session 19: Project Phase 1 — Comprehensive Test Suite',
+          items: [
+            'Build complete test infrastructure: RAG eval suite with Ragas (50+ test cases covering all 4 metrics).',
+            'Agent decision testing (tool selection accuracy), multi-turn conversation tests.',
+            'Synthetic test data generation with DSPy, red teaming with Giskard (40+ attack probes).',
+          ],
+        },
+        {
+          title: 'Session 20: Project Phase 2 — Production Pipeline & Monitoring',
+          items: [
+            'Set up CI/CD pipeline: PromptFoo eval runs on every PR with quality gates.',
+            'Deploy LangFuse for production tracing. Set up Arize Phoenix for continuous evaluation.',
+            'Build cost monitoring. Create A/B test framework. Build executive quality dashboard.',
+          ],
+        },
+        {
+          title: 'Session 21: Project Presentation — Demo Day',
+          items: [
+            'Present your complete project to the cohort and guest reviewers.',
+            'Cover: system architecture, test strategy, test results, vulnerabilities found, quality metrics, CI/CD pipeline demo, monitoring dashboard.',
+            'Peer review and feedback session.',
+          ],
+        },
+      ],
+    },
+  ];
+
+  const phase2CareerOutcomes = [
+    'Senior AI Test Engineer',
+    'AI Quality Architect',
+    'LLM Evaluation Lead',
+    'AI Testing & Red Teaming Consultant',
+    'Principal SDET — AI/ML Products',
+    'Head of AI Quality Engineering',
+    'MLOps / AI DevOps Engineer (testing-focused)',
+  ];
+
   return (
     <div className="ai-course-page">
       {/* Hero Section */}
       <section className="ai-hero-section">
         <div className="ai-container">
           <div className="ai-hero-content">
-            <span className="ai-badge">Phase 1 — Foundations</span>
+            <span className="ai-badge">{activePhase === 1 ? 'Phase 1 — Foundations' : 'Phase 2 — Mastery'}</span>
             <h1 className="ai-hero-title">AI & ML Testing Professional Course</h1>
             <p className="ai-hero-subtitle">
-              Built specifically for QA Engineers, SDETs & Test Leads. No Machine Learning background required.
-              Master 10+ industry tools and build a portfolio of 6 AI testing projects you can show in interviews.
+              {activePhase === 1
+                ? 'Built specifically for QA Engineers, SDETs & Test Leads. No Machine Learning background required. Master 10+ industry tools and build a portfolio of 6 AI testing projects you can show in interviews.'
+                : 'Advanced AI testing for production systems. Master RAG testing, agent testing, multi-modal AI, production observability, and CI/CD eval pipelines. Prerequisite: Phase 1 completion.'}
             </p>
 
             <div className="ai-stats-row">
               <div className="ai-stat-item">
                 <FaCalendarAlt className="ai-stat-icon" />
-                <span className="ai-stat-value">10</span>
+                <span className="ai-stat-value">{activePhase === 1 ? '10' : '8'}</span>
                 <span className="ai-stat-label">Weeks</span>
               </div>
               <div className="ai-stat-item">
                 <FaVideo className="ai-stat-icon" />
-                <span className="ai-stat-value">25</span>
+                <span className="ai-stat-value">{activePhase === 1 ? '26' : '21'}</span>
                 <span className="ai-stat-label">Sessions</span>
               </div>
               <div className="ai-stat-item">
                 <FaProjectDiagram className="ai-stat-icon" />
-                <span className="ai-stat-value">6</span>
+                <span className="ai-stat-value">{activePhase === 1 ? '6' : '12'}</span>
                 <span className="ai-stat-label">Projects</span>
               </div>
               <div className="ai-stat-item">
                 <FaLaptopCode className="ai-stat-icon" />
-                <span className="ai-stat-value">8</span>
+                <span className="ai-stat-value">{activePhase === 1 ? '8' : '9'}</span>
                 <span className="ai-stat-label">Modules</span>
               </div>
               <div className="ai-stat-item">
                 <FaTools className="ai-stat-icon" />
-                <span className="ai-stat-value">10+</span>
+                <span className="ai-stat-value">{activePhase === 1 ? '10+' : '15+'}</span>
                 <span className="ai-stat-label">Tools</span>
               </div>
             </div>
@@ -381,21 +643,23 @@ const CourseDetailPageAIML = () => {
       </section>
 
       {/* What You'll Learn */}
-      <section className="ai-section">
-        <div className="ai-container">
-          <h2 className="ai-section-title">What you'll learn</h2>
-          <div className="ai-learn-grid">
-            {whatYouWillLearn.map((item, index) => (
-              <div className="ai-learn-item" key={index}>
-                <div className="ai-check-icon">
-                  <FaCheck />
+      {activePhase === 1 && (
+        <section className="ai-section">
+          <div className="ai-container">
+            <h2 className="ai-section-title">What you'll learn</h2>
+            <div className="ai-learn-grid">
+              {whatYouWillLearn.map((item, index) => (
+                <div className="ai-learn-item" key={index}>
+                  <div className="ai-check-icon">
+                    <FaCheck />
+                  </div>
+                  <p className="ai-learn-text">{item}</p>
                 </div>
-                <p className="ai-learn-text">{item}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Tools Section */}
       <section className="ai-section" style={{ background: '#0f172a' }}>
@@ -411,7 +675,7 @@ const CourseDetailPageAIML = () => {
                 </tr>
               </thead>
               <tbody>
-                {toolsData.map((row, idx) => (
+                {(activePhase === 1 ? toolsData : phase2ToolsData).map((row, idx) => (
                   <tr key={idx} style={{ background: idx % 2 === 0 ? '#111827' : '#0f172a' }}>
                     <td style={{ padding: '0.85rem 1rem', color: '#60a5fa', fontWeight: 600, border: '1px solid #1e293b', fontSize: '0.9rem' }}>{row.category}</td>
                     <td style={{ padding: '0.85rem 1rem', color: '#e2e8f0', border: '1px solid #1e293b', fontSize: '0.9rem' }}>{row.tools}</td>
@@ -428,54 +692,91 @@ const CourseDetailPageAIML = () => {
       <section className="ai-content-section">
         <div className="ai-container">
           <h2 className="ai-section-title">Course Content</h2>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+            <button
+              onClick={() => setActivePhase(1)}
+              style={{
+                padding: '0.55rem 1.6rem',
+                borderRadius: '2rem',
+                border: activePhase === 1 ? 'none' : '1px solid #334155',
+                background: activePhase === 1 ? 'linear-gradient(135deg, #3b82f6, #1d4ed8)' : 'transparent',
+                color: activePhase === 1 ? '#fff' : '#94a3b8',
+                fontWeight: 700,
+                fontSize: '0.9rem',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+              }}
+            >
+              Phase 1 — Foundations
+            </button>
+            <button
+              onClick={() => setActivePhase(2)}
+              style={{
+                padding: '0.55rem 1.6rem',
+                borderRadius: '2rem',
+                border: activePhase === 2 ? 'none' : '1px solid #334155',
+                background: activePhase === 2 ? 'linear-gradient(135deg, #3b82f6, #1d4ed8)' : 'transparent',
+                color: activePhase === 2 ? '#fff' : '#94a3b8',
+                fontWeight: 700,
+                fontSize: '0.9rem',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+              }}
+            >
+              Phase 2 — Mastery
+            </button>
+          </div>
           <div className="ai-accordion">
-            {courseContent.map((module, index) => (
-              <div className="ai-accordion-item" key={index}>
-                <div
-                  className="ai-accordion-header"
-                  onClick={() => toggleChapter(index)}
-                >
-                  <span className="ai-chapter-num">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <div className="ai-chapter-info">
-                    <h3 className="ai-chapter-title">{module.title}</h3>
-                    <p className="ai-chapter-desc">{module.desc}</p>
+            {(activePhase === 1 ? courseContent : phase2Content).map((module, index) => {
+              const key = activePhase === 1 ? index : `p2-${index}`;
+              return (
+                <div className="ai-accordion-item" key={key}>
+                  <div
+                    className="ai-accordion-header"
+                    onClick={() => toggleChapter(key)}
+                  >
+                    <span className="ai-chapter-num">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <div className="ai-chapter-info">
+                      <h3 className="ai-chapter-title">{module.title}</h3>
+                      <p className="ai-chapter-desc">{module.desc}</p>
+                    </div>
+                    <div className="ai-chapter-meta">
+                      {expandedChapters.includes(key) ? (
+                        <FaChevronUp style={{ marginLeft: '1rem', color: '#94a3b8' }} />
+                      ) : (
+                        <FaChevronDown style={{ marginLeft: '1rem', color: '#94a3b8' }} />
+                      )}
+                    </div>
                   </div>
-                  <div className="ai-chapter-meta">
-                    {expandedChapters.includes(index) ? (
-                      <FaChevronUp style={{ marginLeft: '1rem', color: '#94a3b8' }} />
-                    ) : (
-                      <FaChevronDown style={{ marginLeft: '1rem', color: '#94a3b8' }} />
-                    )}
-                  </div>
-                </div>
 
-                {expandedChapters.includes(index) && (
-                  <div className="ai-lesson-list">
-                    {module.sections.map((section, sIdx) => (
-                      <div key={sIdx} className="ai-syllabus-section">
-                        <h4>{section.title}</h4>
-                        <ul>
-                          {section.items.map((item, iIdx) => (
-                            <li key={iIdx}>
-                              {item.includes(':') ? (
-                                <span>
-                                  <strong>{item.split(':')[0]}:</strong>
-                                  {item.substring(item.indexOf(':') + 1)}
-                                </span>
-                              ) : (
-                                item
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+                  {expandedChapters.includes(key) && (
+                    <div className="ai-lesson-list">
+                      {module.sections.map((section, sIdx) => (
+                        <div key={sIdx} className="ai-syllabus-section">
+                          <h4>{section.title}</h4>
+                          <ul>
+                            {section.items.map((item, iIdx) => (
+                              <li key={iIdx}>
+                                {item.includes(':') ? (
+                                  <span>
+                                    <strong>{item.split(':')[0]}:</strong>
+                                    {item.substring(item.indexOf(':') + 1)}
+                                  </span>
+                                ) : (
+                                  item
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -484,25 +785,39 @@ const CourseDetailPageAIML = () => {
       <section className="ai-section" style={{ background: '#0f172a' }}>
         <div className="ai-container">
           <h2 className="ai-section-title">Career Outcomes</h2>
-          <p style={{ color: '#94a3b8', marginBottom: '2rem', textAlign: 'center' }}>
-            After completing Phase 1, you'll be qualified for these roles:
-          </p>
-          <div className="ai-learn-grid">
-            {careerOutcomes.map((role, index) => (
-              <div className="ai-learn-item" key={index}>
-                <div className="ai-check-icon">
-                  <FaRocket />
-                </div>
-                <p className="ai-learn-text">{role}</p>
+          {activePhase === 1 ? (
+            <>
+              <p style={{ color: '#94a3b8', marginBottom: '2rem', textAlign: 'center' }}>
+                After completing Phase 1, you'll be qualified for these roles:
+              </p>
+              <div className="ai-learn-grid">
+                {careerOutcomes.map((role, index) => (
+                  <div className="ai-learn-item" key={index}>
+                    <div className="ai-check-icon">
+                      <FaRocket />
+                    </div>
+                    <p className="ai-learn-text">{role}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <div style={{ marginTop: '2rem', padding: '1.25rem 1.5rem', background: '#1e293b', borderRadius: '0.75rem', border: '1px solid #334155' }}>
-            <p style={{ color: '#60a5fa', fontWeight: 600, marginBottom: '0.5rem' }}>Phase 2 — Mastery (coming soon)</p>
-            <p style={{ color: '#94a3b8', fontSize: '0.9rem', margin: 0 }}>
-              RAG system testing, vector database testing, chatbot & virtual assistant testing, DSPy & synthetic data generation, advanced observability, benchmarking, performance & CI/CD.
-            </p>
-          </div>
+            </>
+          ) : (
+            <>
+              <p style={{ color: '#94a3b8', marginBottom: '2rem', textAlign: 'center' }}>
+                Complete both phases (18 weeks, 47 sessions) and qualify for senior AI testing positions:
+              </p>
+              <div className="ai-learn-grid">
+                {phase2CareerOutcomes.map((role, index) => (
+                  <div className="ai-learn-item" key={index}>
+                    <div className="ai-check-icon">
+                      <FaRocket />
+                    </div>
+                    <p className="ai-learn-text">{role}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
