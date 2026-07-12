@@ -750,16 +750,16 @@ const courses = [
     link: '/courseAIMLTesting',
   },
   {
-    title: 'AI powered test automation',
+    title: 'AI Assisted Testing',
     rating: 4.9,
     reviews: 100,
     students: '150',
-    lessons: 22,
+    lessons: 18,
     price: '$170',
     image: courseImageAIPowered,
     category: 'AI Testing',
     description:
-      'Master AI-powered test automation tools and techniques to accelerate your testing process.',
+      'Master AI-assisted testing — prompt engineering, AI-generated tests, automation scripting, MCP, and building your own QA agents.',
     link: '/courseAIPowered',
   },
   {

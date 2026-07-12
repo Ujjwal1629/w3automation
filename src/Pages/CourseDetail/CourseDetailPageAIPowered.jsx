@@ -16,7 +16,7 @@ import {
   FaArrowRight,
 } from 'react-icons/fa';
 import './CourseDetailPageAI.css';
-import certImage from '../../assets/certificate.png';
+import certImage from '../../assets/certificate_ai_assisted.png';
 import previewImage from '../../assets/ai_test_automation_cover.png';
 
 const CourseDetailPageAIPowered = () => {
@@ -32,195 +32,164 @@ const CourseDetailPageAIPowered = () => {
   };
 
   const whatYouWillLearn = [
-    'AI in Automation: Understand how AI is revolutionizing software testing and automation workflows.',
-    'Prompt Engineering for QA: Master techniques to prompt AI tools (like Copilot, ChatGPT) for test automation tasks.',
-    'Self-Healing Tests: Implement strategies to make tests resilient to UI changes using AI and advanced locators.',
-    'Visual Testing with AI: Integrate Applitools Eyes into UI tests for AI-powered visual validation.',
-    'Smart API Automation: Use AI to generate Postman collections, tests, documentation, and contract validations.',
-    'Test Refactoring & CI/CD Debugging: Leverage AI to debug pipelines, refactor code, and maintain test suites efficiently.',
-    'Low-Code/No-Code Tools: Explore codeless automation that abstracts logic through AI.',
-    'Advanced Agents & AI Workflows: Understand the frontier of Autonomous Agents and risk management in AI adoption.',
+    'AI Landscape for Testers: Get hands-on with ChatGPT, Claude, Gemini, Copilot, Cursor, and Antigravity.',
+    'Prompt Engineering for QA: Write token-efficient prompts that get usable output without burning tokens or time.',
+    'AI-Generated Test Assets: Generate positive, negative, edge, and boundary test cases plus realistic test data.',
+    'AI-Assisted Testing Workflows: Use AI for exploratory testing, bug reports, documentation, and the full STLC.',
+    'AI for Automation Scripting: Build Playwright and Selenium scripts with AI, master the Playwright CLI, and package reusable playbooks as Claude Skills.',
+    'AI for API Testing & Code Quality: Apply AI to Postman, REST Assured, code review, and refactoring.',
+    'AI Agents & MCP: Build no-code agents with n8n, Make.com, and Langflow, understand MCP for testers, and code your own AI QA assistant with the Claude or OpenAI API.',
+    'Judgment & Career: Know the limits of AI, handle hallucinations, and build your resume, LinkedIn, and AI portfolio.',
   ];
 
   const courseContent = [
     {
       title: 'Module 1: AI FOUNDATIONS FOR TESTERS',
-      desc: 'Sessions 1-4',
+      desc: 'Topics 1-2',
       sections: [
         {
-          title: 'Session 1: The New QA Paradigm — From Manual/Automation Engineer to AI-First QA Engineer',
+          title: 'Topic 1: AI Landscape for Testers',
           items: [
-            'Learning Objectives: Understand how LLMs change test automation; differentiate between traditional coding and AI-assisted workflows.',
-            'Topics Covered: History of automation, limitations of record-and-playback, prompt engineering concept, overview of AI tools.'
+            'Tools Covered: ChatGPT, Claude, Gemini, Copilot, Cursor, Antigravity.'
           ],
         },
         {
-          title: 'Session 2: Prompt Engineering for QA - Getting Reliable Code',
+          title: 'Topic 2: Prompt Engineering for QA',
           items: [
-            'Learning Objectives: Master prompt crafting to generate accurate, maintainable automation code.',
-            'Topics Covered: Context setting, persona assignment, iterative prompting, handling AI hallucinations.'
-          ],
-        },
-        {
-          title: 'Session 3: AI-Powered Debugging & Bug Analysis',
-          items: [
-            'Learning Objectives: Use AI to analyze stack traces, identify root causes of flaky tests, and suggest fixes.',
-            'Topics Covered: Log analysis, flaky test patterns, root cause analysis (RCA).'
-          ],
-        },
-        {
-          title: 'Session 4: Test Data Generation & Code Migration',
-          items: [
-            'Learning Objectives: Generate synthetic test data and migrate legacy frameworks (e.g., Selenium to Playwright) using AI.',
-            'Topics Covered: Synthetic data generation, framework migration strategies.'
+            'Token-efficient prompting: Getting usable output without burning tokens/time.'
           ],
         },
       ],
     },
     {
-      title: 'Module 2: AI + UI AUTOMATION',
-      desc: 'Sessions 5-9',
+      title: 'Module 2: AI-ASSISTED TEST DESIGN & ANALYSIS',
+      desc: 'Topics 3-6',
       sections: [
         {
-          title: 'Session 5: Building a Selenium Framework with GitHub Copilot',
+          title: 'Topic 3: AI-Generated Test Cases',
           items: [
-            'Learning Objectives: Set up a modular Selenium Java/Python framework using AI-assisted development.',
-            'Topics Covered: Project setup, WebDriverManager, Page Object Model (POM), BaseTest classes.'
+            'Coverage Types: Positive, negative, edge, and boundary test cases.'
           ],
         },
         {
-          title: 'Session 6: Playwright Superpowers with AI',
+          title: 'Topic 4: AI-Generated Test Data',
           items: [
-            'Learning Objectives: Leverage Playwright’s auto-waits and trace viewer, generating scripts using AI.',
-            'Topics Covered: Playwright locators, auto-waiting, trace viewer, codegen.'
+            'Topics Covered: Generating realistic, varied test data with AI.'
           ],
         },
         {
-          title: 'Session 7: Low-Code/No-Code Automation & AI',
+          title: 'Topic 5: AI-Assisted Exploratory Testing',
           items: [
-            'Learning Objectives: Explore tools that abstract coding and use AI to generate logic.',
-            'Topics Covered: Low-code tools, integrating AI into codeless workflows.'
+            'Topics Covered: Using AI as a pairing partner to plan and drive exploratory sessions.'
           ],
         },
         {
-          title: 'Session 8: Self-Healing Tests with AI & Advanced Locators',
+          title: 'Topic 6: AI for Bug Reports & Documentation',
           items: [
-            'Learning Objectives: Implement strategies to make tests resilient to UI changes using AI.',
-            'Topics Covered: AI-based self-healing, multi-attribute locators, heuristic strategies.'
-          ],
-        },
-        {
-          title: 'Session 9: Cursor AI for Complex UI Flows',
-          items: [
-            'Learning Objectives: Handle iframes, shadow DOM, drag-drop using Cursor IDE advanced AI features.',
-            'Topics Covered: Cursor Composer, complex UI interactions, code refactoring.'
+            'Topics Covered: Writing clear bug reports and test documentation with AI.'
           ],
         },
       ],
     },
     {
-      title: 'Module 3: AI + API TESTING',
-      desc: 'Sessions 10-12',
+      title: 'Module 3: AI FOR AUTOMATION & CODE QUALITY',
+      desc: 'Topics 7-8',
       sections: [
         {
-          title: 'Session 10: Postman + AI for API Discovery & Test Generation',
+          title: 'Topic 7: AI for Automation Scripting — Playwright, Selenium',
           items: [
-            'Learning Objectives: Use AI to generate Postman collections, tests, and documentation.',
-            'Topics Covered: Postman’s built-in AI, environments, pre-request scripts.'
+            'Playwright CLI mastery: Codegen, trace viewer, debug mode, sharding.',
+            'Claude Skills: Packaging reusable test playbooks as Claude Skills.'
           ],
         },
         {
-          title: 'Session 11: Automating API Contracts with AI',
+          title: 'Topic 8: AI Code Review & Refactoring',
           items: [
-            'Learning Objectives: Generate and validate API contract tests using AI.',
-            'Topics Covered: Contract testing, JSON Schema validation, data-driven tests.'
-          ],
-        },
-        {
-          title: 'Session 12: AI-Based Response Validation & Data Chaining',
-          items: [
-            'Learning Objectives: Use AI to assert complex response data and dynamically chain API calls.',
-            'Topics Covered: AI-driven assertions, dynamic data extraction.'
+            'Topics Covered: Reviewing and refactoring automation code with AI.'
           ],
         },
       ],
     },
     {
-      title: 'Module 4: VISUAL TESTING',
-      desc: 'Sessions 13-14',
+      title: 'Module 4: AI FOR API TESTING & THE STLC',
+      desc: 'Topics 9-10',
       sections: [
         {
-          title: 'Session 13: Applitools Setup & AI-Based Visual Validation',
+          title: 'Topic 9: AI for API Testing — Postman, REST Assured',
           items: [
-            'Learning Objectives: Integrate Applitools Eyes into UI tests for AI-powered visual validation.',
-            'Topics Covered: Applitools Eyes SDK, Visual Grid, baseline images.'
+            'Topics Covered: AI-assisted API test design and automation with Postman and REST Assured.'
           ],
         },
         {
-          title: 'Session 14: Cross-Browser & Visual AI Strategies',
+          title: 'Topic 10: AI Across the Full STLC',
           items: [
-            'Learning Objectives: Implement cross-browser testing with AI-driven visual analysis.',
-            'Topics Covered: Ultrafast Grid, handling dynamic content, testing in CI.'
+            'Topics Covered: Applying AI at every stage of the software testing life cycle.'
           ],
         },
       ],
     },
     {
-      title: 'Module 5: AI-DRIVEN WORKFLOW & PRODUCTIVITY',
-      desc: 'Sessions 15-16',
+      title: 'Module 5: AI AGENTS & MCP',
+      desc: 'Topics 11-14',
       sections: [
         {
-          title: 'Session 15: CI/CD Integration + AI for Pipeline Debugging',
+          title: 'Topic 11: No-Code AI Agents — n8n, Make.com, Langflow',
           items: [
-            'Learning Objectives: Integrate AI-assisted automation into CI/CD and use AI to debug failures.',
-            'Topics Covered: GitHub Actions, Jenkins, pipeline as code, AI for log analysis.'
+            'Topics Covered: Building QA automation agents without writing code.'
           ],
         },
         {
-          title: 'Session 16: Test Maintenance & Refactoring with AI',
+          title: 'Topic 12: MCP for Testers',
           items: [
-            'Learning Objectives: Identify code smells, dead code, and refactor large test suites with AI.',
-            'Topics Covered: Code analysis, refactoring patterns, reducing flakiness.'
+            'MCP vs CLI: When to connect AI to your tools via MCP vs a simple CLI wrapper.'
+          ],
+        },
+        {
+          title: 'Topic 13: Build Your Own AI QA Assistant (Code)',
+          items: [
+            'Tools Covered: Claude API / OpenAI API.'
+          ],
+        },
+        {
+          title: 'Topic 14: Orchestrating a Team of QA Agents',
+          items: [
+            'Topics Covered: Specialized agents vs one giant agent.'
           ],
         },
       ],
     },
     {
-      title: 'Module 6: ADVANCED + FUTURE OF AI TESTING',
-      desc: 'Sessions 17-18',
+      title: 'Module 6: WORKFLOW, LIMITS & HUMAN JUDGMENT',
+      desc: 'Topics 15-16',
       sections: [
         {
-          title: 'Session 17: Autonomous Testing Agents',
+          title: 'Topic 15: AI in the Daily QA Workflow',
           items: [
-            'Learning Objectives: Explore capabilities of autonomous agents (Devin, Cognition AI).',
-            'Topics Covered: Agentic workflows, configuration, task delegation.'
+            'Topics Covered: Fitting AI into your everyday testing routine.'
           ],
         },
         {
-          title: 'Session 18: AI Workflows, Risks & Validation Strategies',
+          title: 'Topic 16: Limits, Hallucinations & Human Judgment',
           items: [
-            'Learning Objectives: Manage AI-generated code risks and AI Workflows.',
-            'Topics Covered: Hallucinations, security risks (API keys), validation layers.'
+            'Topics Covered: Knowing where AI fails and where human judgment must stay in the loop.'
           ],
         },
       ],
     },
     {
-      title: 'Module 7: CAPSTONE PROJECT',
-      desc: 'Sessions 19-20',
+      title: 'Module 7: CAREER & FINAL PROJECT',
+      desc: 'Topics 17-18',
       sections: [
         {
-          title: 'Session 19: Capstone Kick-off - Requirements & AI Strategy',
+          title: 'Topic 17: Resume, LinkedIn & AI Portfolio',
           items: [
-            'Learning Objectives: Plan the automation strategy for a real app using AI.',
-            'Topics Covered: Requirement analysis, tool selection, setup.'
+            'Topics Covered: Showcasing your AI-assisted testing skills to employers.'
           ],
         },
         {
-          title: 'Session 20: Capstone Implementation & Review',
+          title: 'Topic 18: Final Project',
           items: [
-            'Learning Objectives: Build and present final AI-powered suite.',
-            'Topics Covered: Implementation, debugging, CI integration.'
+            'Topics Covered: Apply everything from the course in an end-to-end AI-assisted testing project.'
           ],
         },
       ],
@@ -234,11 +203,11 @@ const CourseDetailPageAIPowered = () => {
         <div className="ai-container">
           <div className="ai-hero-content">
             <span className="ai-badge">Mostly Popular</span>
-            <h1 className="ai-hero-title">AI Powered Test Automation</h1>
+            <h1 className="ai-hero-title">AI Assisted Testing</h1>
             <p className="ai-hero-subtitle">
-              Master AI-powered tools and techniques to supercharge your
-              automation testing, covering AI test generation, self-healing
-              locators, and intelligent test execution.
+              Master AI-assisted testing end to end — from prompt engineering
+              and AI-generated test cases to automation scripting, MCP, and
+              building your own AI QA agents.
             </p>
 
             <div className="ai-stats-row">
@@ -249,13 +218,13 @@ const CourseDetailPageAIPowered = () => {
               </div>
               <div className="ai-stat-item">
                 <FaVideo className="ai-stat-icon" />
-                <span className="ai-stat-value">22</span>
-                <span className="ai-stat-label">Lectures</span>
+                <span className="ai-stat-value">18</span>
+                <span className="ai-stat-label">Topics</span>
               </div>
               <div className="ai-stat-item">
                 <FaProjectDiagram className="ai-stat-icon" />
-                <span className="ai-stat-value">2</span>
-                <span className="ai-stat-label">Projects</span>
+                <span className="ai-stat-value">1</span>
+                <span className="ai-stat-label">Final Project</span>
               </div>
               <div className="ai-stat-item">
                 <FaLaptopCode className="ai-stat-icon" />
@@ -265,7 +234,7 @@ const CourseDetailPageAIPowered = () => {
               <div className="ai-stat-item">
                 <FaRocket className="ai-stat-icon" />
                 <span className="ai-stat-value">AI</span>
-                <span className="ai-stat-label">Powered Testing</span>
+                <span className="ai-stat-label">Assisted Testing</span>
               </div>
             </div>
 
