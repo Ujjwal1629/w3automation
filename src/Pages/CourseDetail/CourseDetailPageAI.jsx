@@ -473,11 +473,13 @@ const CourseDetailPageAI = () => {
               <span className="ai-demo-banner-label">Free Demo Session</span>
               <div className="ai-demo-banner-row">
                 <FaRobot className="ai-demo-banner-icon" />
-                <span>Deepeval, Promptfoo and Hallucination</span>
+                <span>
+                  <strong>AI and ML Testing Mastery</strong>
+                </span>
               </div>
               <div className="ai-demo-banner-row">
                 <FaCalendarAlt className="ai-demo-banner-icon" />
-                <span>7:00 PM IST</span>
+                <span>31 Aug 2026, 7:00 PM IST</span>
               </div>
               <div className="ai-demo-banner-row">
                 <FaVideo className="ai-demo-banner-icon" />

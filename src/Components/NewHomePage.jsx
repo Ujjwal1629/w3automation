@@ -142,7 +142,8 @@ const NewHomePage = () => {
                     AI/ML Testing Demo Session
                   </span>
                   <span className="info-value">
-                    Deepeval, Promptfoo and Hallucination | 7:00 PM IST
+                    <strong>AI and ML Testing Mastery</strong> | 31 Aug 2026,
+                    7:00 PM IST
                   </span>
                 </div>
               </div>

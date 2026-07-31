@@ -245,6 +245,11 @@
   color: #1f2937;
 }
 
+.info-value strong {
+  font-weight: 800;
+  color: #111827;
+}
+
 .cta-group {
   display: flex;
   align-items: center;
