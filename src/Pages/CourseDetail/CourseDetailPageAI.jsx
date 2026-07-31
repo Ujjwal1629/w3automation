@@ -469,17 +469,33 @@ const CourseDetailPageAI = () => {
               </div>
             </div>
 
+            <div className="ai-demo-banner">
+              <span className="ai-demo-banner-label">Free Demo Session</span>
+              <div className="ai-demo-banner-row">
+                <FaRobot className="ai-demo-banner-icon" />
+                <span>Deepeval, Promptfoo and Hallucination</span>
+              </div>
+              <div className="ai-demo-banner-row">
+                <FaCalendarAlt className="ai-demo-banner-icon" />
+                <span>7:00 PM IST</span>
+              </div>
+              <div className="ai-demo-banner-row">
+                <FaVideo className="ai-demo-banner-icon" />
+                <span>Online on Zoom</span>
+              </div>
+            </div>
+
             <div className="ai-hero-actions">
               <button
                 className="ai-btn-primary"
                 onClick={() =>
                   window.open(
-                    'https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw',
+                    'https://zoom.us/meeting/register/k8L52fnDRzeQ-XFhawTc8A',
                     '_blank'
                   )
                 }
               >
-                <FaPlay size={12} /> Start Learning
+                <FaPlay size={12} /> Register for Demo
               </button>
             </div>
           </div>
@@ -714,7 +730,7 @@ const CourseDetailPageAI = () => {
               style={{ marginTop: '2rem' }}
               onClick={() =>
                 window.open(
-                  'https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw',
+                  'https://zoom.us/meeting/register/k8L52fnDRzeQ-XFhawTc8A',
                   '_blank'
                 )
               }

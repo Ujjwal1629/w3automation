@@ -110,6 +110,44 @@
   font-weight: 500;
 }
 
+.ai-demo-banner {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.75rem;
+  max-width: 480px;
+}
+
+.ai-demo-banner-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #60a5fa;
+  margin-bottom: 0.85rem;
+}
+
+.ai-demo-banner-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.ai-demo-banner-row + .ai-demo-banner-row {
+  margin-top: 0.55rem;
+}
+
+.ai-demo-banner-icon {
+  flex-shrink: 0;
+  font-size: 1rem;
+  color: #3b82f6;
+}
+
 .ai-hero-actions {
   display: flex;
   gap: 1rem;

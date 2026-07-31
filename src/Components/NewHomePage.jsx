@@ -139,10 +139,10 @@ const NewHomePage = () => {
                 <BsClock className="info-icon" />
                 <div className="info-text">
                   <span className="info-label">
-                    Playwright with AI Demo Session
+                    AI/ML Testing Demo Session
                   </span>
                   <span className="info-value">
-                    Thursday 8:00 PM – 9:00 PM IST | Friday 5:30 AM – 6:30 AM IST
+                    Deepeval, Promptfoo and Hallucination | 7:00 PM IST
                   </span>
                 </div>
               </div>
@@ -158,7 +158,12 @@ const NewHomePage = () => {
             <div className="cta-group">
               <button
                 className="register-btn"
-                onClick={() => setShowRegisterModal(true)}
+                onClick={() =>
+                  window.open(
+                    'https://zoom.us/meeting/register/k8L52fnDRzeQ-XFhawTc8A',
+                    '_blank'
+                  )
+                }
               >
                 Register now
               </button>
@@ -500,7 +505,7 @@ const NewHomePage = () => {
               className="cta-button"
               onClick={() =>
                 window.open(
-                  'https://zoom.us/meeting/register/Xaq9WQf9Q628pcZmxXz-Jw',
+                  'https://zoom.us/meeting/register/k8L52fnDRzeQ-XFhawTc8A',
                   '_blank'
                 )
               }
