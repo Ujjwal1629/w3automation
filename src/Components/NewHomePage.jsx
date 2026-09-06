@@ -142,8 +142,8 @@ const NewHomePage = () => {
                     AI/ML Testing Demo Session
                   </span>
                   <span className="info-value">
-                    <strong>AI and ML Testing Mastery</strong> | 31 Aug 2026,
-                    7:00 PM IST
+                    <strong>AI and ML Testing Mastery</strong> | 7 and 9 Sep,
+                    7:15 AM IST | 9:45 PM EST
                   </span>
                 </div>
               </div>
@@ -161,7 +161,7 @@ const NewHomePage = () => {
                 className="register-btn"
                 onClick={() =>
                   window.open(
-                    'https://zoom.us/meeting/register/k8L52fnDRzeQ-XFhawTc8A',
+                    'https://zoom.us/meeting/register/oaxXeZmNR6K6_PNND2tT6w',
                     '_blank'
                   )
                 }
@@ -506,7 +506,7 @@ const NewHomePage = () => {
               className="cta-button"
               onClick={() =>
                 window.open(
-                  'https://zoom.us/meeting/register/k8L52fnDRzeQ-XFhawTc8A',
+                  'https://zoom.us/meeting/register/oaxXeZmNR6K6_PNND2tT6w',
                   '_blank'
                 )
               }
@@ -779,7 +779,7 @@ const courses = [
     category: 'AI Testing',
     description:
       'Phase 1 — Foundations. Master LLM evaluation, red teaming, observability, and AI test pipelines using PromptFoo, DeepEval, Giskard, LangSmith & more.',
-    link: '/courseAIMLTesting-phase1',
+    link: '/courseAIMLTesting-phase1-and-phase2',
   },
 ];
 

@@ -615,17 +615,22 @@ const CourseDetailPageAIML = () => {
               </div>
             </div>
 
+            <p className="ai-hero-subtitle">
+              <strong>Free Demo Sessions:</strong> 7 and 9 Sep — 7:15 AM IST |
+              9:45 PM EST
+            </p>
+
             <div className="ai-hero-actions">
               <button
                 className="ai-btn-primary"
                 onClick={() =>
                   window.open(
-                    'https://www.linkedin.com/in/hemant-gandhi254/',
+                    'https://zoom.us/meeting/register/oaxXeZmNR6K6_PNND2tT6w',
                     '_blank'
                   )
                 }
               >
-                Register Interest
+                Register Now
               </button>
             </div>
           </div>
@@ -862,12 +867,12 @@ const CourseDetailPageAIML = () => {
               style={{ marginTop: '2rem' }}
               onClick={() =>
                 window.open(
-                  'https://www.linkedin.com/in/hemant-gandhi254/',
+                  'https://zoom.us/meeting/register/oaxXeZmNR6K6_PNND2tT6w',
                   '_blank'
                 )
               }
             >
-              Register Interest
+              Register Now
             </button>
           </div>
           <div className="ai-cert-preview">
