@@ -276,6 +276,13 @@ function App() {
     trackPageView(location.pathname + location.search);
   }, [location]);
 
+  // Reset scroll to the top whenever the route changes, so a new page never
+  // opens partway down at the previous page's scroll position.
+  useLayoutEffect(() => {
+    if (location.hash) return; // let in-page anchor links scroll themselves
+    window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
+
   if (!serverReady) {
     return (
       <ColdStartOverlay
