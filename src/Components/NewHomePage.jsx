@@ -76,10 +76,11 @@ const NewHomePage = () => {
     }
   };
 
+  const visibleCourses = courses.filter((course) => !course.hidden);
   const filteredCourses =
     activeFilter === 'View All Courses'
-      ? courses
-      : courses.filter((course) => course.category === activeFilter);
+      ? visibleCourses
+      : visibleCourses.filter((course) => course.category === activeFilter);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -757,6 +758,7 @@ const courses = [
   },
   {
     title: 'AI Assisted Testing',
+    hidden: true,
     rating: 4.9,
     reviews: 100,
     students: '150',
