@@ -92,7 +92,7 @@ const CertificateTemplate = ({
             />
             <div className="sig-line" />
             <div className="signature">Hemant Gandhi</div>
-            <div className="sig-title">(Test Automation Trainer)</div>
+            <div className="sig-title">AI & Test Automation Trainer</div>
           </div>
           <div className="cert-details">
             <p>Certificate No: {certificateNumber}</p>
