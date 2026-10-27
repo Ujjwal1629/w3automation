@@ -28,7 +28,6 @@ import {
   FaTimes,
 } from 'react-icons/fa';
 import {
-  BsClock,
   BsPerson,
   BsFileText,
   BsArrowRight,
@@ -137,38 +136,12 @@ const NewHomePage = () => {
 
             <div className="info-cards">
               <div className="info-card">
-                <BsClock className="info-icon" />
-                <div className="info-text">
-                  <span className="info-label">
-                    AI/ML Testing Demo Session
-                  </span>
-                  <span className="info-value">
-                    <strong>AI and ML Testing Mastery</strong> | 7 and 9 Sep,
-                    7:15 AM IST | 9:45 PM EST
-                  </span>
-                </div>
-              </div>
-              <div className="info-card">
                 <BsCameraVideo className="info-icon zoom-icon" />
                 <div className="info-text">
                   <span className="info-label">Online Platform</span>
                   <span className="info-value">Zoom</span>
                 </div>
               </div>
-            </div>
-
-            <div className="cta-group">
-              <button
-                className="register-btn"
-                onClick={() =>
-                  window.open(
-                    'https://zoom.us/meeting/register/oaxXeZmNR6K6_PNND2tT6w',
-                    '_blank'
-                  )
-                }
-              >
-                Register now
-              </button>
             </div>
           </div>
 
