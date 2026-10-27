@@ -579,7 +579,7 @@ const CourseDetailPageAIML = () => {
       <section className="ai-hero-section">
         <div className="ai-container">
           <div className="ai-hero-content">
-            <span className="ai-badge">{activePhase === 1 ? 'Phase 1 — Foundations' : 'Phase 2 — Mastery'}</span>
+            <span className="ai-badge">{activePhase === 1 ? 'Phase 1 / Phase 2 — Foundations' : 'Phase 2 — Mastery'}</span>
             <h1 className="ai-hero-title">AI & ML Testing Professional Course</h1>
             <p className="ai-hero-subtitle">
               {activePhase === 1
@@ -615,24 +615,6 @@ const CourseDetailPageAIML = () => {
               </div>
             </div>
 
-            <p className="ai-hero-subtitle">
-              <strong>Free Demo Sessions:</strong> 7 and 9 Sep — 7:15 AM IST |
-              9:45 PM EST
-            </p>
-
-            <div className="ai-hero-actions">
-              <button
-                className="ai-btn-primary"
-                onClick={() =>
-                  window.open(
-                    'https://zoom.us/meeting/register/oaxXeZmNR6K6_PNND2tT6w',
-                    '_blank'
-                  )
-                }
-              >
-                Register Now
-              </button>
-            </div>
           </div>
 
           <div className="ai-hero-media">
